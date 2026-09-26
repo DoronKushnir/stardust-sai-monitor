@@ -97,15 +97,20 @@ cross-section grids are our computed products for the paper's bands.
 * Table F1 (element-width scan) in the paper was corrected in round 50 to
   the values this repository produces (differences ≤ 2 %): the manuscript's
   earlier run had used the 8.74 µm record for the averaging-width scaling.
-* The ACE null-test *window* variants (Sect. 4.3: σ(M) = 0.033 Tg at native
-  binning, 0.10 Tg, 0.24 Tg per shell) come out 1–3 % lower here
-  (0.032, 0.095, 0.23 Tg); the full-spectrum null test, its formal error and
-  the design's element-averaged window variant reproduce exactly. The
-  origin of the small window-variant difference (the paper's run scanned a
-  1274-occultation local mirror, this repository the 143-occultation
-  subset) is under review; the paper's rounded statements are unaffected
-  except "0.033" → "0.032" and "0.24" → "0.23".
+* The ACE null test (Sect. 4.3, Table F1 ACE columns) selects, per
+  occultation, the tangent height nearest to 20.5 km.  Five ensemble
+  occultations have two heights exactly equidistant (19.8/21.2 km,
+  20.3/20.7 km, ...) and the paper's runs up to round 50 had let the
+  directory listing order decide; `ace_fullspectrum_retrieval.py` now breaks
+  the tie deterministically (lower height).  The manuscript's null-test
+  numbers were updated to this deterministic run in round 51 (window
+  0.033 -> 0.032 Tg, element-averaged 0.040 -> 0.038 Tg, per shell
+  0.29 -> 0.28 Tg, fixed-coarse 0.022 -> 0.021 Tg; the full-spectrum null,
+  0.026 / 0.08 / 0.19 Tg, is unchanged).  The ACE columns of Table F1 had
+  last been run in round 33 (before the round-36 floor model) and were re-run
+  in round 51 as well (band at 0.1 um: 0.18 -> 0.15 Tg per shell).
 * The reference archives in `reference_outputs/` are the versions this
   repository regenerates; `outputs/calibrated_background_thresholds.json`,
-  the Fisher inputs, the materials thresholds, the 2D study and the floor
+  the Fisher inputs, the materials thresholds, the design-sensitivity
+  scans (Table 2, Appendix F), the 2D study, the null tests and the floor
   records reproduce the manuscript's numbers exactly.

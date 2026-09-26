@@ -178,12 +178,17 @@ def occultation_data(occ, nu_grid):
             continue
     if not files:
         return None
+    # deterministic order: nearest to 20.5 km first, the LOWER of two
+    # equidistant heights first.  Three ensemble occultations have an exact
+    # tie (19.8/21.2 km, 20.3/20.7 km twice); directory order must not
+    # decide it.
+    files.sort(key=lambda af: (abs(af[0] - 20.5), af[0]))
     alts = np.array([a for a, _ in files])
     near = np.abs(alts - 20.5) <= 1.5
     hi = alts >= 30.0
     if not near.any() or hi.sum() < 2:
         return None
-    k = int(np.argmin(np.abs(alts - 20.5)))
+    k = 0
     t20 = load_spectrum(files[k][1], nu_grid)
     tref = np.nanmedian(np.array([load_spectrum(f, nu_grid)
                                   for a, f in files if a >= 30.0]), axis=0)

@@ -13,7 +13,7 @@ contiguous elements of width dlam (transmission-weighted for the data,
 linear for the basis), MID-INFRARED ALONE (no visible/NIR datum), weighted
 with the floor model of scripts/resolution_sensitivity_calibrated.py
 (atlas SD at the 0.25-um centers interpolated to the element centers x
-the measured width factor of the 8.74-um record).  Elements with <60 %
+the measured width factor of the 8.80-um record).  Elements with <60 %
 valid bins (the saturated O3 core) are dropped.
 
 Reported per (range, dlam): number of elements, robust empirical sigma(M)

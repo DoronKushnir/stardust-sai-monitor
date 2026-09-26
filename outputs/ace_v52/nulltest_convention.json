@@ -50,8 +50,8 @@
   "win01": {
    "sigma_formal_linearized": 0.058974163054853077,
    "one_minus_R2": 0.01223325075968007,
-   "sigma_formal_reported": 0.05897386438169326,
-   "sigma_emp_reported": 0.03963237392703469
+   "sigma_formal_reported": 0.05897377511156789,
+   "sigma_emp_reported": 0.03849538403741592
   },
   "win01 (no constant, 7-param)": {
    "sigma_formal_linearized": 0.048532331043499584,
@@ -68,40 +68,40 @@
   "win2": {
    "sigma_formal_linearized": 0.051755922655695744,
    "one_minus_R2": 0.03417877236938027,
-   "sigma_formal_reported": 0.05175573494178701,
-   "sigma_emp_reported": 0.03166042940774489
+   "sigma_formal_reported": 0.0517556550981629,
+   "sigma_emp_reported": 0.03216590969277978
   },
   "full": {
    "sigma_formal_linearized": 0.021307238864147798,
    "one_minus_R2": 0.19883758290146714,
-   "sigma_formal_reported": 0.023207717875695186,
-   "sigma_emp_reported": 0.026226494912338142
+   "sigma_formal_reported": 0.023207717601117905,
+   "sigma_emp_reported": 0.025943360418987284
   },
   "std": {
    "sigma_formal_linearized": 0.019118655490346186,
    "one_minus_R2": 0.24696654680125507,
-   "sigma_formal_reported": 0.021560125808608617,
-   "sigma_emp_reported": 0.022320633453928446
+   "sigma_formal_reported": 0.021560125797900963,
+   "sigma_emp_reported": 0.02129744381103204
   }
  },
  "nulltest_cross_convention": {
   "full": {
-   "mmin_emp_slant": 0.07867948473701443,
-   "mmin_formal_slant": 0.06962315362708556,
-   "mmin_emp_shell": 0.1939315010877349,
-   "mmin_formal_shell": 0.17160919061040394
+   "mmin_emp_slant": 0.07783008125696185,
+   "mmin_formal_slant": 0.06962315280335371,
+   "mmin_emp_shell": 0.19183786648315737,
+   "mmin_formal_shell": 0.17160918858004554
   },
   "win2": {
-   "mmin_emp_slant": 0.09498128822323468,
-   "mmin_formal_slant": 0.15526720482536102,
-   "mmin_emp_shell": 0.2341126643361602,
-   "mmin_formal_shell": 0.38270715933290006
+   "mmin_emp_slant": 0.09649772907833934,
+   "mmin_formal_slant": 0.1552669652944887,
+   "mmin_emp_shell": 0.23785043222221328,
+   "mmin_formal_shell": 0.38270656893018223
   },
   "win01": {
-   "mmin_emp_slant": 0.11889712178110406,
-   "mmin_formal_slant": 0.17692159314507977,
-   "mmin_emp_shell": 0.29306111217036535,
-   "mmin_formal_shell": 0.4360815306320571
+   "mmin_emp_slant": 0.11548615211224775,
+   "mmin_formal_slant": 0.17692132533470367,
+   "mmin_emp_shell": 0.2846536541111638,
+   "mmin_formal_shell": 0.4360808705251892
   }
  },
  "design_cross_convention": {
