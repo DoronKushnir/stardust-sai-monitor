@@ -1,0 +1,97 @@
+MIR solar-occultation ETC
+  aperture D=10 cm (A=7.85e-03 m^2), tau_opt=0.3, dlam=0.1 um, t_int=0.5s
+  disk fraction per 0.5 km element = 0.0228
+  K_GEOM = sigma_alpha*SNR = 7.763e-06 m^-1  (dz=0.5 km)
+============================================================================================
+
+Solar spectral irradiance (5772 K disk model) and required resolving power:
+  (spectral element dlam=0.1 um -> R = lam/dlam; a LOW-resolution requirement)
+    4.00 um : E = 9.138e+00 W/m^2/um   R_needed =    40
+    8.80 um : E = 4.683e-01 W/m^2/um   R_needed =    88
+   11.40 um : E = 1.720e-01 W/m^2/um   R_needed =   114
+   20.40 um : E = 1.762e-02 W/m^2/um   R_needed =   204
+   28.50 um : E = 4.709e-03 W/m^2/um   R_needed =   285
+
+Detector catalogue (spectral coverage, operating T, cooler, delivered R):
+  Uncooled microbolometer (VOx)
+      7.5-40.0 um | T_op~300 K | cooler: none / TEC-trim | NEP~1e-11 W/rtHz
+      resolution: R~10-300 (disperser); slow (~10ms) -> poor for high-OPD FTS
+      heritage:   THEMIS/Odyssey 6.8-14.9um; E-THEMIS/Europa Clipper 14-28,28-80um
+  Uncooled thermopile array
+      2.0-45.0 um | T_op~300 K | cooler: none | NEP~1e-09 W/rtHz
+      resolution: R~10-100 (radiometer/disperser); DC-coupled, no chopper
+      heritage:   LRO Diviner 0.3-400um; MCS/MRO; OSIRIS-REx OTES; Lucy L'TES
+  Pyroelectric (DLaTGS/LiTaO3)
+      2.0-40.0 um | T_op~300 K | cooler: none / TE-stab | NEP~3e-10 W/rtHz
+      resolution: high R in FTS (mirror supplies modulation)
+      heritage:   Mini-TES(MER); OSIRIS-REx OTES; Lucy L'TES; ESA FORUM
+  InSb
+      1.0-5.5 um | T_op~30 K | cooler: passive/Stirling | NEP~3e-14 W/rtHz
+      resolution: R up to ~10^5 (FTS) / ~few 1000 (grating)
+      heritage:   Spitzer IRAC 3.6/4.5um @15K; ACE-FTS (with MCT)
+  HgCdTe LWIR
+      3.0-12.0 um | T_op~77 K | cooler: passive/Stirling | NEP~6e-14 W/rtHz
+      resolution: R~10^4-10^5 (FTS: MIPAS,ACE); ~2700 (JWST NIRSpec-class)
+      heritage:   ACE-FTS; MIPAS; IASI; CrIS; JWST NIRCam/NIRSpec
+  HgCdTe VLWIR
+      3.0-16.0 um | T_op~50 K | cooler: Stirling/pulse-tube | NEP~1e-13 W/rtHz
+      resolution: R~10^3-10^4
+      heritage:   WISE ~12um @7.8K; sounder 15um bands ~50K
+  Si:As IBC/BIB
+      5.0-28.0 um | T_op~7 K | cooler: pulse-tube+JT / stored | NEP~3e-14 W/rtHz
+      resolution: R~100 (MIRI LRS) to ~3500 (MIRI MRS); ~60-600 (Spitzer IRS)
+      heritage:   JWST MIRI (6.4K); Spitzer IRS+MIPS-24um; WISE; AKARI
+  Si:Sb BIB
+      14.0-40.0 um | T_op~8 K | cooler: pulse-tube+JT / stored | NEP~3e-14 W/rtHz
+      resolution: R~60-600 (Spitzer IRS Long-High/Long-Low)
+      heritage:   Spitzer IRS LL/LH only
+  Type-II superlattice (T2SL)
+      3.0-15.0 um | T_op~80 K | cooler: Stirling/pulse-tube | NEP~3e-14 W/rtHz
+      resolution: R~10^3 (grating/imaging)
+      heritage:   MWIR maturing; NO operational VLWIR space heritage (2025)
+
+Optics temperature 300 K, f/2, QE=0.7, systematic SNR cap=2000
+
+--- 4.00 um  (systematic floor 1.00e-08 m^-1 -> needs SNR >= 776) ---
+  detector                           Top[K]  SNR_shot   SNR_nep  SNR_net  sig_a[m^-1]  limited-by
+  Uncooled thermopile array             300   1.9e+07   4.9e+04     1998     3.88e-09  systematic(design)
+  Pyroelectric (DLaTGS/LiTaO3)          300   1.9e+07   1.6e+05     2000     3.88e-09  systematic(design)
+  InSb                                   30   1.9e+07   1.6e+09     2000     3.88e-09  systematic(design)
+  HgCdTe LWIR                            77   1.9e+07   8.2e+08     2000     3.88e-09  systematic(design)
+  HgCdTe VLWIR                           50   1.9e+07   3.3e+08     2000     3.88e-09  systematic(design)
+  Type-II superlattice (T2SL)            80   1.9e+07   1.6e+09     2000     3.88e-09  systematic(design)
+
+--- 8.80 um  (systematic floor 1.50e-08 m^-1 -> needs SNR >= 518) ---
+  detector                           Top[K]  SNR_shot   SNR_nep  SNR_net  sig_a[m^-1]  limited-by
+  Uncooled microbolometer (VOx)         300   6.2e+06   2.5e+05     2000     3.88e-09  systematic(design)
+  Uncooled thermopile array             300   6.2e+06   2.5e+03     1566     4.96e-09  DETECTOR-NEP
+  Pyroelectric (DLaTGS/LiTaO3)          300   6.2e+06   8.4e+03     1945     3.99e-09  DETECTOR-NEP
+  HgCdTe LWIR                            77   6.2e+06   4.2e+07     2000     3.88e-09  systematic(design)
+  HgCdTe VLWIR                           50   6.2e+06   1.7e+07     2000     3.88e-09  systematic(design)
+  Si:As IBC/BIB                           7   6.2e+06   1.0e+08     2000     3.88e-09  systematic(design)
+  Type-II superlattice (T2SL)            80   6.2e+06   8.4e+07     2000     3.88e-09  systematic(design)
+
+--- 11.40 um  (systematic floor 1.20e-08 m^-1 -> needs SNR >= 647) ---
+  detector                           Top[K]  SNR_shot   SNR_nep  SNR_net  sig_a[m^-1]  limited-by
+  Uncooled microbolometer (VOx)         300   4.3e+06   9.2e+04     2000     3.88e-09  systematic(design)
+  Uncooled thermopile array             300   4.3e+06   9.2e+02      839     9.25e-09  DETECTOR-NEP
+  Pyroelectric (DLaTGS/LiTaO3)          300   4.3e+06   3.1e+03     1678     4.63e-09  DETECTOR-NEP
+  HgCdTe LWIR                            77   4.3e+06   1.5e+07     2000     3.88e-09  systematic(design)
+  HgCdTe VLWIR                           50   4.3e+06   6.2e+06     2000     3.88e-09  systematic(design)
+  Si:As IBC/BIB                           7   4.3e+06   3.7e+07     2000     3.88e-09  systematic(design)
+  Type-II superlattice (T2SL)            80   4.3e+06   3.1e+07     2000     3.88e-09  systematic(design)
+
+--- 20.40 um  (systematic floor 2.80e-09 m^-1 -> needs SNR >= 2773) ---
+  detector                           Top[K]  SNR_shot   SNR_nep  SNR_net  sig_a[m^-1]  limited-by
+  Uncooled microbolometer (VOx)         300   1.8e+06   9.5e+03     1957     3.97e-09  DETECTOR-NEP
+  Uncooled thermopile array             300   1.8e+06   9.5e+01       95     8.20e-08  DETECTOR-NEP
+  Pyroelectric (DLaTGS/LiTaO3)          300   1.8e+06   3.2e+02      312     2.49e-08  DETECTOR-NEP
+  Si:As IBC/BIB                           7   1.8e+06   3.8e+06     2000     3.88e-09  systematic(design)
+  Si:Sb BIB                               8   1.8e+06   3.0e+06     2000     3.88e-09  systematic(design)
+
+--- 28.50 um  (systematic floor 3.40e-09 m^-1 -> needs SNR >= 2283) ---
+  detector                           Top[K]  SNR_shot   SNR_nep  SNR_net  sig_a[m^-1]  limited-by
+  Uncooled microbolometer (VOx)         300   1.1e+06   2.5e+03     1569     4.95e-09  DETECTOR-NEP
+  Uncooled thermopile array             300   1.1e+06   2.5e+01       25     3.07e-07  DETECTOR-NEP
+  Pyroelectric (DLaTGS/LiTaO3)          300   1.1e+06   8.4e+01       84     9.21e-08  DETECTOR-NEP
+  Si:Sb BIB                               8   1.1e+06   8.1e+05     2000     3.88e-09  systematic(design)

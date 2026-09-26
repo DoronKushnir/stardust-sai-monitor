@@ -1,0 +1,7 @@
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+netCDF4>=1.6
+pyyaml>=6.0
+hitran-api>=1.2      # HAPI: only needed for the full (raw-data) chain, see fetch/README.md
+pytest>=7            # tests

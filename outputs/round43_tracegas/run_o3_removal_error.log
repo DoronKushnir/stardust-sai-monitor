@@ -1,0 +1,819 @@
+Using /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/round43_tracegas/hitran_cache_trim
+
+cont_ch4_1046_1244
+                     Lines parsed: 8488
+cont_co2_184_1257
+                     Lines parsed: 35524
+cont_o3_704_1704
+                     Lines parsed: 80396
+cont_n2o_1255_1647
+                     Lines parsed: 17743
+cont_o3_267_417
+                     Lines parsed: 2381
+cont_co2_3813_10040
+                     Lines parsed: 68801
+cont_n2o_704_1704
+                     Lines parsed: 39458
+cont_h2o_1_1026
+                     Lines parsed: 7692
+cont_h2o_1368_1652
+                     Lines parsed: 3014
+co2_w1
+                     Lines parsed: 5053
+cont_h2o_267_430
+                     Lines parsed: 1559
+cont_n2o_267_417
+                     Lines parsed: 261
+cont_o3_520_1520
+                     Lines parsed: 84073
+cont_co_674_5040
+                     Lines parsed: 529
+cont_h2o_12_1012
+                     Lines parsed: 7619
+cont_ch4_1130_1404
+                     Lines parsed: 21881
+cont_o3_1_1125
+                     Lines parsed: 92985
+cont_n2o_530_1530
+                     Lines parsed: 50676
+cont_n2o_1_5500
+                     Lines parsed: 237191
+cont_co2_1_1125
+                     Lines parsed: 35435
+cont_o3_530_1530
+                     Lines parsed: 84121
+cont_h2o_2590_3129
+                     Lines parsed: 3689
+cont_h2o_384_1384
+                     Lines parsed: 6045
+cont_co_4959_11029
+                     Lines parsed: 386
+cont_o3_2590_3129
+                     Lines parsed: 41501
+cont_n2o_719_1719
+                     Lines parsed: 39345
+cont_h2o_928_3833
+                     Lines parsed: 28734
+cont_o3_575_1782
+                     Lines parsed: 99432
+cont_o3_434_1434
+                     Lines parsed: 83316
+cont_n2o_575_1782
+                     Lines parsed: 55411
+cont_o3_719_1719
+                     Lines parsed: 80310
+cont_o3_416_572
+                     Lines parsed: 175
+cont_ch4_888_2224
+                     Lines parsed: 51080
+cont_n2o_586_1586
+                     Lines parsed: 43720
+cont_o3_586_1586
+                     Lines parsed: 83828
+cont_h2o_125_1500
+                     Lines parsed: 10249
+cont_h2o_273_430
+                     Lines parsed: 1477
+cont_co2_644_1644
+                     Lines parsed: 24210
+cont_o3_425_1425
+                     Lines parsed: 82960
+cont_ch4_1062_2062
+                     Lines parsed: 48045
+cont_h2o_888_2224
+                     Lines parsed: 11552
+cont_co2_552_1750
+                     Lines parsed: 32009
+cont_o3_586_1676
+                     Lines parsed: 86996
+cont_co2_674_2040
+                     Lines parsed: 26633
+cont_ch4_125_1500
+                     Lines parsed: 54913
+cont_o3_636_1644
+                     Lines parsed: 82226
+cont_o3_1_1011
+                     Lines parsed: 69266
+cont_o3_586_1719
+                     Lines parsed: 92566
+cont_n2o_815_2087
+                     Lines parsed: 53111
+cont_o3_844_1444
+                     Lines parsed: 63530
+cont_o3_815_2087
+                     Lines parsed: 122560
+cont_n2o_611_1611
+                     Lines parsed: 41078
+cont_o3_611_1611
+                     Lines parsed: 83007
+cont_h2o_224_1333
+                     Lines parsed: 7267
+cont_n2o_1015_1342
+                     Lines parsed: 23945
+cont_o3_1104_1184
+                     Lines parsed: 11037
+cont_h2o_449_1550
+                     Lines parsed: 7349
+n2o_w1
+                     Lines parsed: 22094
+cont_ch4_1_5500
+                     Lines parsed: 212158
+cont_o3_869_1468
+                     Lines parsed: 63591
+cont_co2_574_983
+                     Lines parsed: 26715
+cont_o3_414_566
+                     Lines parsed: 115
+cont_co_214_5500
+                     Lines parsed: 575
+cont_n2o_1328_1784
+                     Lines parsed: 14849
+cont_o3_475_1475
+                     Lines parsed: 83821
+cont_n2o_414_566
+                     Lines parsed: 5109
+cont_co2_298_448
+                     Lines parsed: 779
+cont_h2o_1_1000
+                     Lines parsed: 7614
+cont_ch4_449_1550
+                     Lines parsed: 43365
+cont_o3_700_879
+                     Lines parsed: 9898
+cont_co2_4499_11489
+                     Lines parsed: 66203
+cont_o3_611_1644
+                     Lines parsed: 83760
+cont_h2o_1_1012
+                     Lines parsed: 7654
+co2_w3
+                     Lines parsed: 25298
+cont_n2o_449_1550
+                     Lines parsed: 51790
+cont_co_4499_11489
+                     Lines parsed: 386
+cont_h2o_1328_1784
+                     Lines parsed: 4897
+cont_o3_224_1333
+                     Lines parsed: 81395
+cont_h2o_5_1005
+                     Lines parsed: 7621
+cont_o3_449_1550
+                     Lines parsed: 84143
+cont_co2_674_5040
+                     Lines parsed: 105938
+cont_o3_475_1644
+                     Lines parsed: 84896
+cont_h2o_1015_1342
+                     Lines parsed: 2012
+cont_co2_275_1275
+                     Lines parsed: 35459
+h2o_w3
+                     Lines parsed: 16756
+cont_o3_586_1644
+                     Lines parsed: 84581
+cont_h2o_1_990
+                     Lines parsed: 7575
+cont_h2o_1_5500
+                     Lines parsed: 53677
+cont_n2o_586_1644
+                     Lines parsed: 46828
+cont_n2o_1_857
+                     Lines parsed: 23902
+cont_ch4_4505_9834
+                     Lines parsed: 118992
+cont_o3_417_1417
+                     Lines parsed: 82568
+cont_o3_1328_1784
+                     Lines parsed: 20980
+o3_w0
+                     Lines parsed: 77845
+cont_h2o_402_565
+                     Lines parsed: 1241
+cont_o3_298_448
+                     Lines parsed: 2159
+cont_n2o_125_1500
+                     Lines parsed: 51910
+cont_h2o_333_1452
+                     Lines parsed: 7146
+cont_o3_125_1500
+                     Lines parsed: 90428
+cont_o3_452_1644
+                     Lines parsed: 84896
+cont_h2o_317_485
+                     Lines parsed: 1455
+cont_co2_649_1550
+                     Lines parsed: 23434
+cont_ch4_815_2087
+                     Lines parsed: 50842
+cont_o3_369_1369
+                     Lines parsed: 80379
+cont_o3_888_2224
+                     Lines parsed: 139835
+cont_o3_623_1623
+                     Lines parsed: 82406
+cont_n2o_888_2224
+                     Lines parsed: 66892
+cont_n2o_623_1623
+                     Lines parsed: 40945
+cont_ch4_2833_5495
+                     Lines parsed: 112795
+cont_o3_574_983
+                     Lines parsed: 30959
+cont_n2o_1_1026
+                     Lines parsed: 27189
+cont_o3_611_1676
+                     Lines parsed: 86175
+cont_h2o_815_2087
+                     Lines parsed: 10729
+ch4_w1
+                     Lines parsed: 31978
+cont_ch4_674_10040
+                     Lines parsed: 273191
+cont_n2o_298_448
+                     Lines parsed: 432
+cont_co2_414_566
+                     Lines parsed: 4399
+cont_n2o_611_1676
+                     Lines parsed: 43060
+cont_n2o_1_990
+                     Lines parsed: 26332
+cont_n2o_2590_3129
+                     Lines parsed: 24361
+cont_o3_1_983
+                     Lines parsed: 57984
+cont_co_674_2040
+                     Lines parsed: 84
+cont_o3_409_1644
+                     Lines parsed: 84966
+cont_n2o_815_1815
+                     Lines parsed: 41690
+cont_h2o_1_857
+                     Lines parsed: 7061
+cont_o3_552_1552
+                     Lines parsed: 84143
+cont_ch4_575_1782
+                     Lines parsed: 50167
+cont_co2_2590_3129
+                     Lines parsed: 1312
+cont_n2o_552_1552
+                     Lines parsed: 49097
+o3_w2
+                     Lines parsed: 32750
+cont_n2o_1_1012
+                     Lines parsed: 26873
+cont_co2_541_1541
+                     Lines parsed: 32177
+cont_o3_815_1815
+                     Lines parsed: 82339
+cont_co_674_10040
+                     Lines parsed: 852
+cont_co2_4959_11029
+                     Lines parsed: 51305
+cont_o3_928_3833
+                     Lines parsed: 218723
+cont_h2o_575_1782
+                     Lines parsed: 8950
+cont_co_2833_5495
+                     Lines parsed: 247
+cont_h2o_1255_1647
+                     Lines parsed: 3908
+cont_o3_775_1582
+                     Lines parsed: 66427
+cont_o3_1_901
+                     Lines parsed: 47250
+cont_o3_369_1644
+                     Lines parsed: 85250
+cont_h2o_2_1002
+                     Lines parsed: 7620
+cont_o3_1_1005
+                     Lines parsed: 66540
+cont_o3_1_870
+                     Lines parsed: 47155
+co_w1
+                     Lines parsed: 228
+cont_co_3813_10040
+                     Lines parsed: 570
+cont_co_1_990
+                     Lines parsed: 320
+cont_o3_520_1644
+                     Lines parsed: 84896
+cont_co2_229_1229
+                     Lines parsed: 35465
+cont_h2o_1_980
+                     Lines parsed: 7543
+cont_o3_1_925
+                     Lines parsed: 47431
+cont_co_4505_9834
+                     Lines parsed: 323
+cont_o3_1255_1647
+                     Lines parsed: 6795
+cont_o3_662_1662
+                     Lines parsed: 80121
+cont_n2o_1368_1652
+                     Lines parsed: 7230
+cont_h2o_1_992
+                     Lines parsed: 7584
+cont_co2_214_5500
+                     Lines parsed: 131870
+h2o_w1
+                     Lines parsed: 12900
+cont_n2o_662_1662
+                     Lines parsed: 40292
+cont_o3_636_1636
+                     Lines parsed: 81848
+cont_n2o_636_1636
+                     Lines parsed: 40725
+cont_h2o_1046_1244
+                     Lines parsed: 1099
+cont_o3_409_1409
+                     Lines parsed: 82158
+cont_ch4_4959_11029
+                     Lines parsed: 111530
+cont_o3_676_1676
+                     Lines parsed: 79435
+cont_co2_1_1012
+                     Lines parsed: 32772
+cont_o3_798_1798
+                     Lines parsed: 81745
+cont_n2o_273_430
+                     Lines parsed: 298
+cont_o3_1130_1404
+                     Lines parsed: 15220
+cont_o3_1_1012
+                     Lines parsed: 69595
+cont_n2o_798_1798
+                     Lines parsed: 41466
+cont_o3_741_1444
+                     Lines parsed: 68442
+cont_n2o_676_1676
+                     Lines parsed: 40069
+cont_h2o_416_572
+                     Lines parsed: 1167
+cont_co2_449_1550
+                     Lines parsed: 34689
+cont_h2o_1_997
+                     Lines parsed: 7604
+cont_n2o_452_1452
+                     Lines parsed: 50385
+cont_co2_224_1333
+                     Lines parsed: 35474
+cont_o3_1046_1244
+                     Lines parsed: 24780
+cont_o3_500_1500
+                     Lines parsed: 83978
+cont_o3_273_430
+                     Lines parsed: 2398
+cont_o3_452_1452
+                     Lines parsed: 83596
+cont_h2o_1130_1404
+                     Lines parsed: 2119
+cont_o3_275_1275
+                     Lines parsed: 80946
+cont_h2o_1_985
+                     Lines parsed: 7560
+cont_h2o_773_1012
+                     Lines parsed: 951
+cont_n2o_674_5040
+                     Lines parsed: 210531
+cont_ch4_1368_1652
+                     Lines parsed: 21288
+cont_o3_644_1676
+                     Lines parsed: 83884
+cont_o3_674_5040
+                     Lines parsed: 263657
+cont_h2o_1_1011
+                     Lines parsed: 7646
+cont_o3_510_1510
+                     Lines parsed: 84023
+cont_ch4_2590_3129
+                     Lines parsed: 33565
+cont_h2o_674_2040
+                     Lines parsed: 11062
+cont_n2o_4959_11029
+                     Lines parsed: 58805
+cont_h2o_552_1750
+                     Lines parsed: 8737
+co2_w0
+                     Lines parsed: 23262
+cont_h2o_700_879
+                     Lines parsed: 828
+cont_ch4_644_1644
+                     Lines parsed: 43472
+cont_o3_4499_11489
+                     Lines parsed: 27256
+cont_ch4_674_2040
+                     Lines parsed: 51078
+cont_co2_125_1500
+                     Lines parsed: 35606
+n2o_w2
+                     Lines parsed: 39792
+cont_ch4_552_1750
+                     Lines parsed: 49590
+cont_h2o_1_976
+                     Lines parsed: 7529
+cont_n2o_734_1734
+                     Lines parsed: 39836
+cont_n2o_409_2166
+                     Lines parsed: 83702
+cont_n2o_649_1550
+                     Lines parsed: 35960
+cont_o3_500_1644
+                     Lines parsed: 84896
+cont_o3_649_1550
+                     Lines parsed: 80067
+cont_h2o_414_566
+                     Lines parsed: 1129
+cont_o3_734_1734
+                     Lines parsed: 80443
+cont_h2o_644_1644
+                     Lines parsed: 6904
+cont_o3_409_2166
+                     Lines parsed: 154717
+cont_o3_267_430
+                     Lines parsed: 2410
+cont_o3_3813_10040
+                     Lines parsed: 49098
+cont_n2o_765_1765
+                     Lines parsed: 40728
+cont_o3_1062_2062
+                     Lines parsed: 78661
+cont_ch4_214_2500
+                     Lines parsed: 69324
+cont_o3_765_1765
+                     Lines parsed: 81210
+co2_w2
+                     Lines parsed: 28800
+cont_co2_928_3833
+                     Lines parsed: 69316
+cont_o3_690_1690
+                     Lines parsed: 79745
+cont_h2o_1_1125
+                     Lines parsed: 8104
+cont_co2_674_10040
+                     Lines parsed: 153234
+cont_h2o_4959_11029
+                     Lines parsed: 84304
+cont_h2o_214_2500
+                     Lines parsed: 18321
+cont_n2o_690_1690
+                     Lines parsed: 39811
+cont_h2o_1_978
+                     Lines parsed: 7538
+cont_n2o_2833_5495
+                     Lines parsed: 105412
+cont_h2o_267_417
+                     Lines parsed: 1440
+cont_n2o_782_1782
+                     Lines parsed: 41239
+cont_o3_541_1541
+                     Lines parsed: 84142
+cont_h2o_1062_2062
+                     Lines parsed: 9591
+cont_h2o_1_1054
+                     Lines parsed: 7786
+cont_co2_2833_5495
+                     Lines parsed: 63540
+cont_o3_782_1782
+                     Lines parsed: 81479
+cont_o3_4965_11029
+                     Lines parsed: 16316
+n2o_w0
+                     Lines parsed: 16386
+cont_n2o_674_10040
+                     Lines parsed: 263485
+cont_n2o_267_430
+                     Lines parsed: 303
+cont_n2o_541_1541
+                     Lines parsed: 50013
+cont_h2o_664_893
+                     Lines parsed: 1116
+cont_co_1_5500
+                     Lines parsed: 849
+cont_o3_229_1229
+                     Lines parsed: 80278
+cont_o3_443_1443
+                     Lines parsed: 83504
+cont_h2o_7_1007
+                     Lines parsed: 7620
+cont_o3_214_5500
+                     Lines parsed: 276555
+cont_n2o_214_5500
+                     Lines parsed: 235050
+cont_h2o_1_987
+                     Lines parsed: 7566
+cont_co2_4505_9834
+                     Lines parsed: 63949
+cont_o3_1_1026
+                     Lines parsed: 74206
+cont_o3_430_1644
+                     Lines parsed: 84930
+cont_n2o_4505_9834
+                     Lines parsed: 75219
+cont_h2o_1_995
+                     Lines parsed: 7595
+cont_co2_1_1026
+                     Lines parsed: 33086
+cont_h2o_1_870
+                     Lines parsed: 7101
+cont_o3_461_1461
+                     Lines parsed: 83682
+cont_n2o_461_1461
+                     Lines parsed: 50500
+ch4_w0
+                     Lines parsed: 22393
+cont_h2o_3813_10040
+                     Lines parsed: 76375
+cont_o3_490_1490
+                     Lines parsed: 83928
+cont_h2o_214_5500
+                     Lines parsed: 51466
+cont_o3_4505_9834
+                     Lines parsed: 27142
+cont_h2o_1_901
+                     Lines parsed: 7224
+cont_n2o_4499_11489
+                     Lines parsed: 79021
+cont_ch4_1328_1784
+                     Lines parsed: 31162
+cont_n2o_530_1833
+                     Lines parsed: 62076
+cont_o3_184_1257
+                     Lines parsed: 81302
+cont_o3_530_1833
+                     Lines parsed: 103049
+cont_o3_563_1644
+                     Lines parsed: 84864
+cont_h2o_4505_9834
+                     Lines parsed: 67102
+o3_w1
+                     Lines parsed: 59291
+cont_n2o_1_1011
+                     Lines parsed: 26854
+cont_h2o_4965_11029
+                     Lines parsed: 84242
+cont_ch4_214_5500
+                     Lines parsed: 197841
+cont_o3_4959_11029
+                     Lines parsed: 16373
+cont_h2o_1_925
+                     Lines parsed: 7331
+cont_h2o_1_1005
+                     Lines parsed: 7630
+cont_o3_1_857
+                     Lines parsed: 47083
+cont_co_125_1500
+                     Lines parsed: 141
+cont_ch4_4499_11489
+                     Lines parsed: 135811
+h2o_w2
+                     Lines parsed: 8436
+cont_o3_2833_5495
+                     Lines parsed: 83923
+cont_n2o_575_1575
+                     Lines parsed: 45810
+cont_o3_409_1782
+                     Lines parsed: 99637
+cont_o3_575_1575
+                     Lines parsed: 84008
+cont_o3_674_10040
+                     Lines parsed: 279450
+cont_h2o_1_983
+                     Lines parsed: 7550
+cont_n2o_1062_2062
+                     Lines parsed: 47808
+cont_n2o_214_2500
+                     Lines parsed: 108151
+cont_h2o_674_10040
+                     Lines parsed: 105978
+cont_o3_214_2500
+                     Lines parsed: 174633
+cont_h2o_541_1541
+                     Lines parsed: 6561
+cont_o3_480_1480
+                     Lines parsed: 83865
+cont_n2o_563_1563
+                     Lines parsed: 47683
+cont_n2o_480_1480
+                     Lines parsed: 50721
+cont_o3_624_817
+                     Lines parsed: 17666
+cont_h2o_2833_5495
+                     Lines parsed: 31488
+cont_o3_563_1563
+                     Lines parsed: 84111
+cont_n2o_552_1750
+                     Lines parsed: 58093
+cont_o3_674_2040
+                     Lines parsed: 121268
+cont_o3_586_1636
+                     Lines parsed: 84193
+cont_o3_552_1750
+                     Lines parsed: 96646
+cont_n2o_674_2040
+                     Lines parsed: 56615
+cont_o3_530_1782
+                     Lines parsed: 99567
+cont_o3_452_1782
+                     Lines parsed: 99567
+h2o_w0
+                     Lines parsed: 15734
+cont_n2o_452_1782
+                     Lines parsed: 62013
+cont_ch4_649_1550
+                     Lines parsed: 37179
+cont_ch4_1_990
+                     Lines parsed: 30268
+cont_n2o_1_925
+                     Lines parsed: 25596
+cont_ch4_409_2166
+                     Lines parsed: 60222
+cont_n2o_530_1782
+                     Lines parsed: 61061
+cont_n2o_1_870
+                     Lines parsed: 24184
+cont_o3_598_1598
+                     Lines parsed: 83433
+cont_o3_1001_1184
+                     Lines parsed: 36030
+cont_ch4_3813_10040
+                     Lines parsed: 171117
+cont_n2o_598_1598
+                     Lines parsed: 41759
+cont_o3_541_1644
+                     Lines parsed: 84896
+cont_n2o_644_1644
+                     Lines parsed: 40575
+co_w0
+                     Lines parsed: 247
+cont_o3_649_1649
+                     Lines parsed: 81165
+cont_h2o_649_1550
+                     Lines parsed: 5952
+cont_n2o_649_1649
+                     Lines parsed: 40485
+cont_h2o_409_2166
+                     Lines parsed: 14087
+cont_o3_644_1644
+                     Lines parsed: 81469
+cont_n2o_1_901
+                     Lines parsed: 25049
+cont_co2_1_5500
+                     Lines parsed: 131960
+cont_n2o_1_1125
+                     Lines parsed: 30839
+cont_n2o_1046_1244
+                     Lines parsed: 12472
+cont_co2_534_907
+                     Lines parsed: 27543
+cont_o3_1_5500
+                     Lines parsed: 300923
+cont_n2o_317_485
+                     Lines parsed: 729
+ch4_w2
+                     Lines parsed: 47349
+cont_o3_833_1833
+                     Lines parsed: 83202
+cont_co2_1046_1244
+                     Lines parsed: 1983
+cont_ch4_1255_1647
+                     Lines parsed: 31494
+cont_n2o_833_1833
+                     Lines parsed: 42161
+cont_ch4_674_5040
+                     Lines parsed: 167753
+cont_co2_1_990
+                     Lines parsed: 32411
+cont_co2_610_969
+                     Lines parsed: 23669
+cont_o3_402_565
+                     Lines parsed: 123
+cont_o3_470_1470
+                     Lines parsed: 83768
+cont_h2o_298_448
+                     Lines parsed: 1336
+cont_o3_750_1750
+                     Lines parsed: 80808
+cont_n2o_470_1470
+                     Lines parsed: 50601
+cont_n2o_750_1750
+                     Lines parsed: 40288
+cont_o3_409_1833
+                     Lines parsed: 103119
+cont_o3_430_1430
+                     Lines parsed: 83139
+cont_h2o_275_1275
+                     Lines parsed: 6167
+cont_h2o_4499_11489
+                     Lines parsed: 91996
+cont_o3_1_990
+                     Lines parsed: 60568
+cont_o3_317_485
+                     Lines parsed: 1823
+cont_n2o_1130_1404
+                     Lines parsed: 20981
+cont_h2o_10_1010
+                     Lines parsed: 7615
+cont_h2o_674_5040
+                     Lines parsed: 40877
+cont_n2o_3813_10040
+                     Lines parsed: 101474
+{'air': 1.0}
+36.000545 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+46.102810 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+61.866844 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+58.337264 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+53.353601 seconds elapsed for abscoef; nlines = 81848
+
+=== Scenario A: Chappuis-only (3 channels) ===
+  h_tan                     : 20.0 km
+  channels                  : ['521', '602', '676']
+  target                    : 8.80 µm
+  tau_O3(target)  reference : 1.252e+00  OD
+  tau_O3(521) reference : 6.510e-01  OD
+  tau_O3(602) reference : 1.864e+00  OD
+  tau_O3(676) reference : 5.174e-01  OD
+  --
+  sigma_OE_state            : 6.099e-02  OD   (O3-profile retrieval)
+  sigma_OE_band             : 6.258e-02  OD   (posterior on band scalings)
+  sigma_OE_T                : 5.439e-03  OD   (posterior on T_eff, see below)
+  sigma_OE (joint)          : 8.755e-02  OD   (state + bands + T together)
+  sigma_line_pred           : 2.503e-03  OD   (0.20% line scatter @ target)
+  --
+  sigma_total               : 8.759e-02  OD   <- input to SAI pipeline
+  DOFS                      : 1.00  (state has 5 O3 nodes + 2 bands)
+  band-scaling posteriors   :
+        uv   sigma =  4.90%   (prior 5.0%, shrink ×1.0)
+        ir   sigma =  5.00%   (prior 5.0%, shrink ×1.0)
+  T-offset posterior         : sigma = 2.000 K   (prior 2.0 K, shrink ×1.0)
+{'air': 1.0}
+42.160442 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+56.416603 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+60.331781 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+59.218448 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+59.369326 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+60.193610 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+61.831298 seconds elapsed for abscoef; nlines = 84193
+{'air': 1.0}
+59.422090 seconds elapsed for abscoef; nlines = 84193
+
+=== Scenario B: Chappuis + 9.2 µm (unsaturated band shoulder) ===
+  h_tan                     : 20.0 km
+  channels                  : ['521', '602', '676', '9.20µm']
+  target                    : 8.80 µm
+  tau_O3(target)  reference : 1.241e+00  OD
+  tau_O3(521) reference : 6.510e-01  OD
+  tau_O3(602) reference : 1.864e+00  OD
+  tau_O3(676) reference : 5.174e-01  OD
+  tau_O3(9.20µm) reference : 1.146e+00  OD
+  --
+  sigma_OE_state            : 4.344e-02  OD   (O3-profile retrieval)
+  sigma_OE_band             : 4.348e-02  OD   (posterior on band scalings)
+  sigma_OE_T                : 5.224e-03  OD   (posterior on T_eff, see below)
+  sigma_OE (joint)          : 2.907e-03  OD   (state + bands + T together)
+  sigma_line_pred           : 2.481e-03  OD   (0.20% line scatter @ target)
+  --
+  sigma_total               : 3.822e-03  OD   <- input to SAI pipeline
+  DOFS                      : 2.00  (state has 5 O3 nodes + 2 bands)
+  band-scaling posteriors   :
+        uv   sigma =  3.52%   (prior 5.0%, shrink ×1.4)
+        ir   sigma =  3.50%   (prior 5.0%, shrink ×1.4)
+  T-offset posterior         : sigma = 1.995 K   (prior 2.0 K, shrink ×1.0)
+
+=== Bottom line (default scenario) ===
+  sigma_total (A: Chappuis only)         : 8.759e-02  OD
+  sigma_total (B: Chappuis + 9.2 µm)     : 3.822e-03  OD
+  improvement                             : x22.92
+
+=== Sensitivity sweep (Scenario B, h_tan = 20 km) ===
+  varying delta_T_K and sigma_line_rel; sigma_total in OD
+
+      delta_T   sigma_line    sigma_total    sigma_OE   sigma_OE_T   sigma_line   T_post(K)
+          1.0       0.0010      2.257e-03   1.886e-03    2.617e-03    1.241e-03        1.00
+          1.0       0.0020      3.784e-03   2.857e-03    2.617e-03    2.481e-03        1.00
+          1.0       0.0050      8.873e-03   6.345e-03    2.617e-03    6.203e-03        1.00
+          1.0       0.0200      3.445e-02   2.390e-02    2.617e-03    2.481e-02        1.00
+          2.0       0.0010      2.320e-03   1.961e-03    5.224e-03    1.241e-03        2.00
+          2.0       0.0020      3.822e-03   2.907e-03    5.224e-03    2.481e-03        2.00
+          2.0       0.0050      8.888e-03   6.365e-03    5.224e-03    6.203e-03        2.00
+          2.0       0.0200      3.445e-02   2.391e-02    5.225e-03    2.481e-02        2.00
+          5.0       0.0010      2.713e-03   2.413e-03    1.291e-02    1.241e-03        4.93
+          5.0       0.0020      4.069e-03   3.225e-03    1.291e-02    2.481e-03        4.93
+          5.0       0.0050      8.988e-03   6.505e-03    1.291e-02    6.203e-03        4.93
+          5.0       0.0200      3.446e-02   2.391e-02    1.292e-02    2.481e-02        4.94
+         10.0       0.0010      3.705e-03   3.491e-03    2.480e-02    1.241e-03        9.47
+         10.0       0.0020      4.780e-03   4.086e-03    2.480e-02    2.481e-03        9.47
+         10.0       0.0050      9.305e-03   6.937e-03    2.481e-02    6.203e-03        9.48
+         10.0       0.0200      3.447e-02   2.392e-02    2.492e-02    2.481e-02        9.52
+
+  -> wrote scenario_A_*.csv, scenario_B_*.csv, sensitivity_sweep_B_20km.csv

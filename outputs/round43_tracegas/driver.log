@@ -1,0 +1,40 @@
+HAPI version: 1.3.0.0
+To get the most up-to-date version please check http://hitran.org/hapi
+ATTENTION: Python versions of partition sums from TIPS-2021 are now available in HAPI code
+
+           MIT license: Copyright 2021 HITRAN team, see more at http://hitran.org. 
+
+           If you use HAPI in your research or software development,
+           please cite it using the following reference:
+           R.V. Kochanov, I.E. Gordon, L.S. Rothman, P. Wcislo, C. Hill, J.S. Wilzewski,
+           HITRAN Application Programming Interface (HAPI): A comprehensive approach
+           to working with spectroscopic data, J. Quant. Spectrosc. Radiat. Transfer 177, 15-30 (2016)
+           DOI: 10.1016/j.jqsrt.2016.03.005
+
+           ATTENTION: This is the core version of the HITRAN Application Programming Interface.
+                      For more efficient implementation of the absorption coefficient routine, 
+                      as well as for new profiles, parameters and other functional,
+                      please consider using HAPI2 extension library.
+                      HAPI2 package is available at http://github.com/hitranonline/hapi2
+
+=== check_lte_validity.py  -> check_lte_validity.log
+    ok in 0 s
+=== mir_detector_etc.py  -> mir_detector_etc.log
+    ok in 0 s
+=== verify_cfc_contribution.py  -> verify_cfc_contribution.log
+    ok in 17 s
+=== mir_continuum_gas_od.py  -> mir_continuum_gas_od.log
+    ok in 4 s
+=== check_limb_emission_baseline.py  -> check_limb_emission_baseline.log
+    ok in 38 s
+=== run_o3_removal_error.py  -> run_o3_removal_error.log
+    ok in 1208 s
+=== analyze_st_temperature_sensitivity.py  -> analyze_st_temperature_sensitivity.log
+    ok in 473 s
+=== snr_integration_time_trade.py  -> snr_integration_time_trade.log
+    ok in 60 s
+=== highres_gas_removal_budget.py silica -> highres_gas_removal_budget.log
+    ok in 11 s
+=== analyze_hitran_o3_line_uncertainty.py  -> analyze_hitran_o3_line_uncertainty.log
+    ok in 329 s
+DONE

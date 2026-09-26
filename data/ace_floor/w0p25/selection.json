@@ -1,0 +1,4002 @@
+[
+  {
+    "occultation": "sr101445",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.3,
+    "selected_file": "external/ace_v52/residual/sr101445/sr101445.18.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr102647",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.0,
+    "selected_file": "external/ace_v52/residual/sr102647/sr102647.17.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr102648",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.6,
+    "selected_file": "external/ace_v52/residual/sr102648/sr102648.18.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr102649",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.3,
+    "selected_file": "external/ace_v52/residual/sr102649/sr102649.18.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr102650",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/sr102650/sr102650.17.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr108040",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/sr108040/sr108040.17.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr108041",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.2,
+    "selected_file": "external/ace_v52/residual/sr108041/sr108041.18.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr108042",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.8,
+    "selected_file": "external/ace_v52/residual/sr108042/sr108042.16.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr112218",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/sr112218/sr112218.17.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr113421",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/sr113421/sr113421.17.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr113423",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.8,
+    "selected_file": "external/ace_v52/residual/sr113423/sr113423.17.8",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr15174",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/sr15174/sr15174.17.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr16389",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/sr16389/sr16389.17.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr21783",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/sr21783/sr21783.17.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr31359",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.0,
+    "selected_file": "external/ace_v52/residual/sr31359/sr31359.18.0",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr31360",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/sr31360/sr31360.17.2",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr31361",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/sr31361/sr31361.17.2",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr32562",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/sr32562/sr32562.17.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr32574",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/sr32574/sr32574.17.4",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr32575",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.6,
+    "selected_file": "external/ace_v52/residual/sr32575/sr32575.18.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr36755",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.0,
+    "selected_file": "external/ace_v52/residual/sr36755/sr36755.18.0",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr37958",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/sr37958/sr37958.17.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr37970",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.7,
+    "selected_file": "external/ace_v52/residual/sr37970/sr37970.16.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr43352",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/sr43352/sr43352.17.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr48748",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.1,
+    "selected_file": "external/ace_v52/residual/sr48748/sr48748.18.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr48749",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.5,
+    "selected_file": "external/ace_v52/residual/sr48749/sr48749.18.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr5587",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/sr5587/sr5587.17.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr5600",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/sr5600/sr5600.17.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr63718",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 19.0,
+    "selected_file": "external/ace_v52/residual/sr63718/sr63718.19.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr69106",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/sr69106/sr69106.17.5",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr69108",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/sr69108/sr69108.17.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr79886",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/sr79886/sr79886.17.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr85275",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/sr85275/sr85275.17.5",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr85276",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/sr85276/sr85276.17.7",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr90665",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.9,
+    "selected_file": "external/ace_v52/residual/sr90665/sr90665.18.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr90666",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/sr90666/sr90666.17.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr91881",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/sr91881/sr91881.17.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr91882",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.5,
+    "selected_file": "external/ace_v52/residual/sr91882/sr91882.18.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr96055",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/sr96055/sr96055.17.4",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr97258",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 19.0,
+    "selected_file": "external/ace_v52/residual/sr97258/sr97258.19.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr97271",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.6,
+    "selected_file": "external/ace_v52/residual/sr97271/sr97271.16.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss10064",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss10064/ss10064.17.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss10066",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss10066/ss10066.17.6",
+    "n_heights_averaged": 8
+  },
+  {
+    "occultation": "ss101731",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/ss101731/ss101731.17.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss102300",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss102300/ss102300.17.9",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss102302",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.7,
+    "selected_file": "external/ace_v52/residual/ss102302/ss102302.18.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss102303",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.8,
+    "selected_file": "external/ace_v52/residual/ss102303/ss102303.16.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss102315",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.2,
+    "selected_file": "external/ace_v52/residual/ss102315/ss102315.18.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss102316",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.5,
+    "selected_file": "external/ace_v52/residual/ss102316/ss102316.18.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss10647",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss10647/ss10647.17.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss10649",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.0,
+    "selected_file": "external/ace_v52/residual/ss10649/ss10649.18.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107694",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.1,
+    "selected_file": "external/ace_v52/residual/ss107694/ss107694.18.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss107695",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.1,
+    "selected_file": "external/ace_v52/residual/ss107695/ss107695.17.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss112505",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss112505/ss112505.17.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss113075",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/ss113075/ss113075.17.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss113090",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/ss113090/ss113090.17.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss15459",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/ss15459/ss15459.17.3",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss16028",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/ss16028/ss16028.17.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss16029",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.8,
+    "selected_file": "external/ace_v52/residual/ss16029/ss16029.17.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss16044",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.1,
+    "selected_file": "external/ace_v52/residual/ss16044/ss16044.17.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss20855",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/ss20855/ss20855.17.5",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss20856",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/ss20856/ss20856.17.5",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss21425",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss21425/ss21425.17.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss21439",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.8,
+    "selected_file": "external/ace_v52/residual/ss21439/ss21439.16.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26251",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.6,
+    "selected_file": "external/ace_v52/residual/ss26251/ss26251.18.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss26820",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.5,
+    "selected_file": "external/ace_v52/residual/ss26820/ss26820.18.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss26833",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.8,
+    "selected_file": "external/ace_v52/residual/ss26833/ss26833.18.8",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss26834",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss26834/ss26834.17.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss26835",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss26835/ss26835.17.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32215",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.5,
+    "selected_file": "external/ace_v52/residual/ss32215/ss32215.17.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32216",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.1,
+    "selected_file": "external/ace_v52/residual/ss32216/ss32216.18.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss32229",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss32229/ss32229.17.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss32230",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss32230/ss32230.17.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss37041",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss37041/ss37041.17.4",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "ss37610",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.0,
+    "selected_file": "external/ace_v52/residual/ss37610/ss37610.18.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss37611",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/ss37611/ss37611.17.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss48403",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.7,
+    "selected_file": "external/ace_v52/residual/ss48403/ss48403.16.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss48404",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.5,
+    "selected_file": "external/ace_v52/residual/ss48404/ss48404.16.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss5238",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.6,
+    "selected_file": "external/ace_v52/residual/ss5238/ss5238.16.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss5239",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.8,
+    "selected_file": "external/ace_v52/residual/ss5239/ss5239.18.8",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss5240",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.3,
+    "selected_file": "external/ace_v52/residual/ss5240/ss5240.18.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss53801",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.2,
+    "selected_file": "external/ace_v52/residual/ss53801/ss53801.18.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss53802",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/ss53802/ss53802.17.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss53803",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/ss53803/ss53803.17.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss59187",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss59187/ss59187.17.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss64005",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss64005/ss64005.17.4",
+    "n_heights_averaged": 8
+  },
+  {
+    "occultation": "ss64575",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/ss64575/ss64575.17.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss69963",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss69963/ss69963.17.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss69976",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.0,
+    "selected_file": "external/ace_v52/residual/ss69976/ss69976.18.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69979",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.8,
+    "selected_file": "external/ace_v52/residual/ss69979/ss69979.17.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss74782",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.1,
+    "selected_file": "external/ace_v52/residual/ss74782/ss74782.18.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss74784",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss74784/ss74784.17.4",
+    "n_heights_averaged": 9
+  },
+  {
+    "occultation": "ss75367",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.1,
+    "selected_file": "external/ace_v52/residual/ss75367/ss75367.18.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss75368",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss75368/ss75368.17.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss80171",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/ss80171/ss80171.17.3",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss80173",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.7,
+    "selected_file": "external/ace_v52/residual/ss80173/ss80173.17.7",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss80743",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/ss80743/ss80743.17.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss80755",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 19.0,
+    "selected_file": "external/ace_v52/residual/ss80755/ss80755.19.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss80756",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.2,
+    "selected_file": "external/ace_v52/residual/ss80756/ss80756.18.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss80757",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.1,
+    "selected_file": "external/ace_v52/residual/ss80757/ss80757.18.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss85561",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss85561/ss85561.17.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss85562",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/ss85562/ss85562.17.3",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss85563",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.2,
+    "selected_file": "external/ace_v52/residual/ss85563/ss85563.17.2",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss86132",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.2,
+    "selected_file": "external/ace_v52/residual/ss86132/ss86132.18.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss86147",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 16.6,
+    "selected_file": "external/ace_v52/residual/ss86147/ss86147.16.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss90953",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss90953/ss90953.17.4",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss91521",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss91521/ss91521.17.9",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss91535",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.7,
+    "selected_file": "external/ace_v52/residual/ss91535/ss91535.18.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss91537",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.3,
+    "selected_file": "external/ace_v52/residual/ss91537/ss91537.18.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss96342",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 18.2,
+    "selected_file": "external/ace_v52/residual/ss96342/ss96342.18.2",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss96343",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.4,
+    "selected_file": "external/ace_v52/residual/ss96343/ss96343.17.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss96911",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.9,
+    "selected_file": "external/ace_v52/residual/ss96911/ss96911.17.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss96912",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss96912/ss96912.17.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss96926",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.3,
+    "selected_file": "external/ace_v52/residual/ss96926/ss96926.17.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss96927",
+    "altitude_range": [
+      16,
+      19
+    ],
+    "native_height": 17.6,
+    "selected_file": "external/ace_v52/residual/ss96927/ss96927.17.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr101445",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/sr101445/sr101445.20.4",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr102647",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/sr102647/sr102647.20.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr102648",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr102648/sr102648.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr102649",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/sr102649/sr102649.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr102650",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/sr102650/sr102650.20.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr108040",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/sr108040/sr108040.20.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr108041",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.8,
+    "selected_file": "external/ace_v52/residual/sr108041/sr108041.19.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr108042",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/sr108042/sr108042.20.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr112218",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr112218/sr112218.20.5",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr113421",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/sr113421/sr113421.20.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr113422",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr113422/sr113422.20.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr113423",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.1,
+    "selected_file": "external/ace_v52/residual/sr113423/sr113423.20.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr15174",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/sr15174/sr15174.20.2",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr15175",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr15175/sr15175.20.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr16389",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/sr16389/sr16389.20.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr21783",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.0,
+    "selected_file": "external/ace_v52/residual/sr21783/sr21783.21.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr31359",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/sr31359/sr31359.20.7",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "sr31360",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/sr31360/sr31360.20.2",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr31361",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr31361/sr31361.20.3",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr32562",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.4,
+    "selected_file": "external/ace_v52/residual/sr32562/sr32562.21.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr32574",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.2,
+    "selected_file": "external/ace_v52/residual/sr32574/sr32574.21.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr32575",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/sr32575/sr32575.20.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr36755",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/sr36755/sr36755.20.6",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr37958",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.2,
+    "selected_file": "external/ace_v52/residual/sr37958/sr37958.21.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr37970",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/sr37970/sr37970.20.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr43352",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr43352/sr43352.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr48748",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.1,
+    "selected_file": "external/ace_v52/residual/sr48748/sr48748.20.1",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr48749",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr48749/sr48749.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr52932",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr52932/sr52932.20.5",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr5587",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.8,
+    "selected_file": "external/ace_v52/residual/sr5587/sr5587.19.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr5600",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/sr5600/sr5600.20.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr63718",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr63718/sr63718.20.3",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "sr63719",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr63719/sr63719.20.5",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "sr69106",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/sr69106/sr69106.20.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr69107",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr69107/sr69107.20.5",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr69108",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/sr69108/sr69108.20.8",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr74496",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr74496/sr74496.20.3",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr79885",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr79885/sr79885.20.5",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr79886",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.0,
+    "selected_file": "external/ace_v52/residual/sr79886/sr79886.21.0",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr85275",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/sr85275/sr85275.20.8",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr85276",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr85276/sr85276.20.3",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr90665",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/sr90665/sr90665.20.9",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr90666",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/sr90666/sr90666.20.6",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr91881",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.0,
+    "selected_file": "external/ace_v52/residual/sr91881/sr91881.21.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr91882",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/sr91882/sr91882.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr96055",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/sr96055/sr96055.20.7",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "sr97258",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.1,
+    "selected_file": "external/ace_v52/residual/sr97258/sr97258.20.1",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr97271",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/sr97271/sr97271.20.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr9779",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/sr9779/sr9779.20.3",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss10064",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss10064/ss10064.20.6",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss10066",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss10066/ss10066.20.5",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss101731",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss101731/ss101731.20.5",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss101732",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss101732/ss101732.20.6",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss102300",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.4,
+    "selected_file": "external/ace_v52/residual/ss102300/ss102300.19.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss102302",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss102302/ss102302.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss102303",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.1,
+    "selected_file": "external/ace_v52/residual/ss102303/ss102303.20.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss102315",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss102315/ss102315.20.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss102316",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/ss102316/ss102316.20.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss10633",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss10633/ss10633.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss10647",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.6,
+    "selected_file": "external/ace_v52/residual/ss10647/ss10647.19.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss10649",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/ss10649/ss10649.20.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss107692",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/ss107692/ss107692.20.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107693",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/ss107693/ss107693.20.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107694",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss107694/ss107694.20.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107695",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.7,
+    "selected_file": "external/ace_v52/residual/ss107695/ss107695.21.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss112504",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss112504/ss112504.20.5",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "ss112505",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss112505/ss112505.20.3",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "ss113075",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss113075/ss113075.20.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss113089",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss113089/ss113089.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss113090",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.5,
+    "selected_file": "external/ace_v52/residual/ss113090/ss113090.21.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss15459",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/ss15459/ss15459.20.7",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss16028",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.1,
+    "selected_file": "external/ace_v52/residual/ss16028/ss16028.21.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss16029",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss16029/ss16029.20.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss16044",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.3,
+    "selected_file": "external/ace_v52/residual/ss16044/ss16044.19.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss20855",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss20855/ss20855.20.6",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss20856",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss20856/ss20856.20.6",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss21424",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss21424/ss21424.20.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss21425",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss21425/ss21425.20.3",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss21439",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/ss21439/ss21439.20.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss26251",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss26251/ss26251.20.3",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "ss26819",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.1,
+    "selected_file": "external/ace_v52/residual/ss26819/ss26819.21.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26820",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/ss26820/ss26820.20.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26833",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss26833/ss26833.20.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26834",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss26834/ss26834.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26835",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss26835/ss26835.20.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32214",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss32214/ss32214.20.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32215",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss32215/ss32215.20.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss32216",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss32216/ss32216.20.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss32229",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.3,
+    "selected_file": "external/ace_v52/residual/ss32229/ss32229.21.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32230",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/ss32230/ss32230.20.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss37041",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss37041/ss37041.20.3",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss37610",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/ss37610/ss37610.20.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss37611",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss37611/ss37611.20.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss43006",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/ss43006/ss43006.20.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss43007",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.0,
+    "selected_file": "external/ace_v52/residual/ss43007/ss43007.21.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss48403",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/ss48403/ss48403.20.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss48404",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/ss48404/ss48404.20.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss5238",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss5238/ss5238.20.3",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss5239",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss5239/ss5239.20.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss5240",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss5240/ss5240.20.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss53801",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss53801/ss53801.20.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss53802",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.5,
+    "selected_file": "external/ace_v52/residual/ss53802/ss53802.21.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss53803",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/ss53803/ss53803.20.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss59185",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/ss59185/ss59185.20.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss59187",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss59187/ss59187.20.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss64005",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss64005/ss64005.20.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss64574",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/ss64574/ss64574.20.8",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss64575",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.6,
+    "selected_file": "external/ace_v52/residual/ss64575/ss64575.19.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss64589",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss64589/ss64589.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss69963",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/ss69963/ss69963.20.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69964",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/ss69964/ss69964.20.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69976",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.1,
+    "selected_file": "external/ace_v52/residual/ss69976/ss69976.20.1",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss69977",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss69977/ss69977.20.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss69979",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/ss69979/ss69979.20.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss74782",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss74782/ss74782.20.5",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss74784",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss74784/ss74784.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss75366",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss75366/ss75366.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss75367",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss75367/ss75367.20.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss75368",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.4,
+    "selected_file": "external/ace_v52/residual/ss75368/ss75368.19.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss80171",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss80171/ss80171.20.4",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "ss80173",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss80173/ss80173.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss80743",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.3,
+    "selected_file": "external/ace_v52/residual/ss80743/ss80743.21.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss80755",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss80755/ss80755.20.0",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss80756",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss80756/ss80756.20.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss80757",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss80757/ss80757.20.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss85561",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss85561/ss85561.20.5",
+    "n_heights_averaged": 7
+  },
+  {
+    "occultation": "ss85562",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss85562/ss85562.20.5",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss85563",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.7,
+    "selected_file": "external/ace_v52/residual/ss85563/ss85563.20.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss86132",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss86132/ss86132.20.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss86146",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.9,
+    "selected_file": "external/ace_v52/residual/ss86146/ss86146.20.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss86147",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 21.2,
+    "selected_file": "external/ace_v52/residual/ss86147/ss86147.21.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss90953",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss90953/ss90953.20.5",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss91521",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.4,
+    "selected_file": "external/ace_v52/residual/ss91521/ss91521.19.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss91522",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.6,
+    "selected_file": "external/ace_v52/residual/ss91522/ss91522.20.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss91535",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss91535/ss91535.19.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss91537",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss91537/ss91537.20.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss96342",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.8,
+    "selected_file": "external/ace_v52/residual/ss96342/ss96342.20.8",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss96343",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.2,
+    "selected_file": "external/ace_v52/residual/ss96343/ss96343.20.2",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss96911",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.5,
+    "selected_file": "external/ace_v52/residual/ss96911/ss96911.20.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss96912",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.0,
+    "selected_file": "external/ace_v52/residual/ss96912/ss96912.20.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss96925",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.4,
+    "selected_file": "external/ace_v52/residual/ss96925/ss96925.20.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss96926",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 20.3,
+    "selected_file": "external/ace_v52/residual/ss96926/ss96926.20.3",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss96927",
+    "altitude_range": [
+      19,
+      22
+    ],
+    "native_height": 19.9,
+    "selected_file": "external/ace_v52/residual/ss96927/ss96927.19.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr101445",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr101445/sr101445.23.3",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr102647",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/sr102647/sr102647.22.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr102648",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/sr102648/sr102648.23.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr102649",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr102649/sr102649.23.3",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr102650",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/sr102650/sr102650.23.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr108040",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.2,
+    "selected_file": "external/ace_v52/residual/sr108040/sr108040.24.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr108041",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/sr108041/sr108041.23.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr108042",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/sr108042/sr108042.22.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr112218",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr112218/sr112218.23.3",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr113421",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.0,
+    "selected_file": "external/ace_v52/residual/sr113421/sr113421.24.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr113422",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.8,
+    "selected_file": "external/ace_v52/residual/sr113422/sr113422.22.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr113423",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.8,
+    "selected_file": "external/ace_v52/residual/sr113423/sr113423.22.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr15174",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/sr15174/sr15174.23.1",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr15175",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.2,
+    "selected_file": "external/ace_v52/residual/sr15175/sr15175.23.2",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr16389",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.0,
+    "selected_file": "external/ace_v52/residual/sr16389/sr16389.24.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr21783",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.2,
+    "selected_file": "external/ace_v52/residual/sr21783/sr21783.23.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr31359",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/sr31359/sr31359.23.1",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr31360",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/sr31360/sr31360.23.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr31361",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/sr31361/sr31361.23.9",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr32562",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/sr32562/sr32562.23.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr32574",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr32574/sr32574.23.3",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr32575",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/sr32575/sr32575.23.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr36755",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/sr36755/sr36755.23.6",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr37958",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/sr37958/sr37958.23.4",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr37970",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/sr37970/sr37970.22.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr43352",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/sr43352/sr43352.23.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr48748",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.2,
+    "selected_file": "external/ace_v52/residual/sr48748/sr48748.24.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr48749",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/sr48749/sr48749.22.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr52932",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/sr52932/sr52932.23.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr5587",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.0,
+    "selected_file": "external/ace_v52/residual/sr5587/sr5587.23.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr5600",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.2,
+    "selected_file": "external/ace_v52/residual/sr5600/sr5600.23.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr63718",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr63718/sr63718.23.3",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr63719",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/sr63719/sr63719.23.6",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr69106",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/sr69106/sr69106.23.1",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr69107",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/sr69107/sr69107.23.8",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr69108",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/sr69108/sr69108.23.8",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr74496",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr74496/sr74496.23.3",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr79885",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/sr79885/sr79885.23.8",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "sr79886",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.5,
+    "selected_file": "external/ace_v52/residual/sr79886/sr79886.23.5",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr85275",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/sr85275/sr85275.23.9",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr85276",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/sr85276/sr85276.23.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr90665",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/sr90665/sr90665.23.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr90666",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/sr90666/sr90666.23.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "sr91881",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.8,
+    "selected_file": "external/ace_v52/residual/sr91881/sr91881.22.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr91882",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/sr91882/sr91882.23.3",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr96055",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/sr96055/sr96055.23.4",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "sr97258",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/sr97258/sr97258.23.6",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "sr97271",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/sr97271/sr97271.22.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "sr9779",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.2,
+    "selected_file": "external/ace_v52/residual/sr9779/sr9779.23.2",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss10064",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/ss10064/ss10064.23.8",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss10066",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/ss10066/ss10066.23.9",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss101731",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/ss101731/ss101731.23.3",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss101732",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/ss101732/ss101732.23.6",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss102300",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.5,
+    "selected_file": "external/ace_v52/residual/ss102300/ss102300.24.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss102302",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.0,
+    "selected_file": "external/ace_v52/residual/ss102302/ss102302.23.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss102303",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/ss102303/ss102303.23.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss102315",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/ss102315/ss102315.23.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss102316",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.0,
+    "selected_file": "external/ace_v52/residual/ss102316/ss102316.24.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss10633",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.8,
+    "selected_file": "external/ace_v52/residual/ss10633/ss10633.22.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss10647",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.0,
+    "selected_file": "external/ace_v52/residual/ss10647/ss10647.24.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss10649",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss10649/ss10649.22.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss107692",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/ss107692/ss107692.23.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107693",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/ss107693/ss107693.23.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107694",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.4,
+    "selected_file": "external/ace_v52/residual/ss107694/ss107694.24.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss107695",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.5,
+    "selected_file": "external/ace_v52/residual/ss107695/ss107695.24.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss112504",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss112504/ss112504.23.7",
+    "n_heights_averaged": 6
+  },
+  {
+    "occultation": "ss112505",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss112505/ss112505.23.7",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss113075",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss113075/ss113075.23.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss113089",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.5,
+    "selected_file": "external/ace_v52/residual/ss113089/ss113089.23.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss113090",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.2,
+    "selected_file": "external/ace_v52/residual/ss113090/ss113090.24.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss15459",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/ss15459/ss15459.23.3",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss16028",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/ss16028/ss16028.23.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss16029",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss16029/ss16029.22.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss16044",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.5,
+    "selected_file": "external/ace_v52/residual/ss16044/ss16044.24.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss20855",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/ss20855/ss20855.23.6",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss20856",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/ss20856/ss20856.23.1",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss21424",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss21424/ss21424.23.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss21425",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.0,
+    "selected_file": "external/ace_v52/residual/ss21425/ss21425.23.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss21439",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/ss21439/ss21439.22.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss26251",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/ss26251/ss26251.23.8",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss26819",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.2,
+    "selected_file": "external/ace_v52/residual/ss26819/ss26819.24.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26820",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss26820/ss26820.23.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss26833",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss26833/ss26833.22.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26834",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.5,
+    "selected_file": "external/ace_v52/residual/ss26834/ss26834.24.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss26835",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.4,
+    "selected_file": "external/ace_v52/residual/ss26835/ss26835.22.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32214",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.5,
+    "selected_file": "external/ace_v52/residual/ss32214/ss32214.23.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32215",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.5,
+    "selected_file": "external/ace_v52/residual/ss32215/ss32215.22.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss32216",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.0,
+    "selected_file": "external/ace_v52/residual/ss32216/ss32216.23.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss32229",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/ss32229/ss32229.23.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss32230",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.1,
+    "selected_file": "external/ace_v52/residual/ss32230/ss32230.24.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss37041",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.0,
+    "selected_file": "external/ace_v52/residual/ss37041/ss37041.23.0",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss37610",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.5,
+    "selected_file": "external/ace_v52/residual/ss37610/ss37610.22.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss37611",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.6,
+    "selected_file": "external/ace_v52/residual/ss37611/ss37611.22.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss43006",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/ss43006/ss43006.23.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss43007",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.2,
+    "selected_file": "external/ace_v52/residual/ss43007/ss43007.24.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss48403",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.2,
+    "selected_file": "external/ace_v52/residual/ss48403/ss48403.23.2",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss48404",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/ss48404/ss48404.23.4",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss5238",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.4,
+    "selected_file": "external/ace_v52/residual/ss5238/ss5238.24.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss5239",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.0,
+    "selected_file": "external/ace_v52/residual/ss5239/ss5239.23.0",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss5240",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.8,
+    "selected_file": "external/ace_v52/residual/ss5240/ss5240.22.8",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss53801",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss53801/ss53801.23.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss53802",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.1,
+    "selected_file": "external/ace_v52/residual/ss53802/ss53802.24.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss53803",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.4,
+    "selected_file": "external/ace_v52/residual/ss53803/ss53803.22.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss59185",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss59185/ss59185.23.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss59187",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/ss59187/ss59187.23.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss64005",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/ss64005/ss64005.23.1",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss64574",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss64574/ss64574.23.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss64575",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.2,
+    "selected_file": "external/ace_v52/residual/ss64575/ss64575.22.2",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss64589",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.5,
+    "selected_file": "external/ace_v52/residual/ss64589/ss64589.23.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss69963",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.1,
+    "selected_file": "external/ace_v52/residual/ss69963/ss69963.24.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69964",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.0,
+    "selected_file": "external/ace_v52/residual/ss69964/ss69964.24.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69976",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.9,
+    "selected_file": "external/ace_v52/residual/ss69976/ss69976.22.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69977",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/ss69977/ss69977.23.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss69979",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/ss69979/ss69979.23.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss74782",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/ss74782/ss74782.23.4",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss74784",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/ss74784/ss74784.23.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss75366",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.0,
+    "selected_file": "external/ace_v52/residual/ss75366/ss75366.24.0",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss75367",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.5,
+    "selected_file": "external/ace_v52/residual/ss75367/ss75367.24.5",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss75368",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.1,
+    "selected_file": "external/ace_v52/residual/ss75368/ss75368.24.1",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss80171",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.3,
+    "selected_file": "external/ace_v52/residual/ss80171/ss80171.23.3",
+    "n_heights_averaged": 5
+  },
+  {
+    "occultation": "ss80173",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.6,
+    "selected_file": "external/ace_v52/residual/ss80173/ss80173.23.6",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss80743",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/ss80743/ss80743.23.9",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss80755",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss80755/ss80755.22.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss80756",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.6,
+    "selected_file": "external/ace_v52/residual/ss80756/ss80756.22.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss80757",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.9,
+    "selected_file": "external/ace_v52/residual/ss80757/ss80757.23.9",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss85561",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.5,
+    "selected_file": "external/ace_v52/residual/ss85561/ss85561.23.5",
+    "n_heights_averaged": 4
+  },
+  {
+    "occultation": "ss85562",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss85562/ss85562.23.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss85563",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/ss85563/ss85563.23.8",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss86132",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.3,
+    "selected_file": "external/ace_v52/residual/ss86132/ss86132.24.3",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss86146",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.8,
+    "selected_file": "external/ace_v52/residual/ss86146/ss86146.23.8",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss90953",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss90953/ss90953.23.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss91521",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 24.4,
+    "selected_file": "external/ace_v52/residual/ss91521/ss91521.24.4",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss91522",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.5,
+    "selected_file": "external/ace_v52/residual/ss91522/ss91522.23.5",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss91535",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss91535/ss91535.22.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss91537",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss91537/ss91537.22.7",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss96342",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.7,
+    "selected_file": "external/ace_v52/residual/ss96342/ss96342.23.7",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss96343",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.4,
+    "selected_file": "external/ace_v52/residual/ss96343/ss96343.23.4",
+    "n_heights_averaged": 3
+  },
+  {
+    "occultation": "ss96911",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.4,
+    "selected_file": "external/ace_v52/residual/ss96911/ss96911.22.4",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss96912",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.7,
+    "selected_file": "external/ace_v52/residual/ss96912/ss96912.22.7",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss96925",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 23.1,
+    "selected_file": "external/ace_v52/residual/ss96925/ss96925.23.1",
+    "n_heights_averaged": 2
+  },
+  {
+    "occultation": "ss96926",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.6,
+    "selected_file": "external/ace_v52/residual/ss96926/ss96926.22.6",
+    "n_heights_averaged": 1
+  },
+  {
+    "occultation": "ss96927",
+    "altitude_range": [
+      22,
+      25
+    ],
+    "native_height": 22.4,
+    "selected_file": "external/ace_v52/residual/ss96927/ss96927.22.4",
+    "n_heights_averaged": 2
+  }
+]

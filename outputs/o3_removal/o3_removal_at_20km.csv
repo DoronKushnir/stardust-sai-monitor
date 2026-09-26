@@ -1,0 +1,11 @@
+metric,value,units
+h_tan_km,20.0,km
+target_wavelength_um,8.74,um
+channels_nm,"521;602;676",nm
+tau_target_ref,0.9124788038697157,OD
+sigma_OE,0.004684960429856158,OD
+sigma_spec,0.07028076051332685,OD
+sigma_total,0.07043673865647757,OD
+hitran_rel,0.07,fraction
+T_rel,0.0321303248150683,fraction
+dofs,0.9999989968119642,

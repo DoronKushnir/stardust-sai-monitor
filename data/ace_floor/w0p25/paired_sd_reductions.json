@@ -1,0 +1,92 @@
+{
+  "6.4_rank3": {
+    "valid_draws": 0,
+    "lower": null,
+    "upper": null
+  },
+  "6.4_rank5": {
+    "valid_draws": 0,
+    "lower": null,
+    "upper": null
+  },
+  "6.4_availability_mask": {
+    "valid_draws": 0,
+    "lower": null,
+    "upper": null
+  },
+  "6.9_rank3": {
+    "valid_draws": 500,
+    "lower": -0.0002731135767629388,
+    "upper": 0.0005985934281988299
+  },
+  "6.9_rank5": {
+    "valid_draws": 500,
+    "lower": -0.000599900939584199,
+    "upper": 0.0005641480205549896
+  },
+  "6.9_availability_mask": {
+    "valid_draws": 500,
+    "lower": 0.0003692788015541186,
+    "upper": 0.0011770185128603496
+  },
+  "8.8_rank3": {
+    "valid_draws": 500,
+    "lower": -0.00032039858553211287,
+    "upper": 0.0003542586350053824
+  },
+  "8.8_rank5": {
+    "valid_draws": 500,
+    "lower": -0.0004286688466199834,
+    "upper": 0.00022179661600608446
+  },
+  "8.8_availability_mask": {
+    "valid_draws": 500,
+    "lower": -0.0005781497075475188,
+    "upper": -1.363605166076695e-05
+  },
+  "11.3_rank3": {
+    "valid_draws": 500,
+    "lower": -0.00017448072716025348,
+    "upper": 6.785126701076129e-05
+  },
+  "11.3_rank5": {
+    "valid_draws": 500,
+    "lower": -0.000524027233340501,
+    "upper": 0.000794918793825783
+  },
+  "11.3_availability_mask": {
+    "valid_draws": 500,
+    "lower": -0.0007783426091575081,
+    "upper": 0.00010267966878577766
+  },
+  "11.4_rank3": {
+    "valid_draws": 500,
+    "lower": -0.0001722505231887648,
+    "upper": 7.017055520928836e-05
+  },
+  "11.4_rank5": {
+    "valid_draws": 500,
+    "lower": -0.0004236753395770339,
+    "upper": 0.0006897339270114972
+  },
+  "11.4_availability_mask": {
+    "valid_draws": 500,
+    "lower": -0.0008194312144421557,
+    "upper": 0.000107821795802409
+  },
+  "12.9_rank3": {
+    "valid_draws": 500,
+    "lower": -0.0005226392078073542,
+    "upper": 0.0003659759095708682
+  },
+  "12.9_rank5": {
+    "valid_draws": 500,
+    "lower": -0.0005314766561412836,
+    "upper": 0.0016368505288788858
+  },
+  "12.9_availability_mask": {
+    "valid_draws": 500,
+    "lower": -0.00025856004619502715,
+    "upper": 0.000354069819463554
+  }
+}

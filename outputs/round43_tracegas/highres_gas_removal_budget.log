@@ -1,0 +1,39 @@
+
+================ SILICA (1 Tg, 20 km tangent, 0.02 cm^-1 samples) ================
+
+--- B+ (8.80um)
+    tau_mineral(tgt) = 2.484e-01 OD/Tg
+    tau_gas(tgt)     = o3=1.88, n2o=0.00103, h2o=1.93e-05, cfc12=0.0172; continuum=3.18e-06
+    usable samples   = 10166/10339
+    sigma_stat(SNR=300)  = 3.542e-04 OD
+    sigma_stat(SNR=1000)  = 1.338e-04 OD
+    sigma_stat(SNR=3000)  = 6.844e-05 OD
+    sigma_sys (coherent) = 9.441e-04 OD
+        width:n2o          7.348e-04
+        width:o3           5.927e-04
+        width:h2o          9.657e-06
+        continuum:h2o      4.976e-07
+        cfc_abs:cfc12      1.703e-18
+    SNR crossover (stat=sys) ~ 113
+    sigma_alpha stat@300 = 2.750e-09 1/m ; sys = 5.914e-09 1/m
+    total sigma_od @SNR300/1000/3000 = 1.01e-03 / 9.54e-04 / 9.47e-04
+    1-sigma mass @SNR300/1000/3000   = 0.0041 / 0.0038 / 0.0038 Tg
+
+--- C (20.40um)
+    tau_mineral(tgt) = 8.289e-02 OD/Tg
+    tau_gas(tgt)     = h2o=0.000266, hno3=0.0328, o3=0; continuum=0.000593
+    usable samples   = 1824/1831  (dropped cols: ['o3'])
+    sigma_stat(SNR=300)  = 5.068e-04 OD
+    sigma_stat(SNR=1000)  = 2.927e-04 OD
+    sigma_stat(SNR=3000)  = 2.437e-04 OD
+    sigma_sys (coherent) = 8.495e-04 OD
+        width:hno3         8.494e-04
+        width:h2o          1.327e-05
+        continuum:h2o      4.103e-07
+        width:o3           0.000e+00
+    SNR crossover (stat=sys) ~ 179
+    sigma_alpha stat@300 = 3.935e-09 1/m ; sys = 5.321e-09 1/m
+    total sigma_od @SNR300/1000/3000 = 9.89e-04 / 8.98e-04 / 8.84e-04
+    1-sigma mass @SNR300/1000/3000   = 0.0119 / 0.0108 / 0.0107 Tg
+
+wrote /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/highres/highres_gas_removal_budget.csv

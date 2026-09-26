@@ -1,0 +1,9 @@
+{
+  "analysis_manifest_sha256": "01e1e8ff1e740adeb5dc851e375eaedb30a9705498594a6acfcac0f5a4d8b487",
+  "comparison_0p25um_manifest_sha256": "f07901548c88c9732955d2535a35aaead44d3ed0bdf42fd64eec3ace6238839a",
+  "exporter_sha256": "d73554b9628c3c936f16a96782dd3b56a4377a449ab1f3e3c91b768e3081525a",
+  "generated_files": {
+    "tables/ace_residual_floors.tex": "2bfdb52a023727482eebf82572f0316eb47a3639f11cfe8a5e77250c2e1ebdda",
+    "figures/ace_floor_atlas.png": "4f883b27d4becb12658be34ac345a58cb5468e2199ac65478c06f925ec9307c4"
+  }
+}

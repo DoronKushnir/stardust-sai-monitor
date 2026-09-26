@@ -1,0 +1,1491 @@
+{
+ "saod_cal_20_25N_quiet": 0.004464843570303856,
+ "results": {
+  "OLD nominal on elevated profile": {
+   "fractional": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.12804535746242734,
+      "one_minus_R2": 0.16057919279834987
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.1251724000407586,
+      "one_minus_R2": 0.11611765955127329
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.12231353636026396,
+      "one_minus_R2": 0.10310063310804218
+     }
+    }
+   },
+   "with SNR=2000 floor": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.12804535746242734,
+      "one_minus_R2": 0.16057919279834987
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.1251724000407586,
+      "one_minus_R2": 0.11611765955127329
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.12231353636026396,
+      "one_minus_R2": 0.10310063310804218
+     }
+    }
+   }
+  },
+  "OLD nominal on 20-25N quiet profile": {
+   "fractional": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.09322902082038116,
+      "one_minus_R2": 0.09042909870690219
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.09253988448764684,
+      "one_minus_R2": 0.05242088487503349
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.09194443950567534,
+      "one_minus_R2": 0.042509753979139364
+     }
+    }
+   },
+   "with SNR=2000 floor": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.0968951071957102,
+      "one_minus_R2": 0.0930677996222189
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.0944080212014296,
+      "one_minus_R2": 0.05424145932110336
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.09378786329790713,
+      "one_minus_R2": 0.04333307596919489
+     }
+    }
+   }
+  },
+  "single-mode 60 nm on 20-25N profile": {
+   "fractional": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.5530328321553096,
+      "one_minus_R2": 0.001341596476925444
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.5380491761092749,
+      "one_minus_R2": 0.0006743496619001643
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.534342577212181,
+      "one_minus_R2": 0.0005578551448254254
+     }
+    }
+   },
+   "with SNR=2000 floor": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.9983391207201735,
+      "one_minus_R2": 0.0006228054470063249
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.7589465501129062,
+      "one_minus_R2": 0.0006120096680267695
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.7573386788478195,
+      "one_minus_R2": 0.0004366779207560789
+     }
+    }
+   }
+  },
+  "CALIBRATED quiet (LM65T223, 2-comp)": {
+   "slant_od_20p5km": {
+    "od525": 0.21722008505956172,
+    "od874": 0.07916417760306901
+   },
+   "fractional": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.23128290300731114,
+      "one_minus_R2": 0.018019169435945726
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.1808852869836416,
+      "one_minus_R2": 0.020854757777758692
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.17822778118942675,
+      "one_minus_R2": 0.016293817796343757
+     }
+    },
+    "A2 (3-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.10449823399687933,
+      "one_minus_R2": 0.08826813015416712
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.09880356529755202,
+      "one_minus_R2": 0.0698982662976313
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.09490771859597262,
+      "one_minus_R2": 0.05746065717660709
+     }
+    },
+    "A2+rs (5-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 9.144859239596117,
+      "one_minus_R2": 8.159388019790548e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 3.8601717293024906,
+      "one_minus_R2": 3.4734448279949426e-05
+     }
+    },
+    "A2+rs+rc (6-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 19.097814720487072,
+      "one_minus_R2": 1.8708729064842444e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 4.2020970818286,
+      "one_minus_R2": 2.9311732790748835e-05
+     }
+    }
+   },
+   "with SNR=2000 floor": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.23128290300731114,
+      "one_minus_R2": 0.018019169435945726
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.1808852869836416,
+      "one_minus_R2": 0.020854757777758692
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.17822778118942675,
+      "one_minus_R2": 0.016293817796343757
+     }
+    },
+    "A2 (3-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.10449823399687933,
+      "one_minus_R2": 0.08826813015416712
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.09880356529755202,
+      "one_minus_R2": 0.0698982662976313
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.09490771859597262,
+      "one_minus_R2": 0.05746065717660709
+     }
+    },
+    "A2+rs (5-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 9.144859239596117,
+      "one_minus_R2": 8.159388019790548e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 3.8601717293024906,
+      "one_minus_R2": 3.4734448279949426e-05
+     }
+    },
+    "A2+rs+rc (6-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 19.097814720487072,
+      "one_minus_R2": 1.8708729064842444e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 4.2020970818286,
+      "one_minus_R2": 2.9311732790748835e-05
+     }
+    }
+   },
+   "band 8-13 um @0.25: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.14866250036626613,
+      "one_minus_R2": 0.023943772889521542
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.26743027364461114,
+      "one_minus_R2": 0.09674084329232091
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.15513115613617598,
+      "one_minus_R2": 0.04175582379787035
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.16731586507692991,
+      "one_minus_R2": 0.018902585190227916
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.3490569620784768,
+      "one_minus_R2": 0.05678562328823267
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.1688797419767651,
+      "one_minus_R2": 0.03523384188184342
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.168232437943432,
+      "one_minus_R2": 0.018697174155506535
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.3494950118018011,
+      "one_minus_R2": 0.056643364675683094
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.16893636959492053,
+      "one_minus_R2": 0.03521022501175963
+     }
+    }
+   },
+   "band 8-13 um @0.25: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.12709424169849642,
+      "one_minus_R2": 0.03244520133100981
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.211358021226412,
+      "one_minus_R2": 0.1374442491570168
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.13211629905671252,
+      "one_minus_R2": 0.05652931489503188
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.13879143408988584,
+      "one_minus_R2": 0.027206764381776383
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.26924953134205915,
+      "one_minus_R2": 0.0846942896302797
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.13945875583371836,
+      "one_minus_R2": 0.05073351444913066
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.14048766666259244,
+      "one_minus_R2": 0.02655374761428908
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.27450751808667667,
+      "one_minus_R2": 0.08148085084933943
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.14053231138325964,
+      "one_minus_R2": 0.04996134739686131
+     }
+    }
+   },
+   "window 7.8-9.3 @0.1: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.08317196280028889,
+      "one_minus_R2": 0.06666958451514027
+     },
+     "window alone": {
+      "mmin_tg": 0.2211904432167971,
+      "one_minus_R2": 0.04831112285076333
+     },
+     "triplet + window": {
+      "mmin_tg": 0.0835227023326601,
+      "one_minus_R2": 0.11254563706852638
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.10632654183195495,
+      "one_minus_R2": 0.04079418599999196
+     },
+     "window alone": {
+      "mmin_tg": 0.3671935049744282,
+      "one_minus_R2": 0.01753032096775875
+     },
+     "triplet + window": {
+      "mmin_tg": 0.11487806134412706,
+      "one_minus_R2": 0.05949268127042173
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.10632955164933064,
+      "one_minus_R2": 0.04079187655148675
+     },
+     "window alone": {
+      "mmin_tg": 0.4489735592268139,
+      "one_minus_R2": 0.011725687581108368
+     },
+     "triplet + window": {
+      "mmin_tg": 0.23392965237931718,
+      "one_minus_R2": 0.014347201157117073
+     }
+    }
+   },
+   "window 7.8-9.3 @0.1: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.0770445423489583,
+      "one_minus_R2": 0.07666618318784657
+     },
+     "window alone": {
+      "mmin_tg": 0.18612321852650032,
+      "one_minus_R2": 0.06383647808765969
+     },
+     "triplet + window": {
+      "mmin_tg": 0.07721280737027479,
+      "one_minus_R2": 0.12874818517631414
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.0963550785518883,
+      "one_minus_R2": 0.04901605813958532
+     },
+     "window alone": {
+      "mmin_tg": 0.25551039739683323,
+      "one_minus_R2": 0.03387293833861549
+     },
+     "triplet + window": {
+      "mmin_tg": 0.10013754102431145,
+      "one_minus_R2": 0.07654660913060363
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.09729209428098942,
+      "one_minus_R2": 0.04807646179070446
+     },
+     "window alone": {
+      "mmin_tg": 0.30848282047855163,
+      "one_minus_R2": 0.02323849831556457
+     },
+     "triplet + window": {
+      "mmin_tg": 0.19629069130105098,
+      "one_minus_R2": 0.019921424659859244
+     }
+    }
+   },
+   "band 8-13 @0.1: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07630710825173823,
+      "one_minus_R2": 0.07915356616438185
+     },
+     "band01 alone": {
+      "mmin_tg": 0.12019893735016432,
+      "one_minus_R2": 0.16305701645992376
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07747227856836211,
+      "one_minus_R2": 0.13066718257433785
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.08090343002087053,
+      "one_minus_R2": 0.07041523104695935
+     },
+     "band01 alone": {
+      "mmin_tg": 0.14582516069711757,
+      "one_minus_R2": 0.1107836884559198
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.08105757713864331,
+      "one_minus_R2": 0.11936361115282945
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.08090658056350908,
+      "one_minus_R2": 0.07040974714523252
+     },
+     "band01 alone": {
+      "mmin_tg": 0.14585229958410592,
+      "one_minus_R2": 0.11074246502552076
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.0811315244052592,
+      "one_minus_R2": 0.11914612256653712
+     }
+    }
+   },
+   "band 8-13 @0.1: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07255730136541653,
+      "one_minus_R2": 0.08632083634458387
+     },
+     "band01 alone": {
+      "mmin_tg": 0.10328876162729247,
+      "one_minus_R2": 0.2058775591608989
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07373425771538047,
+      "one_minus_R2": 0.14084883918027935
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07573704768248721,
+      "one_minus_R2": 0.07922479771900037
+     },
+     "band01 alone": {
+      "mmin_tg": 0.12198421608310601,
+      "one_minus_R2": 0.14760731232279445
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07581820247235253,
+      "one_minus_R2": 0.13321248490861048
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07623155273605825,
+      "one_minus_R2": 0.0782002877108644
+     },
+     "band01 alone": {
+      "mmin_tg": 0.12245551139591257,
+      "one_minus_R2": 0.1464733043418226
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07626557868816854,
+      "one_minus_R2": 0.13165421177529368
+     }
+    }
+   }
+  },
+  "bracket: post-HT calib (LM72T213)": {
+   "slant_od_20p5km": {
+    "od525": 0.21722008505956167,
+    "od874": 0.039802628864119075
+   },
+   "fractional": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.15270320527232953,
+      "one_minus_R2": 0.03387482697207389
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.1396637294293982,
+      "one_minus_R2": 0.022707124836991555
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.1372672482583597,
+      "one_minus_R2": 0.018163732904193597
+     }
+    },
+    "A2 (3-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.08769468605765207,
+      "one_minus_R2": 0.10271333637743163
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.08143774998810904,
+      "one_minus_R2": 0.0667848392169832
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.07844739162460959,
+      "one_minus_R2": 0.055613720072161255
+     }
+    },
+    "A2+rs (5-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.235812410947271,
+      "one_minus_R2": 0.007965189271148532
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.23526044483235464,
+      "one_minus_R2": 0.0061835963847699515
+     }
+    },
+    "A2+rs+rc (6-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 2.2427683406714967,
+      "one_minus_R2": 8.80563304758164e-05
+     },
+     "extended (+869)": {
+      "mmin_tg": 2.2241402861904165,
+      "one_minus_R2": 6.918542435574437e-05
+     }
+    }
+   },
+   "with SNR=2000 floor": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.15694574733131614,
+      "one_minus_R2": 0.03236028052403628
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.14129785776547565,
+      "one_minus_R2": 0.022297800415069458
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.13893812353804705,
+      "one_minus_R2": 0.017799096695681804
+     }
+    },
+    "A2 (3-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.08811386669905717,
+      "one_minus_R2": 0.10266510671144946
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.0822067807737688,
+      "one_minus_R2": 0.06587458553915537
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.07919603826376226,
+      "one_minus_R2": 0.05478149840044588
+     }
+    },
+    "A2+rs (5-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.23670967878247134,
+      "one_minus_R2": 0.0079451325435681
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.2360938326781034,
+      "one_minus_R2": 0.006164126401240977
+     }
+    },
+    "A2+rs+rc (6-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 2.2568570427385786,
+      "one_minus_R2": 8.740274620278043e-05
+     },
+     "extended (+869)": {
+      "mmin_tg": 2.2364516256841602,
+      "one_minus_R2": 6.869447407797935e-05
+     }
+    }
+   },
+   "band 8-13 um @0.25: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.15687287129029331,
+      "one_minus_R2": 0.014168004100969633
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.2830005202004757,
+      "one_minus_R2": 0.08638862041921447
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.15760750683733998,
+      "one_minus_R2": 0.033209761824844586
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.16623897703429769,
+      "one_minus_R2": 0.012616492959174441
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.387543673999946,
+      "one_minus_R2": 0.04606697572335272
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.16657272018578165,
+      "one_minus_R2": 0.02973115651029057
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.16630144554403925,
+      "one_minus_R2": 0.012607016367003787
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.3941134507998335,
+      "one_minus_R2": 0.044543925958303254
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.16728434602255432,
+      "one_minus_R2": 0.02947874248795923
+     }
+    }
+   },
+   "band 8-13 um @0.25: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.13135093804298412,
+      "one_minus_R2": 0.020080319187967377
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.21929370383069602,
+      "one_minus_R2": 0.12767671973275085
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.13206672762791244,
+      "one_minus_R2": 0.0465922122989032
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.13720266113867438,
+      "one_minus_R2": 0.018403986219473256
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.29460258950000545,
+      "one_minus_R2": 0.07074421339675196
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.13730775031639275,
+      "one_minus_R2": 0.04310325451505781
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.13721215632473682,
+      "one_minus_R2": 0.01840143916778847
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.2950275614227068,
+      "one_minus_R2": 0.0705405534318213
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.13732519363666273,
+      "one_minus_R2": 0.04309230508761708
+     }
+    }
+   },
+   "window 7.8-9.3 @0.1: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.08050748637053518,
+      "one_minus_R2": 0.04903188844264561
+     },
+     "window alone": {
+      "mmin_tg": 0.26268410116925034,
+      "one_minus_R2": 0.03425407726275709
+     },
+     "triplet + window": {
+      "mmin_tg": 0.08060802180425447,
+      "one_minus_R2": 0.10323700016717985
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.10047983992853235,
+      "one_minus_R2": 0.03147699648286262
+     },
+     "window alone": {
+      "mmin_tg": 0.33179377405681587,
+      "one_minus_R2": 0.021470560610175493
+     },
+     "triplet + window": {
+      "mmin_tg": 0.12052260595080197,
+      "one_minus_R2": 0.04618010075458734
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.1031866821339392,
+      "one_minus_R2": 0.02984721801625756
+     },
+     "window alone": {
+      "mmin_tg": 0.44756100951515165,
+      "one_minus_R2": 0.011799819378699117
+     },
+     "triplet + window": {
+      "mmin_tg": 0.25251293919202467,
+      "one_minus_R2": 0.010520215326759064
+     }
+    }
+   },
+   "window 7.8-9.3 @0.1: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.0753505670730827,
+      "one_minus_R2": 0.055459669410915735
+     },
+     "window alone": {
+      "mmin_tg": 0.22944482584127698,
+      "one_minus_R2": 0.04200620906554109
+     },
+     "triplet + window": {
+      "mmin_tg": 0.07544984667024685,
+      "one_minus_R2": 0.11557745821522725
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.09549541041852475,
+      "one_minus_R2": 0.03452910547511456
+     },
+     "window alone": {
+      "mmin_tg": 0.24337072374314506,
+      "one_minus_R2": 0.037336478965052655
+     },
+     "triplet + window": {
+      "mmin_tg": 0.10495115197342159,
+      "one_minus_R2": 0.05973315341751939
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.09587373663678267,
+      "one_minus_R2": 0.03425713335945246
+     },
+     "window alone": {
+      "mmin_tg": 0.31037539618768767,
+      "one_minus_R2": 0.02295595964265662
+     },
+     "triplet + window": {
+      "mmin_tg": 0.19429031374376926,
+      "one_minus_R2": 0.017429605727728004
+     }
+    }
+   },
+   "band 8-13 @0.1: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07757060324902268,
+      "one_minus_R2": 0.05279138394242733
+     },
+     "band01 alone": {
+      "mmin_tg": 0.1274209892878298,
+      "one_minus_R2": 0.14509712348652337
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07772304522173547,
+      "one_minus_R2": 0.11093877993054924
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.0805636405802414,
+      "one_minus_R2": 0.04894171892411203
+     },
+     "band01 alone": {
+      "mmin_tg": 0.16016768537340972,
+      "one_minus_R2": 0.09183134577683671
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.0806362381672423,
+      "one_minus_R2": 0.10306767603564604
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.08074877696085761,
+      "one_minus_R2": 0.04871755440091563
+     },
+     "band01 alone": {
+      "mmin_tg": 0.1626691093387109,
+      "one_minus_R2": 0.08902881039444555
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.08141055811142345,
+      "one_minus_R2": 0.10111638560636849
+     }
+    }
+   },
+   "band 8-13 @0.1: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07332197119587174,
+      "one_minus_R2": 0.05851404044588504
+     },
+     "band01 alone": {
+      "mmin_tg": 0.10743437737578024,
+      "one_minus_R2": 0.19029553976288682
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.0735322241231422,
+      "one_minus_R2": 0.12143761051383994
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.0751644533652589,
+      "one_minus_R2": 0.05568052800153467
+     },
+     "band01 alone": {
+      "mmin_tg": 0.13150536341515479,
+      "one_minus_R2": 0.12700716446725424
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07517886090898926,
+      "one_minus_R2": 0.11617619153996728
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.0751673943342306,
+      "one_minus_R2": 0.05567617101928046
+     },
+     "band01 alone": {
+      "mmin_tg": 0.13168675686799575,
+      "one_minus_R2": 0.12665751046191953
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07517886810254469,
+      "one_minus_R2": 0.1161761693071155
+     }
+    }
+   }
+  },
+  "bracket: optics swap (B70T215)": {
+   "slant_od_20p5km": {
+    "od525": 0.21722008505956172,
+    "od874": 0.0793032860458265
+   },
+   "fractional": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.2313865842537545,
+      "one_minus_R2": 0.01800302475422899
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.18102096129274114,
+      "one_minus_R2": 0.020823508418550518
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.17835664074708985,
+      "one_minus_R2": 0.016270282303887385
+     }
+    },
+    "A2 (3-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.10456957476656512,
+      "one_minus_R2": 0.08814773245131602
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.09887103050641816,
+      "one_minus_R2": 0.06980290788539911
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.09496572124934852,
+      "one_minus_R2": 0.05739048758865961
+     }
+    },
+    "A2+rs (5-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 9.527742111183692,
+      "one_minus_R2": 7.516776708738071e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 3.9061603675390537,
+      "one_minus_R2": 3.3921380457435646e-05
+     }
+    },
+    "A2+rs+rc (6-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 20.111261182525148,
+      "one_minus_R2": 1.6870696954995879e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 4.2405023435978375,
+      "one_minus_R2": 2.8783197740800404e-05
+     }
+    }
+   },
+   "with SNR=2000 floor": {
+    "A1+rs (4-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.2313865842537545,
+      "one_minus_R2": 0.01800302475422899
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.18102096129274114,
+      "one_minus_R2": 0.020823508418550518
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.17835664074708985,
+      "one_minus_R2": 0.016270282303887385
+     }
+    },
+    "A2 (3-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": 0.10456957476656512,
+      "one_minus_R2": 0.08814773245131602
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 0.09887103050641816,
+      "one_minus_R2": 0.06980290788539911
+     },
+     "extended (+869)": {
+      "mmin_tg": 0.09496572124934852,
+      "one_minus_R2": 0.05739048758865961
+     }
+    },
+    "A2+rs (5-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 9.527742111183692,
+      "one_minus_R2": 7.516776708738071e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 3.9061603675390537,
+      "one_minus_R2": 3.3921380457435646e-05
+     }
+    },
+    "A2+rs+rc (6-param)": {
+     "minimal  (Wrana3 + 8.74)": {
+      "mmin_tg": Infinity,
+      "one_minus_R2": null
+     },
+     "baseline (+1021, 1250)": {
+      "mmin_tg": 20.111261182525148,
+      "one_minus_R2": 1.6870696954995879e-06
+     },
+     "extended (+869)": {
+      "mmin_tg": 4.2405023435978375,
+      "one_minus_R2": 2.8783197740800404e-05
+     }
+    }
+   },
+   "band 8-13 um @0.25: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.15410966291013783,
+      "one_minus_R2": 0.022281052883834196
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.29312170758818085,
+      "one_minus_R2": 0.08052579892268041
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.16127246361636924,
+      "one_minus_R2": 0.03863622387517496
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.1732927546885017,
+      "one_minus_R2": 0.01762116588518281
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.36775816666151606,
+      "one_minus_R2": 0.051157151554213076
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.17475849580057953,
+      "one_minus_R2": 0.03290322889239505
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.17710757554005122,
+      "one_minus_R2": 0.01687023664013232
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.3745869636519072,
+      "one_minus_R2": 0.0493089424609513
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.1772827310846407,
+      "one_minus_R2": 0.031972916062009804
+     }
+    }
+   },
+   "band 8-13 um @0.25: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.13119223592477514,
+      "one_minus_R2": 0.030449905856616555
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.23303302302977302,
+      "one_minus_R2": 0.11306523860963746
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.13665004868044903,
+      "one_minus_R2": 0.05284050254800876
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.1431709800344869,
+      "one_minus_R2": 0.025567733233699763
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.2813982729047226,
+      "one_minus_R2": 0.07753917690895817
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.14383800195562074,
+      "one_minus_R2": 0.047691308417474154
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + MIR band": {
+      "mmin_tg": 0.14854863510851288,
+      "one_minus_R2": 0.023750069803804008
+     },
+     "MIR band alone": {
+      "mmin_tg": 0.2971552278639018,
+      "one_minus_R2": 0.06953401250828595
+     },
+     "triplet + MIR band": {
+      "mmin_tg": 0.14899863556413734,
+      "one_minus_R2": 0.044444900472860316
+     }
+    }
+   },
+   "window 7.8-9.3 @0.1: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.08479735222307179,
+      "one_minus_R2": 0.0641382441437599
+     },
+     "window alone": {
+      "mmin_tg": 0.2728156069893456,
+      "one_minus_R2": 0.031757143127560394
+     },
+     "triplet + window": {
+      "mmin_tg": 0.08501788690029331,
+      "one_minus_R2": 0.10862183253441993
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.10810768866479889,
+      "one_minus_R2": 0.039461036224445634
+     },
+     "window alone": {
+      "mmin_tg": 0.33454204694547807,
+      "one_minus_R2": 0.021119246998401286
+     },
+     "triplet + window": {
+      "mmin_tg": 0.11701609950632408,
+      "one_minus_R2": 0.057338523176602374
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.10811500124853274,
+      "one_minus_R2": 0.039455698345900125
+     },
+     "window alone": {
+      "mmin_tg": 0.43417796205269243,
+      "one_minus_R2": 0.012538462847355603
+     },
+     "triplet + window": {
+      "mmin_tg": 0.2631856891047962,
+      "one_minus_R2": 0.011334782664443876
+     }
+    }
+   },
+   "window 7.8-9.3 @0.1: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.07810390834048675,
+      "one_minus_R2": 0.07460055677054556
+     },
+     "window alone": {
+      "mmin_tg": 0.19861296139094287,
+      "one_minus_R2": 0.05606022705807301
+     },
+     "triplet + window": {
+      "mmin_tg": 0.07820654917141968,
+      "one_minus_R2": 0.12549706117266612
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.09910157977300516,
+      "one_minus_R2": 0.04633684358894874
+     },
+     "window alone": {
+      "mmin_tg": 0.24537433121969593,
+      "one_minus_R2": 0.03672922533029854
+     },
+     "triplet + window": {
+      "mmin_tg": 0.10302812701973882,
+      "one_minus_R2": 0.07231163694445553
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + window": {
+      "mmin_tg": 0.09970389534913057,
+      "one_minus_R2": 0.045778688833091774
+     },
+     "window alone": {
+      "mmin_tg": 0.3014717574963989,
+      "one_minus_R2": 0.024331941345035024
+     },
+     "triplet + window": {
+      "mmin_tg": 0.19828970837403975,
+      "one_minus_R2": 0.019521781801142613
+     }
+    }
+   },
+   "band 8-13 @0.1: measured floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07882199117769494,
+      "one_minus_R2": 0.07418321897117852
+     },
+     "band01 alone": {
+      "mmin_tg": 0.1304581575981491,
+      "one_minus_R2": 0.13841981554037297
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.08011367849950514,
+      "one_minus_R2": 0.12219286263464546
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.08320235346169559,
+      "one_minus_R2": 0.0665777717481536
+     },
+     "band01 alone": {
+      "mmin_tg": 0.15242259777835213,
+      "one_minus_R2": 0.10140095135769722
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.08334650207881186,
+      "one_minus_R2": 0.11289752727761171
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.08382818913480972,
+      "one_minus_R2": 0.0655873839221438
+     },
+     "band01 alone": {
+      "mmin_tg": 0.15354875383311198,
+      "one_minus_R2": 0.09991901764306843
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.08383661061786127,
+      "one_minus_R2": 0.11158138850995414
+     }
+    }
+   },
+   "band 8-13 @0.1: uniform 1.5e-8 floors": {
+    "A2+rs (5-param)": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07472941629238511,
+      "one_minus_R2": 0.08137569347324125
+     },
+     "band01 alone": {
+      "mmin_tg": 0.1120002999057386,
+      "one_minus_R2": 0.17509622402489788
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07598808656069712,
+      "one_minus_R2": 0.13261751311133552
+     }
+    },
+    "full 7-param": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.07775989601159347,
+      "one_minus_R2": 0.07515649884589892
+     },
+     "band01 alone": {
+      "mmin_tg": 0.1262245752169426,
+      "one_minus_R2": 0.13785652156671668
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.07784048198940755,
+      "one_minus_R2": 0.12638073136891037
+     }
+    },
+    "7-param + MIR offs": {
+     "vis/NIR 6 + band01": {
+      "mmin_tg": 0.0799650956891109,
+      "one_minus_R2": 0.07106846906121222
+     },
+     "band01 alone": {
+      "mmin_tg": 0.12912105739079255,
+      "one_minus_R2": 0.13174101464014143
+     },
+     "triplet + band01": {
+      "mmin_tg": 0.0801277182009329,
+      "one_minus_R2": 0.11926866171262207
+     }
+    }
+   }
+  }
+ },
+ "width_factor_0p1um": {
+  "factor": 1.1477640503775102,
+  "sd_0p1um": 0.0019420845918083369,
+  "sd_0p25um": 0.001692059087553376
+ },
+ "floor_source": "direct 0.1-um-element ACE re-analysis (data/ace_floor/w0p1/atlas.json, 19-22 km)",
+ "sd874_0p1um_direct": 0.0018580712945380322,
+ "reference_element_um": 8.8,
+ "band01_floors_converted_m1": [
+  2.9496e-08,
+  2.9327e-08,
+  2.5395e-08,
+  2.1462e-08,
+  1.9334e-08,
+  1.7807e-08,
+  1.6322e-08,
+  1.4961e-08,
+  1.7192e-08,
+  2.047e-08,
+  2.2901e-08,
+  2.4794e-08,
+  2.5077e-08,
+  2.7335e-08,
+  2.6837e-08,
+  2.4002e-08,
+  2.1167e-08,
+  2.019e-08,
+  1.9834e-08,
+  2.0048e-08,
+  2.197e-08,
+  2.3893e-08,
+  2.4557e-08,
+  2.4802e-08,
+  2.5168e-08,
+  2.5899e-08,
+  2.5572e-08,
+  2.3424e-08,
+  2.0227e-08,
+  1.7724e-08,
+  1.7302e-08,
+  1.688e-08,
+  2.0387e-08,
+  2.5203e-08,
+  2.894e-08,
+  2.9434e-08,
+  2.9928e-08,
+  3.2683e-08,
+  3.619e-08,
+  4.0025e-08,
+  4.4841e-08,
+  4.9657e-08,
+  5.5442e-08,
+  6.346e-08,
+  6.9474e-08,
+  6.9474e-08
+ ],
+ "band01_elements_um": [
+  8.05,
+  8.15,
+  8.25,
+  8.35,
+  8.45,
+  8.55,
+  8.65,
+  8.75,
+  8.85,
+  8.95,
+  9.05,
+  9.15,
+  9.25,
+  10.05,
+  10.15,
+  10.25,
+  10.35,
+  10.45,
+  10.55,
+  10.65,
+  10.75,
+  10.85,
+  10.95,
+  11.05,
+  11.15,
+  11.25,
+  11.35,
+  11.45,
+  11.55,
+  11.65,
+  11.75,
+  11.85,
+  11.95,
+  12.05,
+  12.15,
+  12.25,
+  12.35,
+  12.45,
+  12.55,
+  12.65,
+  12.75,
+  12.85,
+  12.95,
+  13.05,
+  13.15,
+  13.25
+ ],
+ "band01_floors_m1": [
+  2.7572e-08,
+  2.7588e-08,
+  2.1443e-08,
+  1.121e-08,
+  2.7894e-08,
+  1.9253e-08,
+  1.5588e-08,
+  1.5715e-08,
+  1.3367e-08,
+  2.8547e-08,
+  2.1459e-08,
+  2.1983e-08,
+  2.2175e-08,
+  3.6841e-08,
+  1.9555e-08,
+  1.6717e-08,
+  1.7262e-08,
+  1.7551e-08,
+  1.6878e-08,
+  1.5856e-08,
+  1.8134e-08,
+  1.9198e-08,
+  2.5569e-08,
+  2.1727e-08,
+  2.4858e-08,
+  2.2223e-08,
+  2.3141e-08,
+  2.0823e-08,
+  1.7327e-08,
+  1.5081e-08,
+  1.3828e-08,
+  1.4678e-08,
+  1.4334e-08,
+  1.51e-08,
+  3.1347e-08,
+  4.258e-08,
+  2.7918e-08,
+  2.3628e-08,
+  3.7552e-08,
+  3.3893e-08,
+  3.9444e-08,
+  4.2834e-08,
+  5.0214e-08,
+  5.3317e-08,
+  6.3439e-08,
+  8.7776e-08
+ ],
+ "mir_elements_um": [
+  8.12,
+  8.38,
+  8.62,
+  8.88,
+  9.12,
+  10.12,
+  10.38,
+  10.62,
+  10.88,
+  11.12,
+  11.38,
+  11.62,
+  11.88,
+  12.12,
+  12.38,
+  12.62,
+  12.88,
+  13.12
+ ],
+ "mir_floors_m1": [
+  2.6408e-08,
+  1.7843e-08,
+  1.4517e-08,
+  1.6247e-08,
+  2.1541e-08,
+  2.4e-08,
+  1.7824e-08,
+  1.7048e-08,
+  2.1236e-08,
+  2.1769e-08,
+  2.1978e-08,
+  1.5534e-08,
+  1.4615e-08,
+  2.5106e-08,
+  2.6183e-08,
+  3.3823e-08,
+  4.4313e-08,
+  6.053e-08
+ ],
+ "window_elements_um": [
+  7.85,
+  7.95,
+  8.05,
+  8.15,
+  8.25,
+  8.35,
+  8.45,
+  8.55,
+  8.65,
+  8.75,
+  8.85,
+  8.95,
+  9.05,
+  9.15,
+  9.25
+ ],
+ "window_floors_m1": [
+  3.0282e-08,
+  2.0224e-08,
+  2.7572e-08,
+  2.7588e-08,
+  2.1443e-08,
+  1.121e-08,
+  2.7894e-08,
+  1.9253e-08,
+  1.5588e-08,
+  1.5715e-08,
+  1.3367e-08,
+  2.8547e-08,
+  2.1459e-08,
+  2.1983e-08,
+  2.2175e-08
+ ]
+}

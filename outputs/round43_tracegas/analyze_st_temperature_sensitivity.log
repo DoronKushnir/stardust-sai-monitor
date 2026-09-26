@@ -1,0 +1,31 @@
+S(T) sensitivity of band-averaged slant OD  (tangent 20 km, dT = +/-15 K, P & column fixed)
+==============================================================================
+
+B+ silica / O3 wing:  8.80 um, element 100 nm
+  gas       OD(T_rep)      OD(+dT)      OD(-dT)   d(lnOD)/dT [%/K]
+{'air': 1.0}
+53.017740 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+56.833334 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+52.113578 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+47.440392 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+52.978842 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+54.332057 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+47.220052 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+52.593941 seconds elapsed for abscoef; nlines = 81848
+{'air': 1.0}
+48.234142 seconds elapsed for abscoef; nlines = 81848
+  o3       1.1249e+00   1.1853e+00   1.0652e+00               0.36
+  TOTAL    1.1249e+00   1.1853e+00   1.0652e+00   (+5.4% / -5.3% for +/-15 K)
+
+config C silica:  20.40 um, element 100 nm
+  gas       OD(T_rep)      OD(+dT)      OD(-dT)   d(lnOD)/dT [%/K]
+  h2o      1.4486e-03   2.5855e-03   9.9215e-04               3.67
+  hno3     3.0513e-02   3.3622e-02   2.6919e-02               0.73
+  TOTAL    3.1961e-02   3.6207e-02   2.7911e-02   (+13.3% / -12.7% for +/-15 K)

@@ -1,0 +1,2 @@
+# Preserve exact CSV bytes used by the provenance hashes (CSV writer uses CRLF).
+*.csv -text whitespace=cr-at-eol

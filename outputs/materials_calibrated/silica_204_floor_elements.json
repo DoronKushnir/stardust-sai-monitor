@@ -1,0 +1,50 @@
+{
+ "band": {
+  "target": 20.4,
+  "lo": 19.5,
+  "hi": 21.0,
+  "step": 0.1,
+  "note": "silica reststrahlen peak on the H2O rotation forest + HNO3 nu9"
+ },
+ "gases": [
+  [
+   "h2o",
+   0.3,
+   0.002
+  ],
+  [
+   "hno3",
+   0.3,
+   0.005
+  ]
+ ],
+ "snr_flown": 2000.0,
+ "tangent_km": 20.0,
+ "dz_m": 500.0,
+ "elements": {
+  "0.25": {
+   "element_um": 0.25,
+   "tau_sil_target_od": 0.06992451821342374,
+   "tau_gas_target_od": 0.11719528462443701,
+   "sigma_removal_od": 0.00036921458564494745,
+   "sigma_line_pred_od": 0.00023291996374203471,
+   "sigma_alpha_removal_m1": 2.8663306847689296e-09,
+   "sigma_sil_od_snr2000": 0.0005542385383310509,
+   "sigma_alpha_sil_snr2000_m1": 4.302730690676092e-09,
+   "sigma_sil_plateau_od": 9.357106194753052e-05,
+   "sigma_alpha_sil_plateau_m1": 7.264220225702e-10
+  },
+  "0.1": {
+   "element_um": 0.1,
+   "tau_sil_target_od": 0.06992451821342374,
+   "tau_gas_target_od": 0.031485377620859054,
+   "sigma_removal_od": 0.00019291367111811658,
+   "sigma_line_pred_od": 0.00015327210608754246,
+   "sigma_alpha_removal_m1": 1.4976504085594923e-09,
+   "sigma_sil_od_snr2000": 0.0003843254908070886,
+   "sigma_alpha_sil_snr2000_m1": 2.9836414650709023e-09,
+   "sigma_sil_plateau_od": 4.122914636367907e-05,
+   "sigma_alpha_sil_plateau_m1": 3.200750239122084e-10
+  }
+ }
+}

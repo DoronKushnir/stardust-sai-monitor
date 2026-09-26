@@ -1,0 +1,26 @@
+=== 1. slant-column fraction above the vibrational non-LTE onset ===
+(onsets: CO2 nu2 ~75 km; O3 9.6 um ~60 km; H2O nu2 ~60 km)
+  tangent 15 km:  co2 > 75 km: 3.5e-05  |  o3 > 60 km: 1.4e-04  |  h2o > 60 km: 3.4e-04
+  tangent 20 km:  co2 > 75 km: 8.0e-05  |  o3 > 60 km: 1.5e-04  |  h2o > 60 km: 8.1e-04
+  tangent 25 km:  co2 > 75 km: 1.8e-04  |  o3 > 60 km: 2.4e-04  |  h2o > 60 km: 1.7e-03
+
+=== 2. excited-vibrational fractions at 220 K ===
+(bounds the ground-state sensitivity to any vibrational non-LTE)
+  CO2 nu2 (667 cm-1)          : 2.6e-02
+  O3 nu2 (701 cm-1)           : 1.0e-02
+  O3 nu1/nu3 (~1100 cm-1)     : 1.5e-03
+  H2O nu2 (1595 cm-1)         : 2.9e-05
+  CO2 Fermi dyad (~1300 cm-1) : 4.1e-04
+
+=== 3. thermal-emission baseline: B(250 K)/B(5772 K) per channel ===
+  lambda  8.80 um: 4.7e-04
+  lambda  8.74 um: 4.6e-04
+  lambda  9.60 um: 7.4e-04
+  lambda 12.00 um: 1.9e-03
+  lambda 20.40 um: 8.2e-03
+
+Worst case on a retrieved slant OD: (excited fraction ~1e-2) x
+(slant fraction above onset ~2e-4) ~ 1e-5-1e-6 relative — three-plus
+orders below the 1e-3-level error-budget floors.  The 20.4-um
+emission baseline is a background/calibration item, not an LTE one:
+see scripts/check_limb_emission_baseline.py.

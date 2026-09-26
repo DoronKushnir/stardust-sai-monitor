@@ -1,0 +1,8 @@
+dnu_cm,element_um,n_samples,sigma_alpha_cons_snr100,sigma_alpha_cons_snr300,sigma_alpha_cons_snr1000,sigma_alpha_cons_snr3000,floor_alpha_optimistic,floor_alpha_conservative,snr_x_conservative,snr_x_optimistic,sys_breakdown_conservative_OD
+0.02,0.0002,10285,7.817968e-09,4.817497e-09,4.309437e-09,4.242635e-09,1.365855e-10,4.218514e-09,128,35617,width:o3=3.67e-04; width:n2o=5.65e-04; width:h2o=7.63e-06; cfc_abs:cfc12=6.86e-18; continuum:h2o=4.25e-07
+0.05,0.0004,5158,1.023706e-08,5.184304e-09,4.207649e-09,4.081386e-09,1.805800e-10,4.038095e-09,192,34248,width:o3=3.71e-04; width:n2o=5.27e-04; width:h2o=7.75e-06; cfc_abs:cfc12=7.28e-18; continuum:h2o=4.29e-07
+0.1,0.0008,2067,1.575022e-08,6.303475e-09,3.978535e-09,3.662661e-09,3.167279e-10,3.551300e-09,363,33192,width:o3=3.96e-04; width:n2o=4.06e-04; width:h2o=7.80e-06; cfc_abs:cfc12=8.02e-18; continuum:h2o=4.29e-07
+0.25,0.0019,861,2.513761e-08,8.857464e-09,3.923653e-09,3.097480e-09,6.331739e-10,2.799927e-09,778,14445,width:o3=3.79e-04; width:n2o=2.37e-04; width:h2o=6.84e-07; cfc_abs:cfc12=6.48e-18; continuum:h2o=4.20e-07
+0.6,0.0046,344,4.329171e-08,1.474183e-08,5.367697e-09,3.475988e-09,1.205634e-09,2.898437e-09,1342,5657,width:o3=4.63e-04; width:n2o=9.64e-06; width:h2o=8.52e-07; cfc_abs:cfc12=8.54e-19; continuum:h2o=3.93e-07
+1.5,0.0115,137,7.552821e-08,2.541051e-08,8.381174e-09,4.427347e-09,1.962565e-09,3.300422e-09,2064,5386,width:o3=5.26e-04; width:n2o=3.45e-05; width:h2o=6.45e-06; cfc_abs:cfc12=5.40e-18; continuum:h2o=3.67e-07
+4.0,0.0306,51,1.369648e-07,4.577444e-08,1.413361e-08,5.752785e-09,2.512563e-09,3.076058e-09,4287,6970,width:o3=4.89e-04; width:n2o=4.24e-05; width:h2o=1.72e-06; cfc_abs:cfc12=0.00e+00; continuum:h2o=3.66e-07

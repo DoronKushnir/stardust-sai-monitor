@@ -1,0 +1,6 @@
+lo_um,hi_um,width_um,n_samples,sigma_alpha_cons_snr100,sigma_alpha_cons_snr300,sigma_alpha_cons_snr1000,sigma_alpha_cons_snr3000,floor_alpha_optimistic,floor_alpha_conservative,snr_x_conservative,snr_x_optimistic,sys_breakdown_conservative_OD
+20.2,20.6,0.40,481,2.234941e-07,1.134386e-07,8.490298e-08,7.920722e-08,3.957164e-08,6.809807e-08,348,892,width:h2o=2.68e-04; width:hno3=1.09e-02; width:o3=2.07e-08
+20.1,20.7,0.60,719,4.962149e-08,2.531022e-08,1.868407e-08,1.731431e-08,9.137112e-09,1.436439e-08,422,887,width:h2o=5.26e-05; width:hno3=2.29e-03; width:o3=4.32e-08
+19.9,20.9,1.00,1199,1.531617e-08,7.787617e-09,5.775347e-09,5.371508e-09,2.259526e-09,4.689878e-09,342,1421,width:h2o=2.37e-06; width:hno3=7.49e-04; width:o3=1.64e-07
+19.7,21.0,1.30,1567,1.079241e-08,5.424689e-09,3.950015e-09,3.660724e-09,1.687349e-09,3.121639e-09,394,1186,width:h2o=5.31e-05; width:hno3=4.95e-04; width:o3=5.81e-07
+19.5,21.0,1.50,1827,1.037608e-08,6.662729e-09,5.843299e-09,5.707331e-09,1.336477e-09,5.387539e-09,147,3929,width:h2o=1.05e-05; width:hno3=8.60e-04; width:o3=4.10e-07

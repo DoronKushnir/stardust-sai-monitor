@@ -1,0 +1,20 @@
+{
+  "seed": 20260909,
+  "bootstrap_draws": 500,
+  "width_um": 0.25,
+  "guard_cm_inverse": 4.0,
+  "altitude_ranges_km": [[16, 19], [19, 22], [22, 25]],
+  "scan_centers_um": {"start": 2.375, "stop": 13.125, "step": 0.25},
+  "material_bands_um": {
+    "silica": [8.8, 20.4],
+    "calcite": [6.9, 11.4, 14.0, 28.5, 29.2],
+    "dolomite": [6.4, 11.3, 13.7, 24.9],
+    "alumina": [12.9, 20.7]
+  },
+  "control_bands_um": [3.0, 4.0, 5.3],
+  "averaging_widths_um": [0.04, 0.08, 0.10, 0.15, 0.20, 0.25],
+  "pair_prefix_counts": [10, 20, 30, 40, 50],
+  "diagnostic_thresholds_od": [0.001, 0.002, 0.005, 0.01],
+  "minimum_evaluation_occultations": 40,
+  "minimum_evaluation_years": 5
+}

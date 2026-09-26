@@ -1,0 +1,70 @@
+  floor override C co-retrieval edge @ 19.8 um: 3.70e-04 -> 1.72e-03 OD (element 19.75 um)
+  floor override silica C @ 20.4 um: 3.70e-04 -> 5.00e-04 OD (element 20.35 um)
+  floor override alumina W @ 20.7 um: 1.20e-03 -> 2.39e-03 OD (element 20.7 um)
+  floor override dolomite lattice @ 24.9 um: 2.00e-03 -> 5.00e-04 OD (element 24.85 um)
+  floor override calcite lattice peak @ 28.5 um: 2.60e-02 -> 3.37e-02 OD (element 28.45 um)
+  floor override calcite red wing @ 29.2 um: 2.30e-03 -> 5.27e-03 OD (element 29.15 um)
+cross sections at z = 21 km (T = 217.6 K, p = 47.3 hPa), step 0.01 cm^-1; 1-km bin chord 226 km
+  B+ 8.74 um: o3 sigma ready (max 4.80e-22 m^2)
+  B+ 8.74 um: h2o sigma ready (max 7.06e-25 m^2)
+  B+ 8.74 um: ch4 sigma ready (max 5.12e-23 m^2)
+  B+ 8.74 um: n2o sigma ready (max 3.48e-23 m^2)
+  B+ 8.74 um: co2 sigma ready (max 3.10e-26 m^2)
+=== B+ 8.74 um (element 0.1 um; gases: o3, h2o, ch4, n2o, co2; 1-Tg silica along the path) ===
+  tan 15.0 km,  8.74 um (silica B+         ): tau_eff   0.73 (band-avg    1.26)  t 4.80e-01  r 2.08e-04  r/floor    0.10  resid/floor  0.00
+  tan 20.0 km,  8.74 um (silica B+         ): tau_eff   0.58 (band-avg    1.03)  t 5.59e-01  r 1.61e-04  r/floor    0.08  resid/floor  0.00
+  tan 25.0 km,  8.74 um (silica B+         ): tau_eff   0.28 (band-avg    0.54)  t 7.52e-01  r 8.19e-05  r/floor    0.04  resid/floor  0.00
+
+  C 19-22 um: hno3 sigma ready (max 9.23e-22 m^2)
+  C 19-22 um: h2o sigma ready (max 2.36e-22 m^2)
+  C 19-22 um: o3 sigma ready (max 1.02e-28 m^2)
+  C 19-22 um: co2 sigma ready (max 6.56e-27 m^2)
+  C 19-22 um: n2o sigma ready (max 2.46e-23 m^2)
+=== C 19-22 um (element 0.1 um; gases: hno3, h2o, o3, co2, n2o; 1-Tg silica along the path) ===
+  tan 15.0 km, 19.80 um (C co-retrieval edge): tau_eff   0.04 (band-avg    0.04)  t 9.61e-01  r 2.01e-04  r/floor    0.12  resid/floor  0.00
+  tan 15.0 km, 20.40 um (silica C          ): tau_eff   0.18 (band-avg    0.18)  t 8.39e-01  r 1.02e-03  r/floor    2.04  resid/floor  0.05
+  tan 15.0 km, 20.70 um (alumina W         ): tau_eff   0.36 (band-avg    3.23)  t 6.95e-01  r 2.55e-03  r/floor    1.07  resid/floor  0.03
+  tan 20.0 km, 19.80 um (C co-retrieval edge): tau_eff   0.02 (band-avg    0.03)  t 9.76e-01  r 1.23e-04  r/floor    0.07  resid/floor  0.00
+  tan 20.0 km, 20.40 um (silica C          ): tau_eff   0.10 (band-avg    0.10)  t 9.05e-01  r 5.66e-04  r/floor    1.13  resid/floor  0.03
+  tan 20.0 km, 20.70 um (alumina W         ): tau_eff   0.21 (band-avg    1.43)  t 8.11e-01  r 1.41e-03  r/floor    0.59  resid/floor  0.01
+  tan 25.0 km, 19.80 um (C co-retrieval edge): tau_eff   0.00 (band-avg    0.00)  t 9.98e-01  r 1.42e-05  r/floor    0.01  resid/floor  0.00
+  tan 25.0 km, 20.40 um (silica C          ): tau_eff   0.01 (band-avg    0.01)  t 9.85e-01  r 8.87e-05  r/floor    0.18  resid/floor  0.00
+  tan 25.0 km, 20.70 um (alumina W         ): tau_eff   0.11 (band-avg    0.70)  t 8.99e-01  r 7.54e-04  r/floor    0.32  resid/floor  0.01
+
+  lattice 24.5-29.5 um: hno3 sigma ready (max 1.21e-22 m^2)
+  lattice 24.5-29.5 um: h2o sigma ready (max 2.52e-21 m^2)
+  lattice 24.5-29.5 um: o3 sigma ready (max 1.61e-26 m^2)
+  lattice 24.5-29.5 um: n2o sigma ready (max 3.53e-30 m^2)
+  lattice 24.5-29.5 um: co2 sigma ready (max 1.35e-30 m^2)
+=== lattice 24.5-29.5 um (element 0.1 um; gases: hno3, h2o, o3, n2o, co2; 1-Tg silica along the path) ===
+  tan 15.0 km, 24.90 um (dolomite lattice  ): tau_eff   0.02 (band-avg    0.02)  t 9.83e-01  r 1.38e-04  r/floor    0.28  resid/floor  0.01
+  tan 15.0 km, 28.50 um (calcite lattice peak): tau_eff   0.02 (band-avg    0.02)  t 9.77e-01  r 2.40e-04  r/floor    0.01  resid/floor  0.00
+  tan 15.0 km, 29.20 um (calcite red wing  ): tau_eff   0.03 (band-avg    0.04)  t 9.66e-01  r 3.71e-04  r/floor    0.07  resid/floor  0.00
+  tan 20.0 km, 24.90 um (dolomite lattice  ): tau_eff   0.01 (band-avg    0.01)  t 9.92e-01  r 6.75e-05  r/floor    0.14  resid/floor  0.00
+  tan 20.0 km, 28.50 um (calcite lattice peak): tau_eff   0.01 (band-avg    0.01)  t 9.87e-01  r 1.38e-04  r/floor    0.00  resid/floor  0.00
+  tan 20.0 km, 29.20 um (calcite red wing  ): tau_eff   0.02 (band-avg    0.02)  t 9.84e-01  r 1.79e-04  r/floor    0.03  resid/floor  0.00
+  tan 25.0 km, 24.90 um (dolomite lattice  ): tau_eff   0.00 (band-avg    0.00)  t 9.97e-01  r 2.74e-05  r/floor    0.05  resid/floor  0.00
+  tan 25.0 km, 28.50 um (calcite lattice peak): tau_eff   0.01 (band-avg    0.01)  t 9.93e-01  r 7.64e-05  r/floor    0.00  resid/floor  0.00
+  tan 25.0 km, 29.20 um (calcite red wing  ): tau_eff   0.01 (band-avg    0.01)  t 9.92e-01  r 9.20e-05  r/floor    0.02  resid/floor  0.00
+
+  carbonate nu3 6.2-7.1 um: h2o sigma ready (max 1.73e-21 m^2)
+  carbonate nu3 6.2-7.1 um: ch4 sigma ready (max 2.32e-23 m^2)
+  carbonate nu3 6.2-7.1 um: n2o sigma ready (max 1.03e-25 m^2)
+=== carbonate nu3 6.2-7.1 um (element 0.1 um; gases: h2o, ch4, n2o; 1-Tg silica along the path) ===
+  tan 15.0 km,  6.40 um (dolomite nu3      ): tau_eff   0.27 (band-avg   15.69)  t 7.62e-01  r 8.96e-06  r/floor    0.00  resid/floor  0.00
+  tan 15.0 km,  6.90 um (calcite nu3       ): tau_eff   0.20 (band-avg    7.55)  t 8.22e-01  r 9.80e-06  r/floor    0.00  resid/floor  0.00
+  tan 20.0 km,  6.40 um (dolomite nu3      ): tau_eff   0.22 (band-avg   10.28)  t 8.06e-01  r 7.92e-06  r/floor    0.00  resid/floor  0.00
+  tan 20.0 km,  6.90 um (calcite nu3       ): tau_eff   0.14 (band-avg    4.54)  t 8.66e-01  r 8.09e-06  r/floor    0.00  resid/floor  0.00
+  tan 25.0 km,  6.40 um (dolomite nu3      ): tau_eff   0.18 (band-avg    6.60)  t 8.39e-01  r 7.47e-06  r/floor    0.00  resid/floor  0.00
+  tan 25.0 km,  6.90 um (calcite nu3       ): tau_eff   0.11 (band-avg    2.78)  t 8.99e-01  r 7.20e-06  r/floor    0.00  resid/floor  0.00
+
+=== table-mode channels (band-averaged ODs; saturated rows are lower bounds) ===
+  structure factor from line-resolved anchors (tau<2): x0.89
+material    lam  tau_gas   r(est)  r/floor resid/floor  note
+calcite    11.4     0.26  3.3e-04     0.22        0.01  
+dolomite   11.3     0.30  3.6e-04     0.18        0.00  
+alumina    12.9     0.47  1.9e-03     0.72        0.02  
+
+r = <L_emis>/(L_sun <t>): the LOW bias on every retrieved slant OD if unmodelled.
+resid/floor: after forward-modelling the emission to 2.5% (T to ~2 K, co-retrieved gases).
+5772-K sun understates r by ~15-20% at 20-30 um (solar T_b ~ 5000 K there).

@@ -1,0 +1,66 @@
+Loaded O3 line list: 84896 lines in [558, 1644] cm^-1
+
+=== 8.80 um (target wing, 0.25 um)  (8.675-8.925 um  =  1120.4-1152.7 cm^-1) ===
+  factor_coherent=0.00  (0 % band-coherent (upper bound))
+    n_lines (in window)          : 4849
+    sum(S) [cm/molecule]         : 1.261e-19
+    intensity-weighted <delta>   :  1.47%   (mean per-line ierr-mapped uncertainty)
+    intensity-weighted Herfindahl: 6.195e-03   (effective n_lines = 161.4)
+    ierr-code distribution (by intensity fraction):
+        ierr=5:  96.7% of band intensity
+        ierr=6:   3.3% of band intensity
+    sigma_avg_uncorrelated        :  0.12%   <- input to sigma_line_rel
+  factor_coherent=0.50  (50% band-coherent (realistic))
+    sigma_avg_uncorrelated        :  0.10%   <- input to sigma_line_rel
+  factor_coherent=0.90  (90% band-coherent (lower bound))
+    sigma_avg_uncorrelated        :  0.05%   <- input to sigma_line_rel
+
+=== 8.80 um (target wing, 0.10 um design element)  (8.75-8.85 um  =  1129.9-1142.9 cm^-1) ===
+  factor_coherent=0.00  (0 % band-coherent (upper bound))
+    n_lines (in window)          : 1973
+    sum(S) [cm/molecule]         : 5.202e-20
+    intensity-weighted <delta>   :  1.47%   (mean per-line ierr-mapped uncertainty)
+    intensity-weighted Herfindahl: 1.158e-02   (effective n_lines = 86.4)
+    ierr-code distribution (by intensity fraction):
+        ierr=5:  97.1% of band intensity
+        ierr=6:   2.9% of band intensity
+    sigma_avg_uncorrelated        :  0.16%   <- input to sigma_line_rel
+  factor_coherent=0.50  (50% band-coherent (realistic))
+    sigma_avg_uncorrelated        :  0.14%   <- input to sigma_line_rel
+  factor_coherent=0.90  (90% band-coherent (lower bound))
+    sigma_avg_uncorrelated        :  0.07%   <- input to sigma_line_rel
+
+=== 8.74 um (former target wing, 0.25 um)  (8.615-8.865 um  =  1128.0-1160.8 cm^-1) ===
+  factor_coherent=0.00  (0 % band-coherent (upper bound))
+    n_lines (in window)          : 4797
+    sum(S) [cm/molecule]         : 9.960e-20
+    intensity-weighted <delta>   :  1.45%   (mean per-line ierr-mapped uncertainty)
+    intensity-weighted Herfindahl: 5.048e-03   (effective n_lines = 198.1)
+    ierr-code distribution (by intensity fraction):
+        ierr=5:  95.4% of band intensity
+        ierr=6:   4.6% of band intensity
+    sigma_avg_uncorrelated        :  0.11%   <- input to sigma_line_rel
+  factor_coherent=0.50  (50% band-coherent (realistic))
+    sigma_avg_uncorrelated        :  0.09%   <- input to sigma_line_rel
+  factor_coherent=0.90  (90% band-coherent (lower bound))
+    sigma_avg_uncorrelated        :  0.05%   <- input to sigma_line_rel
+
+=== 9.6 um (band core)  (9.475-9.725 um  =  1028.3-1055.4 cm^-1) ===
+  factor_coherent=0.00  (0 % band-coherent (upper bound))
+    n_lines (in window)          : 7565
+    sum(S) [cm/molecule]         : 6.809e-18
+    intensity-weighted <delta>   :  1.49%   (mean per-line ierr-mapped uncertainty)
+    intensity-weighted Herfindahl: 3.078e-03   (effective n_lines = 324.8)
+    ierr-code distribution (by intensity fraction):
+        ierr=4:   0.1% of band intensity
+        ierr=5:  99.2% of band intensity
+        ierr=6:   0.7% of band intensity
+    sigma_avg_uncorrelated        :  0.08%   <- input to sigma_line_rel
+  factor_coherent=0.50  (50% band-coherent (realistic))
+    sigma_avg_uncorrelated        :  0.07%   <- input to sigma_line_rel
+  factor_coherent=0.90  (90% band-coherent (lower bound))
+    sigma_avg_uncorrelated        :  0.04%   <- input to sigma_line_rel
+
+=== Recommended sigma_line_rel for sage3.o3_removal ===
+  max over windows (50% coherent)        : 0.14%
+  recommended (with 50% safety margin)    : 0.21%   <-- set O3RemovalSetup.sigma_line_rel ~ 0.002

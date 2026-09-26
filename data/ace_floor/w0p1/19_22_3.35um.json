@@ -1,0 +1,260 @@
+{
+  "n": 0,
+  "n_unique": 0,
+  "mean": null,
+  "sd": null,
+  "rms": null,
+  "n_years": 0,
+  "status": "insufficient_complete_elements",
+  "center_um": 3.350000000000001,
+  "width_um": 0.1,
+  "n_sample": 143,
+  "n_full_valid_elements": 0,
+  "n_target_bins": 45,
+  "fit_bins_range": [
+    0,
+    0
+  ],
+  "covariance": {},
+  "background_exceedances": {
+    "0.001": {
+      "count": 0,
+      "n": 0
+    },
+    "0.002": {
+      "count": 0,
+      "n": 0
+    },
+    "0.005": {
+      "count": 0,
+      "n": 0
+    },
+    "0.01": {
+      "count": 0,
+      "n": 0
+    }
+  },
+  "year_means": {
+    "2004": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2005": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2006": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2007": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2008": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2009": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2010": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2011": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2012": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2013": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2014": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2015": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2016": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2017": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2018": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2019": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2020": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2021": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2022": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2023": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    },
+    "2024": {
+      "n": 0,
+      "n_unique": 0,
+      "mean": null,
+      "sd": null,
+      "rms": null
+    }
+  },
+  "matched_pairs": {
+    "standard": {
+      "10": {
+        "n_pairs": 0,
+        "rms": null,
+        "max_proxy_distance": null,
+        "median_height_separation": null,
+        "median_year_separation": null,
+        "rms_bootstrap_95": {
+          "valid_draws": 0,
+          "lower": null,
+          "upper": null
+        }
+      },
+      "20": {
+        "n_pairs": 0,
+        "rms": null,
+        "max_proxy_distance": null,
+        "median_height_separation": null,
+        "median_year_separation": null,
+        "rms_bootstrap_95": {
+          "valid_draws": 0,
+          "lower": null,
+          "upper": null
+        }
+      },
+      "30": {
+        "n_pairs": 0,
+        "rms": null,
+        "max_proxy_distance": null,
+        "median_height_separation": null,
+        "median_year_separation": null,
+        "rms_bootstrap_95": {
+          "valid_draws": 0,
+          "lower": null,
+          "upper": null
+        }
+      },
+      "40": {
+        "n_pairs": 0,
+        "rms": null,
+        "max_proxy_distance": null,
+        "median_height_separation": null,
+        "median_year_separation": null,
+        "rms_bootstrap_95": {
+          "valid_draws": 0,
+          "lower": null,
+          "upper": null
+        }
+      },
+      "50": {
+        "n_pairs": 0,
+        "rms": null,
+        "max_proxy_distance": null,
+        "median_height_separation": null,
+        "median_year_separation": null,
+        "rms_bootstrap_95": {
+          "valid_draws": 0,
+          "lower": null,
+          "upper": null
+        }
+      }
+    }
+  },
+  "sd_bootstrap_95": {
+    "valid_draws": 0,
+    "lower": null,
+    "upper": null
+  },
+  "mean_bootstrap_95": {
+    "valid_draws": 0,
+    "lower": null,
+    "upper": null
+  }
+}

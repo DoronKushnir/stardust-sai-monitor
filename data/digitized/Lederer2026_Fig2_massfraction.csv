@@ -1,0 +1,11 @@
+# Lederer et al. (2026), Figure 2 — microphysics validation vs AER-2D (Weisenstein et al. 2015, Fig. 4c).
+# Equilibrium mass fraction of agglomerates vs number of monomers per agglomerate N.
+# Initial monomer radius r0 = 240 nm. Solid = "this work" (2-D Climlab model); dashed = Weisenstein 2015 (AER-2D).
+# Values DIGITIZED by eye from the rendered figure (approximate, +/- ~0.01-0.02); each column ~sums to 1.
+# columns: N, thiswork_1Tgyr, thiswork_8Tgyr, weisenstein_1Tgyr, weisenstein_8Tgyr
+N,thiswork_1Tg,thiswork_8Tg,weis_1Tg,weis_8Tg
+1,0.89,0.585,0.93,0.69
+2,0.10,0.26,0.05,0.20
+4,0.015,0.12,0.01,0.07
+8,0.005,0.03,0.005,0.03
+16,0.0,0.005,0.0,0.005

@@ -1,0 +1,8 @@
+KitamuraPopova  rmed= 268 sg=1.31: mono peak 8.800 um; ext(8.74)/max=0.816 ext(8.80)/max=1.000; box0.10 peak 8.795 (8.74:0.869, 8.80:0.999); box0.25 peak 8.770 (8.74:0.980, 8.80:0.985)
+KitamuraPopova  rmed= 250 sg=1.05: mono peak 8.790 um; ext(8.74)/max=0.851 ext(8.80)/max=0.995; box0.10 peak 8.785 (8.74:0.900, 8.80:0.990); box0.25 peak 8.760 (8.74:0.991, 8.80:0.973)
+KitamuraPopova  rmed= 150 sg=1.31: mono peak 8.790 um; ext(8.74)/max=0.866 ext(8.80)/max=0.990; box0.10 peak 8.785 (8.74:0.913, 8.80:0.985); box0.25 peak 8.760 (8.74:0.994, 8.80:0.968)
+KitamuraPopova  rmed= 400 sg=1.31: mono peak 8.815 um; ext(8.74)/max=0.750 ext(8.80)/max=0.982; box0.10 peak 8.810 (8.74:0.804, 8.80:0.992); box0.25 peak 8.795 (8.74:0.945, 8.80:0.999)
+Franta2016      rmed= 268 sg=1.31: mono peak 8.760 um; ext(8.74)/max=0.976 ext(8.80)/max=0.863; box0.10 peak 8.750 (8.74:0.993, 8.80:0.873); box0.25 peak 8.720 (8.74:0.992, 8.80:0.889)
+Franta2016      rmed= 250 sg=1.05: mono peak 8.750 um; ext(8.74)/max=0.993 ext(8.80)/max=0.808; box0.10 peak 8.745 (8.74:1.000, 8.80:0.826); box0.25 peak 8.710 (8.74:0.982, 8.80:0.859)
+Franta2016      rmed= 150 sg=1.31: mono peak 8.745 um; ext(8.74)/max=0.997 ext(8.80)/max=0.789; box0.10 peak 8.740 (8.74:1.000, 8.80:0.810); box0.25 peak 8.705 (8.74:0.977, 8.80:0.848)
+Franta2016      rmed= 400 sg=1.31: mono peak 8.775 um; ext(8.74)/max=0.925 ext(8.80)/max=0.954; box0.10 peak 8.770 (8.74:0.959, 8.80:0.951); box0.25 peak 8.745 (8.74:1.000, 8.80:0.944)

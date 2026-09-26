@@ -1,0 +1,17 @@
+metric,value,units
+h_tan_km,20.0,km
+delta_T_K,2.0,K
+sigma_line_rel,0.002,fraction
+target_wavelength_um,8.74,um
+channels,"521;602;676;9.60um",
+tau_target_ref,0.8756409693915976,OD
+sigma_OE,0.003770356064659984,OD
+sigma_OE_state,0.030545235007584,OD
+sigma_OE_band,0.03075544800398851,OD
+sigma_line_pred,0.0017512819387831952,OD
+sigma_T_pred,0.005576556435847339,OD
+sigma_total,0.006955613198389983,OD
+T_rel,0.006368542165999811,fraction
+dofs,1.9988823221721228,
+b_uv_posterior_sigma,0.03494248972209945,fraction
+b_ir_posterior_sigma,0.035123354295948074,fraction
