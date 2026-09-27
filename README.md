@@ -98,7 +98,11 @@ thresholds at 20 km: 0.102 Tg (8–13 µm band), 0.141 Tg (window subset).
   trials-factor/false-alarm analysis, the slant-ozone latitude check and the
   coherent-vs-independent conversion of the floor added. Thresholds moved from
   0.081/0.115 to 0.102/0.141 Tg; `reference_outputs/` holds the new versions
-  (the round-51 versions are in the git history, commit 6f66a83).
+  (the round-51 versions are retrievable from the annotated tag `round51`,
+  commit 6f66a83; this state is tagged `round53-54`, commit e94c047). The
+  repository history is complete, not squashed; an archived release (Zenodo)
+  captures one tagged state, so use the tags rather than the history when
+  working from an archive.
 
 ## Licence
 
