@@ -719,7 +719,10 @@ def main():
     # measured 0.1-um width factor.
     print("\n" + "=" * 72)
     print("PART 4: band 8-13 um at 0.1-um sampling (one resolution for all)")
-    b01_c = np.round(np.arange(8.00, 13.2001, 0.10), 2)   # round 53: x.x0 grid centred on 8.80 um
+    # round 57 (RC2 S3, Doron): the band starts at 7.80 um so that the 7.8-9.3 um window is its
+    # short-wavelength subset -- 47 elements 7.80-13.20 um (core excluded).  The archive key strings
+    # ('band 8-13 @0.1', 'band01_*') are kept unchanged for the downstream scripts.
+    b01_c = np.round(np.arange(7.80, 13.2001, 0.10), 2)
     b01_c = b01_c[(b01_c < 9.3) | (b01_c > 10.0)]
     all_c, all_sd = [], []
     for r in atlas["19_22"]:

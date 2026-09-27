@@ -11,6 +11,6 @@ h_tan      tropical      midlat 3      antarcti
  22.0   1.07 [1.06-1.08] n=138   1.04 [1.01-1.07] n=17   0.45 [0.42-0.46] n=27
  24.0   1.23 [1.21-1.24] n=138   1.11 [1.08-1.14] n=17   0.44 [0.42-0.45] n=27
 floor factor at 20 km: tropical 20-25N Jun-Aug: 0.93, midlat 35-55N Jun-Sep: 0.95, antarctic 60-90S Aug-Sep: 0.60
-band threshold at 20 km [Tg]: tropical 20-25N Jun-Aug: 0.095, midlat 35-55N Jun-Sep: 0.097, antarctic 60-90S Aug-Sep: 0.062
+band threshold at 20 km [Tg]: tropical 20-25N Jun-Aug: 0.094, midlat 35-55N Jun-Sep: 0.096, antarctic 60-90S Aug-Sep: 0.061
 window threshold at 20 km [Tg]: tropical 20-25N Jun-Aug: 0.131, midlat 35-55N Jun-Sep: 0.134, antarctic 60-90S Aug-Sep: 0.085
 tropical slant ratio at 18 km: 0.78 (local density ratio 0.27); Sect. 4.1 atlas fit s = 0.37 at the 16-20 km bin

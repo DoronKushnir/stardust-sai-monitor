@@ -86,7 +86,7 @@ centred on the 8.80 µm silica resonance (elements 8.00, 8.10, … 13.20 µm; th
 7.8–9.3 µm window 7.80 … 9.20 µm), and every optical-depth floor is converted
 to a per-shell extinction with the exact onion-peel gain of the edge-bounded
 retrieval grid (`saimon/onion_peel.py`, g = 1.10). Headline single-sounding
-thresholds at 20 km: 0.102 Tg (8–13 µm band), 0.141 Tg (window subset).
+thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.8–9.3 µm window).
 
 ## Revision history
 
@@ -114,6 +114,19 @@ thresholds at 20 km: 0.102 Tg (8–13 µm band), 0.141 Tg (window subset).
   coverage of the 20-km bin from 69°S–73°N to 77°S–85°N while leaving the
   plume-core threshold at 0.026 Tg. The AFGL cross-check (`o3lat`) stays.
   This state is tagged `rc2-round56`.
+
+* **Round 57 (referee report RC2, S3; September 2026).** The design band now
+  starts at 7.80 µm — 47 elements 7.80 … 13.20 µm (O₃ core excluded) instead
+  of 45 from 8.00 µm — so that the 7.8–9.3 µm window is its short-wavelength
+  subset (`reproduce/calibrated_background_thresholds.py`,
+  `resolution_sensitivity_calibrated.py`, `paper1_tables_round53.py`). The
+  whole chain was re-run: band baseline 0.102 -> 0.101 Tg (window unchanged,
+  0.141 Tg), third-mode / second-member rows 0.185/0.141 -> 0.183/0.128 Tg,
+  alumina 0.153 -> 0.150 Tg, ACE band null on the design's elements 0.16 ->
+  0.18 Tg per shell; the 2-D map and the measured-ozone variant move by about
+  1 % (best bin 0.026 Tg, 20-km coverage 69°S–73°N / 77°S–85°N unchanged).
+  `reference_outputs/` holds the round-57 versions; tag `rc2-round56` keeps
+  the previous state.
 
 ## Licence
 

@@ -49,7 +49,7 @@ for p in (_ROOT, _HERE):
         sys.path.insert(0, str(p))
 
 DLAMS = (0.05, 0.08, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5)
-RANGES = {"window": (7.8, 9.3), "band": (8.0, 13.25)}
+RANGES = {"window": (7.8, 9.3), "band": (7.8, 13.25)}   # round 57 (RC2 S3, Doron): band from 7.8 um, 47 elements
 GAP = (9.3, 10.0)
 VIS_NM = np.array([448., 756., 1544.])
 VIS_PHI = np.array([0.040, 0.032, 0.088])

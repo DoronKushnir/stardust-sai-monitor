@@ -78,8 +78,8 @@ def test_thresholds_archive():
     d = json.loads((OUT / "calibrated_background_thresholds.json").read_text())
     q = d["results"]["CALIBRATED quiet (LM65T223, 2-comp)"]
     assert abs(q["window 7.8-9.3 @0.1: measured floors"]["full 7-param"]["triplet + window"]["mmin_tg"] - 0.141) < 0.002
-    assert abs(q["band 8-13 @0.1: measured floors"]["full 7-param"]["triplet + band01"]["mmin_tg"] - 0.102) < 0.002
-    assert d["window_elements_um"][10] == 8.8 and len(d["band01_elements_um"]) == 45      # grid centred on 8.80 um (round 53)
+    assert abs(q["band 8-13 @0.1: measured floors"]["full 7-param"]["triplet + band01"]["mmin_tg"] - 0.101) < 0.002
+    assert d["window_elements_um"][10] == 8.8 and len(d["band01_elements_um"]) == 47 and d["band01_elements_um"][0] == 7.8   # grid centred on 8.80 um (round 53), band from 7.80 um (round 57)
 
 
 def test_onion_peel_constants():

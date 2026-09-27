@@ -65,9 +65,9 @@ silica field and orbit sampling.
 
 * The silica reference element is 8.80 µm (8.75–8.85 µm), the
   aerosol-extinction peak of the adopted optical constants; the design's
-  retrieval band is 8–13 µm at 0.1 µm sampling (45 elements centred at
-  8.00 … 13.20 µm, one of them on the resonance; O₃ core 9.3–10.0 µm
-  excluded), its minimal subset the 7.8–9.3 µm window (15 elements centred
+  retrieval band is 7.8–13 µm at 0.1 µm sampling (47 elements centred at
+  7.80 … 13.20 µm, one of them on the resonance; O₃ core 9.3–10.0 µm
+  excluded; from 7.80 µm since round 57), its minimal subset the 7.8–9.3 µm window (15 elements centred
   at 7.80 … 9.20 µm). The floors on that grid are the archive
   `data/ace_floor/w0p1_c880/` (the Appendix E scan, `w0p1/`, is on the
   x.x5 grid and shares the 8.80 µm element bit for bit).
@@ -142,3 +142,10 @@ cross-section grids are our computed products for the paper's bands.
   the Fisher inputs, the materials thresholds, the design-sensitivity
   scans (Table 2, Appendix F), the 2D study, the null tests and the floor
   records reproduce the manuscript's numbers exactly.
+
+
+* Round 57 (referee report RC2, S3): the band starts at 7.80 µm (47
+  elements) so the window is nested in it; every archive re-run — band
+  baseline 0.101 Tg, window 0.141 Tg; the other numbers move by at most a
+  few per cent (third mode 0.183, second member 0.128, alumina 0.150 Tg;
+  ACE band null at 0.1 µm 0.18 Tg per shell; 2-D map within 1 %).

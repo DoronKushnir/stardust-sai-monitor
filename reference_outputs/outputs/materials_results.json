@@ -5,8 +5,8 @@
     "wl_um": 8.8,
     "ext_m1": 6.15149040501426e-07
    },
-   "band/quiet": 0.10210386901482502,
-   "band/postHT": 0.1015475801170154,
+   "band/quiet": 0.10103895048792455,
+   "band/postHT": 0.10028529515570926,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 8.8,
     "ext_m1": 6.15149040501426e-07
@@ -121,24 +121,24 @@
     "note": "silica 20.4-um band (18-23 um), per-element H2O+HNO3 OE floors; bounded below by the SNR-2000 floor 3.4e-09 m^-1",
     "peak_wl_um": 20.35,
     "peak_ext_m1": 1.756003373483468e-07,
-    "band_plus_farir_quiet": 0.03625321609687587,
+    "band_plus_farir_quiet": 0.036186197445122685,
     "triplet_plus_farir_quiet": 0.04746217998822526,
-    "one_minus_R2_all": 0.3025584026027226,
+    "one_minus_R2_all": 0.30366806756206643,
     "floor_scan": {
      "1.0": {
-      "band_plus_farir": 0.03625321609687587,
+      "band_plus_farir": 0.036186197445122685,
       "triplet_plus_farir": 0.04746217998822526
      },
      "3.0": {
-      "band_plus_farir": 0.07565103544450907,
+      "band_plus_farir": 0.07481323855716505,
       "triplet_plus_farir": 0.1423772620194781
      },
      "10.0": {
-      "band_plus_farir": 0.09681650399011965,
+      "band_plus_farir": 0.09509912395427203,
       "triplet_plus_farir": 0.4745873547059688
      },
      "30.0": {
-      "band_plus_farir": 0.10032709936816814,
+      "band_plus_farir": 0.09875508187287788,
       "triplet_plus_farir": 1.423761136087561
      }
     }
@@ -149,8 +149,8 @@
     "wl_um": 11.4,
     "ext_m1": 9.695766105606453e-08
    },
-   "band/quiet": 0.782397315202998,
-   "band/postHT": 0.7811428040333717,
+   "band/quiet": 0.7817773186474587,
+   "band/postHT": 0.7799331276236166,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 7.8,
     "ext_m1": 1.7146723172522256e-09
@@ -265,24 +265,24 @@
     "note": "calcite lattice band (26-31 um), per-element H2O+O3+N2O OE floors; bounded below by the SNR-2000 floor 3.4e-09 m^-1",
     "peak_wl_um": 28.55,
     "peak_ext_m1": 2.9520177792793395e-07,
-    "band_plus_farir_quiet": 0.024050539095758973,
+    "band_plus_farir_quiet": 0.02405020113495194,
     "triplet_plus_farir_quiet": 0.032940139832258505,
-    "one_minus_R2_all": 0.41753473541594843,
+    "one_minus_R2_all": 0.4175464216599928,
     "floor_scan": {
      "1.0": {
-      "band_plus_farir": 0.024050539095758973,
+      "band_plus_farir": 0.02405020113495194,
       "triplet_plus_farir": 0.032940139832258505
      },
      "3.0": {
-      "band_plus_farir": 0.07167127058683925,
+      "band_plus_farir": 0.07166410232918827,
       "triplet_plus_farir": 0.09882041936966045
      },
      "10.0": {
-      "band_plus_farir": 0.22483563665834122,
+      "band_plus_farir": 0.22464679038383262,
       "triplet_plus_farir": 0.3294013978507047
      },
      "30.0": {
-      "band_plus_farir": 0.4905574416310935,
+      "band_plus_farir": 0.4898190297448045,
       "triplet_plus_farir": 0.9882041935393566
      }
     }
@@ -293,8 +293,8 @@
     "wl_um": 11.3,
     "ext_m1": 9.434216776516191e-08
    },
-   "band/quiet": 0.7464932980332091,
-   "band/postHT": 0.7510198852741309,
+   "band/quiet": 0.7459377012400744,
+   "band/postHT": 0.7498482890294789,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 8.1,
     "ext_m1": 2.9353252053514997e-09
@@ -409,24 +409,24 @@
     "note": "dolomite lattice band (22.5-27.5 um), per-element H2O+O3+N2O OE floors; bounded below by the SNR-2000 floor 3.4e-09 m^-1",
     "peak_wl_um": 24.85,
     "peak_ext_m1": 2.577333091755428e-07,
-    "band_plus_farir_quiet": 0.02697107449155462,
+    "band_plus_farir_quiet": 0.026970906363344718,
     "triplet_plus_farir_quiet": 0.040798108552350144,
-    "one_minus_R2_all": 0.38230019503868307,
+    "one_minus_R2_all": 0.38230478966128834,
     "floor_scan": {
      "1.0": {
-      "band_plus_farir": 0.02697107449155462,
+      "band_plus_farir": 0.026970906363344718,
       "triplet_plus_farir": 0.040798108552350144
      },
      "3.0": {
-      "band_plus_farir": 0.08014955542735788,
+      "band_plus_farir": 0.08014382578057781,
       "triplet_plus_farir": 0.12239429463865789
      },
      "10.0": {
-      "band_plus_farir": 0.2472406416999104,
+      "band_plus_farir": 0.24702616451252044,
       "triplet_plus_farir": 0.4079809703677096
      },
      "30.0": {
-      "band_plus_farir": 0.5077899803507399,
+      "band_plus_farir": 0.5070789309946309,
       "triplet_plus_farir": 1.2239429080012911
      }
     }
@@ -437,8 +437,8 @@
     "wl_um": 12.9,
     "ext_m1": 8.256464583060051e-07
    },
-   "band/quiet": 0.1526665131395905,
-   "band/postHT": 0.1525451452637672,
+   "band/quiet": 0.14988501282681252,
+   "band/postHT": 0.15052204291495766,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 9.1,
     "ext_m1": 4.983030109087329e-09
@@ -553,24 +553,24 @@
     "note": "alumina W band (18.25-23.25 um), per-element H2O+HNO3+O3 OE floors; bounded below by the SNR-2000 floor 3.4e-09 m^-1",
     "peak_wl_um": 20.6,
     "peak_ext_m1": 6.237601074656564e-08,
-    "band_plus_farir_quiet": 0.07650377788548653,
+    "band_plus_farir_quiet": 0.07650200933197165,
     "triplet_plus_farir_quiet": 0.13062641089981344,
-    "one_minus_R2_all": 0.19924984693493375,
+    "one_minus_R2_all": 0.19925857191179108,
     "floor_scan": {
      "1.0": {
-      "band_plus_farir": 0.07650377788548653,
+      "band_plus_farir": 0.07650200933197165,
       "triplet_plus_farir": 0.13062641089981344
      },
      "3.0": {
-      "band_plus_farir": 0.10999552320740838,
+      "band_plus_farir": 0.10999360704498147,
       "triplet_plus_farir": 0.391861589596741
      },
      "10.0": {
-      "band_plus_farir": 0.11930443823973953,
+      "band_plus_farir": 0.11930359043145444,
       "triplet_plus_farir": 1.3061986079858623
      },
      "30.0": {
-      "band_plus_farir": 0.12873864550701475,
+      "band_plus_farir": 0.12851784431162788,
       "triplet_plus_farir": 3.918594059356188
      }
     }
@@ -582,6 +582,8 @@
   "sigma": 1.31
  },
  "design_band_elements_um": [
+  7.8,
+  7.9,
   8.0,
   8.1,
   8.2,
@@ -648,10 +650,10 @@
   ],
   "floor_m1": 9.526e-08,
   "quiet": {
-   "silica": 0.10196447096175296,
-   "calcite": 0.7821474806381317,
-   "dolomite": 0.7457624581957789,
-   "alumina": 0.14816100390438985
+   "silica": 0.10082410381089017,
+   "calcite": 0.7815614285923269,
+   "dolomite": 0.7452987204076525,
+   "alumina": 0.14614074307834213
   }
  }
 }

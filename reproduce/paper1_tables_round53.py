@@ -46,7 +46,7 @@ def element_width_table(mark):
     w0 = R["results"]["window"]["0.1"]["mmin_phase0"]
     wrap = (lambda s: r"\ClaudeText{" + s + "}") if mark else (lambda s: s)
     cap = (r"Single-sounding threshold $M_{\min}^{(3\sigma)}$ [Tg] against the spectral element width $\Delta\lambda$, "
-           r"for the $8$--$13~\mu$m band and the $7.8$--$9.3~\mu$m window (heritage triplet, seven background parameters free): "
+           r"for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, seven background parameters free): "
            r"number of elements $N$, the linearized threshold with independent per-element floors and with floors correlated over "
            r"$\ell=0.25~\mu$m (medians over five placements of the element grid), and the ACE null test (median and range over the "
            r"same five placements, per-shell convention). Dashes: the window cannot support the seven-parameter fit. "
@@ -63,7 +63,7 @@ def element_width_table(mark):
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{c ccc c ccc c}
 \toprule
-& \multicolumn{4}{c}{band $8$--$13~\mu$m} & \multicolumn{4}{c}{window $7.8$--$9.3~\mu$m} \\
+& \multicolumn{4}{c}{band $7.8$--$13~\mu$m} & \multicolumn{4}{c}{window $7.8$--$9.3~\mu$m} \\
 \cmidrule(lr){2-5}\cmidrule(lr){6-9}
 $\Delta\lambda$ [$\mu$m] & $N$ & indep. & $\ell=0.25$ & ACE [range] & $N$ & indep. & $\ell=0.25$ & ACE [range] \\
 \midrule
@@ -82,7 +82,7 @@ def conventions_table(mark):
     n = d["nulltest_cross_convention"]; g = d["design_cross_convention"]
     rho = d["rho"]
     rows = [
-        (r"Full $8$--$13~\mu$m spectrum, native $2$~cm$^{-1}$ (empirical / formal)",
+        (r"Full $7.8$--$13~\mu$m spectrum, native $2$~cm$^{-1}$ (empirical / formal)",
          f3(n['full']['mmin_emp_slant']) + " / " + f3(n['full']['mmin_formal_slant']),
          f3(n['full']['mmin_emp_shell']) + " / " + f3(n['full']['mmin_formal_shell'])),
         (r"Window $7.8$--$9.3~\mu$m, native $2$~cm$^{-1}$ (empirical / formal)",
@@ -92,10 +92,10 @@ def conventions_table(mark):
          f3(n['win01']['mmin_emp_slant']) + " / " + f3(n['win01']['mmin_formal_slant']),
          f3(n['win01']['mmin_emp_shell']) + " / " + f3(n['win01']['mmin_formal_shell'])),
     ]
-    for key, label in [("band 8-13 @0.1 | band01 alone", r"Linearized: $8$--$13~\mu$m band alone at $0.1~\mu$m, seven parameters"),
+    for key, label in [("band 8-13 @0.1 | band01 alone", r"Linearized: $7.8$--$13~\mu$m band alone at $0.1~\mu$m, seven parameters"),
                        ("window alone | full 7-param", r"Linearized: window alone, seven parameters"),
-                       ("band 8-13 @0.1 | triplet + band01", r"Linearized: heritage triplet plus $8$--$13~\mu$m band (the design)"),
-                       ("heritage triplet (448,756,1544) | full 7-param", r"Linearized: heritage triplet plus window subset")]:
+                       ("band 8-13 @0.1 | triplet + band01", r"Linearized: heritage triplet plus $7.8$--$13~\mu$m band (the design)"),
+                       ("heritage triplet (448,756,1544) | full 7-param", r"Linearized: heritage triplet plus window")]:
         rows.append((label, f3(g[key]['mmin_slant']), f3(g[key]['mmin_shell'])))
     wrap = (lambda s: r"\ClaudeText{" + s + "}") if mark else (lambda s: s)
     cap = wrap(r"The ACE-FTS null tests and the linearized thresholds side by side, in both conventions: $M_{\min}^{(3\sigma)}$ [Tg] "
