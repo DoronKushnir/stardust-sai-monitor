@@ -1,0 +1,37 @@
+{
+ "budget_od": {
+  "total": 0.0024656159418954895,
+  "line": 0.002271744297963465,
+  "oe": 0.0009583526582629512,
+  "tau_o3": 1.153844151544836,
+  "f_line": 0.0019688484748325128
+ },
+ "conversion_m1": {
+  "white_total": 1.6920574439237038e-08,
+  "white_line": 1.5590107870186878e-08,
+  "white_oe": 6.576805907862801e-09,
+  "coherent_line": 3.0101980442626567e-09,
+  "mixed_oe_white_line_coherent": 7.232957086515982e-09,
+  "measured_white": 1.2751229061437071e-08,
+  "mixed_measured_white_plus_coherent": 1.310172259067181e-08,
+  "g": 1.097267641519496,
+  "m1_per_od": 6.862615605181812e-06
+ },
+ "ratios": {
+  "mixed_over_adopted": 0.4274652206690757,
+  "mixed_meas_over_adopted": 0.7743071984772745,
+  "white_over_coherent_line": 5.1790970696765735
+ },
+ "thresholds_tg": {
+  "band": {
+   "adopted": 0.10210220341976668,
+   "mixed": 0.04364514091562942,
+   "mixed_measured": 0.07905847108831633
+  },
+  "window": {
+   "adopted": 0.1411502613954138,
+   "mixed": 0.060336827634888276,
+   "mixed_measured": 0.10929366346541784
+  }
+ }
+}

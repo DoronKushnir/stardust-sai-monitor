@@ -1,0 +1,44 @@
+{
+  "sample_size": 143,
+  "sample_sha256": "057ad323caeb3b82ad9112b8204c551f83e7fb1f25d244ec9c00e2af739b8e58",
+  "source": "https://databace.scisat.ca/validation/data_issues.csv",
+  "input_path": "/Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/external/ace_v52/data_issues.csv",
+  "input_sha256": "cdb7379a5c9460d0319c88fb463e06326c1b29d35c747d591372074bb0e0f0c2",
+  "n_issue_rows": 7810,
+  "matching_notices": [
+    {
+      "occultation_name": "ss20856",
+      "data_version": "2.2",
+      "category": "ascii/NaN",
+      "status": "Use with Caution"
+    },
+    {
+      "occultation_name": "ss26820",
+      "data_version": "3.0",
+      "category": "n2o",
+      "status": "N2O: Do Not Use"
+    },
+    {
+      "occultation_name": "ss26834",
+      "data_version": "3.0",
+      "category": "n2o",
+      "status": "N2O: Do Not Use"
+    },
+    {
+      "occultation_name": "sr15175",
+      "data_version": "3.5/3.6",
+      "category": "n2o",
+      "status": "N2O: Do Not Use"
+    },
+    {
+      "occultation_name": "sr69107",
+      "data_version": "3.5/3.6",
+      "category": "n2o",
+      "status": "N2O: Do Not Use"
+    }
+  ],
+  "unresolved_current_or_unspecified_version_notices": [],
+  "calendar_years_verified": true,
+  "commissioning_observations": 0,
+  "interpretation": "Historical version-specific notices do not establish a v5.2 problem; no observations excluded by this audit."
+}

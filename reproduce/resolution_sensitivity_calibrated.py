@@ -27,9 +27,9 @@ Nuisance conventions per (range, dlam):
   * exponentially correlated floors, C_ij = s_i s_j exp(-|c_i-c_j|/ell),
     for ell = 0.1, 0.25, 0.5 um -- the honest version of "finer elements
     are not independent"; the empirical correlation length is measured by
-    scripts/ace_nulltest_resolution.py.
+    reproduce/ace_nulltest_resolution.py.
 
-Run from the repo root:  python scripts/resolution_sensitivity_calibrated.py
+Run from the repo root:  python reproduce/resolution_sensitivity_calibrated.py
 Output: outputs/resolution_sensitivity_calibrated.json,
         figures/resolution_sensitivity_calibrated.png
 """
@@ -54,7 +54,8 @@ GAP = (9.3, 10.0)
 VIS_NM = np.array([448., 756., 1544.])
 VIS_PHI = np.array([0.040, 0.032, 0.088])
 ELLS = (0.1, 0.25, 0.5)
-OD_PER_M1 = 2.04e-3 / 1.5e-8
+# round 53 (RC1 M1/M3, Doron): exact edge-grid gain and the design-budget anchor
+from saimon.onion_peel import M1_PER_OD, OD_PER_M1, BUDGET_OD_880, G_ONION   # noqa: E402
 OUT = _ROOT / "outputs" / "resolution_sensitivity_calibrated.json"
 FIG = _ROOT / "figures" / "resolution_sensitivity_calibrated.png"
 FIG_PAPER = FIG   # repo: figures/ is the paper figure directory
@@ -70,11 +71,16 @@ _ac, _asd = np.array(_ac), np.array(_asd)
 # 0.1-um-element re-analysis of the record (residual_floor_w0p1), interpolated
 # to the element centers, times the measured width curve normalized at 0.1 um
 # (w(dlam)/w(0.1)); the 0.25-um atlas above is kept only for reference.
+# Round 53: the direct 0.1-um atlas re-run on the x.x0 grid centred on 8.80 um
+# (residual_floor_w0p1_c880), scaled so the 8.80-um element carries the design's
+# R~100 budget (FLOOR_SCALE), OD -> m^-1 with the exact edge-grid gain.
 _atlas01 = json.load(open(_ROOT / "data/ace_floor/"
-                          "w0p1/atlas.json"))
+                          "residual_floor_w0p1_c880/atlas.json"))
 _ac01, _asd01 = zip(*sorted((r["center_um"], r["sd"]) for r in _atlas01["19_22"]
-                            if r.get("sd") is not None and 7.8 <= r["center_um"] <= 13.3))
+                            if r.get("sd") is not None and 7.3 <= r["center_um"] <= 13.3))
 _ac01, _asd01 = np.array(_ac01), np.array(_asd01)
+_sd880 = {round(r["center_um"], 3): r["sd"] for r in _atlas01["19_22"] if r.get("sd") is not None}[8.8]
+FLOOR_SCALE = BUDGET_OD_880 / _sd880
 _wk = sorted(float(k) for k in _rec["averaging_fixed_full_element_holdout"])
 _wf = np.array([_rec["averaging_fixed_full_element_holdout"][
     (f"{k:g}")]["exact"]["sd"] for k in _wk]) / float(_rec["sd"])
@@ -93,15 +99,17 @@ def element_centers(lo, hi, dlam, phase=0.0):
     saturated O3 core are dropped."""
     # elements whose CENTER lies within [lo, hi] (the last one may extend
     # dlam/2 beyond hi), the same rule as PART 4 of the thresholds script
-    c = np.arange(lo + dlam * (0.5 + phase), hi + 1e-9, dlam)
-    return c[(c < GAP[0]) | (c > GAP[1])]
+    # round 53 (Doron): grid centred on 8.80 um -- phase 0 puts an element CENTRE at lo
+    # (window 7.80...9.20, band 8.00...13.20), the design grid of the thresholds script
+    c = np.round(np.arange(lo + dlam * phase, hi + 1e-9, dlam), 6)   # round 53: no 9.2999... slipping past the core cut
+    return c[(c < GAP[0] - 1e-9) | (c > GAP[1] + 1e-9)]
 
 
 def floor_model_m1(centers, dlam):
     """per-element systematic floor [m^-1] at dz = 0.5 km: direct 0.1-um
     atlas at the centers x w(dlam)/w(0.1) (round 36)."""
     sd = np.interp(centers, _ac01, _asd01) * width_factor(dlam) / width_factor(0.10)
-    return sd / OD_PER_M1
+    return sd * FLOOR_SCALE * M1_PER_OD   # round 53: design-budget anchor, exact gain
 
 
 def sigma_marg(cols, t, cov_or_sig):
@@ -161,7 +169,9 @@ def compute():
             out[j] = v[3:][m].mean()
         return np.r_[v[:3], out]
 
-    arch = {"dlams": list(DLAMS), "ells": list(ELLS), "width_factor":
+    arch = {"floor_anchor": dict(budget_od_880=float(BUDGET_OD_880), measured_sd_880_od=float(_sd880),
+                                 floor_scale=float(FLOOR_SCALE), m1_per_od=float(M1_PER_OD), g_exact=float(G_ONION)),
+            "dlams": list(DLAMS), "ells": list(ELLS), "width_factor":
             {f"{d}": width_factor(d) for d in DLAMS}, "results": {}}
     for rname, (lo, hi) in RANGES.items():
         arch["results"][rname] = {}

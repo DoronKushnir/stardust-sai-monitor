@@ -1,0 +1,3 @@
+band,note,target_um,n_chan,tau_material_target_OD,tau_gas_target_OD,sigma_total_OD,sigma_material_od_OD,dofs,sigma_alpha_1_m,sigma_alpha_degaware_1_m,snr_1Tg,min_detectable_Tg
+R (~12.9um),main reststrahlen band between the O3 9.6um and CO2 15um bands,12.9,19,3.205508e-01,4.682549e-01,2.539269e-03,2.427949e-03,7.2205,1.745370e-08,1.668854e-08,132.0253,0.007574
+W (~20.7um),"red reststrahlen wing, the silica config-C region",20.7,19,2.334588e-02,1.152191e+00,2.945519e-03,3.713633e-04,6.2582,2.024606e-08,2.552571e-09,62.8653,0.015907

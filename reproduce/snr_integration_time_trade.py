@@ -41,7 +41,7 @@ The two halves, coupled here for the first time:
       The occultation geometry fixes the dwell: the tangent point descends at
       1-3 km/s, so a 0.5-km sample gets t = 0.17-0.5 s -- you cannot stare
       longer at one altitude without vertical smearing.  The ETC
-      (scripts/mir_detector_etc.py) gives each candidate detector's
+      (reproduce/mir_detector_etc.py) gives each candidate detector's
       statistical SNR at that dwell; combining with (A) yields the achieved
       sigma_alpha per detector and the co-add factor (if any) needed to reach
       SNR_x.
@@ -57,7 +57,7 @@ Outputs
   outputs/snr_trade/detector_dwell_880.csv    per-detector dwell-time SNR (8.80 um)
   figures/snr_integration_time_trade.png      two-panel summary figure
 
-Run from the repo root:  python scripts/snr_integration_time_trade.py
+Run from the repo root:  python reproduce/snr_integration_time_trade.py
 First run may be slow (Voigt grids); subsequent runs use the disk cache.
 """
 
@@ -90,7 +90,7 @@ TANGENT_KM = 20.0
 ELEMENT_UM = 0.25
 DZ_M = 500.0
 R_EARTH_M = 6.371e6
-G_ONION = np.sqrt(5.0 - 2.0 * np.sqrt(3.0))       # onion-peel white-noise gain
+from saimon.onion_peel import G_ONION  # round 53 (RC1 M1): exact edge-grid gain from saimon.onion_peel
 
 # Per-sample SNR grid (transmission SNR per 0.1-um channel, quoted at TOA).
 SNR_GRID = np.array([100., 150., 220., 320., 470., 700., 1000., 1500.,

@@ -62,7 +62,13 @@ AU = 1.495978707e11    # m
 SNR_VIS = 2000.0
 _R_EARTH_M = 6.371e6
 _P_KK_M = 2.0 * np.sqrt(2.0 * _R_EARTH_M * 500.0)
-SIGMA_VIS = np.sqrt(5.0 - 2.0 * np.sqrt(3.0)) / (SNR_VIS * _P_KK_M)   # 3.875e-9 m^-1
+import sys as _sys
+from pathlib import Path as _Path
+_ROOT = _Path(__file__).resolve().parent.parent
+if str(_ROOT) not in _sys.path:
+    _sys.path.insert(0, str(_ROOT))
+from saimon.onion_peel import G_ONION  # round 53 (RC1 M1): exact edge-grid gain from saimon.onion_peel
+SIGMA_VIS = G_ONION / (SNR_VIS * _P_KK_M)   # 3.44e-9 m^-1 (was 3.875e-9 with g = 1.24)
 K_GEOM = SIGMA_VIS * SNR_VIS      # = 7.75e-6 m^-1 ; sigma_alpha = K_GEOM / SNR
 DZ_KM = 0.5
 

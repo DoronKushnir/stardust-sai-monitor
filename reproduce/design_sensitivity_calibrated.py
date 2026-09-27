@@ -23,7 +23,7 @@ Scans (each for the window and the band; a third set, the window at
   C. coagulation/agglomeration: Lederer (2026) equilibrium mass fractions
      f_N over N-monomer agglomerates (volume-equivalent spheres,
      r_med -> 268 N^(1/3) nm), 1 Tg/yr and 8 Tg/yr cases (digitized values
-     as in scripts/sensitivity_agglomerate.py).
+     as in reproduce/sensitivity_agglomerate.py).
   D. visible/NIR noise: the triplet's fractional errors and SNR floor
      scaled by g in {0.5, 1, 2, 4} (MIR floors held: systematic).
   E. measurement altitude z = 16-24 km (round 35c, Doron: the per-element
@@ -33,14 +33,25 @@ Scans (each for the window and the band; a third set, the window at
      constant mixing ratio, the sulfate the GloSSAC profile).
   F. (read from the archives) sulfate microphysics brackets, member-optics
      swap, correlated MIR offset, MIR floor scan.
+  G. enlarged background family (round 53, referee RC1 M9): (i) a THIRD
+     sulfate lognormal mode with its own amplitude, r_med and sigma free
+     (10 nuisance parameters; nominal intermediate mode r_med = 150 nm,
+     sigma = 1.4, carrying 15 % of the fine mode's 525-nm extinction
+     share, THIRD_MODE below); (ii) the SECOND laboratory member's
+     background spectrum (Biermann 70 wt%/215 K, the optics-swap member)
+     as an additional free amplitude column beside the nominal member
+     (8 nuisance parameters).  Since the threshold is set by the silica
+     component orthogonal to the nuisance span, both can only raise it.
+  --dry-run writes the archive to the scratchpad (no figure, archive
+  untouched); --family-only evaluates the baseline and scan G alone.
 The sulfate DENSITY prior of the old appendix has no counterpart: with
 both component amplitudes free, the density enters only through the
 amplitudes, which are marginalized; only the optics shape matters, and
 that is the member swap.
 
 Run from the repo root:
-  python scripts/design_sensitivity_calibrated.py          # compute + plot
-  python scripts/design_sensitivity_calibrated.py --plot   # plot from archive
+  python reproduce/design_sensitivity_calibrated.py          # compute + plot
+  python reproduce/design_sensitivity_calibrated.py --plot   # plot from archive
 Output: outputs/design_sensitivity_calibrated.json,
         figures/design_sensitivity_calibrated.png (copied to figures/)
 """
@@ -73,13 +84,17 @@ SIGMAS = (1.05, 1.2, 1.31, 1.5, 1.8)
 RMEDS = (150., 200., 268., 400., 600.)
 G_VIS = (0.5, 1.0, 2.0, 4.0)
 Z_KM = (16, 17, 18, 19, 20, 21, 22, 23, 24)
-# Lederer (2026) Fig. 2 equilibrium MASS fractions (scripts/sensitivity_agglomerate.py)
+# Lederer (2026) Fig. 2 equilibrium MASS fractions (reproduce/sensitivity_agglomerate.py)
 FN = {'1 Tg/yr': {1: 0.89, 2: 0.10, 4: 0.015, 8: 0.005, 16: 0.0},
       '8 Tg/yr': {1: 0.585, 2: 0.26, 4: 0.12, 8: 0.03, 16: 0.005}}
 for k in FN:
     s = sum(FN[k].values())
     FN[k] = {n: v / s for n, v in FN[k].items()}
 OUT_JSON = _ROOT / "outputs" / "design_sensitivity_calibrated.json"
+# G. enlarged family: third mode (rmed_nm, sigma, share of the FINE mode's
+# 525-nm extinction fraction moved to it) and the second member's optics key
+THIRD_MODE = dict(rmed_nm=150.0, sigma=1.4, fine_share=0.15)
+SECOND_MEMBER = "B70T215"
 FLOOR_SCAN = _ROOT / "outputs" / "detectability_2d" / "floor_altitude_scan.csv"
 
 
@@ -129,21 +144,25 @@ class ElementSet:
         return exts, ders
 
     def mmin(self, exts, ders, t_prof, k=iz, g_vis=1.0, mir_scale=1.0,
-             nset='full'):
-        """3-sigma threshold [Tg] at altitude index k."""
+             nset='full', extra_cols=()):
+        """3-sigma threshold [Tg] at altitude index k.  nset='full': every
+        mode's amplitude plus its (r_med, sigma) derivatives (2 modes = the
+        7-parameter fit, 3 modes = 10 parameters); 'std': amplitudes plus
+        the fine mode's derivatives only.  extra_cols: further nuisance
+        profiles (nz x n), e.g. a second member's background spectrum."""
         s_tot = sum(e[k] for e in exts)
         if nset == 'full':
-            cols = [exts[0][k], exts[1][k], ders[0][0][k], ders[0][1][k],
-                    ders[1][0][k], ders[1][1][k]]
+            cols = [e[k] for e in exts] + [d[k] for pair in ders for d in pair]
         else:
-            cols = [exts[0][k], exts[1][k], ders[0][0][k], ders[0][1][k]]
+            cols = [e[k] for e in exts] + [ders[0][0][k], ders[0][1][k]]
+        cols += [c[k] for c in extra_cols]
         sig = np.r_[g_vis * np.maximum(VIS_PHI * s_tot[:N_VIS], ALPHA_FLOOR),
                     mir_scale * self.floors]
         sa, tperp, R2 = marginal(np.arange(self.n), cols, sig, t_prof[k])
         return 3 * sa, tperp, (1 - R2)
 
 
-def compute():
+def compute(dry_run=False, family_only=False):
     thr = json.load(open(_ROOT / "outputs" /
                          "calibrated_background_thresholds.json"))
     # round 33 (Doron): one resolution, 0.1 um, for the whole 8-13 um band
@@ -191,6 +210,29 @@ def compute():
             assert abs(m0 - ref[es.name]) < 1e-3, "baseline reproduction"
         res = dict(baseline_7p=m0, baseline_5p=m0_5, tperp=tperp,
                    one_minus_R2=r2, n_elements=len(es.c))
+        # G. enlarged background family (round 53, RC1 M9)
+        f_fine = CAL_QUIET[0][2] * THIRD_MODE["fine_share"]
+        comps3 = [(CAL_QUIET[0][0], CAL_QUIET[0][1], CAL_QUIET[0][2] - f_fine),
+                  CAL_QUIET[1],
+                  (THIRD_MODE["rmed_nm"], THIRD_MODE["sigma"], f_fine)]
+        exts3, ders3 = es.background(comps3, ri65, wt65, T65)
+        m3, tperp3, r23 = es.mmin(exts3, ders3, t_nom)
+        ri_b, wt_b, T_b = member_ri(SECOND_MEMBER)
+        exts_b, _ = es.background(CAL_QUIET, ri_b, wt_b, T_b)
+        bg_b = exts_b[0] + exts_b[1]
+        m_b, tperp_b, r2_b = es.mmin(exts, ders, t_nom, extra_cols=[bg_b])
+        res["third_mode"] = m3
+        res["third_mode_tperp"] = tperp3
+        res["second_member"] = m_b
+        res["second_member_tperp"] = tperp_b
+        print(f"  enlarged family: third mode (r_med {THIRD_MODE['rmed_nm']:.0f} nm, "
+              f"sigma {THIRD_MODE['sigma']}, {THIRD_MODE['fine_share']:.0%} of the fine "
+              f"share; 10 params) {m3:.4f} Tg (||t_perp|| {tperp3:.1f}); "
+              f"second member {SECOND_MEMBER} as free column (8 params) {m_b:.4f} Tg "
+              f"(||t_perp|| {tperp_b:.1f})")
+        if family_only:
+            arch["sets"][es.name] = res
+            continue
         # A. silica PSD
         res["sigma_psd"] = {}
         for sg in SIGMAS:
@@ -265,10 +307,15 @@ def compute():
             mir_offset=cq["band 8-13 @0.1: measured floors"]["7-param + MIR offs"]["triplet + band01"]["mmin_tg"],
             uniform_floors=cq["band 8-13 @0.1: uniform 1.5e-8 floors"]["full 7-param"]["triplet + band01"]["mmin_tg"]),
     }
-    OUT_JSON.parent.mkdir(exist_ok=True)
-    with open(OUT_JSON, "w") as f:
+    arch["enlarged_family"] = dict(third_mode=THIRD_MODE, second_member=SECOND_MEMBER)
+    out = OUT_JSON
+    if dry_run:
+        import os
+        out = Path(os.environ.get("DRY_RUN_DIR", "/tmp")) / OUT_JSON.name
+    out.parent.mkdir(exist_ok=True, parents=True)
+    with open(out, "w") as f:
         json.dump(arch, f, indent=1)
-    print(f"\narchived -> {OUT_JSON}")
+    print(f"\narchived -> {out}")
     return arch
 
 
@@ -344,12 +391,15 @@ def plot(arch):
     FIG.parent.mkdir(exist_ok=True)
     fig.savefig(FIG, dpi=300, bbox_inches="tight")
     FIG_PAPER.parent.mkdir(exist_ok=True)
-    (shutil.copy(FIG, FIG_PAPER) if FIG_PAPER != FIG else None)
+    shutil.copy(FIG, FIG_PAPER)
     print(f"figure -> {FIG} (copied to {FIG_PAPER})")
 
 
 if __name__ == "__main__":
-    if "--plot" in sys.argv[1:]:
+    args = sys.argv[1:]
+    if "--plot" in args:
         plot(json.load(open(OUT_JSON)))
+    elif "--dry-run" in args or "--family-only" in args:
+        compute(dry_run=True, family_only="--family-only" in args)
     else:
         plot(compute())

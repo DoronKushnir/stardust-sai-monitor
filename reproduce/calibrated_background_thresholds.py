@@ -22,7 +22,7 @@ The calibrated background
   and the band where the microphysics is calibrated, so nothing is
   extrapolated), median profile over the quiet 2016.5-2018.5 epoch, ALL
   months (the ACE June-August sampling is a 4% detail there;
-  scripts/glossac_saod_20_25N.py).
+  reproduce/glossac_saod_20_25N.py).
 * Microphysics: the anchor-constrained two-component fit of the quiet
   epoch (outputs/ace_v52/anchor_constrained_fits.json; Paper 1 Appendix
   app:acefloor_anchor): Lund-Myhre 65 wt%/223 K member, fine mode 60 nm
@@ -112,7 +112,7 @@ variant bounds the leading common mode at +0.001 Tg).
 Round 33 (2026-09-23, Doron): PART 4 adds the whole 8-13 um band at the
 SAME 0.1-um sampling (45 elements; the window is its minimal 15-element
 subset), the design configuration after the element-width study of
-scripts/resolution_sensitivity_calibrated.py.  Archive keys
+reproduce/resolution_sensitivity_calibrated.py.  Archive keys
 'band 8-13 @0.1: ...', 'band01_elements_um', 'band01_floors_m1'.
 
 Round 31 (2026-09-22, Doron): the quoted design roster becomes the Wrana
@@ -126,7 +126,7 @@ reported "degenerate", is 0.345 Tg (near-singular among the background
 parameters only).  All previously finite archive values are unchanged.
 The slant-vs-shell convention gap between this analysis and the ACE null
 test (factor rho = 2.46 in signal per Tg) is quantified in
-scripts/ace_nulltest_convention.py.
+reproduce/ace_nulltest_convention.py.
 
 Round 27 (2026-09-22, Doron's Appendix-E consistency question): PART 3 now
 uses the DIRECTLY MEASURED 0.1-um averaging-width factor from the archived
@@ -143,7 +143,7 @@ instead of the 0.25-um atlas times the 8.74-um width factor.  Archive keys
 'window_floors_m1' / 'band01_floors_m1' are therefore the direct floors;
 'band01_floors_converted_m1' keeps the former values for comparison.
 
-Run from the repo root:  python scripts/calibrated_background_thresholds.py
+Run from the repo root:  python reproduce/calibrated_background_thresholds.py
 Output: printed tables + outputs/calibrated_background_thresholds.json
 """
 
@@ -174,8 +174,12 @@ RMED_SIL_NM, SIGMA_SIL = 268.0, 1.31
 SPECTRAL_RES_UM = 0.10   # round 37 (Doron): the paper's single 0.1-um element convention;
                          # was 0.25 (the single-element legacy analyses now use 0.1 um;
                          # the legacy 0.25-um band run below keeps a literal 0.25)
-SIG_874_ABS = 1.5e-8       # m^-1, systematic trace-gas-removal floor
-ALPHA_FLOOR = 3.9e-9       # m^-1, SNR = 2000, dz = 0.5 km (app:validation)
+# round 53 (RC1 M1/M3, Doron): edge-grid EXACT onion-peel gain and the design's own
+# R~100 gas-removal budget at the 8.80-um element as the floor anchor (saimon/onion_peel.py).
+from saimon.onion_peel import (G_ONION, P_KK_M, M1_PER_OD, OD_PER_M1,   # noqa: E402
+                              BUDGET_OD_880, SIG_880_ABS)
+SIG_874_ABS = SIG_880_ABS  # m^-1, the design floor at the 8.80-um element (1.69e-8; name kept for importers)
+ALPHA_FLOOR = G_ONION / (2000.0 * P_KK_M)   # m^-1, SNR = 2000, dz = 0.5 km (app:validation): 3.44e-9
 
 WL_NM = np.array([448., 756., 869., 1021., 1250., 1544., 8800.])   # round 43: 8800 (was 8740)
 PHI = np.array([0.040, 0.032, 0.040, 0.045, 0.063, 0.088, np.nan])
@@ -525,8 +529,39 @@ def main():
                 mir_c.append(c)
                 mir_sd.append(r["sd"])
     mir_c, mir_sd = np.array(mir_c), np.array(mir_sd)
-    sd874 = 0.00204
-    sig_mir = SIG_874_ABS * mir_sd / sd874
+    # round 53 (RC1 M1/M3, Doron): design-budget anchor -- the measured atlas shape is
+    # scaled so that the 8.80-um 0.1-um element carries the design's R~100 budget
+    # (BUDGET_OD_880, gas_removal_floor_880_widths.py), then OD -> m^-1 with the exact
+    # edge-grid gain (M1_PER_OD).  The design grids read the atlas re-run on the x.x0
+    # element grid centred on 8.80 um (residual_floor_w0p1_c880); the x.x5 scan of
+    # Appendix app:acefloor (residual_floor_w0p1) is kept for its headline value.
+    atlas01 = json.load(open(_PARENT / "data/ace_floor/"
+                             "w0p1/atlas.json"))
+    atlas880 = json.load(open(_PARENT / "data/ace_floor/"
+                              "w0p1_c880/atlas.json"))
+    sd01 = {round(r["center_um"], 3): r["sd"] for r in atlas880["19_22"]
+            if r.get("sd") is not None}
+    sd01_scan = {round(r["center_um"], 3): r["sd"] for r in atlas01["19_22"]
+                 if r.get("sd") is not None}
+    sd880_meas = sd01[8.8]
+    FLOOR_SCALE = BUDGET_OD_880 / sd880_meas
+
+    def od_to_m1(sd_od):
+        return np.asarray(sd_od, float) * FLOOR_SCALE * M1_PER_OD
+
+    print(f"floor anchor: measured 8.80-um 0.1-um SD {sd880_meas:.4e} OD (x.x5 scan "
+          f"{sd01_scan.get(8.8):.4e}); design budget {BUDGET_OD_880:.4e} OD -> scale "
+          f"{FLOOR_SCALE:.3f}; x {M1_PER_OD:.4e} m^-1/OD (g = {G_ONION:.3f}, edge grid)")
+    arch["floor_anchor"] = dict(convention="edge (shells bounded by tangent heights)",
+                                g_exact=float(G_ONION), m1_per_od=float(M1_PER_OD),
+                                od_per_m1_km=float(OD_PER_M1 / 1e3),
+                                budget_od_880=float(BUDGET_OD_880),
+                                measured_sd_880_od=float(sd880_meas),
+                                measured_sd_880_od_x5scan=float(sd01_scan.get(8.8)),
+                                floor_scale=float(FLOOR_SCALE),
+                                sig_880_m1=float(SIG_880_ABS), alpha_floor_m1=float(ALPHA_FLOOR))
+    sd874 = 0.00204   # legacy 0.25-um 8.74 record (kept only for the printed comparisons)
+    sig_mir = od_to_m1(mir_sd)   # round 53: same anchor for the legacy 0.25-um comparison
     print(f"MIR elements: {len(mir_c)} ({mir_c.min():.2f}-{mir_c.max():.2f} "
           f"um, gap at the saturated O3 core); floors "
           f"{sig_mir.min():.2e}-{sig_mir.max():.2e} m^-1")
@@ -636,7 +671,7 @@ def main():
     # and scaled to extinction by the same 2.04e-3 <-> 1.5e-8 conversion.
     print("\n" + "=" * 72)
     print("PART 3: Sect.-3.3 window mode (7.8-9.3 um at 0.1-um sampling)")
-    win_c = np.round(np.arange(7.85, 9.2501, 0.10), 2)
+    win_c = np.round(np.arange(7.80, 9.2001, 0.10), 2)   # round 53: x.x0 grid centred on 8.80 um (15 elements, 7.80-9.20)
     atl_c, atl_sd = [], []
     for r in atlas["19_22"]:
         if r.get("sd") is not None and 7.5 < r["center_um"] < 9.3:
@@ -653,13 +688,10 @@ def main():
     # width factor; the 0.25-um atlas x width factor is kept only for the
     # printed comparison.  OD -> extinction by the same 2.04e-3 <-> 1.5e-8
     # conversion (onion-peel geometry at dz = 0.5 km).
-    atlas01 = json.load(open(_PARENT / "data/ace_floor/"
-                             "w0p1/atlas.json"))
-    sd01 = {round(r["center_um"], 3): r["sd"] for r in atlas01["19_22"]
-            if r.get("sd") is not None}
+    # (atlas880/sd01 defined above, PART 2; round 53)
     sd_win_conv = np.interp(win_c, atl_c, atl_sd) * WIDTH_FACTOR
     sd_win = np.array([sd01[round(c, 3)] for c in win_c])
-    sig_win = SIG_874_ABS * sd_win / sd874
+    sig_win = od_to_m1(sd_win)   # round 53: design-budget anchor, exact gain
     print(f"window floors: direct 0.1-um SDs {sd_win.min():.5f}-{sd_win.max():.5f} OD "
           f"(converted would be {sd_win_conv.min():.5f}-{sd_win_conv.max():.5f})")
     print(f"window elements: {len(win_c)} ({win_c.min():.2f}-"
@@ -669,16 +701,17 @@ def main():
           f"{sd_full:.5f} OD at 8.74 um)")
     arch["width_factor_0p1um"] = dict(factor=WIDTH_FACTOR, sd_0p1um=sd_0p1,
                                       sd_0p25um=sd_full)
-    arch["floor_source"] = ("direct 0.1-um-element ACE re-analysis "
-                            "(data/ace_floor/w0p1/atlas.json, 19-22 km)")
-    arch["sd874_0p1um_direct"] = sd01[8.8] if 8.8 in sd01 else sd01[round(8.75, 3)]   # round 43: the 8.80-um element (8.75 if the re-run is pending)
+    arch["floor_source"] = ("direct 0.1-um-element ACE re-analysis on the x.x0 grid centred on 8.80 um "
+                            "(data/ace_floor/w0p1_c880/atlas.json, 19-22 km), "
+                            "scaled to the design's 8.80-um R~100 budget (round 53)")
+    arch["sd874_0p1um_direct"] = sd01_scan[8.8]   # Appendix app:acefloor's headline (x.x5 scan)
     arch["reference_element_um"] = WL_NM[I874] / 1000.0
     run_band_mode("window 7.8-9.3 @0.1", win_c, 0.10, sig_win,
                   ('vis/NIR 6 + window', 'window alone', 'triplet + window'))
 
     # ---- PART 4: the whole 8-13 um band at the SAME 0.1-um sampling -------
     # Round 33 (Doron, after the element-width study of
-    # scripts/resolution_sensitivity_calibrated.py): one resolution, 0.1 um,
+    # reproduce/resolution_sensitivity_calibrated.py): one resolution, 0.1 um,
     # for the whole band; the 7.8-9.3 um window is its minimal 15-element
     # subset.  Elements 8.05-13.25 um, those centered in the saturated O3
     # core (9.3-10.0 um) dropped; floors = atlas SD interpolated to the
@@ -686,7 +719,7 @@ def main():
     # measured 0.1-um width factor.
     print("\n" + "=" * 72)
     print("PART 4: band 8-13 um at 0.1-um sampling (one resolution for all)")
-    b01_c = np.round(np.arange(8.05, 13.2501, 0.10), 2)
+    b01_c = np.round(np.arange(8.00, 13.2001, 0.10), 2)   # round 53: x.x0 grid centred on 8.80 um
     b01_c = b01_c[(b01_c < 9.3) | (b01_c > 10.0)]
     all_c, all_sd = [], []
     for r in atlas["19_22"]:
@@ -696,11 +729,11 @@ def main():
     all_c, all_sd = np.array(all_c)[o], np.array(all_sd)[o]
     sd_b01_conv = np.interp(b01_c, all_c, all_sd) * WIDTH_FACTOR
     sd_b01 = np.array([sd01[round(c, 3)] for c in b01_c])      # round 36: direct 0.1-um floors
-    sig_b01 = SIG_874_ABS * sd_b01 / sd874
+    sig_b01 = od_to_m1(sd_b01)   # round 53: design-budget anchor, exact gain
     print(f"band@0.1 floors: direct 0.1-um SDs {sd_b01.min():.5f}-{sd_b01.max():.5f} OD "
           f"(converted would be {sd_b01_conv.min():.5f}-{sd_b01_conv.max():.5f}); "
           f"median direct/converted {np.median(sd_b01 / sd_b01_conv):.3f}")
-    arch["band01_floors_converted_m1"] = list(np.round(SIG_874_ABS * sd_b01_conv / sd874, 12))
+    arch["band01_floors_converted_m1"] = list(np.round(od_to_m1(sd_b01_conv), 12))
     print(f"band@0.1 elements: {len(b01_c)} ({b01_c.min():.2f}-{b01_c.max():.2f} "
           f"um, gap {9.3}-{10.0}); floors {sig_b01.min():.2e}-{sig_b01.max():.2e} m^-1")
     run_band_mode("band 8-13 @0.1", b01_c, 0.10, sig_b01,

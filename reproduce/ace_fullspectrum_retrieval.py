@@ -2,7 +2,7 @@
 ace_fullspectrum_retrieval.py -- silica null-test retrieval on real ACE
 occultations using the FULL residual spectral shape (760-1250 cm^-1,
 ~250 bins of 2 cm^-1) instead of the 4 broadband channels of
-scripts/ace_bplus_nulltest.py.
+reproduce/ace_bplus_nulltest.py.
 
 Purpose: the 4-channel null test finds an empirical sigma(M) several times
 the formal noise -- dominated by day-to-day background-colour variability
@@ -18,7 +18,7 @@ Method (all slant-space, as before):
   * model: slant basis spectra on the same wavenumber grid for the
     CALIBRATED two-component sulfate background of Paper 1 Sect. 2.2
     (round 27, Doron; imported bit-identically from
-    scripts/calibrated_background_thresholds.py: GloSSAC 20-25N quiet
+    reproduce/calibrated_background_thresholds.py: GloSSAC 20-25N quiet
     profile, Lund-Myhre 65 wt%/223 K member optics, 60 nm s1.6 fine +
     1.5 um s1.8 coarse modes) -- the fine and coarse component spectra,
     their (r_med, sigma) Jacobians at fixed 525-nm share, and the per-Tg
@@ -38,13 +38,17 @@ Method (all slant-space, as before):
     7.8-9.3 um retrieval window (1075-1282 cm^-1), MIR alone (no visible
     anchor), full 8-parameter model:
       win2  : native 2-cm^-1 bins, sigma_bin = 8e-3 (resolution kept);
-      win01 : the 15 design elements of 0.1 um (7.85-9.25 um), each the
-              -ln of the mean residual transmittance over its bins, with
-              the per-element measured floors of Appendix
-              app:tracegas_measured (window_floors_m1 of the threshold
-              archive converted back to OD by 2.04e-3/1.5e-8) as weights
-              -- the closest real-data emulation of the R~100 design
-              window, minus its visible/NIR channels.
+      win01 : the design's 0.1-um window elements (grid read from the
+              threshold archive; round 53: centred on the 8.80-um
+              resonance, x.x0 centres), each the -ln of the mean residual
+              transmittance over its bins, with the per-element floors of
+              Appendix app:tracegas_measured (window_floors_m1 of the
+              threshold archive -- round 53: the measured ACE shape anchored
+              to the design's own R~100 budget at 8.80 um -- converted back
+              to OD by saimon.onion_peel.OD_PER_M1, the exact edge-grid
+              onion-peel path 145.7 km) as weights -- the closest real-data
+              emulation of the R~100 design window, minus its visible/NIR
+              channels.
 
 Outputs
   outputs/ace_v52/basis_spectra_cal.npz  cached slant bases (shared w/ Ruang)
@@ -53,8 +57,8 @@ Outputs
   figures/ace_fullspectrum_nulltest.png
   printed: empirical robust sigma(M) vs the 4-channel value, M_min(3sigma)
 
-Run AFTER scripts/ace_bplus_nulltest.py (reads its stats for comparison).
-Run from the repo root:  python scripts/ace_fullspectrum_retrieval.py
+Run AFTER reproduce/ace_bplus_nulltest.py (reads its stats for comparison).
+Run from the repo root:  python reproduce/ace_fullspectrum_retrieval.py
 """
 
 from __future__ import annotations
@@ -79,22 +83,27 @@ from calibrated_background_thresholds import (  # noqa: E402
 from saimon.geometry import tangent_to_slant_paths  # noqa: E402
 from saimon.materials import SilicaRefractiveIndex  # noqa: E402
 from saimon.sai import create_silica_sai_layer  # noqa: E402
+from saimon.onion_peel import OD_PER_M1, M1_PER_OD  # noqa: E402  (round 53: exact edge-grid gain)
 
 DATA = _HERE / "data" / "ace" / "v52_subset"
 OUT = _HERE / "outputs" / "ace_v52"
 FIG = _HERE / "figures" / "ace_fullspectrum_nulltest.png"
 # the canonical 143-occultation ensemble (Appendix app:acefloor record); the
 # local mirror now holds 1274 occultations of the release, so the scan must
-# be filtered (as in scripts/ace_mir_aerosol.py)
+# be filtered (as in reproduce/ace_mir_aerosol.py)
 SIDE = _HERE / "data" / "ace" / "revision20260909"
 BASIS_CACHE = OUT / "basis_spectra_cal.npz"
 
 NU_LO, NU_HI = 760.0, 1250.0          # full-spectrum fit range
 NU_LOAD_HI = 1290.0                    # load up to here (window reaches 1282)
 WIN_UM = (7.8, 9.3)                    # Sect.-3.3 retrieval window
-WIN_EL_UM = np.round(np.arange(7.85, 9.2501, 0.10), 2)   # 15 elements
+# round 53: the design's window element grid (centred on 8.80 um) is read from
+# the threshold archive rather than hard-coded (was np.arange(7.85, 9.2501, 0.1))
+_THR_JSON = _HERE / "outputs" / "calibrated_background_thresholds.json"
+WIN_EL_UM = np.round(np.array(json.load(open(_THR_JSON))["window_elements_um"], float), 2)
 WIN_EL_W = 0.10
-OD_PER_M1 = 2.04e-3 / 1.5e-8           # measured element OD <-> extinction
+# OD_PER_M1 (element OD <-> shell extinction) imported from saimon.onion_peel
+# (round 53: 1/|G_k| = 145.7 km, exact edge-grid gain; was 2.04e-3/1.5e-8 = 136 km)
 FD = 0.05
 RMED_NM, SIGMA_PSD = 268.0, 1.31
 H_GRID_KM = np.arange(16.0, 35.0, 0.5)
@@ -300,14 +309,15 @@ def main():
     nu_grid = reference_grid()
     bases = build_bases(nu_grid)
     # per-element window floors (OD) from the threshold archive
-    thr = json.load(open(_HERE / "outputs" /
-                         "calibrated_background_thresholds.json"))
+    thr = json.load(open(_THR_JSON))
     assert np.allclose(thr["window_elements_um"], WIN_EL_UM)
+    # round 53: floors are the design-budget-anchored ones (R~100 floor
+    # everywhere); OD_PER_M1 is the exact edge-grid conversion
     win_sig_od = np.array(thr["window_floors_m1"]) * OD_PER_M1
     print(f"window element floors: {win_sig_od.min():.2e}-"
           f"{win_sig_od.max():.2e} OD")
 
-    # 4-channel comparison value (scripts/ace_bplus_nulltest.py)
+    # 4-channel comparison value (reproduce/ace_bplus_nulltest.py)
     try:
         st4 = json.load(open(OUT / "nulltest_stats.json"))
         sig4ch = float(st4["4p"]["sigma_emp"])

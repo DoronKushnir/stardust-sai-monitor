@@ -1,0 +1,72 @@
+
+=== Dolomite trace-gas-removal floors (1 Tg, 20 km tangent, 0.25 um element) ===
+    ray-arithmetic-mean optics; dz=0.5 km; sigma_alpha via onion-peel
+
+--- nu3 (~6.4um): CO3 asym stretch on the H2O nu2 bending band core
+    tau_dolomite(target) = 1.131e-01 OD
+    tau_gas(target)     = 1.612e+01 OD  (h2o=1.61e+01, ch4=3.38e-02, n2o=5.66e-07, o3=1.04e-06)
+    sigma_total (removal) = 6.008e-02 OD
+    sigma_dolomite_od (deg-aware) = 2.794e-02 OD  (DOFS 4.32)
+    sigma_alpha = 4.129e-07 1/m  (deg-aware 1.921e-07)
+    SNR(1 Tg) = 4.0  ->  1-sigma detectable ~ 0.247 Tg
+
+--- nu2 (~11.3um): CO3 out-of-plane bend in the window (HNO3 + CFC-11/12)
+    tau_dolomite(target) = 3.795e-02 OD
+    tau_gas(target)     = 2.977e-01 OD  (hno3=2.77e-01, h2o=2.83e-04, cfc11=5.69e-05, cfc12=1.99e-02)
+    sigma_total (removal) = 1.977e-03 OD
+    sigma_dolomite_od (deg-aware) = 2.030e-03 OD  (DOFS 4.24)
+    sigma_alpha = 1.359e-08 1/m  (deg-aware 1.395e-08)
+    SNR(1 Tg) = 18.7  ->  1-sigma detectable ~ 0.053 Tg
+
+--- nu4 (~13.7um): CO3 in-plane bend on the CO2 15um shoulder (expect dead)
+/Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/sage3/o3_removal.py:712: RuntimeWarning: overflow encountered in square
+  S_eps = np.diag(sigma_phot ** 2 + line_meas_sq)
+    tau_dolomite(target) = 5.047e-03 OD
+    tau_gas(target)     = 2.506e+01 OD  (co2=2.31e+01, o3=1.92e+00)
+    sigma_total (removal) = 5.325e-01 OD
+    sigma_dolomite_od (deg-aware) = 1.171e+00 OD  (DOFS 2.41)
+    sigma_alpha = 3.660e-06 1/m  (deg-aware 8.050e-06)
+    SNR(1 Tg) = 0.0  ->  1-sigma detectable ~ 232.021 Tg
+
+--- L (~24.9um): far-IR lattice mode on the H2O rotation forest
+    tau_dolomite(target) = 9.892e-02 OD
+    tau_gas(target)     = 7.764e-01 OD  (h2o=7.76e-01, o3=8.60e-06, n2o=0.00e+00)
+    sigma_total (removal) = 2.008e-03 OD
+    sigma_dolomite_od (deg-aware) = 2.675e-04 OD  (DOFS 5.00)
+    sigma_alpha = 1.380e-08 1/m  (deg-aware 1.838e-09)
+    SNR(1 Tg) = 369.9  ->  1-sigma detectable ~ 0.003 Tg
+
+=== SUMMARY ===
+            band   tau_mat   tau_gas   sig_tot   sig_mat  sig_alpha  SNR/Tg   minTg
+    nu3 (~6.4um)  1.13e-01  1.61e+01  6.01e-02  2.79e-02   1.92e-07     4.0   0.247
+   nu2 (~11.3um)  3.79e-02  2.98e-01  1.98e-03  2.03e-03   1.40e-08    18.7   0.053
+   nu4 (~13.7um)  5.05e-03  2.51e+01  5.33e-01  1.17e+00   8.05e-06     0.0 232.021
+     L (~24.9um)  9.89e-02  7.76e-01  2.01e-03  2.67e-04   1.84e-09   369.9   0.003
+
+wrote /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/dolomite/dolomite_band_floors_20km.csv
+
+=== Alumina trace-gas-removal floors (1 Tg, 20 km tangent, 0.25 um element) ===
+    ray-arithmetic-mean optics; dz=0.5 km; sigma_alpha via onion-peel
+
+--- R (~12.9um): main reststrahlen band between the O3 9.6um and CO2 15um bands
+    tau_alumina(target) = 3.206e-01 OD
+    tau_gas(target)     = 4.745e-01 OD  (co2=5.41e-02, h2o=1.04e-03, o3=4.10e-01, hno3=9.45e-03, cfc11=1.61e-04)
+    sigma_total (removal) = 2.613e-03 OD
+    sigma_alumina_od (deg-aware) = 2.854e-03 OD  (DOFS 6.85)
+    sigma_alpha = 1.796e-08 1/m  (deg-aware 1.962e-08)
+    SNR(1 Tg) = 112.3  ->  1-sigma detectable ~ 0.009 Tg
+
+--- W (~20.7um): red reststrahlen wing, the silica config-C region
+    tau_alumina(target) = 2.335e-02 OD
+    tau_gas(target)     = 5.149e-01 OD  (h2o=4.31e-01, hno3=8.36e-02, o3=0.00e+00)
+    sigma_total (removal) = 1.212e-03 OD
+    sigma_alumina_od (deg-aware) = 5.105e-04 OD  (DOFS 5.33)
+    sigma_alpha = 8.331e-09 1/m  (deg-aware 3.509e-09)
+    SNR(1 Tg) = 45.7  ->  1-sigma detectable ~ 0.022 Tg
+
+=== SUMMARY ===
+            band   tau_mat   tau_gas   sig_tot   sig_mat  sig_alpha  SNR/Tg   minTg
+     R (~12.9um)  3.21e-01  4.74e-01  2.61e-03  2.85e-03   1.96e-08   112.3   0.009
+     W (~20.7um)  2.33e-02  5.15e-01  1.21e-03  5.10e-04   3.51e-09    45.7   0.022
+
+wrote /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/alumina/alumina_band_floors_20km.csv

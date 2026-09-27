@@ -1,0 +1,6 @@
+band,note,target_um,n_chan,tau_calcite_target_OD,tau_gas_target_OD,sigma_total_OD,sigma_calcite_od_OD,dofs,sigma_alpha_1_m,sigma_alpha_degaware_1_m,snr_1Tg,min_detectable_Tg
+nu3 (~6.9um),CO3 asym stretch on H2O nu2 bending band,6.9,14,1.024334e-01,6.172216e+00,1.763465e-02,1.556296e-02,6.0951,1.212120e-07,1.069722e-07,6.5819,0.151933
+nu2 (~11.4um),CO3 out-of-plane bend on HNO3 nu2 (window region; CFC-11/12 co-retrieved),11.4,16,3.792015e-02,2.662464e-01,1.484437e-03,1.664166e-03,4.7023,1.020329e-08,1.143867e-08,22.7863,0.043886
+nu4 (~14.0um),CO3 in-plane bend on the CO2 15um band (expect saturated),14.0,15,5.021746e-03,3.265346e+01,4.586576e-01,3.492061e+00,2.7161,3.152589e-06,2.400272e-05,0.0014,695.387774
+L (~28.5um),far-IR lattice mode on H2O pure-rotation forest,28.5,31,1.119688e-01,5.636372e-03,4.346964e-04,6.376074e-04,6.0366,2.987892e-09,4.382603e-09,175.6078,0.005695
+L-win (~29.2um),"far-IR lattice red wing, H2O inter-line window",29.2,26,3.948100e-02,7.362317e-03,9.239355e-05,1.848062e-04,5.8714,6.350683e-10,1.270268e-09,213.6346,0.004681

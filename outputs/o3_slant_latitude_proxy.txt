@@ -1,0 +1,24 @@
+slant tau_O3 above the tangent, ratio to US standard 1976
+h_tan [km] | tropical | midlat summer | midlat winter | subarctic summer | subarctic winter
+        16 | 0.72 | 0.88 | 1.06 | 0.92 | 1.15
+        18 | 0.80 | 0.91 | 1.03 | 0.92 | 1.09
+        20 | 0.90 | 0.95 | 1.02 | 0.94 | 1.00
+        22 | 1.02 | 0.99 | 0.98 | 0.96 | 0.89
+        24 | 1.16 | 1.06 | 0.95 | 0.97 | 0.81
+
+local O3 number density at 20 km [cm^-3] (for comparison: the referee's 'factor two' is a local/column statement)
+  US standard 1976     4.77e+12
+  tropical             2.77e+12
+  midlat summer        3.93e+12
+  midlat winter        5.25e+12
+  subarctic summer     3.99e+12
+  subarctic winter     6.28e+12
+
+floor factor if the 8.80-um budget is line term 2.3e-3 x R plus OE remainder 0.9e-3 in quadrature:
+  tau ratio 0.8: floor x 0.83
+  tau ratio 0.9: floor x 0.91
+  tau ratio 1.0: floor x 1.00
+  tau ratio 1.1: floor x 1.09
+  tau ratio 1.2: floor x 1.18
+  tau ratio 1.5: floor x 1.44
+  tau ratio 2.0: floor x 1.90

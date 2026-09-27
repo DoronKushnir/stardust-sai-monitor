@@ -64,15 +64,26 @@ silica field and orbit sampling.
 
 * The silica reference element is 8.80 µm (8.75–8.85 µm), the
   aerosol-extinction peak of the adopted optical constants; the design's
-  retrieval band is 8–13 µm at 0.1 µm sampling (46 elements, O₃ core
-  9.3–10.0 µm excluded), its minimal subset the 7.8–9.3 µm window (15
-  elements centred at 7.85 … 9.25 µm).
+  retrieval band is 8–13 µm at 0.1 µm sampling (45 elements centred at
+  8.00 … 13.20 µm, one of them on the resonance; O₃ core 9.3–10.0 µm
+  excluded), its minimal subset the 7.8–9.3 µm window (15 elements centred
+  at 7.80 … 9.20 µm). The floors on that grid are the archive
+  `data/ace_floor/w0p1_c880/` (the Appendix E scan, `w0p1/`, is on the
+  x.x5 grid and shares the 8.80 µm element bit for bit).
 * Element optical depths are `-ln <T>` over the element; thresholds are
   per 0.5-km retrieved shell at a 20-km tangent; the ACE null tests are
   quoted in the slant convention and converted (Sect. 4.3).
-* Floors: the per-element floors of the thresholds are the measured ACE
-  residual SDs (`data/ace_floor/w0p1/atlas.json`, 19–22 km), converted to
-  extinction with Eq. D8 (factor 1.24 / P_kk).
+* Floors: the per-element floors of the thresholds carry the design's own
+  R~100 optimal-estimation budget at the 8.80 µm element (2.466e-3 OD,
+  `outputs/round43_tracegas/gas_removal_floor_widths.csv`) with the
+  wavelength dependence of the measured ACE residual SDs
+  (`data/ace_floor/w0p1_c880/atlas.json`, 19–22 km; scale 1.327 on the
+  measured 1.858e-3 OD at 8.80 µm), converted to a per-shell extinction with
+  the exact gain of the edge-bounded onion peel, |G_k| = g / P_kk with
+  g = 1.097 (`saimon/onion_peel.py`; the paper's Eq. D8). The single source
+  of these constants is `saimon/onion_peel.py`; the vertical-correlation
+  bracket of the floor (coherent database term vs independent noise) is
+  `m2_vertical_correlation_floor.py`.
 
 ## 5. Data (see `data/PROVENANCE.md`)
 
@@ -109,6 +120,15 @@ cross-section grids are our computed products for the paper's bands.
   0.026 / 0.08 / 0.19 Tg, is unchanged).  The ACE columns of Table F1 had
   last been run in round 33 (before the round-36 floor model) and were re-run
   in round 51 as well (band at 0.1 um: 0.18 -> 0.15 Tg per shell).
+* Rounds 53–54 (referee report RC1): the whole chain was re-run on the
+  edge-grid exact gain (0.885 of the former 1.24/P_kk), the design-budget
+  floor anchor (1.327 on the measured atlas) and the 8.80-centred grid.
+  Headline thresholds 0.081 -> 0.102 Tg (band) and 0.115 -> 0.141 Tg
+  (window); per-shell ACE conversion rho 2.46 -> 2.33; Sect. 6 best bin
+  0.021 -> 0.026 Tg; materials 0.64/0.60/0.125 -> 0.78/0.75/0.153 Tg. New
+  steps: `floorc`, `spike`, `onion`, `m2`, `far`, `o3lat`, `tab53`; new
+  Table 2 rows (third sulfate mode free, second optics member free, database
+  term coherent). The round-51 reference outputs are in the git history.
 * The reference archives in `reference_outputs/` are the versions this
   repository regenerates; `outputs/calibrated_background_thresholds.json`,
   the Fisher inputs, the materials thresholds, the design-sensitivity

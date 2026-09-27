@@ -1,0 +1,5 @@
+config,n_chan,Mmin3s_4param_quiet_Tg,Mmin3s_4param_elevated_Tg,Mmin3s_4param_post_eruption_Tg,Mmin3s_2param_quiet_Tg,Mmin3s_2param_elevated_Tg,Mmin3s_2param_post_eruption_Tg
+A+,5,4.82295,2.94417,4.57367,0.0612788,0.0723859,0.378597
+B,6,0.33942,0.541206,1.39479,0.0608887,0.07192,0.301041
+R,7,0.087865,0.0890792,0.0889045,0.050577,0.0563038,0.0865417
+R+W,8,0.0852313,0.0848075,0.0829617,0.0497803,0.0550735,0.0817798

@@ -35,7 +35,7 @@ Outputs per band: sigma_stat(SNR), the coherent systematic floor, the SNR at
 which they cross, and the onion-peel extinction floors, next to the R~100
 floors from the notes.
 
-Usage: python scripts/highres_gas_removal_budget.py [silica|calcite|dolomite|alumina|all]
+Usage: python reproduce/highres_gas_removal_budget.py [silica|calcite|dolomite|alumina|all]
 First run is slow (fine Voigt grids, incl. perturbed T and P); all cached.
 """
 
@@ -58,7 +58,7 @@ from saimon.trace_gases import (HITRAN_GASES, CFC_GASES, _voigt_native,
 
 TANGENT_KM = 20.0
 R_EARTH_M = 6.371e6
-G_ONION = np.sqrt(5.0 - 2.0 * np.sqrt(3.0))   # white-noise onion-peel gain
+from saimon.onion_peel import G_ONION  # round 53 (RC1 M1): exact edge-grid gain from saimon.onion_peel
 DZ_M = 500.0
 ATM_PER_PA = 1.0 / 101_325.0
 

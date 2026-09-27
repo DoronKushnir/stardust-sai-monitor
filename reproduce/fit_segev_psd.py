@@ -131,6 +131,12 @@ for nm, (D, F) in cases.items():
                        fr'$\sigma_\mathrm{{psd}}={sg:.2f}$')
 axB.axvline(DCUT, color='0.4', ls='--', lw=0.9)
 axB.set_xlabel(r'Particle diameter $D$ [$\mu$m]')
+# RC1 T5: the text and equations use the radius; show it on a secondary axis
+axR = axB.secondary_xaxis('top', functions=(lambda D: D / 2, lambda r: 2 * r))
+axR.set_xlabel(r'Particle radius $r$ [$\mu$m]')
+axR.set_xticks([0.1, 0.25, 0.5, 1, 2, 3])
+axR.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f'{x:g}'))
+axR.xaxis.set_minor_formatter(mticker.NullFormatter())
 axB.set_ylabel('Mass-weighted cumulative distribution')
 axB.set_xlim(0.2, 6); axB.set_ylim(-0.02, 1.02)
 axB.grid(True, which='both', alpha=0.25, lw=0.5)

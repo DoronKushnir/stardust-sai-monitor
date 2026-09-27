@@ -1,0 +1,5 @@
+band,note,target_um,n_chan,tau_material_target_OD,tau_gas_target_OD,sigma_total_OD,sigma_material_od_OD,dofs,sigma_alpha_1_m,sigma_alpha_degaware_1_m,snr_1Tg,min_detectable_Tg
+nu3 (~6.4um),CO3 asym stretch on the H2O nu2 bending band core,6.4,15,1.130685e-01,1.612360e+01,6.007545e-02,2.794345e-02,4.3171,4.129294e-07,1.920697e-07,4.0463,0.247137
+nu2 (~11.3um),CO3 out-of-plane bend in the window (HNO3 + CFC-11/12),11.3,16,3.794860e-02,2.977282e-01,1.976849e-03,2.029802e-03,4.2390,1.358790e-08,1.395187e-08,18.6957,0.053488
+nu4 (~13.7um),CO3 in-plane bend on the CO2 15um shoulder (expect dead),13.7,15,5.047450e-03,2.506315e+01,5.325026e-01,1.171116e+00,2.4114,3.660163e-06,8.049680e-06,0.0043,232.021264
+L (~24.9um),far-IR lattice mode on the H2O rotation forest,24.9,31,9.892422e-02,7.763960e-01,2.007845e-03,2.674645e-04,4.9990,1.380095e-08,1.838421e-09,369.8592,0.002704

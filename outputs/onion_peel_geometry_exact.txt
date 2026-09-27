@@ -1,0 +1,37 @@
+
+[centre] tangent of shell k at z=19.75 km; shell 19.50-20.00 km
+  P_kk = 113.1 km   P_k,k+1/P_kk = 0.7321   two-term g = 1.2393
+  exact |G_k| = 1.0987e-05 m^-1/OD   (two-term 1.0962e-05; 1.24/P_kk = 1.0975e-05; g2/P_kk = 1.0962e-05)
+  off-diagonal remainder (beyond k,k+1) = 0.0045 of variance
+  G_kk = 8.8451e-06  G_k,k+1 = -6.4751e-06  ratio -0.7321
+    sigma_tau=5.00e-04 (SNR2000 5e-4): exact 5.493e-09  paper(1.24/160km) 3.878e-09
+    sigma_tau=2.47e-03 (OE budget 2.47e-3): exact 2.714e-08  paper(1.24/160km) 1.915e-08
+    sigma_tau=1.86e-03 (ACE 8.80um 1.86e-3): exact 2.044e-08  paper(1.24/160km) 1.442e-08
+    sigma_tau=2.04e-03 (ACE 8.74 0.25um 2.04e-3): exact 2.241e-08  paper(1.24/160km) 1.582e-08
+    sigma_tau=9.40e-04 (line-resolved 9.4e-4): exact 1.033e-08  paper(1.24/160km) 7.290e-09
+
+[edge] tangent of shell k at z=20.00 km; shell 20.00-20.50 km
+  P_kk = 159.9 km   P_k,k+1/P_kk = 0.4142   two-term g = 1.0824
+  exact |G_k| = 6.8626e-06 m^-1/OD   (two-term 6.7696e-06; 1.24/P_kk = 7.7603e-06; g2/P_kk = 6.7696e-06)
+  off-diagonal remainder (beyond k,k+1) = 0.0269 of variance
+  G_kk = 6.2543e-06  G_k,k+1 = -2.5907e-06  ratio -0.4142
+    sigma_tau=5.00e-04 (SNR2000 5e-4): exact 3.431e-09  paper(1.24/160km) 3.878e-09
+    sigma_tau=2.47e-03 (OE budget 2.47e-3): exact 1.695e-08  paper(1.24/160km) 1.915e-08
+    sigma_tau=1.86e-03 (ACE 8.80um 1.86e-3): exact 1.276e-08  paper(1.24/160km) 1.442e-08
+    sigma_tau=2.04e-03 (ACE 8.74 0.25um 2.04e-3): exact 1.400e-08  paper(1.24/160km) 1.582e-08
+    sigma_tau=9.40e-04 (line-resolved 9.4e-4): exact 6.451e-09  paper(1.24/160km) 7.290e-09
+
+ratio exact_edge/paper = 0.885;  exact_centre/paper = 1.417
+thresholds x: band 0.081 -> edge 0.072, centre 0.115 Tg; window 0.115 -> edge 0.102, centre 0.163 Tg
+
+[M2 centre] tau_O3(20km)=1.150; alpha_O3(20km)=1.483e-06 m^-1; f*alpha=2.966e-09
+  coherent-peeled error at 20 km = 2.966e-09 m^-1 (== f*alpha? True)
+  white propagation of the same sigma_tau=f*tau=2.30e-03: exact 2.527e-08; paper 1.24/160km -> 1.784e-08
+  ratio white(paper)/coherent = 6.01
+  tau/P_kk = 1.017e-05 vs alpha = 1.483e-06: chord-weighted mean O3 above tangent is 6.86x the local value
+
+[M2 edge] tau_O3(20km)=1.150; alpha_O3(20km)=1.524e-06 m^-1; f*alpha=3.048e-09
+  coherent-peeled error at 20 km = 3.048e-09 m^-1 (== f*alpha? True)
+  white propagation of the same sigma_tau=f*tau=2.30e-03: exact 1.578e-08; paper 1.24/160km -> 1.784e-08
+  ratio white(paper)/coherent = 5.85
+  tau/P_kk = 7.192e-06 vs alpha = 1.524e-06: chord-weighted mean O3 above tangent is 4.72x the local value

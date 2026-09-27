@@ -1,0 +1,53 @@
+
+=== Calcite trace-gas-removal floors (1 Tg, 20 km tangent, 0.1 um element) ===
+    ray-arithmetic-mean optics; dz=0.5 km; sigma_alpha via onion-peel
+
+--- nu3 (~6.9um): CO3 asym stretch on H2O nu2 bending band
+    tau_calcite(target) = 1.024e-01 OD
+    tau_gas(target)     = 6.172e+00 OD  (h2o=6.14e+00, ch4=3.51e-02, n2o=5.30e-08, o3=7.66e-04)
+    sigma_total (removal) = 1.763e-02 OD
+    sigma_calcite_od (deg-aware) = 1.556e-02 OD  (DOFS 6.10)
+    sigma_alpha = 1.212e-07 1/m  (deg-aware 1.070e-07)
+    SNR(1 Tg) = 6.6  ->  1-sigma detectable ~ 0.152 Tg
+
+--- nu2 (~11.4um): CO3 out-of-plane bend on HNO3 nu2 (window region; CFC-11/12 co-retrieved)
+    tau_calcite(target) = 3.792e-02 OD
+    tau_gas(target)     = 2.662e-01 OD  (hno3=2.52e-01, h2o=6.79e-05, cfc11=4.95e-05, cfc12=1.42e-02)
+    sigma_total (removal) = 1.484e-03 OD
+    sigma_calcite_od (deg-aware) = 1.664e-03 OD  (DOFS 4.70)
+    sigma_alpha = 1.020e-08 1/m  (deg-aware 1.144e-08)
+    SNR(1 Tg) = 22.8  ->  1-sigma detectable ~ 0.044 Tg
+
+--- nu4 (~14.0um): CO3 in-plane bend on the CO2 15um band (expect saturated)
+    tau_calcite(target) = 5.022e-03 OD
+    tau_gas(target)     = 3.265e+01 OD  (co2=2.96e+01, o3=3.05e+00)
+    sigma_total (removal) = 4.587e-01 OD
+    sigma_calcite_od (deg-aware) = 3.492e+00 OD  (DOFS 2.72)
+    sigma_alpha = 3.153e-06 1/m  (deg-aware 2.400e-05)
+    SNR(1 Tg) = 0.0  ->  1-sigma detectable ~ 695.388 Tg
+
+--- L (~28.5um): far-IR lattice mode on H2O pure-rotation forest
+    tau_calcite(target) = 1.120e-01 OD
+    tau_gas(target)     = 5.636e-03 OD  (h2o=1.45e-03, o3=4.19e-03, n2o=3.82e-09)
+    sigma_total (removal) = 4.347e-04 OD
+    sigma_calcite_od (deg-aware) = 6.376e-04 OD  (DOFS 6.04)
+    sigma_alpha = 2.988e-09 1/m  (deg-aware 4.383e-09)
+    SNR(1 Tg) = 175.6  ->  1-sigma detectable ~ 0.006 Tg
+
+--- L-win (~29.2um): far-IR lattice red wing, H2O inter-line window
+    tau_calcite(target) = 3.948e-02 OD
+    tau_gas(target)     = 7.362e-03 OD  (h2o=6.89e-03, o3=4.70e-04, n2o=3.51e-09)
+    sigma_total (removal) = 9.239e-05 OD
+    sigma_calcite_od (deg-aware) = 1.848e-04 OD  (DOFS 5.87)
+    sigma_alpha = 6.351e-10 1/m  (deg-aware 1.270e-09)
+    SNR(1 Tg) = 213.6  ->  1-sigma detectable ~ 0.005 Tg
+
+=== SUMMARY ===
+            band   tau_cal   tau_gas   sig_tot   sig_cal  sig_alpha  SNR/Tg   minTg
+    nu3 (~6.9um)  1.02e-01  6.17e+00  1.76e-02  1.56e-02   1.21e-07     6.6   0.152
+   nu2 (~11.4um)  3.79e-02  2.66e-01  1.48e-03  1.66e-03   1.02e-08    22.8   0.044
+   nu4 (~14.0um)  5.02e-03  3.27e+01  4.59e-01  3.49e+00   3.15e-06     0.0 695.388
+     L (~28.5um)  1.12e-01  5.64e-03  4.35e-04  6.38e-04   2.99e-09   175.6   0.006
+  L-win (~29.2um)  3.95e-02  7.36e-03  9.24e-05  1.85e-04   6.35e-10   213.6   0.005
+
+wrote /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/calcite/calcite_band_floors_20km_w0p1.csv

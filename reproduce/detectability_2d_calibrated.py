@@ -48,8 +48,8 @@ Products
       single two-panel figure of the combined +-41 deg case; the former
       distributions / mmin_lat figures are no longer produced)
 
-Run from the repo root:  python scripts/detectability_2d_calibrated.py
-                         python scripts/detectability_2d_calibrated.py --plot
+Run from the repo root:  python reproduce/detectability_2d_calibrated.py
+                         python reproduce/detectability_2d_calibrated.py --plot
 """
 
 from __future__ import annotations

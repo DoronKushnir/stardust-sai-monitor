@@ -1,0 +1,26 @@
+=== Part 1: CFC slant OD (20 km tangent, 0.25 um element, real .xsc) ===
+    VMR (constant fallback): CFC-11=230 ppt, CFC-12=520 ppt (overstates above ~20 km)
+
+   lam[um]      CFC-11      CFC-12   CFC total   sig_alpha
+      8.80   1.451e-05   1.718e-02   1.719e-02   1.182e-07
+      8.74   1.443e-05   2.579e-02   2.581e-02   1.774e-07
+      9.20   1.561e-02   3.513e-02   5.074e-02   3.488e-07
+     10.90   3.691e-04   8.027e-02   8.064e-02   5.543e-07
+     11.00   4.947e-05   4.040e-02   4.045e-02   2.780e-07
+     11.40   9.988e-05   1.369e-02   1.379e-02   9.481e-08
+     11.80   7.482e-02   3.326e-04   7.516e-02   5.166e-07
+      6.90   0.000e+00   0.000e+00   0.000e+00   0.000e+00
+      7.00   0.000e+00   0.000e+00   0.000e+00   0.000e+00
+
+  reference: silica B+ (8.80um) O3-removal floor ~ 2.0e-3 OD (sig_alpha ~1.5e-8)
+  reference: calcite nu2 (11.4um) signal 3.8e-2 OD, HNO3 bg 2.4e-1 OD
+
+=== Part 2: calcite OE floor, without vs with CFC-11/-12 co-retrieval ===
+
+--- nu2 11.4um  (calcite signal 3.792e-02 OD)
+    no CFC : tau_gas=2.422e-01 (CFC=0.00e+00)  sigma_total=1.401e-03  sigma_cal=1.576e-03  sig_alpha=1.083e-08
+    +CFC   : tau_gas=2.560e-01 (CFC=1.38e-02)  sigma_total=1.460e-03  sigma_cal=1.649e-03  sig_alpha=1.134e-08
+
+--- nu3 6.9um  (calcite signal 1.024e-01 OD)
+    no CFC : tau_gas=5.780e+00 (CFC=0.00e+00)  sigma_total=1.728e-02  sigma_cal=9.936e-03  sig_alpha=6.830e-08
+    +CFC   : tau_gas=5.780e+00 (CFC=0.00e+00)  sigma_total=1.728e-02  sigma_cal=9.936e-03  sig_alpha=6.830e-08

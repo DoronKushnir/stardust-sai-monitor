@@ -9,16 +9,18 @@ anchor gives 0.12 Tg" (Sect. 4) versus "window + one channel gives
 Both analyses use the same spectral shapes and the same per-element floors,
 so the projection geometry (1 - R^2) is the same; what differs is the
 silica SIGNAL per Tg against those floors:
-  * design (shell) convention: the floors are mapped to a 0.5-km shell,
-    sigma_alpha = 1.5e-8 m^-1 <-> 2.04e-3 OD (P_eff = 136 km including the
-    onion-peel factor), and the signal is the LOCAL per-Tg extinction at
-    20 km;
+  * design (shell) convention: the floors are mapped to a 0.5-km shell by
+    the exact edge-grid onion-peel gain, sigma_alpha = |G_k| sigma_tau with
+    1/|G_k| = OD_PER_M1 = 145.7 km (saimon.onion_peel; round 53 -- was the
+    2.04e-3 OD <-> 1.5e-8 m^-1 anchor, 136 km), and the signal is the LOCAL
+    per-Tg extinction at 20 km;
   * null test (slant) convention: the fit is on the slant OD at the
     occultation's own tangent height (median 20.5 km), and the per-Tg
     silica column is the chord through the entire constant-mixing-ratio
     layer (16 km to 30 hPa, ~8 km deep).
 Computed here:
-  1. per-Tg silica signal at the 8.75-um window element in both
+  1. per-Tg silica signal at the 8.80-um window element (round 53: the
+     design grid is centred on the resonance; was the 8.75-um element) in both
      conventions and their ratio rho (at the median and quartile tangent
      heights of the 101-occultation null-test sample);
   2. like-for-like check: the linearized formal sigma(M) of the win01 /
@@ -28,7 +30,7 @@ Computed here:
   3. the null-test numbers expressed in the shell convention (x rho) and
      the design numbers in the slant convention (/ rho).
 
-Run from the repo root:  python scripts/ace_nulltest_convention.py
+Run from the repo root:  python reproduce/ace_nulltest_convention.py
 Output: printed tables + outputs/ace_v52/nulltest_convention.json
 """
 
@@ -47,12 +49,13 @@ for p in (_ROOT, _HERE):
         sys.path.insert(0, str(p))
 
 from calibrated_background_thresholds import (  # noqa: E402
-    ALT, iz, RMED_SIL_NM, SIGMA_SIL, SIG_874_ABS)
+    ALT, iz, RMED_SIL_NM, SIGMA_SIL)
+from saimon.onion_peel import OD_PER_M1  # noqa: E402  (round 53: exact edge-grid gain, 145.7 km)
 from saimon.materials import SilicaRefractiveIndex  # noqa: E402
 from saimon.sai import create_silica_sai_layer  # noqa: E402
 
 OUT = _ROOT / "outputs" / "ace_v52"
-OD_PER_M1 = 2.04e-3 / SIG_874_ABS          # 136 km effective shell path
+# OD_PER_M1 imported from saimon.onion_peel (round 53; was 2.04e-3/SIG_874_ABS = 136 km)
 NAMES = ("f", "c", "jrf", "jsf", "jrc", "jsc", "sil")
 
 
@@ -104,9 +107,10 @@ def main():
         return np.array([J[(wl >= c - 0.05) & (wl < c + 0.05)].mean(axis=0)
                          for c in el])
 
-    i875 = int(np.argmin(np.abs(el - 8.75)))
+    i875 = int(np.argmin(np.abs(el - 8.80)))   # round 53: grid centred on 8.80 um (name kept for the loop below)
+    el_ref = float(el[i875])
     conv = {}
-    print("per-Tg silica signal at the 8.75-um window element")
+    print(f"per-Tg silica signal at the {el_ref:.2f}-um window element")
     for lab, h in [("median", h_med), ("q25", h_q[0]), ("q75", h_q[1]),
                    ("20.0", 20.0)]:
         Jel = element_avg(slant_cols(h))
@@ -118,7 +122,8 @@ def main():
         conv[lab] = dict(h_km=float(h), slant_od_per_tg=float(t_slant[i875]),
                          shell_od_per_tg=float(t_shell_od[i875]),
                          local_ext_per_tg_m1=float(t_local[i875]),
-                         rho_875=rho, rho_window_weighted=rho_w,
+                         rho_875=rho, rho_ref=rho, ref_element_um=el_ref,
+                         rho_window_weighted=rho_w,
                          effective_layer_chord_km=float(
                              t_slant[i875] / t_local[i875] / 1e3))
         print(f"  h = {h:4.1f} km ({lab:6s}): slant {t_slant[i875]:.4f} OD/Tg,"
@@ -191,8 +196,14 @@ def main():
             print(f"  design window + {r_lab:42s} {ns:16s}: "
                   + (f"{m:.3f} -> {m/rho:.3f} Tg" if m else "degenerate"))
     for tag in ("band 8-13 um @0.25", "band 8-13 @0.1"):
-        band = thr["results"]["CALIBRATED quiet (LM65T223, 2-comp)"][
-            f"{tag}: measured floors"]["full 7-param"]
+        # round 53: the floor label may have changed with the anchor
+        # ("measured floors" -> design-budget floors); match on the tag prefix
+        resq = thr["results"]["CALIBRATED quiet (LM65T223, 2-comp)"]
+        key = next((k for k in resq if k.startswith(tag + ":")), None)
+        if key is None:
+            print(f"  (no '{tag}: ...' entry in the threshold archive; skipped)")
+            continue
+        band = resq[key]["full 7-param"]
         for k, v in band.items():
             m = v["mmin_tg"]
             if not m or not np.isfinite(m):

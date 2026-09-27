@@ -52,7 +52,7 @@ instrumental floor.
 
 Round-27 (Doron): the aerosol background overlaid is the CALIBRATED
 two-component sulfate background of Paper 1 Sect. 2.2 (imported
-bit-identically from scripts/calibrated_background_thresholds.py) at the
+bit-identically from reproduce/calibrated_background_thresholds.py) at the
 atlas bin's 18-km tangent, replacing the superseded single-mode elevated
 curve; its element OD is printed together with the fine/coarse split.
 The atlas is distributed in five climate zones only (Arctic summer/winter,
@@ -95,7 +95,7 @@ plt.rcParams.update({   # round 44 (Doron): larger fonts, heavier lines
     "axes.labelsize": 17,
     "xtick.labelsize": 15,
     "ytick.labelsize": 15,
-    "legend.fontsize": 13,
+    "legend.fontsize": 10,   # round 53 (Doron): smaller, the legend hid the curves
 })
 
 ELEM_UM = 0.02          # sampling of the figure (paper Fig. 2)
@@ -230,10 +230,20 @@ def main():
 
     ax.set_yscale("log")
     ax.set_xlim(WL_LO, WL_HI)
-    ax.set_ylim(4e-3, 10)
+    ax.set_ylim(5e-4, 10)   # round 53 (Doron): lower ymin so the legend clears the curves
     ax.set_xlabel(r"Wavelength [$\mu$m]")
     ax.set_ylabel(f"Slant optical depth at a {htan:.0f} km tangent")
     ax.grid(alpha=0.3, which="both")
+    # RC1 T4: the two transmission-averaged element ODs quoted in the text
+    # (measured -ln<T> and model -ln<T_fit>) as markers at the element centre;
+    # the curves are <tau> at 0.02 um, which sits above -ln<T> (micro-window effect)
+    _t_meas = band_average(nu, tr, BAND_LO_UM, BAND_HI_UM)
+    _mb = (wl_model >= BAND_LO_UM) & (wl_model <= BAND_HI_UM)
+    _t_mod = float(np.exp(-tau_tot[_mb]).mean())
+    ax.plot([SILICA_UM], [-np.log(_t_meas)], marker="o", ms=10, color="black",
+            ls="none", zorder=7, label=r"element $-\ln\langle T\rangle$, measured")
+    ax.plot([SILICA_UM], [-np.log(_t_mod)], marker="s", ms=9, color="tab:red",
+            ls="none", zorder=7, label=r"element $-\ln\langle T\rangle$, model")
     ax.legend(loc="lower left", framealpha=0.95)
     ax.text(np.mean([BAND_LO_UM, BAND_HI_UM]), 4.0,   # round 45 (Doron): inside the box
             rf"{SILICA_UM:.2f} $\mu$m" "\n" "silica", ha="center", va="top", fontsize=14,

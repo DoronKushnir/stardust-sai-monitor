@@ -25,7 +25,7 @@ detection PSD r_med = 268 nm / sigma = 1.31, material densities):
     18.25-23.25 um; dolomite 22.5-27.5 um; calcite 26-31 um), added to the
     design band, and also alone with the triplet ("far-IR-only instrument").
     Floors (round 37, Doron): the CALCULATED per-element trace-gas-removal
-    (OE) floors of scripts/farir_band_floors_w0p1.py -- every 0.1-um element
+    (OE) floors of reproduce/farir_band_floors_w0p1.py -- every 0.1-um element
     of every band its own OE floor (archive
     outputs/materials_calibrated/farir_band_floors_w0p1.json); the former
     single-target 0.25-um floors x width factor 1.16 are retired.
@@ -45,7 +45,7 @@ detection PSD r_med = 268 nm / sigma = 1.31, material densities):
     beyond, so the calcite far-IR row is indicative.
 
 Output: outputs/materials_calibrated/results.json (+ printed table).
-Run from the repo root:  python scripts/materials_calibrated_thresholds.py
+Run from the repo root:  python reproduce/materials_calibrated_thresholds.py
 """
 
 from __future__ import annotations

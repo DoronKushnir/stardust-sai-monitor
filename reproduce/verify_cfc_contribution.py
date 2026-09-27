@@ -25,7 +25,7 @@ from saimon.o3_removal import (GasRemovalSetup, RetrievalGas, O3Band,
 TANGENT_KM = 20.0
 ELEMENT_UM = 0.25
 R_EARTH_M = 6.371e6
-G_ONION = np.sqrt(5.0 - 2.0 * np.sqrt(3.0))
+from saimon.onion_peel import G_ONION  # round 53 (RC1 M1): exact edge-grid gain from saimon.onion_peel
 DZ_M = 500.0
 
 

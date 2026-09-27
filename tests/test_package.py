@@ -77,8 +77,26 @@ def test_residual_floor_archive_quotes():
 def test_thresholds_archive():
     d = json.loads((OUT / "calibrated_background_thresholds.json").read_text())
     q = d["results"]["CALIBRATED quiet (LM65T223, 2-comp)"]
-    assert abs(q["window 7.8-9.3 @0.1: measured floors"]["full 7-param"]["triplet + window"]["mmin_tg"] - 0.115) < 0.002
-    assert abs(q["band 8-13 @0.1: measured floors"]["full 7-param"]["triplet + band01"]["mmin_tg"] - 0.081) < 0.002
+    assert abs(q["window 7.8-9.3 @0.1: measured floors"]["full 7-param"]["triplet + window"]["mmin_tg"] - 0.141) < 0.002
+    assert abs(q["band 8-13 @0.1: measured floors"]["full 7-param"]["triplet + band01"]["mmin_tg"] - 0.102) < 0.002
+    assert d["window_elements_um"][10] == 8.8 and len(d["band01_elements_um"]) == 45      # grid centred on 8.80 um (round 53)
+
+
+def test_onion_peel_constants():
+    """Edge-bounded retrieval grid, exact gain (Appendix B, referee round): g = 1.10, |G_k| = 6.86e-6 m^-1 per OD."""
+    from saimon.onion_peel import G_ONION, M1_PER_OD, OD_PER_M1, BUDGET_OD_880, SIG_880_ABS
+    assert abs(G_ONION - 1.097) < 0.002 and abs(M1_PER_OD / 6.863e-6 - 1) < 0.002
+    assert abs(OD_PER_M1 / 1e3 - 145.7) < 0.2
+    assert abs(BUDGET_OD_880 - 2.466e-3) < 2e-6 and abs(SIG_880_ABS / 1.692e-8 - 1) < 0.002
+
+
+def test_c880_archive_anchor():
+    """The design-grid atlas (centred on 8.80 um) carries the same 8.80-um element as the Appendix E scan."""
+    a = json.loads((DATA / "ace_floor" / "w0p1_c880" / "atlas.json").read_text())
+    b = json.loads((DATA / "ace_floor" / "w0p1" / "atlas.json").read_text())
+    sa = {round(r["center_um"], 3): r["sd"] for r in a["19_22"] if r.get("sd") is not None}
+    sb = {round(r["center_um"], 3): r["sd"] for r in b["19_22"] if r.get("sd") is not None}
+    assert sa[8.8] == sb[8.8] and all(round(c * 10) % 1 == 0 for c in sa if 7.3 <= c <= 13.3)
 
 
 def test_ace_subset_round_trip():

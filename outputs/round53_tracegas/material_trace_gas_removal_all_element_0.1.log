@@ -1,0 +1,72 @@
+
+=== Dolomite trace-gas-removal floors (1 Tg, 20 km tangent, 0.1 um element) ===
+    ray-arithmetic-mean optics; dz=0.5 km; sigma_alpha via onion-peel
+
+--- nu3 (~6.4um): CO3 asym stretch on the H2O nu2 bending band core
+    tau_dolomite(target) = 1.131e-01 OD
+    tau_gas(target)     = 1.751e+01 OD  (h2o=1.75e+01, ch4=6.40e-03, n2o=3.24e-08, o3=0.00e+00)
+    sigma_total (removal) = 6.136e-02 OD
+    sigma_dolomite_od (deg-aware) = 2.715e-02 OD  (DOFS 4.63)
+    sigma_alpha = 4.218e-07 1/m  (deg-aware 1.866e-07)
+    SNR(1 Tg) = 4.2  ->  1-sigma detectable ~ 0.240 Tg
+
+--- nu2 (~11.3um): CO3 out-of-plane bend in the window (HNO3 + CFC-11/12)
+    tau_dolomite(target) = 3.795e-02 OD
+    tau_gas(target)     = 2.995e-01 OD  (hno3=2.77e-01, h2o=6.16e-04, cfc11=5.55e-05, cfc12=2.22e-02)
+    sigma_total (removal) = 2.053e-03 OD
+    sigma_dolomite_od (deg-aware) = 1.998e-03 OD  (DOFS 4.61)
+    sigma_alpha = 1.411e-08 1/m  (deg-aware 1.373e-08)
+    SNR(1 Tg) = 19.0  ->  1-sigma detectable ~ 0.053 Tg
+
+--- nu4 (~13.7um): CO3 in-plane bend on the CO2 15um shoulder (expect dead)
+/Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/sage3/o3_removal.py:709: RuntimeWarning: overflow encountered in exp
+  sigma_phot = setup.sigma_lnT * np.exp(tau_meas_total / 2.0)
+    tau_dolomite(target) = 5.047e-03 OD
+    tau_gas(target)     = 1.769e+01 OD  (co2=1.56e+01, o3=2.11e+00)
+    sigma_total (removal) = 4.070e-01 OD
+    sigma_dolomite_od (deg-aware) = 5.063e-01 OD  (DOFS 2.94)
+    sigma_alpha = 2.798e-06 1/m  (deg-aware 3.480e-06)
+    SNR(1 Tg) = 0.0  ->  1-sigma detectable ~ 100.307 Tg
+
+--- L (~24.9um): far-IR lattice mode on the H2O rotation forest
+    tau_dolomite(target) = 9.892e-02 OD
+    tau_gas(target)     = 8.204e-04 OD  (h2o=8.10e-04, o3=9.97e-06, n2o=0.00e+00)
+    sigma_total (removal) = 4.430e-06 OD
+    sigma_dolomite_od (deg-aware) = 2.281e-04 OD  (DOFS 5.06)
+    sigma_alpha = 3.045e-11 1/m  (deg-aware 1.568e-09)
+    SNR(1 Tg) = 433.7  ->  1-sigma detectable ~ 0.002 Tg
+
+=== SUMMARY ===
+            band   tau_mat   tau_gas   sig_tot   sig_mat  sig_alpha  SNR/Tg   minTg
+    nu3 (~6.4um)  1.13e-01  1.75e+01  6.14e-02  2.71e-02   1.87e-07     4.2   0.240
+   nu2 (~11.3um)  3.79e-02  2.99e-01  2.05e-03  2.00e-03   1.37e-08    19.0   0.053
+   nu4 (~13.7um)  5.05e-03  1.77e+01  4.07e-01  5.06e-01   3.48e-06     0.0 100.307
+     L (~24.9um)  9.89e-02  8.20e-04  4.43e-06  2.28e-04   1.57e-09   433.7   0.002
+
+wrote /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/dolomite/dolomite_band_floors_20km_w0p1.csv
+
+=== Alumina trace-gas-removal floors (1 Tg, 20 km tangent, 0.1 um element) ===
+    ray-arithmetic-mean optics; dz=0.5 km; sigma_alpha via onion-peel
+
+--- R (~12.9um): main reststrahlen band between the O3 9.6um and CO2 15um bands
+    tau_alumina(target) = 3.206e-01 OD
+    tau_gas(target)     = 4.683e-01 OD  (co2=4.38e-02, h2o=9.85e-04, o3=4.14e-01, hno3=9.81e-03, cfc11=1.46e-04)
+    sigma_total (removal) = 2.539e-03 OD
+    sigma_alumina_od (deg-aware) = 2.428e-03 OD  (DOFS 7.22)
+    sigma_alpha = 1.745e-08 1/m  (deg-aware 1.669e-08)
+    SNR(1 Tg) = 132.0  ->  1-sigma detectable ~ 0.008 Tg
+
+--- W (~20.7um): red reststrahlen wing, the silica config-C region
+    tau_alumina(target) = 2.335e-02 OD
+    tau_gas(target)     = 1.152e+00 OD  (h2o=1.07e+00, hno3=8.35e-02, o3=0.00e+00)
+    sigma_total (removal) = 2.946e-03 OD
+    sigma_alumina_od (deg-aware) = 3.714e-04 OD  (DOFS 6.26)
+    sigma_alpha = 2.025e-08 1/m  (deg-aware 2.553e-09)
+    SNR(1 Tg) = 62.9  ->  1-sigma detectable ~ 0.016 Tg
+
+=== SUMMARY ===
+            band   tau_mat   tau_gas   sig_tot   sig_mat  sig_alpha  SNR/Tg   minTg
+     R (~12.9um)  3.21e-01  4.68e-01  2.54e-03  2.43e-03   1.67e-08   132.0   0.008
+     W (~20.7um)  2.33e-02  1.15e+00  2.95e-03  3.71e-04   2.55e-09    62.9   0.016
+
+wrote /Users/doronkushnir/Weizmann Institute Dropbox/Doron Kushnir/Science/GlobalWarming/SAGE/Python/outputs/alumina/alumina_band_floors_20km_w0p1.csv

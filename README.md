@@ -78,10 +78,27 @@ guide/             the guide: model, assumptions, data, and how the results map 
 The detection thresholds use the calibrated two-component sulfate background
 (GloSSAC 525-nm amplitude and profile at 20–25°N, microphysics fitted to the
 ACE-FTS mid-infrared record), the Fisher-matrix marginalization of Appendix
-C, the per-element mid-infrared floors measured on the ACE-FTS residual
-record (Appendix E), and the SAGE III/ISS Level-2 visible/NIR uncertainties.
-The reference element of the silica band is 8.80 µm (8.75–8.85 µm), the
-aerosol-extinction peak for the adopted Kitamura + Popova optical constants.
+C, per-element mid-infrared floors that carry the design's own optimal-
+estimation gas-removal budget at the 8.80 µm element (Appendix D) with the
+wavelength dependence measured on the ACE-FTS residual record (Appendix E),
+and the SAGE III/ISS Level-2 visible/NIR uncertainties. The element grid is
+centred on the 8.80 µm silica resonance (elements 8.00, 8.10, … 13.20 µm; the
+7.8–9.3 µm window 7.80 … 9.20 µm), and every optical-depth floor is converted
+to a per-shell extinction with the exact onion-peel gain of the edge-bounded
+retrieval grid (`saimon/onion_peel.py`, g = 1.10). Headline single-sounding
+thresholds at 20 km: 0.102 Tg (8–13 µm band), 0.141 Tg (window subset).
+
+## Revision history
+
+* **Rounds 53–54 (referee report RC1, September 2026).** Edge-grid exact
+  onion-peel gain (was the centre-grid two-term 1.24); the design budget as
+  the floor anchor everywhere (was the measured ACE floor); the element grid
+  centred on 8.80 µm (new floor archive `data/ace_floor/w0p1_c880/`);
+  enlarged-background-family rows, an injection-recovery (spike) test, the
+  trials-factor/false-alarm analysis, the slant-ozone latitude check and the
+  coherent-vs-independent conversion of the floor added. Thresholds moved from
+  0.081/0.115 to 0.102/0.141 Tg; `reference_outputs/` holds the new versions
+  (the round-51 versions are in the git history, commit 6f66a83).
 
 ## Licence
 

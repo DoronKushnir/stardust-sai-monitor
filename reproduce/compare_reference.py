@@ -25,6 +25,10 @@ PAIRS = [
     ("outputs/ace_v52/anchor_constrained_fits.json", "outputs/anchor_constrained_fits.json"),
     ("outputs/ace_v52/element_sampling.json", "outputs/element_sampling.json"),
     ("outputs/ace_v52/fullspectrum_stats.json", "outputs/fullspectrum_stats.json"),
+    ("outputs/ace_v52/nulltest_resolution.json", "outputs/nulltest_resolution.json"),
+    ("outputs/ace_v52/spike_test.json", "outputs/spike_test.json"),
+    ("outputs/window_vis_roster_sweep.json", "outputs/window_vis_roster_sweep.json"),
+    ("outputs/m2_vertical_correlation_floor.json", "outputs/m2_vertical_correlation_floor.json"),
 ]
 
 

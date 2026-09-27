@@ -4,14 +4,14 @@ function of the spectral ELEMENT WIDTH, for the 7.8-9.3 um window and the
 8-13 um band (round 33, Doron: is the 0.1 um / 0.25 um resolution choice
 arbitrary?  can one resolution serve both?).
 
-Same machinery as scripts/ace_fullspectrum_retrieval.py (imported): the 101
+Same machinery as reproduce/ace_fullspectrum_retrieval.py (imported): the 101
 ensemble occultations, self-calibrated slant OD near 20.5 km, the full
 seven-parameter calibrated background + silica + constant, linearized
 around the calibrated background at the occultation's own tangent height.
 The residual spectrum and the basis columns are box-averaged into
 contiguous elements of width dlam (transmission-weighted for the data,
 linear for the basis), MID-INFRARED ALONE (no visible/NIR datum), weighted
-with the floor model of scripts/resolution_sensitivity_calibrated.py
+with the floor model of reproduce/resolution_sensitivity_calibrated.py
 (atlas SD at the 0.25-um centers interpolated to the element centers x
 the measured width factor of the 8.80-um record).  Elements with <60 %
 valid bins (the saturated O3 core) are dropped.
@@ -25,7 +25,7 @@ separation (at dlam = 0.1 um over the band), i.e. the measured
 inter-element correlation length that the per-element-independent floor
 model ignores.
 
-Run from the repo root:  python scripts/ace_nulltest_resolution.py
+Run from the repo root:  python reproduce/ace_nulltest_resolution.py
 Output: outputs/ace_v52/nulltest_resolution.json
 """
 
@@ -44,8 +44,28 @@ for p in (_ROOT, _HERE):
         sys.path.insert(0, str(p))
 
 import ace_fullspectrum_retrieval as F  # noqa: E402
+import resolution_sensitivity_calibrated as RS  # noqa: E402
 from resolution_sensitivity_calibrated import (  # noqa: E402
     element_centers, floor_model_m1, DLAMS, RANGES, PHASES)
+from saimon.onion_peel import OD_PER_M1, BUDGET_OD_880  # noqa: E402  (round 53)
+
+# round 53 (Doron): "use the R~100 floor everywhere" -- the per-element floors
+# are the measured ACE atlas shape anchored to the design's own 8.80-um budget.
+# floor_model_m1() of resolution_sensitivity_calibrated.py returns the
+# interpolated atlas SD divided by ITS OD_PER_M1; multiplying by the same
+# constant recovers the measured SD in OD whatever value that module carries.
+# If that module already bakes the budget anchor in (attribute FLOOR_SCALE),
+# nothing more is applied; otherwise the anchor is applied here from the
+# w0p1 atlas value of the 8.80-um element.
+_ATLAS01 = json.load(open(_ROOT / "data/ace_floor/"
+                          "w0p1/atlas.json"))
+_SD_880 = next(r["sd"] for r in _ATLAS01["19_22"] if abs(r["center_um"] - 8.8) < 1e-6)
+FLOOR_SCALE = 1.0 if getattr(RS, "FLOOR_SCALE", None) is not None else BUDGET_OD_880 / _SD_880
+
+
+def floors_od(centers, dlam):
+    """design-budget-anchored per-element floors [OD] on an arbitrary grid."""
+    return floor_model_m1(centers, dlam) * RS.OD_PER_M1 * FLOOR_SCALE
 
 OUT = _ROOT / "outputs" / "ace_v52" / "nulltest_resolution.json"
 
@@ -69,6 +89,14 @@ def main():
     wl = 1e4 / nu
     conv = json.load(open(_ROOT / "outputs" / "ace_v52" / "nulltest_convention.json"))
     rho = conv["rho"]
+    thr = json.load(open(_ROOT / "outputs" / "calibrated_background_thresholds.json"))
+    # round 53: the design grids (centred on 8.80 um) and their archived floors
+    design_grid = {"window": (np.array(thr["window_elements_um"], float),
+                              np.array(thr["window_floors_m1"], float) * OD_PER_M1),
+                   "band": (np.array(thr["band01_elements_um"], float),
+                            np.array(thr["band01_floors_m1"], float) * OD_PER_M1)}
+    print(f"floor anchor: FLOOR_SCALE = {FLOOR_SCALE:.3f} (budget {BUDGET_OD_880:.3e} OD / "
+          f"measured {_SD_880:.3e} OD at 8.80 um); OD_PER_M1 = {OD_PER_M1/1e3:.1f} km")
     keep = set(str(o) for o in np.load(F.SIDE / "matrix_19_22.npz",
                                         allow_pickle=True)["occs"])
     names = F.VARIANTS["full"]
@@ -88,39 +116,52 @@ def main():
                      F.basis_columns(h, h_ref, bases, nu, names)))
     print(f"{len(occs)} occultations")
 
-    res = {"rho": rho, "dlams": list(DLAMS), "ranges": {}}
+    res = {"rho": rho, "dlams": list(DLAMS), "ranges": {},
+           "floor_scale": FLOOR_SCALE, "od_per_m1": OD_PER_M1}
     resid_store = {}
+
+    def run_grid(centers, fl_od, tag):
+        """fit every occultation on one element grid; returns the summary
+        dict (usable flag, median, robust sigma, formal sigma) and residuals."""
+        Ms, sMs, resids = [], [], []
+        for occ, h, tau, h_ref, J in occs:
+            y, Je, ok = element_average(tau, J, wl, centers, dlam)
+            if ok.sum() < Je.shape[1] + 2:
+                continue
+            theta, cov, use, _ = F._solve(Je, y, ok, fl_od, isil, clip=False)
+            Ms.append(theta[isil]); sMs.append(np.sqrt(cov[isil, isil]))
+            r = np.full(len(centers), np.nan)
+            r[use] = (y[use] - Je[use] @ theta)
+            resids.append(r)
+        if len(Ms) < 30:
+            return dict(phase=tag, n_elements=int(len(centers)),
+                        n_fit=int(len(Ms)), usable=False), resids
+        Ms, sMs = np.array(Ms), np.array(sMs)
+        med = float(np.median(Ms))
+        s_emp = float(1.4826 * np.median(np.abs(Ms - med)))
+        s_form = float(np.median(sMs))
+        return dict(phase=tag, n_elements=int(len(centers)),
+                    n_fit=int(len(Ms)), usable=True, median_M=med,
+                    sigma_emp=s_emp, sigma_formal=s_form), resids
+
     for rname, (lo, hi) in RANGES.items():
         res["ranges"][rname] = {}
         for dlam in DLAMS:
             per_phase = []
             for ph in PHASES:
                 centers = element_centers(lo, hi, dlam, ph)
-                floors_od = floor_model_m1(centers, dlam) * F.OD_PER_M1
-                Ms, sMs, resids = [], [], []
-                for occ, h, tau, h_ref, J in occs:
-                    y, Je, ok = element_average(tau, J, wl, centers, dlam)
-                    if ok.sum() < Je.shape[1] + 2:
-                        continue
-                    theta, cov, use, _ = F._solve(Je, y, ok, floors_od, isil,
-                                                  clip=False)
-                    Ms.append(theta[isil]); sMs.append(np.sqrt(cov[isil, isil]))
-                    r = np.full(len(centers), np.nan)
-                    r[use] = (y[use] - Je[use] @ theta)
-                    resids.append(r)
-                if len(Ms) < 30:
-                    per_phase.append(dict(phase=ph, n_elements=int(len(centers)),
-                                          n_fit=int(len(Ms)), usable=False))
-                    continue
-                Ms, sMs = np.array(Ms), np.array(sMs)
-                med = float(np.median(Ms))
-                s_emp = float(1.4826 * np.median(np.abs(Ms - med)))
-                s_form = float(np.median(sMs))
-                per_phase.append(dict(phase=ph, n_elements=int(len(centers)),
-                                      n_fit=int(len(Ms)), usable=True, median_M=med,
-                                      sigma_emp=s_emp, sigma_formal=s_form))
-                if rname == "band" and abs(dlam - 0.1) < 1e-9 and ph == 0.0:
-                    resid_store = dict(centers=centers, R=np.array(resids))
+                row_ph, _ = run_grid(centers, floors_od(centers, dlam), ph)
+                per_phase.append(row_ph)
+            # round 53: the design's own grid (centred on 8.80 um, archived
+            # floors) evaluated separately at dlam = 0.1 um; the five-phase
+            # statistics above are unchanged in definition.  The residuals for
+            # the inter-element correlation are taken on the design band grid.
+            design_row = None
+            if abs(dlam - 0.1) < 1e-9:
+                dc, dfl = design_grid[rname]
+                design_row, dres = run_grid(dc, dfl, "design")
+                if rname == "band":
+                    resid_store = dict(centers=dc, R=np.array(dres))
             ok_ph = [r for r in per_phase if r["usable"]]
             if not ok_ph:
                 res["ranges"][rname][str(dlam)] = dict(n_elements=per_phase[0]["n_elements"], usable=False)
@@ -136,6 +177,15 @@ def main():
                        mmin_emp_shell=3 * float(np.median(se)) * rho,
                        mmin_emp_shell_range=[3 * float(se.min()) * rho, 3 * float(se.max()) * rho],
                        mmin_formal_shell=3 * float(np.median(sf)) * rho, per_phase=per_phase)
+            if design_row is not None and design_row["usable"]:
+                design_row = dict(design_row,
+                                  mmin_emp_slant=3 * design_row["sigma_emp"],
+                                  mmin_emp_shell=3 * design_row["sigma_emp"] * rho,
+                                  mmin_formal_shell=3 * design_row["sigma_formal"] * rho)
+                print(f"{rname:8s} design grid (8.80-centred, {design_row['n_elements']} el): "
+                      f"sigma_emp={design_row['sigma_emp']:.4f} (formal {design_row['sigma_formal']:.4f}), "
+                      f"M_min shell {design_row['mmin_emp_shell']:.3f} Tg; median M {design_row['median_M']:+.3f}")
+            row["design_grid"] = design_row
             res["ranges"][rname][str(dlam)] = row
             print(f"{rname:8s} dlam={dlam:4.2f}: {row['n_elements']:3d} el, "
                   f"sigma_emp={row['sigma_emp']:.4f} [{se.min():.4f}-{se.max():.4f}] "
