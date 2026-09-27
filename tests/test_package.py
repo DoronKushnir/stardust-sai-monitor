@@ -106,3 +106,15 @@ def test_ace_subset_round_trip():
     assert len(files) == 21
     dat = np.loadtxt(files[0])
     assert dat.shape == (1740, 2) and abs(dat[0, 0] - 750.99939) < 1e-6
+
+
+def test_o3_latitude_measured_extract():
+    """RC2 S1: the ACE v5.2 O3 extract carries 192 profiles and the archived slant ratios at 20 km read 0.92/0.94/0.50."""
+    import csv, gzip
+    with gzip.open(ROOT / "data" / "ace" / "o3_l2_v52" / "o3_profiles_v52.csv.gz", "rt") as fh:
+        occs = {r["occultation"] for r in csv.DictReader(fh)}
+    assert len(occs) == 192
+    d = json.loads((OUT / "o3_slant_latitude_measured.json").read_text())
+    j20 = d["h_tan_km"].index(20.0)
+    r = {k: round(v["ratio_median"][j20], 2) for k, v in d["bands"].items()}
+    assert r["tropical 20-25N Jun-Aug"] == 0.92 and r["midlat 35-55N Jun-Sep"] == 0.94 and r["antarctic 60-90S Aug-Sep"] == 0.50

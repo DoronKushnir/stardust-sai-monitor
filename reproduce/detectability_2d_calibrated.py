@@ -108,6 +108,31 @@ G_SCAN = (0.25, 0.5, 1.0, 2.0, 4.0)
 CONTOURS_TG = [0.03, 0.05, 0.1, 0.3, 1.0]
 BRACKETS = {"quiet": (CAL_QUIET, "LM65T223"), "postHT": (CAL_POSTHT, "LM72T213")}
 FLOOR_MODELS = ("held", "oe", "atlas")
+# round 56 (RC2 S1): optional latitude- and altitude-dependent factor on the MIR
+# floors from MEASURED ozone (reproduce/o3_slant_latitude_measured.py).  Bands at
+# 22.5N, 45N and 75S are applied symmetrically in latitude (deep tropics = the
+# 20-25N value, linear between the band latitudes, held poleward of 75 deg).
+SUFFIX = ""
+O3LAT = None
+
+
+def load_o3_latitude(path):
+    global O3LAT, SUFFIX
+    d = json.load(open(path))
+    h = np.array(d["h_tan_km"])
+    nodes = sorted((b["lat_deg"], np.array(b["floor_factor"])) for b in d["bands"].values())
+    lats = np.array([n[0] for n in nodes]); facs = np.array([n[1] for n in nodes])   # (n_band, n_h)
+    O3LAT = dict(h=h, lats=lats, facs=facs, source=d["source"], bands=list(d["bands"].keys()))
+    SUFFIX = "_o3lat"
+
+
+def o3lat_factor(lat_deg, z_km):
+    """floor factor at |lat| (symmetric), z; 1.0 when the option is off"""
+    if O3LAT is None:
+        return 1.0
+    a = abs(float(lat_deg))
+    col = np.array([np.interp(z_km, O3LAT["h"], f) for f in O3LAT["facs"]])   # per band at this z
+    return float(np.interp(a, O3LAT["lats"], col))                            # clamps beyond the nodes
 BASELINE = "oe"   # round 35c (Doron): OE-scaled floors are the baseline; "held" retired from the paper
 FLOOR_LABEL = {"held": "floors held at 20-km values",
                "oe": "floors scaled by the trace-gas OE scan",
@@ -276,6 +301,9 @@ def compute():
         assert abs(m - ref[sname]) < 1e-3, "baseline reproduction"
 
     res = {"z_km": Z_KM.tolist(), "atlas_ratio_874": fscale["_atlas_ratio"],
+           "o3_latitude": (None if O3LAT is None else dict(
+               source=O3LAT["source"], bands=O3LAT["bands"], band_lat_deg=O3LAT["lats"].tolist(),
+               factor_20km={str(float(l)): float(np.interp(20.0, O3LAT["h"], f)) for l, f in zip(O3LAT["lats"], O3LAT["facs"])})),
            "floor_scale": {m: fscale[m].tolist() for m in FLOOR_MODELS},
            "vis_floor_inflation": vis_infl.tolist(), "ref_20km": ref}
 
@@ -297,7 +325,7 @@ def compute():
                 k = K_OF_Z(z)
                 for i in range(len(lat_g)):
                     g = float(np.interp(z, alt_g, g_grid[i]))
-                    arr[i, j] = eng.sigma(k, g=g, mir_scale=fscale[fm][j],
+                    arr[i, j] = eng.sigma(k, g=g, mir_scale=fscale[fm][j] * o3lat_factor(lat_g[i], z),
                                           vis_infl=vis_infl[j])
             sig_map[(sname, bname, fm)] = arr
             print(f"  sigma map {sname}/{bname}/{fm}: 20 km at anchor "
@@ -353,7 +381,7 @@ def compute():
                 r[f"{sname}/{bname}"][f"best_event_mmin_{o}"] = float(np.min(3 * s_e / f_e))
         res["scenarios"][n] = r
         hdr = ",".join(cols)
-        np.savetxt(OUT_DIR / f"mmin_lat_{n}.csv", np.column_stack(list(cols.values())),
+        np.savetxt(OUT_DIR / f"mmin_lat_{n}{SUFFIX}.csv", np.column_stack(list(cols.values())),
                    delimiter=",", header=hdr, comments="")
         print(f"scenario {n}: f_peak {r['f_peak']:.2f}; band/quiet best {r['band/quiet']['best_mmin']:.4f} Tg "
               f"at {r['band/quiet']['best_lat']:+.0f}; gains " +
@@ -437,15 +465,15 @@ def compute():
         save["q_obsc"] = Pfull
         det = np.isfinite(m) & (m < CONTOURS_TG[-1])
         rmap["frac_detectable_area_pobs_gt_50"] = float(np.mean((Pfull > 0.5) & det) / max(np.mean(det), 1e-12))
-        np.savez(OUT_DIR / f"map_{tag}.npz", **save)
+        np.savez(OUT_DIR / f"map_{tag}{SUFFIX}.npz", **save)
         res["maps"][tag] = rmap
         h = rmap["band/quiet/held"]
         print(f"map {tag}: band/quiet/held best {h['best_mmin']:.4f} Tg at ({h['best_lat']:+.0f}, {h['best_z']:.1f} km); "
               f"0.1-Tg coverage {100*h['frac_lat_below_0p1']:.0f}% of latitudes; 20-km best {h['best_20km_bin']:.3f}", flush=True)
 
-    with open(OUT_DIR / "results.json", "w") as f:
+    with open(OUT_DIR / f"results{SUFFIX}.json", "w") as f:
         json.dump(res, f, indent=1)
-    print(f"archived -> {OUT_DIR/'results.json'}")
+    print(f"archived -> {OUT_DIR/('results' + SUFFIX + '.json')}")
     return res
 
 
@@ -468,7 +496,7 @@ def plot(res):
     (b) per-latitude thresholds: 20-km bin, best bin (baseline), best bin with
     the measured-atlas floors, and the homogeneous-layer reference."""
     _style()
-    d = np.load(OUT_DIR / "map_pm41.npz")
+    d = np.load(OUT_DIR / f"map_pm41{SUFFIX}.npz")
     lat, zlev = d["lat_deg"], d["z_lev_km"]
     conc = d["conc_kg_m3"] * 1e9 / (d["total_mass_kg"] / 1e9)
     in_rng = (zlev >= Z_KM[0]) & (zlev <= Z_KM[-1])
@@ -524,13 +552,17 @@ def plot(res):
     fig.tight_layout(h_pad=0.5)
     pos_a, pos_b = ax.get_position(), ax2.get_position()
     ax2.set_position([pos_b.x0, pos_b.y0, pos_a.width, pos_b.height])
-    fig.savefig(FIG_DIR / "detectability_2d_mass_contours.png", dpi=300, bbox_inches="tight")
+    fig_out = FIG_DIR / f"detectability_2d_mass_contours{SUFFIX}.png"
+    fig.savefig(fig_out, dpi=300, bbox_inches="tight")
     plt.close(fig)
-    print(f"figure -> {FIG_DIR / 'detectability_2d_mass_contours.png'}")
+    print(f"figure -> {fig_out}")
 
 
 if __name__ == "__main__":
-    if "--plot" in sys.argv[1:]:
-        plot(json.load(open(OUT_DIR / "results.json")))
+    args = sys.argv[1:]
+    if "--o3-latitude" in args:                       # round 56 (RC2 S1)
+        load_o3_latitude(args[args.index("--o3-latitude") + 1])
+    if "--plot" in args:
+        plot(json.load(open(OUT_DIR / f"results{SUFFIX}.json")))
     else:
         plot(compute())

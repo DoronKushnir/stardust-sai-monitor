@@ -103,6 +103,17 @@ thresholds at 20 km: 0.102 Tg (8–13 µm band), 0.141 Tg (window subset).
   repository history is complete, not squashed; an archived release (Zenodo)
   captures one tagged state, so use the tags rather than the history when
   working from an archive.
+* **Round 56 (referee report RC2, September 2026).** The latitude dependence
+  of the trace-gas floor now rests on measured ozone: the ACE-FTS v5.2
+  Level-2 O3 retrievals of the paper's own occultations (new extract
+  `data/ace/o3_l2_v52/`, step `o3meas`) give slant τ_O3 ratios to the budget
+  profile of 0.92 / 0.94 / 0.50 above a 20-km tangent at 20–25°N, 35–55°N
+  (summer) and in the Antarctic vortex, and the 2-D map re-run with the
+  latitude- and altitude-dependent floor (step `fig6o3`, results
+  `outputs/detectability_2d_calibrated/results_o3lat.json`) widens the 0.1-Tg
+  coverage of the 20-km bin from 69°S–73°N to 77°S–85°N while leaving the
+  plume-core threshold at 0.026 Tg. The AFGL cross-check (`o3lat`) stays.
+  This state is tagged `rc2-round56`.
 
 ## Licence
 

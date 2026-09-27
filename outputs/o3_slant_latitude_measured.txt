@@ -1,0 +1,16 @@
+ACE v5.2 Level-2 O3 slant ratios to the budget's US-standard profile (192 occultations with L2 files)
+band | n | h_tan: 12 14 16 18 20 22 24 26 28
+tropical 20-25N Jun-Aug | 138 | ratio: 0.64 0.65 0.69 0.78 0.92 1.07 1.23 1.36 1.40 | floor: 0.71 0.72 0.74 0.81 0.93 1.06 1.19 1.31 1.35
+midlat 35-55N Jun-Sep | 17 | ratio: 0.77 0.74 0.77 0.85 0.94 1.04 1.11 1.20 1.24 | floor: 0.81 0.79 0.81 0.87 0.95 1.03 1.10 1.17 1.21
+antarctic 60-90S Aug-Sep | 27 | ratio: 0.78 0.77 0.72 0.63 0.50 0.45 0.44 0.41 0.37 | floor: 0.81 0.81 0.77 0.70 0.60 0.57 0.56 0.54 0.52
+
+h_tan      tropical      midlat 3      antarcti
+ 16.0   0.69 [0.67-0.70] n=58   0.77 [0.72-0.91] n=17   0.72 [0.66-0.78] n=27
+ 18.0   0.78 [0.76-0.79] n=89   0.85 [0.81-0.94] n=17   0.63 [0.57-0.66] n=27
+ 20.0   0.92 [0.90-0.93] n=138   0.94 [0.91-1.00] n=17   0.50 [0.46-0.54] n=27
+ 22.0   1.07 [1.06-1.08] n=138   1.04 [1.01-1.07] n=17   0.45 [0.42-0.46] n=27
+ 24.0   1.23 [1.21-1.24] n=138   1.11 [1.08-1.14] n=17   0.44 [0.42-0.45] n=27
+floor factor at 20 km: tropical 20-25N Jun-Aug: 0.93, midlat 35-55N Jun-Sep: 0.95, antarctic 60-90S Aug-Sep: 0.60
+band threshold at 20 km [Tg]: tropical 20-25N Jun-Aug: 0.095, midlat 35-55N Jun-Sep: 0.097, antarctic 60-90S Aug-Sep: 0.062
+window threshold at 20 km [Tg]: tropical 20-25N Jun-Aug: 0.131, midlat 35-55N Jun-Sep: 0.134, antarctic 60-90S Aug-Sep: 0.085
+tropical slant ratio at 18 km: 0.78 (local density ratio 0.27); Sect. 4.1 atlas fit s = 0.37 at the 16-20 km bin

@@ -29,6 +29,8 @@ PAIRS = [
     ("outputs/ace_v52/spike_test.json", "outputs/spike_test.json"),
     ("outputs/window_vis_roster_sweep.json", "outputs/window_vis_roster_sweep.json"),
     ("outputs/m2_vertical_correlation_floor.json", "outputs/m2_vertical_correlation_floor.json"),
+    ("outputs/o3_slant_latitude_measured.json", "outputs/o3_slant_latitude_measured.json"),
+    ("outputs/detectability_2d_calibrated/results_o3lat.json", "outputs/detectability_2d_results_o3lat.json"),
 ]
 
 

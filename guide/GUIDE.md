@@ -55,7 +55,8 @@ silica field and orbit sampling.
 | Table 2, Fig. F2 | `design_sensitivity_calibrated.py` | |
 | Table F1, Fig. F1 | `resolution_sensitivity_calibrated.py`, `ace_nulltest_resolution.py` | |
 | Table 3 | `materials_calibrated_thresholds.py` | |
-| Sect. 6, Fig. 6 | `detectability_2d_calibrated.py` | |
+| Sect. 6, Fig. 6 | `detectability_2d_calibrated.py` | `--o3-latitude outputs/o3_slant_latitude_measured.json` re-runs the map with the latitude-dependent floor (round 56; `results_o3lat.json`, `figures/detectability_2d_mass_contours_o3lat.png`) |
+| Sect. 6 ozone load vs latitude | `o3_slant_latitude_measured.py` (measured, ACE v5.2 O3), `o3_slant_latitude_proxy.py` (AFGL cross-check) | slant τ_O3 ratios and floor factors per latitude band |
 | Appendix A masses, Fig. A1–A2 | `reservoir_mass_saod.py`, `fit_segev_psd.py`, `reproduce_glossac_tropical_saod.py` | |
 | Appendix D | `run_o3_removal_error.py`, `gas_removal_floor_880_widths.py`, `snr_integration_time_trade.py`, `mir_detector_etc.py`, `check_limb_emission_baseline.py`, `analyze_st_temperature_sensitivity.py`, `verify_cfc_contribution.py`, `analyze_hitran_o3_line_uncertainty.py`, `highres_gas_removal_budget.py` | |
 | Appendix E, Table E1, Fig. E1 | `ace_floor/residual_floor_pipeline.py`, `ace_floor/residual_floor_paper1.py` | self-verifying archive (hashes in `manifest.json`) |
@@ -129,6 +130,13 @@ cross-section grids are our computed products for the paper's bands.
   steps: `floorc`, `spike`, `onion`, `m2`, `far`, `o3lat`, `tab53`; new
   Table 2 rows (third sulfate mode free, second optics member free, database
   term coherent). The round-51 reference outputs are in the git history.
+* Round 56 (referee report RC2, S1): the AFGL proxy for the latitude
+  dependence of the ozone load is replaced by the ACE v5.2 Level-2 O3
+  retrievals of the same occultations (`o3meas`; extract
+  `data/ace/o3_l2_v52/`): slant ratios 0.92 / 0.94 / 0.50 at 20 km, floor
+  factors 0.93 / 0.95 / 0.60, and the map with the latitude-dependent floor
+  (`fig6o3`) archived beside the baseline (`results_o3lat.json`). The
+  baseline map (standard climatology) remains the paper's reference.
 * The reference archives in `reference_outputs/` are the versions this
   repository regenerates; `outputs/calibrated_background_thresholds.json`,
   the Fisher inputs, the materials thresholds, the design-sensitivity
