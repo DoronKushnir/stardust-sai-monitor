@@ -1,7 +1,7 @@
 """
 resolution_sensitivity_calibrated.py -- the detection threshold as a
 function of the spectral ELEMENT WIDTH dlam, for the 7.8-9.3 um window and
-the 8-13 um band, heritage triplet + mid-infrared elements, full
+the 7.8-13 um band (47 elements since round 57), heritage triplet + mid-infrared elements, full
 7-parameter calibrated background, z = 20 km (Paper 1 round 33, Doron: is
 the 0.1 um / 0.25 um choice arbitrary?  can one resolution serve both?).
 
@@ -75,7 +75,7 @@ _ac, _asd = np.array(_ac), np.array(_asd)
 # (residual_floor_w0p1_c880), scaled so the 8.80-um element carries the design's
 # R~100 budget (FLOOR_SCALE), OD -> m^-1 with the exact edge-grid gain.
 _atlas01 = json.load(open(_ROOT / "data/ace_floor/"
-                          "residual_floor_w0p1_c880/atlas.json"))
+                          "w0p1_c880/atlas.json"))
 _ac01, _asd01 = zip(*sorted((r["center_um"], r["sd"]) for r in _atlas01["19_22"]
                             if r.get("sd") is not None and 7.3 <= r["center_um"] <= 13.3))
 _ac01, _asd01 = np.array(_ac01), np.array(_asd01)
@@ -286,7 +286,7 @@ def plot(arch):
         a.yaxis.set_major_formatter(dec); a.yaxis.set_minor_formatter(NullFormatter())
         a.grid(True, which="major", alpha=0.25)
     handles = [Line2D([], [], color="black", lw=1.6, label=r"window $7.8$–$9.3\,\mu$m"),
-               Line2D([], [], color="#c00000", lw=1.6, label=r"band $8$–$13\,\mu$m"),
+               Line2D([], [], color="#c00000", lw=1.6, label=r"band $7.8$–$13\,\mu$m"),   # round 59 (RC3 S2)
                Line2D([], [], color="0.35", marker="o", ms=4, lw=1.6,
                       label="(a) independent floors; (b) empirical scatter"),
                Line2D([], [], color="0.35", marker="s", ms=3.5, ls="--", lw=1.2,

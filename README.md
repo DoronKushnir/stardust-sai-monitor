@@ -127,6 +127,9 @@ thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.
   1 % (best bin 0.026 Tg, 20-km coverage 69°S–73°N / 77°S–85°N unchanged).
   `reference_outputs/` holds the round-57 versions; tag `rc2-round56` keeps
   the previous state.
+* **Round 59 (referee report RC3, September 2026).** Fig. F1 legend corrected
+  to the 7.8–13 µm band and the figure regenerated (archive unchanged); tag
+  `rc3-round59`.
 
 ## Licence
 
