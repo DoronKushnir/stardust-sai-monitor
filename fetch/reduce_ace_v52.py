@@ -2,7 +2,10 @@
 
 The paper's ACE analyses use the 143 occultations of the curated public
 residual release that fall at 20.1-25.0 N in June-August (the sample of
-data/ace_floor/sample.csv), at all their tangent heights.  This script copies
+data/ace_floor/sample.csv), at all their tangent heights, plus (round 63,
+the Sect. 4.3 positive control on real ash) the 42 occultations of the
+release flagged as ash-sulfate mixtures by Lecours et al. (2026)
+(data/ace/ash_lecours2026/ash_manifest_v52.txt).  This script copies
 exactly those occultation directories from a local mirror of the v5.2
 release (FRDR, doi:10.20383/103.01245), rewriting each residual file with
 shortest round-trip number formatting (bit-identical values) and gzip
@@ -22,11 +25,15 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "ace" / "v52_subset"
 SAMPLE = ROOT / "data" / "ace_floor" / "sample.csv"
+# paper 1 round 63 (Sect. 4.3 positive control): the occultations of the
+# release that Lecours, Boone & Bernath (2026) flag as ash-sulfate mixtures
+ASH = ROOT / "data" / "ace" / "ash_lecours2026" / "ash_manifest_v52.txt"
 
 
 def main(src):
     src = Path(src)
     occs = [r["occultation"] for r in csv.DictReader(SAMPLE.open())]
+    occs += [o for o in ASH.read_text().split() if o not in occs]
     (OUT / "residual").mkdir(parents=True, exist_ok=True)
     with open(src / "occultationlist.csv") as f, open(OUT / "occultationlist.csv", "w", newline="") as g:
         rd = csv.DictReader(f); w = csv.DictWriter(g, fieldnames=rd.fieldnames); w.writeheader()

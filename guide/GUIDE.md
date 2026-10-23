@@ -60,6 +60,10 @@ silica field and orbit sampling.
 | Appendix A masses, Fig. A1–A2 | `reservoir_mass_saod.py`, `fit_segev_psd.py`, `reproduce_glossac_tropical_saod.py` | |
 | Appendix D | `run_o3_removal_error.py`, `gas_removal_floor_880_widths.py`, `snr_integration_time_trade.py`, `mir_detector_etc.py`, `check_limb_emission_baseline.py`, `analyze_st_temperature_sensitivity.py`, `verify_cfc_contribution.py`, `analyze_hitran_o3_line_uncertainty.py`, `highres_gas_removal_budget.py` | |
 | Appendix E, Table E1, Fig. E1 | `ace_floor/residual_floor_pipeline.py`, `ace_floor/residual_floor_paper1.py` | self-verifying archive (hashes in `manifest.json`) |
+| Sect. 2.2 anchor epoch | `glossac_epoch_check.py` | the 20–25°N SAOD525 median on the paper's epoch and on SAGE III/ISS-only epochs (round 62) |
+| Sect. 1, 8 observables | `signal_vs_background.py` | 0.1 Tg of silica in particles per cm³, column density, and as fractions of the calibrated background's particles above 0.15 µm and optical depth (round 62) |
+| Appendix F coatings | `sensitivity_sulfate_coating.py`, `sensitivity_composite_particle.py` | Bohren–Huffman coated-sphere optics (BHCOAT, validated against `saimon.mie`): a sulfuric-acid shell on the silica cores; a calcite core in a silica shell (rounds 62–63) |
+| Sect. 4.3 positive control | `ace_ash_positive_control.py` | the discriminator on the Lecours et al. (2026) ash–sulfate spectra of the v5.2 release (round 63) |
 
 ## 4. Conventions that matter
 
@@ -149,3 +153,19 @@ cross-section grids are our computed products for the paper's bands.
   baseline 0.101 Tg, window 0.141 Tg; the other numbers move by at most a
   few per cent (third mode 0.183, second member 0.128, alumina 0.150 Tg;
   ACE band null at 0.1 µm 0.18 Tg per shell; 2-D map within 1 %).
+* Rounds 62–63 (co-author review, October 2026): no archived number of the
+  earlier rounds changed. New steps `gepoch`, `obs`, `coat`, `comp`, `ash`:
+  the GloSSAC anchor restricted to the SAGE III/ISS period 2017.5–2018.5
+  is unchanged (0.00451 both ways); 0.1 Tg of silica is 0.091 cm⁻³ at
+  20 km, 8.3e4 cm⁻² and 9 % of the background's particles above 0.15 µm
+  (`signal_vs_background.json`); a sulfuric-acid shell of 0.1 / 0.3 / 1 / 3
+  times the silica mass moves the band threshold to 0.116 / 0.138 / 0.175 /
+  0.204 Tg (`sulfate_coating.json`); a calcite core in a silica shell gives
+  0.78 / 0.77 / 0.52 / 0.34 / 0.10 Tg per teragram of particle mass for
+  silica volume fractions 0 / 0.25 / 0.5 / 0.75 / 1 (`composite_particle.json`);
+  the discriminator run on the 56 ash–sulfate spectra of Lecours et al.
+  (2026) in the release returns ash above 3σ in 95 % of them against 1 % of
+  the null sample, with the silica channel not fooled
+  (`ace_v52/ash_positive_control.json`; the 42 flagged occultations were
+  added to `data/ace/v52_subset/`). The manuscript's title was shortened
+  in the same rounds.

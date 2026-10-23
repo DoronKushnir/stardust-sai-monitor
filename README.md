@@ -2,10 +2,9 @@
 
 Code, derived data and reproduction scripts for
 
-> Kushnir, D. (2026), *Design of a dedicated solar-occultation satellite for
-> monitoring stratospheric aerosol injection: detection thresholds, the
-> trace-gas floor, and latitude-resolved performance*, Atmos. Meas. Tech.
-> (in review).
+> Kushnir, D. et al. (2026), *Design of a dedicated solar-occultation
+> satellite for monitoring stratospheric aerosol injection*, Atmos. Meas.
+> Tech. (in review).
 
 Every figure, table and quoted number in the paper regenerates from this
 repository **without downloading any external data**: the third-party

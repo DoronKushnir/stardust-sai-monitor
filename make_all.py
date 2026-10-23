@@ -67,6 +67,12 @@ STEPS = [
     ("highres",["highres_gas_removal_budget.py", "silica"], "Sect. 4 line-resolved budget  [HITRAN]", "1 min", True),
     ("stT",    ["analyze_st_temperature_sensitivity.py"], "Appendix D S(T) table  [HITRAN line lists]", "8 min", True),
     ("lines",  ["analyze_hitran_o3_line_uncertainty.py"], "Appendix D line-scatter check  [HITRAN line lists]", "5 min", True),
+    # paper 1 rounds 62-63 (co-author review, October 2026)
+    ("gepoch", ["glossac_epoch_check.py"],                "outputs/glossac_epoch_check.txt (Sect. 2.2: the 20-25N anchor on the SAGE III/ISS-only epoch)", "s", False),
+    ("obs",    ["signal_vs_background.py"],               "outputs/signal_vs_background.json (Sect. 1, 8: 0.1 Tg in particles per cm3, column density, optical-depth fractions)", "1 min", False),
+    ("coat",   ["sensitivity_sulfate_coating.py"],        "outputs/sulfate_coating.json (Appendix F: sulfate shell on the silica cores)", "8 min", True),
+    ("comp",   ["sensitivity_composite_particle.py"],     "outputs/composite_particle.json (Appendix F, Sects. 5, 7: calcite core in a silica shell)", "8 min", True),
+    ("ash",    ["ace_ash_positive_control.py"],           "outputs/ace_v52/ash_positive_control.{csv,json}, figures/ace_ash_positive_control.png (Sect. 4.3: positive control on the Lecours et al. 2026 ash spectra)", "5 min", False),
 ]
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
 

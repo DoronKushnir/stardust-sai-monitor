@@ -31,6 +31,10 @@ PAIRS = [
     ("outputs/m2_vertical_correlation_floor.json", "outputs/m2_vertical_correlation_floor.json"),
     ("outputs/o3_slant_latitude_measured.json", "outputs/o3_slant_latitude_measured.json"),
     ("outputs/detectability_2d_calibrated/results_o3lat.json", "outputs/detectability_2d_results_o3lat.json"),
+    ("outputs/signal_vs_background.json", "outputs/signal_vs_background.json"),
+    ("outputs/sulfate_coating.json", "outputs/sulfate_coating.json"),
+    ("outputs/composite_particle.json", "outputs/composite_particle.json"),
+    ("outputs/ace_v52/ash_positive_control.json", "outputs/ash_positive_control.json"),
 ]
 
 

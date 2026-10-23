@@ -118,3 +118,57 @@ def test_o3_latitude_measured_extract():
     j20 = d["h_tan_km"].index(20.0)
     r = {k: round(v["ratio_median"][j20], 2) for k, v in d["bands"].items()}
     assert r["tropical 20-25N Jun-Aug"] == 0.92 and r["midlat 35-55N Jun-Sep"] == 0.94 and r["antarctic 60-90S Aug-Sep"] == 0.50
+
+
+# ---- paper 1 rounds 62-63 (co-author review): the new archives --------------
+
+def test_signal_vs_background_archive():
+    """0.1 Tg of silica in observables (Sects. 1, 8): 0.09 cm^-3 at 20 km, 8e4 cm^-2, 9 % of the
+    calibrated background's particles above 0.15 um, +16 % / +33 % of the vertical optical depth."""
+    d = json.loads((OUT / "signal_vs_background.json").read_text())
+    s = d["silica"]["0.1"]; r = d["ratios_0p1Tg_over_background"]
+    assert abs(s["n20_cm3"] - 0.091) < 0.002 and abs(s["column_cm2"] / 8.3e4 - 1) < 0.02
+    assert abs(r["n20_cm3_over_bg_above_015um"] - 0.092) < 0.003
+    assert abs(r["vert_525"] - 0.165) < 0.003 and abs(r["vert_880"] - 0.334) < 0.003
+
+
+def test_coated_sphere_archives_share_the_bare_silica_endpoint():
+    """Appendix F coatings: the mu = 0 (sulfate shell) and f_sil = 1 (composite) cases are the
+    band and window baselines of the thresholds archive."""
+    t = json.loads((OUT / "calibrated_background_thresholds.json").read_text())
+    q = t["results"]["CALIBRATED quiet (LM65T223, 2-comp)"]
+    band = q["band 8-13 @0.1: measured floors"]["full 7-param"]["triplet + band01"]["mmin_tg"]
+    win = q["window 7.8-9.3 @0.1: measured floors"]["full 7-param"]["triplet + window"]["mmin_tg"]
+    for name, key, sub in (("sulfate_coating.json", "0.0", "mmin_tg"),
+                           ("composite_particle.json", "1.0", "mmin_tg_total")):
+        p = OUT / name
+        if not p.exists():
+            pytest.skip(f"{name} not present (run make_all.py --only coat comp)")
+        d = json.loads(p.read_text())
+        assert abs(d["sets"]["band 8-13 @0.1"][key][sub] - band) < 2e-3
+        assert abs(d["sets"]["window 7.8-9.3 @0.1"][key][sub] - win) < 2e-3
+    p = OUT / "sulfate_coating.json"
+    if p.exists():
+        d = json.loads(p.read_text())
+        assert abs(d["sets"]["band 8-13 @0.1"]["0.1"]["mmin_tg"] - 0.116) < 0.002   # +15 % at a tenth of the silica mass
+        assert abs(d["peak_um"]["3.0"] - 8.93) < 0.011
+    p = OUT / "composite_particle.json"
+    if p.exists():
+        d = json.loads(p.read_text())
+        assert abs(d["sets"]["band 8-13 @0.1"]["0.0"]["mmin_tg_total"] - 0.78) < 0.01   # bare calcite sphere
+        assert abs(d["sets"]["band 8-13 @0.1"]["0.5"]["mmin_tg_total"] - 0.52) < 0.01
+
+
+def test_ash_positive_control_archive():
+    """Sect. 4.3: the discriminator on the Lecours et al. (2026) ash-sulfate spectra of the release."""
+    d = json.loads((OUT / "ace_v52" / "ash_positive_control.json").read_text())
+    assert d["n_ash_spectra"] == 56 and d["n_ash_occ"] == 41 and d["n_null"] == 101
+    assert d["ash"]["frac_ash_gt3"] > 0.94 and d["null"]["frac_ash_gt3"] < 0.02
+    assert d["ash"]["frac_sil_gt3"] == 0.0 and abs(d["ash"]["M_sil_both_median"]) < 0.05
+    assert abs(d["lecours_compare"]["ratio_median_fixed_psd"] - 1.84) < 0.02
+
+
+def test_ash_occultations_shipped():
+    man = (DATA / "ace" / "ash_lecours2026" / "ash_manifest_v52.txt").read_text().split()
+    assert len(man) == 42 and all((DATA / "ace" / "v52_subset" / "residual" / o).is_dir() for o in man)
+    assert (OPTICS / "ash_deguine2020" / "calbuco_ash_Deguine_2020.ri").exists()
