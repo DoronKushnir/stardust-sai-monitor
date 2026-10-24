@@ -1,0 +1,29 @@
+% Moved from sections/appendix_validation.tex in round 44 (tables live in tables/).
+\begin{table*}[t]
+    \centering
+    \caption{SAGE~III/ISS aerosol retrieval channels, observed Level~2
+             fractional extinction uncertainties at 20~km \citep{Wrana2021} (version~5.1; the version~6.0 product raises them by $5$--$20\,\%$ and removes the Chappuis-band aerosol bias behind the $602$ and $676$~nm entries, Sect.~\ref{sec:wrana_comparison}),
+             and the analytical prediction of the budget of Sects.~\ref{sec:slant_error}--\ref{sec:vertical_error}
+             ($\mathrm{SNR}=2000$, $\varepsilon_R=0.4\%$, $P_{kk}=160$~km, $g=1.10$).
+             The extinction $\alpha_k$ is read from the ATBD profile at
+             20~km using the altitude-dependent \r{A}ngstr\"om relation
+             (exponent $\approx 1.73$ at 20~km); $\tau_\mathrm{Ray}$ is the
+             full spherical limb integral at 20~km tangent altitude.}
+    \label{tab:combined}
+    \begin{tabular}{rrrrrl}
+        \toprule
+        $\lambda$ (nm) & $\alpha_k$ (m$^{-1}$) & $\tau_\mathrm{Ray}$ &
+        Predicted (\%) & Observed (\%) & Comment \\
+        \midrule
+        384  & $1.0\times10^{-6}$ & 1.83 &  5.0 & 5.3  & Rayleigh-dominated \\
+        448  & $7.8\times10^{-7}$ & 0.96 &  3.4 & 4.0  & Rayleigh-dominated \\
+        521  & $6.0\times10^{-7}$ & 0.52 &  2.5 & 5.7  & \\
+        602  & $4.7\times10^{-7}$ & 0.29 &  1.8 & 15.9 & O$_3$ Chappuis band \\
+        676  & $3.8\times10^{-7}$ & 0.18 &  1.6 & 9.1  & O$_3$ Chappuis band \\
+        756  & $3.2\times10^{-7}$ & 0.11 &  1.4 & 3.2  & \\
+        869  & $2.5\times10^{-7}$ & 0.065&  1.5 & 4.0  & \\
+        1021 & $1.9\times10^{-7}$ & 0.034&  1.9 & 4.5  & \\
+        1544 & $9.1\times10^{-8}$ & 0.006&  3.8 & 8.8  & InGaAs detector \\
+        \bottomrule
+    \end{tabular}
+\end{table*}

@@ -391,7 +391,8 @@ def plot(arch):
     FIG.parent.mkdir(exist_ok=True)
     fig.savefig(FIG, dpi=300, bbox_inches="tight")
     FIG_PAPER.parent.mkdir(exist_ok=True)
-    shutil.copy(FIG, FIG_PAPER)
+    if Path(FIG_PAPER).resolve() != Path(FIG).resolve():   # referee round 4, T11: no copy onto itself
+        shutil.copy(FIG, FIG_PAPER)
     print(f"figure -> {FIG} (copied to {FIG_PAPER})")
 
 

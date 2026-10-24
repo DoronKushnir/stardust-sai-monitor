@@ -1,0 +1,78 @@
+[
+  {
+    "scenario": "reference-atmosphere floor",
+    "support": "US-standard ozone at every latitude; floors re-derived per tangent altitude",
+    "z20_level": 20.465590299712925,
+    "fixed20_min": 0.026138794357983587,
+    "fixed20_max": 0.4291959604363215,
+    "fixed20_cov": [
+      -63.0,
+      63.000000000000014,
+      0.7111111111111111
+    ],
+    "best_min": 0.026138794357983587,
+    "best_worst": 0.0858559129444991,
+    "best_cov": [
+      -89.0,
+      89.0,
+      1.0
+    ]
+  },
+  {
+    "scenario": "measured altitude-dependent floor",
+    "support": "ACE 20--25$^\\circ$N Jun--Aug, 16--19 / 19--22 / 22--25 km",
+    "z20_level": 20.465590299712925,
+    "fixed20_min": 0.026735021569804326,
+    "fixed20_max": 0.4389904886893228,
+    "fixed20_cov": [
+      -61.0,
+      63.000000000000014,
+      0.7
+    ],
+    "best_min": 0.026735021569804326,
+    "best_worst": 0.20902435504732605,
+    "best_cov": [
+      -69.0,
+      73.0,
+      0.8
+    ]
+  },
+  {
+    "scenario": "measured-ozone rescaled floor",
+    "support": "ACE O$_3$ at 20--25$^\\circ$N, 35--55$^\\circ$N, 60--90$^\\circ$S; symmetric, year-round",
+    "z20_level": 20.465590299712925,
+    "fixed20_min": 0.025471419698844113,
+    "fixed20_max": 0.25486827645800203,
+    "fixed20_cov": [
+      -69.0,
+      69.0,
+      0.7777777777777778
+    ],
+    "best_min": 0.025471419698844113,
+    "best_worst": 0.08208282941434314,
+    "best_cov": [
+      -89.0,
+      89.0,
+      1.0
+    ]
+  },
+  {
+    "scenario": "measured-ozone + measured floor",
+    "support": "both of the above",
+    "z20_level": 20.465590299712925,
+    "fixed20_min": 0.026053744656525046,
+    "fixed20_max": 0.2606692887602747,
+    "fixed20_cov": [
+      -67.0,
+      69.0,
+      0.7666666666666667
+    ],
+    "best_min": 0.026053744656525046,
+    "best_worst": 0.1347051366318486,
+    "best_cov": [
+      -77.0,
+      87.0,
+      0.9222222222222223
+    ]
+  }
+]

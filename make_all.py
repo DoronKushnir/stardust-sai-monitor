@@ -72,6 +72,8 @@ STEPS = [
     ("obs",    ["signal_vs_background.py"],               "outputs/signal_vs_background.json (Sect. 1, 8: 0.1 Tg in particles per cm3, column density, optical-depth fractions)", "1 min", False),
     ("coat",   ["sensitivity_sulfate_coating.py"],        "outputs/sulfate_coating.json (Appendix F: sulfate shell on the silica cores)", "8 min", True),
     ("comp",   ["sensitivity_composite_particle.py"],     "outputs/composite_particle.json (Appendix F, Sects. 5, 7: calcite core in a silica shell)", "8 min", True),
+    ("tabB1",  ["tableB1_predicted.py"],                 "tables/sage3_level2_errors.tex predicted column (Table B1, exact onion-peel gain; referee round 4, T2)", "s", False),
+    ("tablat", ["latitude_scenarios.py"],                "outputs/latitude_scenarios.json, tables/latitude_scenarios.tex (Sect. 6 error scenarios from the archived maps; referee round 4, item 8)", "s", False),
     ("ash",    ["ace_ash_positive_control.py"],           "outputs/ace_v52/ash_positive_control.{csv,json}, figures/ace_ash_positive_control.png (Sect. 4.3: positive control on the Lecours et al. 2026 ash spectra)", "5 min", False),
 ]
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
