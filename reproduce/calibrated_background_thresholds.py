@@ -347,39 +347,78 @@ class TwoComponentBackground:
         return tot
 
 
+# Round 70 (referee round 5, item 6): identifiability tolerances of marginal(), kept in one
+# place.  SVD_RTOL: singular values of the whitened, unit-normalised nuisance block below
+# SVD_RTOL times the largest are treated as zero (dependent or redundant nuisance columns are
+# thereby handled; the projector is built on the numerical span only).  TPERP_RTOL: the
+# silica amplitude is reported unidentifiable (infinite sigma) when the component of the
+# whitened silica column outside that span is <= TPERP_RTOL times its norm.
+SVD_RTOL = 1e-10
+TPERP_RTOL = 1e-8
+
+
+def nuisance_span(idx, nuis_cols, sig):
+    """Orthonormal basis of the numerical span of the whitened nuisance columns on the
+    channels idx: (U_r, s, n_kept) with U_r the left singular vectors kept at SVD_RTOL,
+    s all singular values of the whitened, unit-normalised block, and n_kept the number of
+    nuisance columns with non-zero norm (zero-norm columns are dropped: they span nothing).
+    U_r has zero columns when every nuisance column is zero on idx."""
+    idx = np.asarray(idx)
+    sig_i = np.asarray(sig, float)[idx]
+    cols = [np.asarray(c, float)[idx] / sig_i for c in nuis_cols]     # whitened
+    scales = np.array([np.linalg.norm(c) for c in cols])
+    kept = [c / s for c, s in zip(cols, scales) if s > 0.0]
+    if not kept:
+        return np.zeros((len(idx), 0)), np.zeros(0), 0
+    Nw = np.column_stack(kept)                                         # unit-normalised
+    U, s, _ = np.linalg.svd(Nw, full_matrices=False)
+    r = int(np.sum(s > SVD_RTOL * s[0]))
+    return U[:, :r], s, len(kept)
+
+
 def marginal(idx, nuis_cols, sig, t):
     """Marginalized sigma(A_sil) [Tg], ||t_perp||, R^2 for channels idx and
     the given list of nuisance columns.
 
-    The Fisher matrix is formed on unit-normalized whitened columns so the
-    conditioning test is meaningful across mixed parameter units (amplitudes
-    vs per-nm PSD derivatives); sigma(A_sil) is scale-invariant and is
-    recovered by undoing the silica-column normalization."""
+    The columns are whitened (divided by sig) and the nuisance columns
+    unit-normalized so the span test is meaningful across mixed parameter
+    units (amplitudes vs per-nm PSD derivatives); sigma(A_sil) is
+    scale-invariant and is recovered by undoing the silica-column
+    normalization.
+
+    Round 30 (Doron's Sect.-3/Sect.-4 consistency question): the marginalized
+    sigma is the numerically stable projection of the whitened silica column
+    onto the complement of the nuisance span, sigma_A = 1/||t_perp||
+    (identical to sqrt([F^-1]_AA) when F is invertible), instead of inverting
+    F behind a cond(F) > 1e12 cutoff; a near-singularity that lies entirely
+    among the background parameters leaves the silica amplitude finite.
+
+    Round 70 (referee round 5, item 6): no parameter-count shortcut.  The
+    projector onto the nuisance span is built from the SVD of the whitened,
+    unit-normalised nuisance block, keeping the singular directions with
+    s_i > SVD_RTOL * s_max (SVD_RTOL = 1e-10, module constant), so dependent
+    or duplicated nuisance columns are handled by the rank, not by the count;
+    nuisance columns of zero norm are dropped (they span nothing).  The
+    silica amplitude is reported unidentifiable (inf, 0.0, nan) only when the
+    whitened silica column has zero norm or when its component outside the
+    nuisance span satisfies ||t_perp|| <= TPERP_RTOL * ||t_hat||
+    (TPERP_RTOL = 1e-8).  With K channels and more than K generic nuisance
+    columns the span is the whole space and t_perp vanishes to round-off, so
+    the former K < N + 1 shortcut is recovered as a result where it was
+    right; with redundant columns (e.g. J = [[1, 1, 0], [0, 0, 1]], unit
+    errors, last column the target) the correct finite value (sigma = 1) is
+    now returned."""
     idx = np.asarray(idx)
-    N = np.column_stack([c[idx] for c in nuis_cols])
-    if len(idx) < N.shape[1] + 1:
+    sig_i = np.asarray(sig, float)[idx]
+    t_hat = np.asarray(t, float)[idx] / sig_i
+    t_norm = float(np.linalg.norm(t_hat))
+    if not t_norm > 0.0:
         return np.inf, 0.0, np.nan
-    J = np.column_stack([N, t[idx]]) / sig[idx][:, None]   # whitened
-    scales = np.linalg.norm(J, axis=0)
-    if np.any(scales == 0):
-        return np.inf, 0.0, np.nan
-    Jn = J / scales
-    # Round 30 (Doron's Sect.-3/Sect.-4 consistency question): the
-    # marginalized sigma is computed by the numerically stable projection
-    # of the whitened silica column onto the complement of the nuisance
-    # span (sigma_A = 1/||t_perp||, identical to sqrt([F^-1]_AA) when F
-    # is invertible) instead of inverting F behind a cond(F) > 1e12
-    # cutoff.  The cutoff had reported "degenerate" for cases whose
-    # near-singularity lies entirely among the background parameters
-    # (e.g. the 7-parameter window-alone fit), where the silica amplitude
-    # itself is finite; only an exact null direction (t_perp = 0 to
-    # working precision) or K < N is reported as degenerate.
-    t_hat = J[:, -1]
-    Nw = Jn[:, :-1]
-    t_par = Nw @ np.linalg.lstsq(Nw, t_hat, rcond=None)[0]
+    Ur, _, _ = nuisance_span(idx, nuis_cols, sig)
+    t_par = Ur @ (Ur.T @ t_hat)
     t_perp = t_hat - t_par
     R2 = float(t_par @ t_par) / float(t_hat @ t_hat)
-    if np.linalg.norm(t_perp) <= 1e-8 * np.linalg.norm(t_hat):
+    if np.linalg.norm(t_perp) <= TPERP_RTOL * t_norm:
         return np.inf, 0.0, np.nan
     sig_a = 1.0 / float(np.linalg.norm(t_perp))
     return sig_a, 1.0 / sig_a, R2

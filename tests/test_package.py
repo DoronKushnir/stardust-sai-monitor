@@ -172,3 +172,68 @@ def test_ash_occultations_shipped():
     man = (DATA / "ace" / "ash_lecours2026" / "ash_manifest_v52.txt").read_text().split()
     assert len(man) == 42 and all((DATA / "ace" / "v52_subset" / "residual" / o).is_dir() for o in man)
     assert (OPTICS / "ash_deguine2020" / "calbuco_ash_Deguine_2020.ri").exists()
+
+
+# ---- paper 1 round 70 (referee round 5, item 6): target identifiability in marginal() ----
+
+def _marginal():
+    sys.path.insert(0, str(ROOT / "reproduce"))
+    import calibrated_background_thresholds as cbt
+    return cbt
+
+
+def test_marginal_referee_counterexample_is_identifiable():
+    """J = [[1, 1, 0], [0, 0, 1]], unit errors, last column the target: sigma = 1 exactly although
+    the full Fisher matrix is singular (K = 2 < N = 3) -- no parameter-count shortcut."""
+    cbt = _marginal()
+    c1 = np.array([1.0, 0.0]); c2 = np.array([1.0, 0.0]); t = np.array([0.0, 1.0]); sig = np.ones(2)
+    sa, tperp, R2 = cbt.marginal([0, 1], [c1, c2], sig, t)
+    assert sa == 1.0 and tperp == 1.0 and R2 == 0.0
+    Ur, s, n_kept = cbt.nuisance_span([0, 1], [c1, c2], sig)
+    assert Ur.shape == (2, 1) and n_kept == 2 and s[1] <= cbt.SVD_RTOL * s[0]
+
+
+def test_marginal_duplicated_and_dependent_nuisance_columns():
+    """A duplicated (or linearly dependent) nuisance column changes neither the span nor sigma."""
+    cbt = _marginal()
+    rng = np.random.default_rng(7)
+    a, b, t = rng.normal(size=(3, 6)); sig = rng.uniform(0.5, 2.0, 6); idx = np.arange(6)
+    ref = cbt.marginal(idx, [a, b], sig, t)
+    assert np.isfinite(ref[0])
+    for cols in ([a, a, b], [a, b, 2.5 * a - b], [b, a, a, b]):
+        got = cbt.marginal(idx, cols, sig, t)
+        assert np.allclose(got, ref, rtol=1e-12, atol=0)
+        assert cbt.nuisance_span(idx, cols, sig)[0].shape[1] == 2
+
+
+def test_marginal_zero_nuisance_column_is_dropped():
+    """A nuisance column that vanishes on the chosen channels spans nothing: sigma unchanged."""
+    cbt = _marginal()
+    rng = np.random.default_rng(11)
+    a, b, t = rng.normal(size=(3, 6)); sig = rng.uniform(0.5, 2.0, 6); idx = np.arange(6)
+    ref = cbt.marginal(idx, [a, b], sig, t)
+    got = cbt.marginal(idx, [a, np.zeros(6), b], sig, t)
+    assert np.allclose(got, ref, rtol=1e-12, atol=0)
+    assert cbt.nuisance_span(idx, [a, np.zeros(6), b], sig)[2] == 2
+    # only zero nuisance columns: the target is fitted alone, sigma = 1/||t/sig||
+    sa, tperp, R2 = cbt.marginal(idx, [np.zeros(6)], sig, t)
+    assert abs(sa * np.linalg.norm(t / sig) - 1) < 1e-14 and R2 == 0.0
+
+
+def test_marginal_target_in_nuisance_span_is_unidentifiable():
+    """Target inside the nuisance span (t_perp = 0 to round-off) and a zero target: (inf, 0, nan);
+    K generic nuisance columns on K channels span everything, so the target is unidentifiable."""
+    cbt = _marginal()
+    rng = np.random.default_rng(3)
+    a, b, c, t = rng.normal(size=(4, 6)); sig = rng.uniform(0.5, 2.0, 6); idx = np.arange(6)
+    six = [a, b, c] + [rng.normal(size=6) for _ in range(3)]      # six independent columns
+    for cols, tt in (([a, b], 0.3 * a - 2.0 * b), ([a, b], np.zeros(6)), (six, t)):
+        sa, tperp, R2 = cbt.marginal(idx, cols, sig, tt)
+        assert sa == np.inf and tperp == 0.0 and np.isnan(R2)
+    # six columns of rank three (a + b, c - a, a - 2b dependent) on six channels leave the target finite
+    dep = [a, b, c, a + b, c - a, a - 2 * b]
+    assert np.isfinite(cbt.marginal(idx, dep, sig, t)[0]) and cbt.nuisance_span(idx, dep, sig)[0].shape[1] == 3
+    # and one more generic channel makes the six-column case finite again
+    cols = [np.r_[x, rng.normal()] for x in six]
+    sa, _, _ = cbt.marginal(np.arange(7), cols, np.r_[sig, 1.0], np.r_[t, rng.normal()])
+    assert np.isfinite(sa)

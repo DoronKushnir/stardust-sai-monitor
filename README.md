@@ -47,6 +47,10 @@ two-dimensional studies (Sect. 6, Appendix F), and the trace-gas budget
 (Appendix D). The results land in `outputs/`, `figures/` and `tables/`;
 `reference_outputs/` holds the versions used in the paper for comparison
 (`python reproduce/compare_reference.py`).
+`MANIFEST.md` maps every figure, table and quoted number of the paper to its
+`make_all` step, inputs, outputs and tier (fast replay versus full
+recomputation), and `CHECKSUMS.sha256` lists the SHA-256 of every shipped file
+under `data/` and `reference_outputs/` (`shasum -a 256 -c CHECKSUMS.sha256`).
 
 ## Layout
 
