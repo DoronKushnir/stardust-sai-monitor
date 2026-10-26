@@ -12,3 +12,9 @@ data/ace_floor/*/*_pair_bootstrap.csv
 data/ace_floor/*/*_pairs_*.csv
 data/ace_floor/*/residual_floor_code.zip
 outputs/ace_manuscript_tables/
+
+# round 70: regenerable basis caches of reproduce/ace_nulltest_diagnostics.py (part 4)
+outputs/ace_v52/basis_diag_*.npz
+# run cache of reproduce/element_observable_closure.py
+outputs/element_observable_closure_aerosol.npz
+outputs/element_observable_closure_coarse.*

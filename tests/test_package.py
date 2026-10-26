@@ -237,3 +237,101 @@ def test_marginal_target_in_nuisance_span_is_unidentifiable():
     cols = [np.r_[x, rng.normal()] for x in six]
     sa, _, _ = cbt.marginal(np.arange(7), cols, np.r_[sig, 1.0], np.r_[t, rng.normal()])
     assert np.isfinite(sa)
+
+
+# ---- paper 1 round 70 (referee round 5): the shipped inputs and archives of the new steps ----
+
+def test_round70_fine_grids_and_line_lists_shipped():
+    """32 line-resolved 0.0025-cm^-1 grids (four gases x 8 (T, P)) and the four carved HITRAN line lists
+    of the 1042-1319 cm^-1 window, with the row counts stated in data/PROVENANCE.md."""
+    grids = sorted((DATA / "trace_gases" / "xsec_cache").glob("*_1067_1294_*_s0.0025.npz"))
+    assert len(grids) == 32 and {g.name.split("_")[0] for g in grids} == {"o3", "n2o", "ch4", "h2o"}
+    g = np.load(grids[0]); assert g["nu"][0] >= 1067.0 and g["nu"][-1] <= 1294.0 and abs(np.diff(g["nu"])[0] - 0.0025) < 1e-9
+    rows = {"o3": 26707, "n2o": 21298, "ch4": 14511, "h2o": 1742}
+    for gas, n in rows.items():
+        p = DATA / "trace_gases" / "hitran_cache" / f"cont_{gas}_1042_1319"
+        hdr = json.load(open(p.with_suffix(".header")))
+        assert hdr["number_of_rows"] == n and hdr["table_name"] == p.name
+        with open(p.with_suffix(".data")) as f:
+            k = sum(1 for _ in f)
+        assert k == n
+
+
+def test_atlas_extract_covers_the_closure_window():
+    import gzip
+    last = None
+    with gzip.open(DATA / "ace_atlas" / "Tropics_016-020km.txt.gz", "rt") as f:
+        for i, line in enumerate(f):
+            if i >= 9: last = line
+    assert float(last.split()[0]) >= 1294.0
+
+
+def test_element_observable_closure_archive():
+    """Appendix D (round 70): -ln<T> against <tau> at the 8.80-um element, the removal error, the joint
+    window/band values, the plateau, and the Monte Carlo closure of the 0.1-Tg draws."""
+    d = json.load(open(OUT / "element_observable_closure.json"))
+    eta = str(d["setup"]["sigma_eta_base"])
+    assert abs(d["observable"]["y_gas_880"] - 0.406) < 2e-3 and abs(d["observable"]["mean_tau_gas_880"] - 1.186) < 2e-3
+    b = d["removal_budget_880"][eta]["snr2000"]
+    assert abs(b["sigma_total"] / 5.115e-4 - 1) < 2e-3
+    assert abs(3 * d["joint_vs_two_stage_window"][eta]["joint_window_triplet_shell"] - 0.0680) < 5e-4
+    assert abs(3 * d["joint_band"]["per_eta"][eta]["joint_band_shell"] - 0.0572) < 5e-4
+    assert abs(3 * d["snr_scan"]["plateau_shell_triplet"] - 0.0466) < 5e-4
+    mc = d["monte_carlo"]["baseline"]
+    assert mc["0.1"]["n"] >= 100 and mc["0.1"]["p_detect_3sig"] >= 0.85 and mc["0.0"]["p_detect_3sig"] <= 0.02
+    assert 0.55 <= mc["0.1"]["coverage_1sig"] <= 0.85 and abs(mc["0.1"]["bias_median"]) < 0.01
+
+
+def test_marginal_rank_archive():
+    """Every archived configuration re-evaluated with the SVD marginalization: nothing newly finite or
+    infinite, the baselines reproduced to the archive's own rounding."""
+    d = json.load(open(OUT / "marginal_rank.json"))
+    s = d["summary"]
+    assert s["n_configurations"] == 108 and s["newly_finite"] == [] and s["newly_infinite"] == []
+    assert s["max_rel_diff_new_vs_old"] < 1e-9 and s["max_rel_diff_new_vs_archive"] < 1e-4
+    assert abs(d["baseline"]["band | full 7-param | triplet + band01"]["mmin_tg_new"] - 0.10104) < 1e-5
+    assert abs(d["baseline"]["window | full 7-param | triplet + window"]["mmin_tg_new"] - 0.14115) < 1e-5
+
+
+def test_materials_uniaxial_archive():
+    """Table 8 under the Clausius-Mossotti average (b) against the ray mean (a): dolomite x1.56,
+    calcite +2 %, alumina +5 %; (b) and (c) agree within 2.5 %; the ray mean reproduces the library."""
+    d = json.load(open(OUT / "materials_uniaxial.json"))["materials"]
+    for mat, r_ba, m_b in (("calcite", 1.018, 0.7956), ("dolomite", 1.558, 1.1621), ("alumina", 1.046, 0.1565)):
+        m = d[mat]
+        assert abs(m["ratio_b_over_a"]["mmin_quiet"] - r_ba) < 0.005 and abs(m["ratio_c_over_b"]["mmin_quiet"] - 1) < 0.025
+        assert abs(m["b"]["mmin_tg"]["quiet"] - m_b) < 5e-4
+        assert m["ray_mean_reproduces_library_max_abs_diff"] < 1e-9
+
+
+def test_psd_tail_coagulation_archive():
+    d = json.load(open(OUT / "psd_tail_coagulation.json"))
+    assert d["tail"]["D300o_reproduces_baseline"] is True
+    c = d["tail"]["cases"]["D300o"]
+    assert abs(c["measured_tail"]["mmin_ratio_to_lognormal"]["quiet"] - 1.0146) < 1e-3 and abs(c["mass_removed_binned"] - 0.0145) < 5e-4
+    k = d["coagulation"]
+    assert abs(k["K_psd_mean_cm3_s"] / 2.936e-9 - 1) < 1e-3 and abs(k["n_threshold_0p1Tg_cm3"] - 0.0932) < 5e-4
+
+
+def test_latitude_declared_level_archive():
+    d = json.load(open(OUT / "latitude_declared_level.json"))
+    assert abs(d["levels"]["table_level_km"] - 20.4656) < 1e-3
+    q = {r["quoted"]: r for r in d["quoted_number_map"]}
+    assert abs(q["f = 3.8 at 20.5 km (cores)"]["value"] - 3.779) < 2e-3
+
+
+def test_radiometric_budget_archive():
+    d = json.load(open(OUT / "radiometric_budget.json"))
+    r = d["chain"]["8.80"]["vox_microbolometer"]["dwell_0.5"]
+    assert r["inputs"]["dstar_cm_rtHz_W"] == 1e9 and abs(r["result"]["SNR_T_ratio"] / 23640 - 1) < 2e-3
+    assert r["result"]["limited_by"] == "systematics cap"
+
+
+def test_nulltest_diagnostics_archive():
+    """The referee's four numbers for the full-band null test reproduce (Sect. 4.3)."""
+    d = json.load(open(OUT / "ace_v52" / "nulltest_diagnostics.json"))
+    f = d["rows"]["full"]
+    assert f["n_occ"] == 101 and abs(f["robust_scatter"] - 0.025943) < 2e-6 and abs(f["sd"] - 0.021847) < 2e-6
+    assert abs(f["median_formal"] - 0.023208) < 2e-6 and abs(f["median_M"] - 0.011245) < 2e-6
+    assert d["sample"]["selection"]["passed"] == 101 and d["sample"]["selection"]["lt2_above_30"] == 42
+    assert abs(d["sample"]["full"]["trend"]["slope_tg_per_decade"] - 0.0228) < 5e-4

@@ -35,6 +35,14 @@ PAIRS = [
     ("outputs/sulfate_coating.json", "outputs/sulfate_coating.json"),
     ("outputs/composite_particle.json", "outputs/composite_particle.json"),
     ("outputs/ace_v52/ash_positive_control.json", "outputs/ash_positive_control.json"),
+    # round 70 (referee round 5)
+    ("outputs/element_observable_closure.json", "outputs/element_observable_closure.json"),
+    ("outputs/marginal_rank.json", "outputs/marginal_rank.json"),
+    ("outputs/latitude_declared_level.json", "outputs/latitude_declared_level.json"),
+    ("outputs/radiometric_budget.json", "outputs/radiometric_budget.json"),
+    ("outputs/materials_uniaxial.json", "outputs/materials_uniaxial.json"),
+    ("outputs/psd_tail_coagulation.json", "outputs/psd_tail_coagulation.json"),
+    ("outputs/ace_v52/nulltest_diagnostics.json", "outputs/nulltest_diagnostics.json"),
 ]
 
 

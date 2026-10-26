@@ -5,8 +5,8 @@
     "wl_um": 8.8,
     "ext_m1": 6.15149040501426e-07
    },
-   "band/quiet": 0.10103895048792455,
-   "band/postHT": 0.10028529515570926,
+   "band/quiet": 0.10103895048792458,
+   "band/postHT": 0.10028529515570925,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 8.8,
     "ext_m1": 6.15149040501426e-07
@@ -122,24 +122,24 @@
     "peak_wl_um": 20.35,
     "peak_ext_m1": 1.756003373483468e-07,
     "band_plus_farir_quiet": 0.036186197445122685,
-    "triplet_plus_farir_quiet": 0.04746217998822526,
-    "one_minus_R2_all": 0.30366806756206643,
+    "triplet_plus_farir_quiet": 0.04746217998822525,
+    "one_minus_R2_all": 0.30366806756206544,
     "floor_scan": {
      "1.0": {
       "band_plus_farir": 0.036186197445122685,
-      "triplet_plus_farir": 0.04746217998822526
+      "triplet_plus_farir": 0.04746217998822525
      },
      "3.0": {
-      "band_plus_farir": 0.07481323855716505,
+      "band_plus_farir": 0.07481323855716504,
       "triplet_plus_farir": 0.1423772620194781
      },
      "10.0": {
-      "band_plus_farir": 0.09509912395427203,
-      "triplet_plus_farir": 0.4745873547059688
+      "band_plus_farir": 0.09509912395427206,
+      "triplet_plus_farir": 0.4745873547059687
      },
      "30.0": {
-      "band_plus_farir": 0.09875508187287788,
-      "triplet_plus_farir": 1.423761136087561
+      "band_plus_farir": 0.09875508187287785,
+      "triplet_plus_farir": 1.4237611360875588
      }
     }
    }
@@ -147,16 +147,16 @@
   "calcite": {
    "peak_tau_per_Tg_20km_band": {
     "wl_um": 11.4,
-    "ext_m1": 9.695766105606453e-08
+    "ext_m1": 9.695766105606456e-08
    },
    "band/quiet": 0.7817773186474587,
-   "band/postHT": 0.7799331276236166,
+   "band/postHT": 0.779933127623616,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 7.8,
     "ext_m1": 1.7146723172522256e-09
    },
-   "window/quiet": 24.816585983646945,
-   "window/postHT": 20.171823181927696,
+   "window/quiet": 24.816585983647826,
+   "window/postHT": 20.171823181927714,
    "farir": {
     "centers_um": [
      26.05,
@@ -264,26 +264,26 @@
     ],
     "note": "calcite lattice band (26-31 um), per-element H2O+O3+N2O OE floors; bounded below by the SNR-2000 floor 3.4e-09 m^-1",
     "peak_wl_um": 28.55,
-    "peak_ext_m1": 2.9520177792793395e-07,
-    "band_plus_farir_quiet": 0.02405020113495194,
-    "triplet_plus_farir_quiet": 0.032940139832258505,
-    "one_minus_R2_all": 0.4175464216599928,
+    "peak_ext_m1": 2.95201777927934e-07,
+    "band_plus_farir_quiet": 0.024050201134951946,
+    "triplet_plus_farir_quiet": 0.03294013983225884,
+    "one_minus_R2_all": 0.41754642165999223,
     "floor_scan": {
      "1.0": {
-      "band_plus_farir": 0.02405020113495194,
-      "triplet_plus_farir": 0.032940139832258505
+      "band_plus_farir": 0.024050201134951946,
+      "triplet_plus_farir": 0.03294013983225884
      },
      "3.0": {
       "band_plus_farir": 0.07166410232918827,
-      "triplet_plus_farir": 0.09882041936966045
+      "triplet_plus_farir": 0.09882041936966302
      },
      "10.0": {
-      "band_plus_farir": 0.22464679038383262,
-      "triplet_plus_farir": 0.3294013978507047
+      "band_plus_farir": 0.22464679038383267,
+      "triplet_plus_farir": 0.32940139785071343
      },
      "30.0": {
-      "band_plus_farir": 0.4898190297448045,
-      "triplet_plus_farir": 0.9882041935393566
+      "band_plus_farir": 0.4898190297448044,
+      "triplet_plus_farir": 0.9882041935393512
      }
     }
    }
@@ -291,16 +291,16 @@
   "dolomite": {
    "peak_tau_per_Tg_20km_band": {
     "wl_um": 11.3,
-    "ext_m1": 9.434216776516191e-08
+    "ext_m1": 9.434216776516193e-08
    },
    "band/quiet": 0.7459377012400744,
-   "band/postHT": 0.7498482890294789,
+   "band/postHT": 0.7498482890294785,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 8.1,
     "ext_m1": 2.9353252053514997e-09
    },
-   "window/quiet": 22.800087981007927,
-   "window/postHT": 19.27816910630527,
+   "window/quiet": 22.80008798100924,
+   "window/postHT": 19.27816910630513,
    "farir": {
     "centers_um": [
      22.55,
@@ -410,24 +410,24 @@
     "peak_wl_um": 24.85,
     "peak_ext_m1": 2.577333091755428e-07,
     "band_plus_farir_quiet": 0.026970906363344718,
-    "triplet_plus_farir_quiet": 0.040798108552350144,
-    "one_minus_R2_all": 0.38230478966128834,
+    "triplet_plus_farir_quiet": 0.04079810855235019,
+    "one_minus_R2_all": 0.38230478966128967,
     "floor_scan": {
      "1.0": {
       "band_plus_farir": 0.026970906363344718,
-      "triplet_plus_farir": 0.040798108552350144
+      "triplet_plus_farir": 0.04079810855235019
      },
      "3.0": {
-      "band_plus_farir": 0.08014382578057781,
-      "triplet_plus_farir": 0.12239429463865789
+      "band_plus_farir": 0.08014382578057783,
+      "triplet_plus_farir": 0.12239429463865785
      },
      "10.0": {
-      "band_plus_farir": 0.24702616451252044,
-      "triplet_plus_farir": 0.4079809703677096
+      "band_plus_farir": 0.24702616451252035,
+      "triplet_plus_farir": 0.4079809703677136
      },
      "30.0": {
       "band_plus_farir": 0.5070789309946309,
-      "triplet_plus_farir": 1.2239429080012911
+      "triplet_plus_farir": 1.2239429080012918
      }
     }
    }
@@ -435,16 +435,16 @@
   "alumina": {
    "peak_tau_per_Tg_20km_band": {
     "wl_um": 12.9,
-    "ext_m1": 8.256464583060051e-07
+    "ext_m1": 8.256464583060049e-07
    },
-   "band/quiet": 0.14988501282681252,
-   "band/postHT": 0.15052204291495766,
+   "band/quiet": 0.14959210650571775,
+   "band/postHT": 0.15016149370155898,
    "peak_tau_per_Tg_20km_window": {
     "wl_um": 9.1,
     "ext_m1": 4.983030109087329e-09
    },
-   "window/quiet": 13.483156270067633,
-   "window/postHT": 11.351670367704383,
+   "window/quiet": 15.15014426135765,
+   "window/postHT": 12.866442754772404,
    "farir": {
     "centers_um": [
      18.3,
@@ -553,25 +553,25 @@
     "note": "alumina W band (18.25-23.25 um), per-element H2O+HNO3+O3 OE floors; bounded below by the SNR-2000 floor 3.4e-09 m^-1",
     "peak_wl_um": 20.6,
     "peak_ext_m1": 6.237601074656564e-08,
-    "band_plus_farir_quiet": 0.07650200933197165,
-    "triplet_plus_farir_quiet": 0.13062641089981344,
-    "one_minus_R2_all": 0.19925857191179108,
+    "band_plus_farir_quiet": 0.07643644148347324,
+    "triplet_plus_farir_quiet": 0.1305557544110294,
+    "one_minus_R2_all": 0.20340165996133808,
     "floor_scan": {
      "1.0": {
-      "band_plus_farir": 0.07650200933197165,
-      "triplet_plus_farir": 0.13062641089981344
+      "band_plus_farir": 0.07643644148347324,
+      "triplet_plus_farir": 0.1305557544110294
      },
      "3.0": {
-      "band_plus_farir": 0.10999360704498147,
-      "triplet_plus_farir": 0.391861589596741
+      "band_plus_farir": 0.11006496015814407,
+      "triplet_plus_farir": 0.3916496061967447
      },
      "10.0": {
-      "band_plus_farir": 0.11930359043145444,
-      "triplet_plus_farir": 1.3061986079858623
+      "band_plus_farir": 0.11944824902456024,
+      "triplet_plus_farir": 1.3054919913692533
      },
      "30.0": {
-      "band_plus_farir": 0.12851784431162788,
-      "triplet_plus_farir": 3.918594059356188
+      "band_plus_farir": 0.12857399542246506,
+      "triplet_plus_farir": 3.9164742081129544
      }
     }
    }
@@ -650,10 +650,10 @@
   ],
   "floor_m1": 9.526e-08,
   "quiet": {
-   "silica": 0.10082410381089017,
-   "calcite": 0.7815614285923269,
-   "dolomite": 0.7452987204076525,
-   "alumina": 0.14614074307834213
+   "silica": 0.10082410381089016,
+   "calcite": 0.7815614285923265,
+   "dolomite": 0.7452987204076522,
+   "alumina": 0.14591903744939733
   }
  }
 }

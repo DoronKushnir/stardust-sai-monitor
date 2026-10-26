@@ -32,7 +32,7 @@ STEPS = [
     ("fig1",   ["plot_slant_od_landscape_paper.py"],     "figures/slant_od_landscape.png (Fig. 1)", "1 min", False),
     ("fig2",   ["plot_refractive_index_paper.py"],       "figures/refractive_index_problem.png (Fig. 2)", "1 min", False),
     ("fig3",   ["plot_spectral_shapes_paper.py"],        "figures/spectral_shapes_problem.png (Fig. 3)", "1 min", False),
-    ("fig4",   ["plot_ace_atlas_paper.py"],              "figures/scisat_ace_atlas_874.png (Fig. 4)", "1 min", False),
+    ("fig4",   ["plot_ace_atlas_element.py"],            "figures/scisat_ace_atlas_874.png (Fig. 3; since round 70 both sides in the element observable, drawn from the closure archive; plot_ace_atlas_paper.py draws the superseded mean-optical-depth version)", "s", False),
     ("fig5",   ["ace_mir_aerosol.py"],                   "figures/ace_mir_aerosol.png (Fig. 5), outputs/ace_v52/*", "3 min", False),
     ("null",   ["ace_fullspectrum_retrieval.py"],        "outputs/ace_v52/fullspectrum*.json (Sect. 4.3 null test)", "5 min", False),
     ("roster", ["window_vis_roster_sweep.py"],           "outputs/window_vis_roster_sweep.json (Sect. 3.2 roster variants)", "10 min", True),
@@ -75,6 +75,16 @@ STEPS = [
     ("tabB1",  ["tableB1_predicted.py"],                 "tables/sage3_level2_errors.tex predicted column (Table B1, exact onion-peel gain; referee round 4, T2)", "s", False),
     ("tablat", ["latitude_scenarios.py"],                "outputs/latitude_scenarios.json, tables/latitude_scenarios.tex (Sect. 6 error scenarios from the archived maps; referee round 4, item 8)", "s", False),
     ("ash",    ["ace_ash_positive_control.py"],           "outputs/ace_v52/ash_positive_control.{csv,json}, figures/ace_ash_positive_control.png (Sect. 4.3: positive control on the Lecours et al. 2026 ash spectra)", "5 min", False),
+    # paper 1 round 70 (referee round 5, October 2026)
+    ("closure",["element_observable_closure.py"],         "outputs/element_observable_closure.{json,npz}, figures/scisat_ace_atlas_874.png (App. D element-observable budget, joint 38-parameter retrieval, SNR scan, response sensitivity, Monte Carlo closure; Tables 2, D2-D3, Fig. 3; items 1-3)  [HITRAN: shipped 0.0025-cm^-1 grids + carved line lists; hitran-api for the partition sums]", "45 min", True),
+    ("tabD2",  ["element_closure_table.py"],              "tables/element_closure.tex (Tables D2-D3) from the closure archive", "s", False),
+    ("rank",   ["marginal_rank.py"],                      "outputs/marginal_rank.{json,txt} (App. C: every archived configuration re-evaluated with the SVD marginalization; item 6)", "3 min", False),
+    ("ranktest",["marginal_rank_tests.py"],               "stdout: the sparse/rank checks of marginal() (the four tests of tests/test_package.py)", "s", False),
+    ("lat70",  ["latitude_declared_level.py"],            "outputs/latitude_declared_level.json (Sect. 6 on the declared 20.47-km model level: plume factors, coverage, vertical response, campaign covariance; item 7)", "1 min", False),
+    ("radio",  ["radiometric_budget.py"],                 "outputs/radiometric_budget.{json,txt}, tables/radiometric_budget.tex (Table D5: the sourced radiometric budget; item 8)", "s", False),
+    ("uniax",  ["materials_uniaxial.py"],                 "outputs/materials_uniaxial.json, tables/optical_constants_provenance.tex (Table 8 under the Clausius-Mossotti orientation average, Table A1, optical-constant perturbations; item 9)", "30 min", True),
+    ("tail",   ["psd_tail_coagulation.py"],               "outputs/psd_tail_coagulation.json (App. A: measured PSD tail, settling, coagulation bookkeeping; item 9)", "5 min", False),
+    ("nulld",  ["ace_nulltest_diagnostics.py"],           "outputs/ace_v52/nulltest_diagnostics.{json,_perocc.csv} (Sect. 4.3, Tables 3-4: weighting and mask, chi2 and coverage, conditioning, nonlinear backgrounds, null drift, ash paired residuals; items 4-5)", "15 min", True),
 ]
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
 

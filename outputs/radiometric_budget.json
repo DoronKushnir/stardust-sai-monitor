@@ -1,0 +1,2559 @@
+{
+ "script": "reproduce/radiometric_budget.py",
+ "date": "2026-10-25",
+ "definitions": {
+  "SNR_T": "per-sample transmission SNR of the ratio T/sigma_T, sigma_T/T = sqrt(1/SNR_atm^2 + 1/SNR_ref^2)",
+  "SNR_single_TOA": "one unattenuated sample, random terms (shot + background shot + NEP)",
+  "SNR_single_atm": "one attenuated sample, random terms",
+  "SNR_reference": "SNR_single_TOA * sqrt(n_ref), n_ref = 100 samples above 80 km",
+  "cap": "systematics cap 2000 applied in quadrature after the random chain (paper convention)",
+  "K_GEOM": "6.8735e-06 m^-1 from reproduce/mir_detector_etc.py (sigma_alpha = K_GEOM/SNR)"
+ },
+ "instrument": {
+  "D_aperture_m": 0.1,
+  "tau_optics": 0.3,
+  "dlam_um": 0.1,
+  "T_optics_K": 300.0,
+  "eps_optics": 1.0,
+  "qe_absorptance": 0.8,
+  "snr_sys_cap": 2000.0
+ },
+ "solar": {
+  "model": "5772-K blackbody disk (ETC) scaled to ASTM E490 at 10 um",
+  "E490_at_10um_W_m2_um": 0.24,
+  "disk_model_at_10um_W_m2_um": 0.2859,
+  "scale": 0.8396,
+  "disk_model_values": {
+   "8.80": 0.4683,
+   "11.40": 0.172,
+   "20.40": 0.01762
+  },
+  "used_values": {
+   "8.80": 0.3932,
+   "11.40": 0.1444,
+   "20.40": 0.0148
+  },
+  "note": "the paper's 2.5 uW at 8.80 um follows from the unscaled disk model; the E490-anchored value is lower by the scale factor"
+ },
+ "geometry": {
+  "orbit_altitude_km": 420.0,
+  "tangent_height_km": 20.0,
+  "v_orbit_km_s": 7.661,
+  "tangent_range_geometric_km": 2296.0,
+  "tangent_range_adopted_km": 3000.0,
+  "descent_rate_inplane_max_km_s": 2.591,
+  "descent_rate_adopted_km_s": [
+   1.0,
+   3.0
+  ],
+  "dwell_per_sample_s": [
+   0.1667,
+   0.5
+  ],
+  "strip_angular_height_mrad": 0.1667,
+  "strip_angular_height_geom_mrad": 0.2177,
+  "solar_diameter_mrad": 9.301,
+  "solar_disk_sr": 6.794e-05,
+  "strip_fraction_of_disk": 0.02281,
+  "strip_fraction_geom_range": 0.02981,
+  "strip_solid_angle_sr": 1.55e-06,
+  "aperture_area_m2": 0.007854,
+  "etendue_m2_sr": 1.217e-08,
+  "pitch_um": 17.0,
+  "rows_per_sample": 2,
+  "pixels_per_element_spectral": 2,
+  "focal_length_m": 0.204,
+  "f_number": 2.04,
+  "solar_diameter_pixels": 111.6,
+  "pixels_per_element_total": 223.2,
+  "pixel_solid_angle_sr": 0.1887,
+  "etendue_check_pixels_m2_sr": 1.217e-08,
+  "slit": "narrow dimension = altitude = n_rows pixels = 0.1-um element width in the spectral direction; long dimension along the solar diameter (M columns)",
+  "array_format_needed": "94 spectral x 112 spatial pixels for 47 elements (a 320x240 array suffices)",
+  "diffraction_spot_pixels": {
+   "8.80": 2.577,
+   "11.40": 3.338,
+   "20.40": 5.973
+  },
+  "diffraction_note": "2.44 lambda F/pitch; > 2 pixels means the 0.1-um element (2 pixels) is blurred by diffraction at this F-number -- a design constraint, strongest at 20.4 um"
+ },
+ "optical_depths": {
+  "source": "outputs/slant_od_landscape_curves.npz (20-km tangent, reproduce/plot_slant_od_landscape_paper.py)",
+  "8.80": {
+   "tau_gas_element": 1.173,
+   "tau_gas_mean": 1.196,
+   "tau_total_element": 1.258,
+   "n_grid": 11
+  },
+  "11.40": {
+   "tau_gas_element": 0.2579,
+   "tau_gas_mean": 0.2585,
+   "tau_total_element": 0.3174,
+   "n_grid": 11
+  },
+  "20.40": {
+   "tau_gas_element": 0.08608,
+   "tau_gas_mean": 0.0899,
+   "tau_total_element": 0.1217,
+   "n_grid": 11
+  },
+  "window_elements_tau_gas": {
+   "7.80": 6.423,
+   "7.90": 5.017,
+   "8.00": 1.67,
+   "8.10": 0.5138,
+   "8.20": 0.1775,
+   "8.30": 0.1065,
+   "8.40": 0.2191,
+   "8.50": 0.3905,
+   "8.60": 0.6177,
+   "8.70": 0.8159,
+   "8.80": 1.173,
+   "8.90": 1.68,
+   "9.00": 1.096,
+   "9.10": 1.086,
+   "9.20": 1.253
+  },
+  "window_edge_max": {
+   "element_um": "7.80",
+   "tau_gas": 6.423
+  }
+ },
+ "floors_m1": {
+  "8.80": 1.692e-08,
+  "11.40": 1.2e-08,
+  "20.40": 3.4e-09
+ },
+ "catalogue_reconciliation": {
+  "rows": [
+   {
+    "name": "Uncooled microbolometer (VOx)",
+    "kind": "thermal",
+    "pitch_um": 17.0,
+    "nep_W_rtHz": 1e-11,
+    "dstar_implied_cm_rtHz_W": 170000000.0
+   },
+   {
+    "name": "Uncooled thermopile array",
+    "kind": "thermal",
+    "pitch_um": 100.0,
+    "nep_W_rtHz": 1e-09,
+    "dstar_implied_cm_rtHz_W": 10000000.0
+   },
+   {
+    "name": "Pyroelectric (DLaTGS/LiTaO3)",
+    "kind": "thermal",
+    "pitch_um": 100.0,
+    "nep_W_rtHz": 3e-10,
+    "dstar_implied_cm_rtHz_W": 33330000.0
+   },
+   {
+    "name": "InSb",
+    "kind": "photon",
+    "pitch_um": 30.0,
+    "nep_W_rtHz": 3e-14,
+    "dstar_implied_cm_rtHz_W": 100000000000.0
+   },
+   {
+    "name": "HgCdTe LWIR",
+    "kind": "photon",
+    "pitch_um": 30.0,
+    "nep_W_rtHz": 6e-14,
+    "dstar_implied_cm_rtHz_W": 50000000000.0
+   },
+   {
+    "name": "HgCdTe VLWIR",
+    "kind": "photon",
+    "pitch_um": 30.0,
+    "nep_W_rtHz": 1.5e-13,
+    "dstar_implied_cm_rtHz_W": 20000000000.0
+   },
+   {
+    "name": "Si:As IBC/BIB",
+    "kind": "photon",
+    "pitch_um": 25.0,
+    "nep_W_rtHz": 2.5e-14,
+    "dstar_implied_cm_rtHz_W": 100000000000.0
+   },
+   {
+    "name": "Si:Sb BIB",
+    "kind": "photon",
+    "pitch_um": 25.0,
+    "nep_W_rtHz": 3.125e-14,
+    "dstar_implied_cm_rtHz_W": 80000000000.0
+   },
+   {
+    "name": "Type-II superlattice (T2SL)",
+    "kind": "photon",
+    "pitch_um": 30.0,
+    "nep_W_rtHz": 3e-14,
+    "dstar_implied_cm_rtHz_W": 100000000000.0
+   }
+  ],
+  "flags": [
+   "Uncooled microbolometer (VOx): catalogue NEP 1e-11 W/rtHz at 17 um pitch implies D* = 1.7e8; the Appendix text quotes D* ~ 2e10, which is the radiative-exchange LIMIT of an ideal 300-K thermal detector (computed below: 1.8e10), not a measured array value; measured arrays give ~1e9 (below). The two paper numbers are therefore inconsistent by a factor ~100 and neither is the sourced value.",
+   "Uncooled thermopile array: catalogue NEP 1e-9 W/rtHz at 100 um implies D* = 1e7; the sourced MCS thermopiles are 8e8 (with readout) to 1.7e9 (detector alone) -- the catalogue was ~100x too pessimistic. The Appendix statement that the microbolometer D* is '~20 times the thermopile's' is NOT supported by the sourced values (both ~1e9).",
+   "Pyroelectric (DLaTGS): catalogue NEP 3e-10 W/rtHz at 100 um implies D* = 3.3e7; OTES/L'TES measure 1.2e9 at 10 Hz. AC-only remains true (needs modulation).",
+   "Photon detectors (InSb, HgCdTe, Si:As, Si:Sb, T2SL): NEP is derived from D* and pitch by construction, so they are self-consistent; their D* values are representative (not flight-measured here) and are flagged as such."
+  ]
+ },
+ "sourced_detectors": {
+  "vox_microbolometer": {
+   "adopted": {
+    "dstar_cm_rtHz_W": 1000000000.0,
+    "pitch_um": 17.0,
+    "nep_W_rtHz": 1.7e-12,
+    "tau_thermal_s": 0.012,
+    "T_op_K": 300.0,
+    "cooling": "none; TEC stabilization of the FPA (E-THEMIS, THEMIS +/-1 mK)",
+    "frame_Hz": 60.0,
+    "adc_bits": 14,
+    "basis": "conservative round value of the measured range below; tau from E-THEMIS"
+   },
+   "derived_from_measurements": {
+    "Mizrahi2013_NETD35mK_f1_30Hz_17um": 1174000000.0,
+    "Celik2022_NETD30mK_f1_17um_30Hz_assumed": 1370000000.0,
+    "Murphy2007_target_NETD50mK_f1_30Hz_17um": 821700000.0,
+    "ETHEMIS_NEP4p95em12W_12um_df30Hz": 1328000000.0,
+    "ETHEMIS_FPM_NEDT0p042K_f1_60Hz_12um_7to14um": 1702000000.0,
+    "dM_dT_7p5_13p5um_300K_W_cm2_K": 0.0002772,
+    "netd_formula": "NETD = (4F^2+1) sqrt(df)/(sqrt(A_d) D* tau_o dM/dT), df = frame/2, tau_o = 1",
+    "Wang2025_abstract_claim": 20000000000.0,
+    "ideal_thermal_detector_limit_300K_2pi": 18130000000.0
+   },
+   "inconsistency_statement": "Paper text D* ~2e10 = ideal-thermal-detector limit (1.8e+10); ETC catalogue 1e-11 W/rtHz at 17 um = 1.7e+08; measured arrays 8.2e+08-1.4e+09. Adopted 1e+09.",
+   "sources": [
+    "Mizrahi2013_VOx17",
+    "Celik2022_VOx17",
+    "Murphy2007_VOx17",
+    "Christensen2024_ETHEMIS",
+    "Wang2025_review",
+    "Christensen2004_THEMIS"
+   ]
+  },
+  "thermopile_linear_array": {
+   "adopted": {
+    "dstar_cm_rtHz_W": 800000000.0,
+    "pitch_um": null,
+    "pixel_um": [
+     240.0,
+     480.0
+    ],
+    "nep_W_rtHz": 4.243e-11,
+    "tau_thermal_s": 0.1,
+    "T_op_K": 300.0,
+    "cooling": "none",
+    "dstar_detector_alone": 1700000000.0,
+    "dstar_band_Hz": [
+     0.03,
+     0.25
+    ],
+    "dynamic_range_2s": 13000,
+    "linearity": 0.01,
+    "basis": "MCS engineering-model focal plane with readout (Foote2003); Diviner uses the same class"
+   },
+   "caveats": [
+    "D* specified at 0.03-0.25 Hz (2-s integrations); response time <= 100 ms, so a 0.17-s dwell is only ~2 time constants; linear 21-element arrays, not 2-D formats"
+   ],
+   "sources": [
+    "Foote2003_thermopile",
+    "Paige2010_Diviner",
+    "McCleese2007_MCS"
+   ]
+  },
+  "dlatgs_pyroelectric": {
+   "adopted": {
+    "dstar_cm_rtHz_W": 1200000000.0,
+    "pitch_um": null,
+    "nep_W_rtHz": null,
+    "T_op_K": 295.0,
+    "cooling": "none",
+    "modulation_required": true,
+    "basis": "OTES/L'TES measured D* 1.2e9 at 10 Hz, 22 C, single element, AC-coupled; in an FTS the moving mirror modulates the signal; a staring spectrograph would need a chopper"
+   },
+   "sources": [
+    "Christensen2018_OTES",
+    "Christensen2024_LTES"
+   ]
+  },
+  "hgcdte_lwir": {
+   "adopted": {
+    "dstar_cm_rtHz_W": 50000000000.0,
+    "pitch_um": 30.0,
+    "nep_W_rtHz": 6e-14,
+    "T_op_K": 77.0,
+    "cooling": "passive radiator 80-100 K (ACE-FTS, Bernath2005)",
+    "basis": "REPRESENTATIVE catalogue value; no flight-measured D* sourced in this round"
+   },
+   "sources": [
+    "Bernath2005"
+   ]
+  },
+  "si_as_bib": {
+   "adopted": {
+    "dstar_cm_rtHz_W": 100000000000.0,
+    "pitch_um": 25.0,
+    "nep_W_rtHz": 2.5e-14,
+    "T_op_K": 7.0,
+    "basis": "REPRESENTATIVE catalogue value (JWST/MIRI heritage); flagged"
+   },
+   "sources": []
+  }
+ },
+ "detectors_in_chain": {
+  "vox_microbolometer": {
+   "label": "VOx microbolometer, sourced D* 1e9, 17 um",
+   "dstar_cm_rtHz_W": 1000000000.0,
+   "pitch_um": 17.0,
+   "nep_W_rtHz": 1.6999999999999998e-12
+  },
+  "vox_catalogue_1e-11": {
+   "label": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+   "dstar_cm_rtHz_W": 170000000.0,
+   "pitch_um": 17.0,
+   "nep_W_rtHz": 1e-11
+  },
+  "vox_ideal_limit": {
+   "label": "ideal 300-K thermal detector limit D* 1.8e10 (the paper's '2e10')",
+   "dstar_cm_rtHz_W": 18125473565.016953,
+   "pitch_um": 17.0,
+   "nep_W_rtHz": 1.0
+  },
+  "thermopile": {
+   "label": "thermopile, MCS class D* 8e8 (single element of the element area)",
+   "dstar_cm_rtHz_W": 800000000.0,
+   "pitch_um": null,
+   "nep_W_rtHz": null
+  },
+  "dlatgs": {
+   "label": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+   "dstar_cm_rtHz_W": 1200000000.0,
+   "pitch_um": null,
+   "nep_W_rtHz": null
+  },
+  "hgcdte": {
+   "label": "HgCdTe LWIR, representative D* 5e10 (flagged)",
+   "dstar_cm_rtHz_W": 50000000000.0,
+   "pitch_um": 17.0,
+   "nep_W_rtHz": 1.0
+  },
+  "si_as": {
+   "label": "Si:As BIB, representative D* 1e11 (flagged)",
+   "dstar_cm_rtHz_W": 100000000000.0,
+   "pitch_um": 17.0,
+   "nep_W_rtHz": 1.0
+  }
+ },
+ "chain": {
+  "8.80": {
+   "vox_microbolometer": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+      "dstar_cm_rtHz_W": 1000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 37450000000000.0,
+      "photons_atm_per_sample": 10640000000000.0,
+      "photons_bkg_per_sample": 105100000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-11,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.54e-11,
+      "snr_shot_TOA": 6111000.0,
+      "snr_nep_TOA": 83210.0,
+      "snr_shot_atm": 3247000.0,
+      "snr_nep_atm": 23650.0
+     },
+     "result": {
+      "SNR_single_TOA": 83200.0,
+      "SNR_single_atm": 23650.0,
+      "SNR_reference_100samples": 832000.0,
+      "sigmaT_over_T": 4.23e-05,
+      "SNR_T_ratio": 23640.0,
+      "SNR_net_with_cap2000": 1993.0,
+      "sigma_alpha_random_m1": 2.908e-10,
+      "sigma_alpha_net_m1": 3.449e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.01718
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+      "dstar_cm_rtHz_W": 1000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 12480000000000.0,
+      "photons_atm_per_sample": 3548000000000.0,
+      "photons_bkg_per_sample": 35020000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-11,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 4.399e-11,
+      "snr_shot_TOA": 3528000.0,
+      "snr_nep_TOA": 48040.0,
+      "snr_shot_atm": 1874000.0,
+      "snr_nep_atm": 13650.0
+     },
+     "result": {
+      "SNR_single_TOA": 48040.0,
+      "SNR_single_atm": 13650.0,
+      "SNR_reference_100samples": 480400.0,
+      "sigmaT_over_T": 7.327e-05,
+      "SNR_T_ratio": 13650.0,
+      "SNR_net_with_cap2000": 1979.0,
+      "sigma_alpha_random_m1": 5.036e-10,
+      "sigma_alpha_net_m1": 3.473e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.02976
+     }
+    }
+   },
+   "vox_catalogue_1e-11": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+      "dstar_cm_rtHz_W": 170000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 37450000000000.0,
+      "photons_atm_per_sample": 10640000000000.0,
+      "photons_bkg_per_sample": 105100000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.494e-10,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 1.494e-10,
+      "snr_shot_TOA": 6111000.0,
+      "snr_nep_TOA": 14150.0,
+      "snr_shot_atm": 3247000.0,
+      "snr_nep_atm": 4021.0
+     },
+     "result": {
+      "SNR_single_TOA": 14150.0,
+      "SNR_single_atm": 4021.0,
+      "SNR_reference_100samples": 141500.0,
+      "sigmaT_over_T": 0.0002488,
+      "SNR_T_ratio": 4019.0,
+      "SNR_net_with_cap2000": 1791.0,
+      "sigma_alpha_random_m1": 1.71e-09,
+      "sigma_alpha_net_m1": 3.839e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.1011
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+      "dstar_cm_rtHz_W": 170000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 12480000000000.0,
+      "photons_atm_per_sample": 3548000000000.0,
+      "photons_bkg_per_sample": 35020000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.494e-10,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.588e-10,
+      "snr_shot_TOA": 3528000.0,
+      "snr_nep_TOA": 8167.0,
+      "snr_shot_atm": 1874000.0,
+      "snr_nep_atm": 2321.0
+     },
+     "result": {
+      "SNR_single_TOA": 8167.0,
+      "SNR_single_atm": 2321.0,
+      "SNR_reference_100samples": 81670.0,
+      "sigmaT_over_T": 0.000431,
+      "SNR_T_ratio": 2320.0,
+      "SNR_net_with_cap2000": 1515.0,
+      "sigma_alpha_random_m1": 2.962e-09,
+      "sigma_alpha_net_m1": 4.537e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.1751
+     }
+    }
+   },
+   "vox_ideal_limit": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "ideal 300-K thermal detector limit D* 1.8e10 (the paper's '2e10')",
+      "dstar_cm_rtHz_W": 18125473565.016953
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 37450000000000.0,
+      "photons_atm_per_sample": 10640000000000.0,
+      "photons_bkg_per_sample": 105100000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.401e-12,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 1.401e-12,
+      "snr_shot_TOA": 6111000.0,
+      "snr_nep_TOA": 1508000.0,
+      "snr_shot_atm": 3247000.0,
+      "snr_nep_atm": 428700.0
+     },
+     "result": {
+      "SNR_single_TOA": 1464000.0,
+      "SNR_single_atm": 425000.0,
+      "SNR_reference_100samples": 14640000.0,
+      "sigmaT_over_T": 2.354e-06,
+      "SNR_T_ratio": 424800.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 1.618e-11,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.0009563
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "ideal 300-K thermal detector limit D* 1.8e10 (the paper's '2e10')",
+      "dstar_cm_rtHz_W": 18125473565.016953
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 12480000000000.0,
+      "photons_atm_per_sample": 3548000000000.0,
+      "photons_bkg_per_sample": 35020000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.401e-12,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.427e-12,
+      "snr_shot_TOA": 3528000.0,
+      "snr_nep_TOA": 870800.0,
+      "snr_shot_atm": 1874000.0,
+      "snr_nep_atm": 247500.0
+     },
+     "result": {
+      "SNR_single_TOA": 845400.0,
+      "SNR_single_atm": 245400.0,
+      "SNR_reference_100samples": 8454000.0,
+      "sigmaT_over_T": 4.077e-06,
+      "SNR_T_ratio": 245300.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 2.803e-11,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.001656
+     }
+    }
+   },
+   "thermopile": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "thermopile, MCS class D* 8e8 (single element of the element area)",
+      "dstar_cm_rtHz_W": 800000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 37450000000000.0,
+      "photons_atm_per_sample": 10640000000000.0,
+      "photons_bkg_per_sample": 105100000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 3.175e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 3.175e-11,
+      "snr_shot_TOA": 6111000.0,
+      "snr_nep_TOA": 66570.0,
+      "snr_shot_atm": 3247000.0,
+      "snr_nep_atm": 18920.0
+     },
+     "result": {
+      "SNR_single_TOA": 66560.0,
+      "SNR_single_atm": 18920.0,
+      "SNR_reference_100samples": 665600.0,
+      "sigmaT_over_T": 5.288e-05,
+      "SNR_T_ratio": 18910.0,
+      "SNR_net_with_cap2000": 1989.0,
+      "sigma_alpha_random_m1": 3.634e-10,
+      "sigma_alpha_net_m1": 3.456e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.02148
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "thermopile, MCS class D* 8e8 (single element of the element area)",
+      "dstar_cm_rtHz_W": 800000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 12480000000000.0,
+      "photons_atm_per_sample": 3548000000000.0,
+      "photons_bkg_per_sample": 35020000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 3.175e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 5.499e-11,
+      "snr_shot_TOA": 3528000.0,
+      "snr_nep_TOA": 38430.0,
+      "snr_shot_atm": 1874000.0,
+      "snr_nep_atm": 10920.0
+     },
+     "result": {
+      "SNR_single_TOA": 38430.0,
+      "SNR_single_atm": 10920.0,
+      "SNR_reference_100samples": 384300.0,
+      "sigmaT_over_T": 9.158e-05,
+      "SNR_T_ratio": 10920.0,
+      "SNR_net_with_cap2000": 1967.0,
+      "sigma_alpha_random_m1": 6.295e-10,
+      "sigma_alpha_net_m1": 3.494e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.0372
+     }
+    }
+   },
+   "dlatgs": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+      "dstar_cm_rtHz_W": 1200000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 37450000000000.0,
+      "photons_atm_per_sample": 10640000000000.0,
+      "photons_bkg_per_sample": 105100000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.117e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 2.117e-11,
+      "snr_shot_TOA": 6111000.0,
+      "snr_nep_TOA": 99850.0,
+      "snr_shot_atm": 3247000.0,
+      "snr_nep_atm": 28380.0
+     },
+     "result": {
+      "SNR_single_TOA": 99840.0,
+      "SNR_single_atm": 28380.0,
+      "SNR_reference_100samples": 998400.0,
+      "sigmaT_over_T": 3.525e-05,
+      "SNR_T_ratio": 28370.0,
+      "SNR_net_with_cap2000": 1995.0,
+      "sigma_alpha_random_m1": 2.423e-10,
+      "sigma_alpha_net_m1": 3.445e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.01432
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+      "dstar_cm_rtHz_W": 1200000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 12480000000000.0,
+      "photons_atm_per_sample": 3548000000000.0,
+      "photons_bkg_per_sample": 35020000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.117e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 3.666e-11,
+      "snr_shot_TOA": 3528000.0,
+      "snr_nep_TOA": 57650.0,
+      "snr_shot_atm": 1874000.0,
+      "snr_nep_atm": 16390.0
+     },
+     "result": {
+      "SNR_single_TOA": 57640.0,
+      "SNR_single_atm": 16380.0,
+      "SNR_reference_100samples": 576400.0,
+      "sigmaT_over_T": 6.106e-05,
+      "SNR_T_ratio": 16380.0,
+      "SNR_net_with_cap2000": 1985.0,
+      "sigma_alpha_random_m1": 4.197e-10,
+      "sigma_alpha_net_m1": 3.462e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.0248
+     }
+    }
+   },
+   "hgcdte": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "HgCdTe LWIR, representative D* 5e10 (flagged)",
+      "dstar_cm_rtHz_W": 50000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 37450000000000.0,
+      "photons_atm_per_sample": 10640000000000.0,
+      "photons_bkg_per_sample": 105100000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 5.08e-13,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 5.08e-13,
+      "snr_shot_TOA": 6111000.0,
+      "snr_nep_TOA": 4160000.0,
+      "snr_shot_atm": 3247000.0,
+      "snr_nep_atm": 1183000.0
+     },
+     "result": {
+      "SNR_single_TOA": 3439000.0,
+      "SNR_single_atm": 1111000.0,
+      "SNR_reference_100samples": 34390000.0,
+      "sigmaT_over_T": 9.005e-07,
+      "SNR_T_ratio": 1111000.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 6.189e-12,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.0003658
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 8.8,
+      "tau_atm": 1.258,
+      "T": 0.2842,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.4683,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.3932,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "HgCdTe LWIR, representative D* 5e10 (flagged)",
+      "dstar_cm_rtHz_W": 50000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 2.113e-06,
+      "P_element_atm_W": 6.007e-07,
+      "P_pixel_TOA_W": 9.468e-09,
+      "P_pixel_atm_W": 2.691e-09,
+      "P_bkg_pixel_W": 2.656e-11,
+      "P_bkg_element_W": 5.929e-09,
+      "bkg_over_signal_pixel_atm": 0.00987,
+      "photons_TOA_per_sample": 12480000000000.0,
+      "photons_atm_per_sample": 3548000000000.0,
+      "photons_bkg_per_sample": 35020000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 5.08e-13,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 8.798e-13,
+      "snr_shot_TOA": 3528000.0,
+      "snr_nep_TOA": 2402000.0,
+      "snr_shot_atm": 1874000.0,
+      "snr_nep_atm": 682700.0
+     },
+     "result": {
+      "SNR_single_TOA": 1986000.0,
+      "SNR_single_atm": 641500.0,
+      "SNR_reference_100samples": 19860000.0,
+      "sigmaT_over_T": 1.56e-06,
+      "SNR_T_ratio": 641200.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 1.072e-11,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.692e-08,
+      "floor_ratio_random": 0.0006336
+     }
+    }
+   }
+  },
+  "11.40": {
+   "vox_microbolometer": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+      "dstar_cm_rtHz_W": 1000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 17820000000000.0,
+      "photons_atm_per_sample": 12970000000000.0,
+      "photons_bkg_per_sample": 130700000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-11,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.54e-11,
+      "snr_shot_TOA": 4205000.0,
+      "snr_nep_TOA": 30560.0,
+      "snr_shot_atm": 3583000.0,
+      "snr_nep_atm": 22250.0
+     },
+     "result": {
+      "SNR_single_TOA": 30560.0,
+      "SNR_single_atm": 22250.0,
+      "SNR_reference_100samples": 305600.0,
+      "sigmaT_over_T": 4.507e-05,
+      "SNR_T_ratio": 22190.0,
+      "SNR_net_with_cap2000": 1992.0,
+      "sigma_alpha_random_m1": 3.098e-10,
+      "sigma_alpha_net_m1": 3.451e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.02582
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+      "dstar_cm_rtHz_W": 1000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 5939000000000.0,
+      "photons_atm_per_sample": 4324000000000.0,
+      "photons_bkg_per_sample": 43560000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-11,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 4.399e-11,
+      "snr_shot_TOA": 2428000.0,
+      "snr_nep_TOA": 17640.0,
+      "snr_shot_atm": 2069000.0,
+      "snr_nep_atm": 12840.0
+     },
+     "result": {
+      "SNR_single_TOA": 17640.0,
+      "SNR_single_atm": 12840.0,
+      "SNR_reference_100samples": 176400.0,
+      "sigmaT_over_T": 7.807e-05,
+      "SNR_T_ratio": 12810.0,
+      "SNR_net_with_cap2000": 1976.0,
+      "sigma_alpha_random_m1": 5.366e-10,
+      "sigma_alpha_net_m1": 3.478e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.04472
+     }
+    }
+   },
+   "vox_catalogue_1e-11": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+      "dstar_cm_rtHz_W": 170000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 17820000000000.0,
+      "photons_atm_per_sample": 12970000000000.0,
+      "photons_bkg_per_sample": 130700000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.494e-10,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 1.494e-10,
+      "snr_shot_TOA": 4205000.0,
+      "snr_nep_TOA": 5195.0,
+      "snr_shot_atm": 3583000.0,
+      "snr_nep_atm": 3782.0
+     },
+     "result": {
+      "SNR_single_TOA": 5195.0,
+      "SNR_single_atm": 3782.0,
+      "SNR_reference_100samples": 51950.0,
+      "sigmaT_over_T": 0.0002651,
+      "SNR_T_ratio": 3772.0,
+      "SNR_net_with_cap2000": 1767.0,
+      "sigma_alpha_random_m1": 1.822e-09,
+      "sigma_alpha_net_m1": 3.89e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.1519
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+      "dstar_cm_rtHz_W": 170000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 5939000000000.0,
+      "photons_atm_per_sample": 4324000000000.0,
+      "photons_bkg_per_sample": 43560000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.494e-10,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.588e-10,
+      "snr_shot_TOA": 2428000.0,
+      "snr_nep_TOA": 2999.0,
+      "snr_shot_atm": 2069000.0,
+      "snr_nep_atm": 2183.0
+     },
+     "result": {
+      "SNR_single_TOA": 2999.0,
+      "SNR_single_atm": 2183.0,
+      "SNR_reference_100samples": 29990.0,
+      "sigmaT_over_T": 0.0004592,
+      "SNR_T_ratio": 2178.0,
+      "SNR_net_with_cap2000": 1473.0,
+      "sigma_alpha_random_m1": 3.156e-09,
+      "sigma_alpha_net_m1": 4.666e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.263
+     }
+    }
+   },
+   "thermopile": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "thermopile, MCS class D* 8e8 (single element of the element area)",
+      "dstar_cm_rtHz_W": 800000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 17820000000000.0,
+      "photons_atm_per_sample": 12970000000000.0,
+      "photons_bkg_per_sample": 130700000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 3.175e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 3.175e-11,
+      "snr_shot_TOA": 4205000.0,
+      "snr_nep_TOA": 24450.0,
+      "snr_shot_atm": 3583000.0,
+      "snr_nep_atm": 17800.0
+     },
+     "result": {
+      "SNR_single_TOA": 24440.0,
+      "SNR_single_atm": 17800.0,
+      "SNR_reference_100samples": 244400.0,
+      "sigmaT_over_T": 5.634e-05,
+      "SNR_T_ratio": 17750.0,
+      "SNR_net_with_cap2000": 1987.0,
+      "sigma_alpha_random_m1": 3.872e-10,
+      "sigma_alpha_net_m1": 3.459e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.03227
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "thermopile, MCS class D* 8e8 (single element of the element area)",
+      "dstar_cm_rtHz_W": 800000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 5939000000000.0,
+      "photons_atm_per_sample": 4324000000000.0,
+      "photons_bkg_per_sample": 43560000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 3.175e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 5.499e-11,
+      "snr_shot_TOA": 2428000.0,
+      "snr_nep_TOA": 14110.0,
+      "snr_shot_atm": 2069000.0,
+      "snr_nep_atm": 10280.0
+     },
+     "result": {
+      "SNR_single_TOA": 14110.0,
+      "SNR_single_atm": 10270.0,
+      "SNR_reference_100samples": 141100.0,
+      "sigmaT_over_T": 9.758e-05,
+      "SNR_T_ratio": 10250.0,
+      "SNR_net_with_cap2000": 1963.0,
+      "sigma_alpha_random_m1": 6.707e-10,
+      "sigma_alpha_net_m1": 3.502e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.05589
+     }
+    }
+   },
+   "dlatgs": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+      "dstar_cm_rtHz_W": 1200000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 17820000000000.0,
+      "photons_atm_per_sample": 12970000000000.0,
+      "photons_bkg_per_sample": 130700000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.117e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 2.117e-11,
+      "snr_shot_TOA": 4205000.0,
+      "snr_nep_TOA": 36670.0,
+      "snr_shot_atm": 3583000.0,
+      "snr_nep_atm": 26700.0
+     },
+     "result": {
+      "SNR_single_TOA": 36670.0,
+      "SNR_single_atm": 26690.0,
+      "SNR_reference_100samples": 366700.0,
+      "sigmaT_over_T": 3.756e-05,
+      "SNR_T_ratio": 26620.0,
+      "SNR_net_with_cap2000": 1994.0,
+      "sigma_alpha_random_m1": 2.582e-10,
+      "sigma_alpha_net_m1": 3.446e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.02151
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+      "dstar_cm_rtHz_W": 1200000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 5939000000000.0,
+      "photons_atm_per_sample": 4324000000000.0,
+      "photons_bkg_per_sample": 43560000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.117e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 3.666e-11,
+      "snr_shot_TOA": 2428000.0,
+      "snr_nep_TOA": 21170.0,
+      "snr_shot_atm": 2069000.0,
+      "snr_nep_atm": 15410.0
+     },
+     "result": {
+      "SNR_single_TOA": 21170.0,
+      "SNR_single_atm": 15410.0,
+      "SNR_reference_100samples": 211700.0,
+      "sigmaT_over_T": 6.506e-05,
+      "SNR_T_ratio": 15370.0,
+      "SNR_net_with_cap2000": 1983.0,
+      "sigma_alpha_random_m1": 4.472e-10,
+      "sigma_alpha_net_m1": 3.466e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.03726
+     }
+    }
+   },
+   "hgcdte": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "HgCdTe LWIR, representative D* 5e10 (flagged)",
+      "dstar_cm_rtHz_W": 50000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 17820000000000.0,
+      "photons_atm_per_sample": 12970000000000.0,
+      "photons_bkg_per_sample": 130700000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 5.08e-13,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 5.08e-13,
+      "snr_shot_TOA": 4205000.0,
+      "snr_nep_TOA": 1528000.0,
+      "snr_shot_atm": 3583000.0,
+      "snr_nep_atm": 1112000.0
+     },
+     "result": {
+      "SNR_single_TOA": 1436000.0,
+      "SNR_single_atm": 1062000.0,
+      "SNR_reference_100samples": 14360000.0,
+      "sigmaT_over_T": 9.439e-07,
+      "SNR_T_ratio": 1059000.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 6.488e-12,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.0005407
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 11.4,
+      "tau_atm": 0.3174,
+      "T": 0.728,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.172,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.1444,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "HgCdTe LWIR, representative D* 5e10 (flagged)",
+      "dstar_cm_rtHz_W": 50000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.761e-07,
+      "P_element_atm_W": 5.65e-07,
+      "P_pixel_TOA_W": 3.477e-09,
+      "P_pixel_atm_W": 2.531e-09,
+      "P_bkg_pixel_W": 2.55e-11,
+      "P_bkg_element_W": 5.692e-09,
+      "bkg_over_signal_pixel_atm": 0.01007,
+      "photons_TOA_per_sample": 5939000000000.0,
+      "photons_atm_per_sample": 4324000000000.0,
+      "photons_bkg_per_sample": 43560000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 5.08e-13,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 8.798e-13,
+      "snr_shot_TOA": 2428000.0,
+      "snr_nep_TOA": 882100.0,
+      "snr_shot_atm": 2069000.0,
+      "snr_nep_atm": 642200.0
+     },
+     "result": {
+      "SNR_single_TOA": 829100.0,
+      "SNR_single_atm": 613300.0,
+      "SNR_reference_100samples": 8291000.0,
+      "sigmaT_over_T": 1.635e-06,
+      "SNR_T_ratio": 611700.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 1.124e-11,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 1.2e-08,
+      "floor_ratio_random": 0.0009365
+     }
+    }
+   }
+  },
+  "20.40": {
+   "vox_microbolometer": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+      "dstar_cm_rtHz_W": 1000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 3267000000000.0,
+      "photons_atm_per_sample": 2893000000000.0,
+      "photons_bkg_per_sample": 88780000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-11,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.54e-11,
+      "snr_shot_TOA": 1783000.0,
+      "snr_nep_TOA": 3131.0,
+      "snr_shot_atm": 1675000.0,
+      "snr_nep_atm": 2773.0
+     },
+     "result": {
+      "SNR_single_TOA": 3131.0,
+      "SNR_single_atm": 2773.0,
+      "SNR_reference_100samples": 31310.0,
+      "sigmaT_over_T": 0.0003621,
+      "SNR_T_ratio": 2762.0,
+      "SNR_net_with_cap2000": 1620.0,
+      "sigma_alpha_random_m1": 2.489e-09,
+      "sigma_alpha_net_m1": 4.243e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 0.732
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+      "dstar_cm_rtHz_W": 1000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 1089000000000.0,
+      "photons_atm_per_sample": 964300000000.0,
+      "photons_bkg_per_sample": 29590000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-11,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 4.399e-11,
+      "snr_shot_TOA": 1030000.0,
+      "snr_nep_TOA": 1808.0,
+      "snr_shot_atm": 967200.0,
+      "snr_nep_atm": 1601.0
+     },
+     "result": {
+      "SNR_single_TOA": 1808.0,
+      "SNR_single_atm": 1601.0,
+      "SNR_reference_100samples": 18080.0,
+      "sigmaT_over_T": 0.0006271,
+      "SNR_T_ratio": 1595.0,
+      "SNR_net_with_cap2000": 1247.0,
+      "sigma_alpha_random_m1": 4.311e-09,
+      "sigma_alpha_net_m1": 5.513e-09,
+      "limited_by": "detector NEP",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 1.268
+     }
+    }
+   },
+   "vox_catalogue_1e-11": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+      "dstar_cm_rtHz_W": 170000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 3267000000000.0,
+      "photons_atm_per_sample": 2893000000000.0,
+      "photons_bkg_per_sample": 88780000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.494e-10,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 1.494e-10,
+      "snr_shot_TOA": 1783000.0,
+      "snr_nep_TOA": 532.3,
+      "snr_shot_atm": 1675000.0,
+      "snr_nep_atm": 471.3
+     },
+     "result": {
+      "SNR_single_TOA": 532.3,
+      "SNR_single_atm": 471.3,
+      "SNR_reference_100samples": 5323.0,
+      "sigmaT_over_T": 0.00213,
+      "SNR_T_ratio": 469.5,
+      "SNR_net_with_cap2000": 457.1,
+      "sigma_alpha_random_m1": 1.464e-08,
+      "sigma_alpha_net_m1": 1.504e-08,
+      "limited_by": "detector NEP",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 4.306
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "VOx microbolometer, ETC catalogue NEP 1e-11 (D* 1.7e8)",
+      "dstar_cm_rtHz_W": 170000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 1089000000000.0,
+      "photons_atm_per_sample": 964300000000.0,
+      "photons_bkg_per_sample": 29590000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 1.494e-10,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.588e-10,
+      "snr_shot_TOA": 1030000.0,
+      "snr_nep_TOA": 307.3,
+      "snr_shot_atm": 967200.0,
+      "snr_nep_atm": 272.1
+     },
+     "result": {
+      "SNR_single_TOA": 307.3,
+      "SNR_single_atm": 272.1,
+      "SNR_reference_100samples": 3073.0,
+      "sigmaT_over_T": 0.003689,
+      "SNR_T_ratio": 271.1,
+      "SNR_net_with_cap2000": 268.6,
+      "sigma_alpha_random_m1": 2.536e-08,
+      "sigma_alpha_net_m1": 2.559e-08,
+      "limited_by": "detector NEP",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 7.458
+     }
+    }
+   },
+   "thermopile": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "thermopile, MCS class D* 8e8 (single element of the element area)",
+      "dstar_cm_rtHz_W": 800000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 3267000000000.0,
+      "photons_atm_per_sample": 2893000000000.0,
+      "photons_bkg_per_sample": 88780000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 3.175e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 3.175e-11,
+      "snr_shot_TOA": 1783000.0,
+      "snr_nep_TOA": 2505.0,
+      "snr_shot_atm": 1675000.0,
+      "snr_nep_atm": 2218.0
+     },
+     "result": {
+      "SNR_single_TOA": 2505.0,
+      "SNR_single_atm": 2218.0,
+      "SNR_reference_100samples": 25050.0,
+      "sigmaT_over_T": 0.0004526,
+      "SNR_T_ratio": 2209.0,
+      "SNR_net_with_cap2000": 1483.0,
+      "sigma_alpha_random_m1": 3.111e-09,
+      "sigma_alpha_net_m1": 4.636e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 0.915
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "thermopile, MCS class D* 8e8 (single element of the element area)",
+      "dstar_cm_rtHz_W": 800000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 1089000000000.0,
+      "photons_atm_per_sample": 964300000000.0,
+      "photons_bkg_per_sample": 29590000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 3.175e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 5.499e-11,
+      "snr_shot_TOA": 1030000.0,
+      "snr_nep_TOA": 1446.0,
+      "snr_shot_atm": 967200.0,
+      "snr_nep_atm": 1281.0
+     },
+     "result": {
+      "SNR_single_TOA": 1446.0,
+      "SNR_single_atm": 1281.0,
+      "SNR_reference_100samples": 14460.0,
+      "sigmaT_over_T": 0.0007839,
+      "SNR_T_ratio": 1276.0,
+      "SNR_net_with_cap2000": 1075.0,
+      "sigma_alpha_random_m1": 5.388e-09,
+      "sigma_alpha_net_m1": 6.391e-09,
+      "limited_by": "detector NEP",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 1.585
+     }
+    }
+   },
+   "dlatgs": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+      "dstar_cm_rtHz_W": 1200000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 3267000000000.0,
+      "photons_atm_per_sample": 2893000000000.0,
+      "photons_bkg_per_sample": 88780000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.117e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 2.117e-11,
+      "snr_shot_TOA": 1783000.0,
+      "snr_nep_TOA": 3758.0,
+      "snr_shot_atm": 1675000.0,
+      "snr_nep_atm": 3327.0
+     },
+     "result": {
+      "SNR_single_TOA": 3758.0,
+      "SNR_single_atm": 3327.0,
+      "SNR_reference_100samples": 37580.0,
+      "sigmaT_over_T": 0.0003017,
+      "SNR_T_ratio": 3314.0,
+      "SNR_net_with_cap2000": 1712.0,
+      "sigma_alpha_random_m1": 2.074e-09,
+      "sigma_alpha_net_m1": 4.014e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 0.61
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "DLATGS pyroelectric D* 1.2e9 at 10 Hz (needs a chopper in a staring spectrograph)",
+      "dstar_cm_rtHz_W": 1200000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 1089000000000.0,
+      "photons_atm_per_sample": 964300000000.0,
+      "photons_bkg_per_sample": 29590000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.117e-11,
+      "nep_note": "single element of area A_total = N_pix A_pix, sqrt(A_total)/D*",
+      "sigma_det_per_sample_W": 3.666e-11,
+      "snr_shot_TOA": 1030000.0,
+      "snr_nep_TOA": 2170.0,
+      "snr_shot_atm": 967200.0,
+      "snr_nep_atm": 1921.0
+     },
+     "result": {
+      "SNR_single_TOA": 2170.0,
+      "SNR_single_atm": 1921.0,
+      "SNR_reference_100samples": 21700.0,
+      "sigmaT_over_T": 0.0005226,
+      "SNR_T_ratio": 1913.0,
+      "SNR_net_with_cap2000": 1383.0,
+      "sigma_alpha_random_m1": 3.592e-09,
+      "sigma_alpha_net_m1": 4.971e-09,
+      "limited_by": "detector NEP",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 1.057
+     }
+    }
+   },
+   "si_as": {
+    "dwell_0.5": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.5,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 1.0,
+      "detector": "Si:As BIB, representative D* 1e11 (flagged)",
+      "dstar_cm_rtHz_W": 100000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 3267000000000.0,
+      "photons_atm_per_sample": 2893000000000.0,
+      "photons_bkg_per_sample": 88780000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-13,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 2.54e-13,
+      "snr_shot_TOA": 1783000.0,
+      "snr_nep_TOA": 313100.0,
+      "snr_shot_atm": 1675000.0,
+      "snr_nep_atm": 277300.0
+     },
+     "result": {
+      "SNR_single_TOA": 308400.0,
+      "SNR_single_atm": 273500.0,
+      "SNR_reference_100samples": 3084000.0,
+      "sigmaT_over_T": 3.67e-06,
+      "SNR_T_ratio": 272500.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 2.523e-11,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 0.00742
+     }
+    },
+    "dwell_0.17": {
+     "inputs": {
+      "lambda_um": 20.4,
+      "tau_atm": 0.1217,
+      "T": 0.8854,
+      "dwell_s": 0.1667,
+      "n_ref_samples": 100,
+      "E_disk_5772K_W_m2_um": 0.01762,
+      "E_scale_to_E490": 0.8396,
+      "E_used_W_m2_um": 0.0148,
+      "qe_absorptance": 0.8,
+      "noise_bandwidth_Hz": 3.0,
+      "detector": "Si:As BIB, representative D* 1e11 (flagged)",
+      "dstar_cm_rtHz_W": 100000000000.0
+     },
+     "signal": {
+      "P_element_TOA_W": 7.954e-08,
+      "P_element_atm_W": 7.042e-08,
+      "P_pixel_TOA_W": 3.563e-10,
+      "P_pixel_atm_W": 3.155e-10,
+      "P_bkg_pixel_W": 9.682e-12,
+      "P_bkg_element_W": 2.161e-09,
+      "bkg_over_signal_pixel_atm": 0.03069,
+      "photons_TOA_per_sample": 1089000000000.0,
+      "photons_atm_per_sample": 964300000000.0,
+      "photons_bkg_per_sample": 29590000000.0
+     },
+     "noise": {
+      "nep_element_W_rtHz": 2.54e-13,
+      "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+      "sigma_det_per_sample_W": 4.399e-13,
+      "snr_shot_TOA": 1030000.0,
+      "snr_nep_TOA": 180800.0,
+      "snr_shot_atm": 967200.0,
+      "snr_nep_atm": 160100.0
+     },
+     "result": {
+      "SNR_single_TOA": 178100.0,
+      "SNR_single_atm": 157900.0,
+      "SNR_reference_100samples": 1781000.0,
+      "sigmaT_over_T": 6.357e-06,
+      "SNR_T_ratio": 157300.0,
+      "SNR_net_with_cap2000": 2000.0,
+      "sigma_alpha_random_m1": 4.369e-11,
+      "sigma_alpha_net_m1": 3.437e-09,
+      "limited_by": "systematics cap",
+      "floor_m1": 3.4e-09,
+      "floor_ratio_random": 0.01285
+     }
+    }
+   }
+  },
+  "window_edge": {
+   "element_um": "7.80",
+   "tau_gas": 6.423,
+   "dwell_0.5": {
+    "inputs": {
+     "lambda_um": 7.8,
+     "tau_atm": 6.423,
+     "T": 0.001624,
+     "dwell_s": 0.5,
+     "n_ref_samples": 100,
+     "E_disk_5772K_W_m2_um": 0.7444,
+     "E_scale_to_E490": 0.8396,
+     "E_used_W_m2_um": 0.6249,
+     "qe_absorptance": 0.8,
+     "noise_bandwidth_Hz": 1.0,
+     "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+     "dstar_cm_rtHz_W": 1000000000.0
+    },
+    "signal": {
+     "P_element_TOA_W": 3.359e-06,
+     "P_element_atm_W": 5.455e-09,
+     "P_pixel_TOA_W": 1.505e-08,
+     "P_pixel_atm_W": 2.444e-11,
+     "P_bkg_pixel_W": 2.409e-11,
+     "P_bkg_element_W": 5.377e-09,
+     "bkg_over_signal_pixel_atm": 0.9856,
+     "photons_TOA_per_sample": 52760000000000.0,
+     "photons_atm_per_sample": 85680000000.0,
+     "photons_bkg_per_sample": 84450000000.0
+    },
+    "noise": {
+     "nep_element_W_rtHz": 2.54e-11,
+     "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+     "sigma_det_per_sample_W": 2.54e-11,
+     "snr_shot_TOA": 7258000.0,
+     "snr_nep_TOA": 132300.0,
+     "snr_shot_atm": 207700.0,
+     "snr_nep_atm": 214.8
+    },
+    "result": {
+     "SNR_single_TOA": 132200.0,
+     "SNR_single_atm": 214.8,
+     "SNR_reference_100samples": 1322000.0,
+     "sigmaT_over_T": 0.004656,
+     "SNR_T_ratio": 214.8,
+     "SNR_net_with_cap2000": 213.5,
+     "sigma_alpha_random_m1": 3.2e-08,
+     "sigma_alpha_net_m1": 3.219e-08,
+     "limited_by": "detector NEP",
+     "floor_m1": null,
+     "floor_ratio_random": null
+    }
+   },
+   "dwell_0.17": {
+    "inputs": {
+     "lambda_um": 7.8,
+     "tau_atm": 6.423,
+     "T": 0.001624,
+     "dwell_s": 0.1667,
+     "n_ref_samples": 100,
+     "E_disk_5772K_W_m2_um": 0.7444,
+     "E_scale_to_E490": 0.8396,
+     "E_used_W_m2_um": 0.6249,
+     "qe_absorptance": 0.8,
+     "noise_bandwidth_Hz": 3.0,
+     "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+     "dstar_cm_rtHz_W": 1000000000.0
+    },
+    "signal": {
+     "P_element_TOA_W": 3.359e-06,
+     "P_element_atm_W": 5.455e-09,
+     "P_pixel_TOA_W": 1.505e-08,
+     "P_pixel_atm_W": 2.444e-11,
+     "P_bkg_pixel_W": 2.409e-11,
+     "P_bkg_element_W": 5.377e-09,
+     "bkg_over_signal_pixel_atm": 0.9856,
+     "photons_TOA_per_sample": 17590000000000.0,
+     "photons_atm_per_sample": 28560000000.0,
+     "photons_bkg_per_sample": 28150000000.0
+    },
+    "noise": {
+     "nep_element_W_rtHz": 2.54e-11,
+     "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+     "sigma_det_per_sample_W": 4.399e-11,
+     "snr_shot_TOA": 4190000.0,
+     "snr_nep_TOA": 76360.0,
+     "snr_shot_atm": 119900.0,
+     "snr_nep_atm": 124.0
+    },
+    "result": {
+     "SNR_single_TOA": 76350.0,
+     "SNR_single_atm": 124.0,
+     "SNR_reference_100samples": 763500.0,
+     "sigmaT_over_T": 0.008065,
+     "SNR_T_ratio": 124.0,
+     "SNR_net_with_cap2000": 123.8,
+     "sigma_alpha_random_m1": 5.543e-08,
+     "sigma_alpha_net_m1": 5.554e-08,
+     "limited_by": "detector NEP",
+     "floor_m1": null,
+     "floor_ratio_random": null
+    }
+   }
+  },
+  "window_edge_tau2_parametric": {
+   "element_um": 8.9,
+   "tau": 2.0,
+   "note": "paper: 'the 7.8-9.3 um shoulder with tau_O3 <~ 2 in the element average'; the 8.90 element reads 1.68 in the archive; tau = 2 taken as the edge case",
+   "dwell_0.5": {
+    "inputs": {
+     "lambda_um": 8.9,
+     "tau_atm": 2.0,
+     "T": 0.1353,
+     "dwell_s": 0.5,
+     "n_ref_samples": 100,
+     "E_disk_5772K_W_m2_um": 0.4483,
+     "E_scale_to_E490": 0.8396,
+     "E_used_W_m2_um": 0.3764,
+     "qe_absorptance": 0.8,
+     "noise_bandwidth_Hz": 1.0,
+     "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+     "dstar_cm_rtHz_W": 1000000000.0
+    },
+    "signal": {
+     "P_element_TOA_W": 2.023e-06,
+     "P_element_atm_W": 2.738e-07,
+     "P_pixel_TOA_W": 9.065e-09,
+     "P_pixel_atm_W": 1.227e-09,
+     "P_bkg_pixel_W": 2.669e-11,
+     "P_bkg_element_W": 5.958e-09,
+     "bkg_over_signal_pixel_atm": 0.02176,
+     "photons_TOA_per_sample": 36260000000000.0,
+     "photons_atm_per_sample": 4908000000000.0,
+     "photons_bkg_per_sample": 106800000000.0
+    },
+    "noise": {
+     "nep_element_W_rtHz": 2.54e-11,
+     "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+     "sigma_det_per_sample_W": 2.54e-11,
+     "snr_shot_TOA": 6013000.0,
+     "snr_nep_TOA": 79670.0,
+     "snr_shot_atm": 2192000.0,
+     "snr_nep_atm": 10780.0
+    },
+    "result": {
+     "SNR_single_TOA": 79660.0,
+     "SNR_single_atm": 10780.0,
+     "SNR_reference_100samples": 796600.0,
+     "sigmaT_over_T": 9.276e-05,
+     "SNR_T_ratio": 10780.0,
+     "SNR_net_with_cap2000": 1966.0,
+     "sigma_alpha_random_m1": 6.376e-10,
+     "sigma_alpha_net_m1": 3.495e-09,
+     "limited_by": "systematics cap",
+     "floor_m1": null,
+     "floor_ratio_random": null
+    }
+   },
+   "dwell_0.17": {
+    "inputs": {
+     "lambda_um": 8.9,
+     "tau_atm": 2.0,
+     "T": 0.1353,
+     "dwell_s": 0.1667,
+     "n_ref_samples": 100,
+     "E_disk_5772K_W_m2_um": 0.4483,
+     "E_scale_to_E490": 0.8396,
+     "E_used_W_m2_um": 0.3764,
+     "qe_absorptance": 0.8,
+     "noise_bandwidth_Hz": 3.0,
+     "detector": "VOx microbolometer, sourced D* 1e9, 17 um",
+     "dstar_cm_rtHz_W": 1000000000.0
+    },
+    "signal": {
+     "P_element_TOA_W": 2.023e-06,
+     "P_element_atm_W": 2.738e-07,
+     "P_pixel_TOA_W": 9.065e-09,
+     "P_pixel_atm_W": 1.227e-09,
+     "P_bkg_pixel_W": 2.669e-11,
+     "P_bkg_element_W": 5.958e-09,
+     "bkg_over_signal_pixel_atm": 0.02176,
+     "photons_TOA_per_sample": 12090000000000.0,
+     "photons_atm_per_sample": 1636000000000.0,
+     "photons_bkg_per_sample": 35590000000.0
+    },
+    "noise": {
+     "nep_element_W_rtHz": 2.54e-11,
+     "nep_note": "sqrt(A_total)/D*, A_total = N_pix A_pix (design pitch)",
+     "sigma_det_per_sample_W": 4.399e-11,
+     "snr_shot_TOA": 3472000.0,
+     "snr_nep_TOA": 45990.0,
+     "snr_shot_atm": 1265000.0,
+     "snr_nep_atm": 6225.0
+    },
+    "result": {
+     "SNR_single_TOA": 45990.0,
+     "SNR_single_atm": 6225.0,
+     "SNR_reference_100samples": 459900.0,
+     "sigmaT_over_T": 0.0001607,
+     "SNR_T_ratio": 6224.0,
+     "SNR_net_with_cap2000": 1904.0,
+     "sigma_alpha_random_m1": 1.104e-09,
+     "sigma_alpha_net_m1": 3.61e-09,
+     "limited_by": "systematics cap",
+     "floor_m1": null,
+     "floor_ratio_random": null
+    }
+   }
+  }
+ },
+ "crossover": {
+  "K_GEOM_m1": 6.874e-06,
+  "floor_8p80_m1": 1.692e-08,
+  "S_crossover": 406.2,
+  "sigma_alpha_at_cap2000_m1": 3.437e-09,
+  "quadrature_add_at_2000": 0.02042
+ },
+ "saturation": {
+  "wavelength_um": 8.8,
+  "pixel_passband_um": 0.05,
+  "F_number": 2.04,
+  "throughput": 0.3,
+  "P_sun_pixel_spectrograph_W": 4.734e-09,
+  "P_300K_scene_pixel_f1_7p5_13p5um_W": 1.008e-08,
+  "ratio_sun_pixel_to_300K_scene": 0.4698,
+  "equivalent_scene_T_K": 258.5,
+  "P_sun_pixel_broadband_imaging_f1_W": 4.15e-06,
+  "ratio_broadband_sun_to_300K": 411.8,
+  "saturation_parametrization": {
+   "source": "FLIR_SDR (vendor; parametrization)",
+   "T_sat_high_gain_C": 135.0,
+   "T_sat_low_gain_C": 550.0,
+   "P_sat_high_gain_W": 3.683e-08,
+   "P_sat_low_gain_W": 2.731e-07,
+   "attenuation_to_half_well_high_gain": 1.0,
+   "attenuation_to_half_well_low_gain": 1.0
+  },
+  "per_pixel_per_frame": {
+   "nep_pixel_W_rtHz": 1.7e-12,
+   "sigma_frame_W": 9.311e-12,
+   "SNR_pixel_frame_TOA": 508.4,
+   "bits_needed_TOA_over_noise": 8.99,
+   "adc_bits_ETHEMIS": 14
+  },
+  "statement": "In an R~100 spectrograph each pixel receives a 0.05-um slice of the solar spectrum at the design F-number: 0.47 of a 300-K f/1 scene (the configuration in which microbolometer NETDs are measured; equivalent scene temperature 258 K), so the Sun does not saturate the array; a broadband 7.5-13.5-um imager pointed at the Sun receives 412x a 300-K scene and does saturate, which is why imagers carry a Sun flag (THEMIS). The margin depends on the gain state; no attenuator is required at the adopted parameters, but the saturation figure is a vendor parametrization, not a measured flight value."
+ },
+ "ratio_cancellation": {
+  "budget_fractional": 0.0005,
+  "lambda_um": 8.8,
+  "tau": 1.2,
+  "T": 0.3012,
+  "cancelled_by_ratio": [
+   "absolute radiometric calibration",
+   "optical throughput (mirrors, grating, filters)",
+   "detector responsivity and electronic gain, if constant over the event",
+   "the solar spectrum itself (same disk strip, same spectral slice)",
+   "slow degradation of optics/detector between events (Chu1989)"
+  ],
+  "not_cancelled": [
+   "additive offsets (warm-optics emission, dark level, stray light) -- must be measured (space look before/after the event) and subtracted",
+   "nonlinearity between the TOA level and the attenuated level",
+   "gain/responsivity drift within the event (FPA temperature, 1/f noise)",
+   "pointing-dependent solar-disk structure (limb darkening) if the strip moves on the disk",
+   "spectral registration drift (grating/thermal)"
+  ],
+  "offset_requirement": {
+   "P_element_TOA_W": 2.113e-06,
+   "P_bkg_element_W": 5.929e-09,
+   "dB_allowed_W": 3.183e-10,
+   "fraction_of_background_to_know": 0.05369,
+   "statement": "the 300-K background on the element must be known/subtracted to this fraction of itself"
+  },
+  "nonlinearity_requirement": {
+   "quadratic_coefficient_e2_max": 0.0007155,
+   "statement": "response R(S)=S(1+e2 S/S_TOA): |e2| below this over the TOA-to-30% range; MCS thermopile spec is 1 % (Foote2003), so a 1 %-class linearity would need characterization/correction by a factor ~14"
+  },
+  "drift_requirement": {
+   "dt_ref_to_sample_s": [
+    23.33,
+    70.0
+   ],
+   "event_0_100km_s": [
+    33.33,
+    100.0
+   ],
+   "gain_drift_rate_max_per_s": [
+    2.143e-05,
+    7.143e-06
+   ],
+   "gain_drift_rate_max_per_min": [
+    0.001286,
+    0.0004286
+   ],
+   "statement": "a requirement, not a demonstration"
+  },
+  "fpa_temperature_requirement": {
+   "TCR_per_K": [
+    0.02,
+    0.042
+   ],
+   "dT_fpa_max_K": [
+    0.025,
+    0.0119
+   ],
+   "heritage": "THEMIS stabilizes the IR FPA to +/-0.001 K (Christensen2004)",
+   "source_tcr": "Wang2025 (Al-doped VOx -4.2 %/K; typical VOx ~ -2 %/K)"
+  }
+ },
+ "vertical_resolution": {
+  "fov_per_sample_km": 0.5,
+  "fov_mrad": 0.1667,
+  "rows_per_sample": 2,
+  "integration_smear_km": [
+   0.5,
+   0.5
+  ],
+  "dwell_s": [
+   0.5,
+   0.1667
+  ],
+  "combined_response": "boxcar(FOV) * boxcar(smear): triangle",
+  "combined_base_km": [
+   1.0,
+   1.0
+  ],
+  "combined_fwhm_km": [
+   0.5,
+   0.5
+  ],
+  "diffraction_blur_8p80um_pixels": 2.577,
+  "diffraction_blur_8p80um_km": 0.6442,
+  "pointing_knowledge_for_0p1km": {
+   "adopted_3000km": {
+    "urad": 33.33,
+    "arcsec": 6.876
+   },
+   "geometric_2296km": {
+    "urad": 43.55,
+    "arcsec": 8.983
+   }
+  },
+  "onion_peel": "shell k is bounded by successive tangent heights z_k, z_k+1 (0.5 km apart); the retrieved shell extinction is the path-weighted average over the net response above, so the retrieval resolution is >= the 0.5-km grid and ~0.5-1 km FWHM-to-base for these terms; the onion-peel gain g = 1.097 (saimon.onion_peel) is already in K_GEOM",
+  "statement": "0.5 km is the SAMPLING; the resolution budget (FOV, smear, diffraction, pointing, retrieval response) gives ~0.5 km FWHM with a 1-km base for the adopted dwell = 0.5 km / descent rate; none of this is demonstrated -- these are the requirement-level numbers"
+ },
+ "mass_power": {
+  "statement": "No mass, power, thermal or duty-cycle budget exists in this analysis; the 'small-satellite class' description is an unverified design objective supported only by the flown analogues below.",
+  "analogues": [
+   {
+    "instrument": "SAGE III/ISS (solar-occultation grating spectrometer, UV-NIR)",
+    "mass_kg": 76.0,
+    "power_W": 80.0,
+    "scope": "instrument (OSCAR); the ISS payload with Nadir Viewing Platform and hexapod is 527 kg (eoportal)",
+    "sources": [
+     "WMO_OSCAR_SAGE3",
+     "NASA_SAGE3_basics",
+     "Cisewski2014_SAGE3ISS"
+    ]
+   },
+   {
+    "instrument": "THEMIS / Mars Odyssey (uncooled microbolometer imager, 6.8-14.9 um + VIS)",
+    "mass_kg": 11.2,
+    "power_W": 14.0,
+    "scope": "instrument, orbital-average power",
+    "sources": [
+     "Christensen2004_THEMIS"
+    ]
+   },
+   {
+    "instrument": "E-THEMIS / Europa Clipper (uncooled microbolometer imager, 7-80 um)",
+    "mass_kg": 16.3,
+    "power_W": 34.8,
+    "scope": "sensor 11.4 + vault electronics 1.8 + harness 3.1 kg; average operating power",
+    "sources": [
+     "Christensen2024_ETHEMIS"
+    ]
+   },
+   {
+    "instrument": "OTES / OSIRIS-REx (uncooled DLATGS FTS, 5.7-100 um)",
+    "mass_kg": 6.27,
+    "power_W": 10.8,
+    "scope": "instrument; 15.99 W peak",
+    "sources": [
+     "Christensen2018_OTES"
+    ]
+   },
+   {
+    "instrument": "L'TES / Lucy (uncooled DLATGS FTS, 5.7-100 um)",
+    "mass_kg": 6.47,
+    "power_W": 12.6,
+    "scope": "instrument; 18.0 W peak",
+    "sources": [
+     "Christensen2024_LTES"
+    ]
+   },
+   {
+    "instrument": "Diviner / LRO (thermopile radiometer)",
+    "mass_kg": null,
+    "power_W": null,
+    "scope": "not given in Paige2010; not quoted",
+    "sources": [
+     "Paige2010_Diviner"
+    ]
+   }
+  ]
+ },
+ "table_d2_corrections": {
+  "thermopile_row": "Uncooled thermopile array | 2--45 | ~300 K; none | 10--100 (Diviner, MCS)  [remove OTES and L'TES from this row]",
+  "pyroelectric_row": "Pyroelectric (DLaTGS) | 2--40 | ~300 K | high-R in FTS; AC-only (Mini-TES, OTES, L'TES)",
+  "caption_ethemis": "E-THEMIS on Europa Clipper (Christensen2024) flies uncooled microbolometer bands at 14--28 and 28--80 um, which demonstrates microbolometer spectral response across the long-wave bands considered here; it does not verify the SNR of a solar-occultation instrument.",
+  "caption_photon": "Among the candidates surveyed in this table, the only photon detectors reaching 20--29 um are the extrinsic-silicon devices (Si:As, Si:Sb), which need sub-10 K cooling; this is a statement about the surveyed candidates, not a survey of all photon-detector technologies.",
+  "text_heritage": "OTES and L'TES use a single uncooled DLATGS pyroelectric detector (Christensen et al. 2018, Sect. 2.3.2; Christensen et al. 2024), not thermopiles; thermopile heritage is Diviner and MCS (Paige et al. 2010; McCleese et al. 2007; Foote et al. 2003).",
+  "text_dstar": "Replace 'D* (~2e10) is ~20 times the thermopile's' by the sourced values: VOx microbolometer arrays ~1e9 cm Hz^1/2 W^-1 (NETD 30-50 mK at f/1, 17-um pitch; E-THEMIS flight NEP 4.95e-12 W at 12 um), MCS thermopiles 0.8-1.7e9, OTES/L'TES DLATGS 1.2e9 at 10 Hz; 2e10 is the ideal 300-K thermal-detector limit. The microbolometer is preferred for its staring 2-D format and ~12-ms time constant, not for a D* advantage."
+ },
+ "sources": {
+  "Christensen2018_OTES": {
+   "cite": "Christensen, P. R., Hamilton, V. E., Mehall, G. L., Pelham, D., O'Donnell, W., Anwar, S., Bowles, H., Chase, S., Fahlgren, J., Farkas, Z., Fisher, T., James, O., Kubik, I., Lazbin, I., Miner, M., Rassas, M., Schulze, L., Shamordola, K., Tourville, T., West, G., Woodward, R., and Lauretta, D.: The OSIRIS-REx Thermal Emission Spectrometer (OTES) Instrument, Space Sci. Rev., 214, 87, 2018, doi:10.1007/s11214-018-0513-6",
+   "verified": "full text (Springer PDF), Sect. 2.3.2 and Table 2",
+   "facts": "uncooled DLATGS pyroelectric detector (Selex-Galileo); measured D* incl. diamond lens 1.2e9 cm Hz^1/2 W^-1 at 10 Hz, 22 C; AC-coupled; FTS (moving mirror supplies the modulation); mass 6.27 kg; power 10.8 W average, 15.99 W peak; 15.2-cm Cassegrain; 5.71-100 um"
+  },
+  "Christensen2024_LTES": {
+   "cite": "Christensen, P. R., Hamilton, V. E., Mehall, G. L., Anwar, S., Bowles, H., Chase, S., Farkas, Z., Fisher, T., Holmes, A., Kubik, I., Lazbin, I., O'Donnell, W., Ortiz, C., Pelham, D., Rogers, S., Shamordola, K., Tourville, T., and Woodward, R.: The Lucy Thermal Emission Spectrometer (L'TES) Instrument, Space Sci. Rev., 220, 1, 2024 (published online 19 Dec 2023), doi:10.1007/s11214-023-01029-y",
+   "verified": "full text (Springer PDF; = PMC10730683), Table 1 and detector section",
+   "facts": "build-to-print copy of OTES; uncooled DLATGS pyroelectric; D* 1.2e9 cm Hz^1/2 W^-1 at 10 Hz, 22 C; mass 6.47 kg; power 12.6 W average, 18.0 W peak"
+  },
+  "Christensen2024_ETHEMIS": {
+   "cite": "Christensen, P. R., Spencer, J. R., Mehall, G. L., et al.: The Europa Thermal Emission Imaging System (E-THEMIS) Investigation for the Europa Clipper Mission, Space Sci. Rev., 220, 38, 2024, doi:10.1007/s11214-024-01074-1 (already Christensen2024 in references.bib)",
+   "verified": "full text (Springer PDF), abstract, Sects. 3.x and 4.3",
+   "facts": "uncooled VOx microbolometer (Raytheon Vision Systems), 1280x1200 at 12-um pitch, 60 Hz frames, 14-bit ADC, detector time constant 0.012 s; measured FPM NEDT 0.042 +/- 0.006 K viewing a 300-K scene at f/1; flight-detector average NEDT 0.33 C in an f/1 system at 300 K giving NEP 4.95e-12 W; TEC-stabilized FPA; bands 7-14, 14-28, 28-80 um; sensor 11.4 kg + vault electronics 1.8 kg + harness 3.1 kg; 34.8 W average"
+  },
+  "Christensen2004_THEMIS": {
+   "cite": "Christensen, P. R., Jakosky, B. M., Kieffer, H. H., Malin, M. C., McSween, H. Y., Nealson, K., Mehall, G. L., Silverman, S. H., Ferry, S., Caplinger, M., and Ravine, M.: The Thermal Emission Imaging System (THEMIS) for the Mars 2001 Odyssey Mission, Space Sci. Rev., 110, 85-130, 2004, doi:10.1023/B:SPAC.0000021008.16305.94",
+   "verified": "full text (PDF), abstract and Table I",
+   "facts": "320x240 uncooled microbolometer, 50-um pitch, f/1.6, 12-cm aperture; NEdT 0.5 K at 245 K and 10 um (1-um bands); FPA temperature stabilized to +/-0.001 K; calibration flag protects the detectors from direct Sun; mass 11.2 kg; orbital-average power 14 W"
+  },
+  "Paige2010_Diviner": {
+   "cite": "Paige, D. A., Foote, M. C., Greenhagen, B. T., et al.: The Lunar Reconnaissance Orbiter Diviner Lunar Radiometer Experiment, Space Sci. Rev., 150, 125-160, 2010, doi:10.1007/s11214-009-9529-2",
+   "verified": "full text (Caltech open-access PDF), Table 1",
+   "facts": "nine 21-element linear arrays of uncooled thermopiles, pixel 240 x 480 um, f/1.7, 4-cm apertures, 0.128-s integration; mass/power NOT given in the paper"
+  },
+  "McCleese2007_MCS": {
+   "cite": "McCleese, D. J., Schofield, J. T., Taylor, F. W., Calcutt, S. B., Foote, M. C., Kass, D. M., Leovy, C. B., Paige, D. A., Read, P. L., and Zurek, R. W.: Mars Climate Sounder: An investigation of thermal and water vapor structure, dust and condensate distributions in the atmosphere, and energy balance of the polar regions, J. Geophys. Res., 112, E05S06, 2007, doi:10.1029/2006JE002790",
+   "verified": "Crossref metadata only (heritage statement; detector numbers taken from Foote2003)",
+   "facts": "nine 21-element thermopile arrays (heritage for Diviner)"
+  },
+  "Foote2003_thermopile": {
+   "cite": "Foote, M. C., Krueger, T. R., Schofield, J. T., McCleese, D. J., McCann, T. A., Jones, E. W., and Dickie, M. R.: Space science applications of thermopile detector arrays, Proc. SPIE, 4999, 443-447, 2003, doi:10.1117/12.482474",
+   "verified": "Crossref metadata; numbers from the JPL Thermal Detectors Workshop 2003 version of the same paper (NASA NTRS 20040068195, full text)",
+   "facts": "MCS thermopile pixels 240 x 480 um; D* requirement 1e9 cm Hz^1/2 W^-1 (0.03-0.25 Hz, 0.3-45 um); engineering-model focal plane 8e8 with readout, 1.7e9 without; typical JPL thermopiles 1-2e9 and response time < 100 ms; dynamic range 13,000 for 2-s integration; linearity 1 %; Johnson-noise limited (80 kOhm, 36 nV Hz^-1/2)"
+  },
+  "Mizrahi2013_VOx17": {
+   "cite": "Mizrahi, U., Argaman, N., Elkind, S., Giladi, A., Hirsh, Y., Labilov, M., Pivnik, I., Shiloah, N., Singer, M., Tuito, A., Ben-Ezra, M., and Shtrichman, I.: Large-format 17 um high-end VOx u-bolometer infrared detector, Proc. SPIE, 8704, 87041H, 2013, doi:10.1117/12.2015653",
+   "verified": "Crossref metadata; abstract value as indexed by web search (full text not accessed)",
+   "facts": "1024x768 VOx, 17-um pitch, NETD better than 35 mK at F/1, 30 Hz"
+  },
+  "Murphy2007_VOx17": {
+   "cite": "Murphy, D., Ray, M., Wyles, J., Hewitt, C., Wyles, R., Gordon, E., Almada, K., Sessler, T., Baur, S., Van Lue, D., and Black, S.: 640 x 512 17 um microbolometer FPA and sensor development, Proc. SPIE, 6542, 65421Z, 2007, doi:10.1117/12.724345",
+   "verified": "Crossref metadata; abstract value as indexed by web search (full text not accessed)",
+   "facts": "17-um VOx; design target < 50 mK at f/1, 30 Hz with 8-ms time constant (target, not measured)"
+  },
+  "Celik2022_VOx17": {
+   "cite": "Celik, O., Aydin, O., Aydemir, K., Yidizak, C., Keskin, S., Nuzumlali, O. L., and Yuce, F. G.: Electro-optical characterization of TEC-less ASELSAN SAFIR640 microbolometer FPA, Proc. SPIE, 12107, 1210715, 2022, doi:10.1117/12.2618225",
+   "verified": "Crossref metadata; abstract value as indexed by web search (full text not accessed)",
+   "facts": "640x480 VOx, 17-um pitch, TEC-less; NETD < 30 mK at f/1; time constant < 12 ms"
+  },
+  "Niklaus2007_review": {
+   "cite": "Niklaus, F., Vieider, C., and Jakobsen, H.: MEMS-based uncooled infrared bolometer arrays: a review, Proc. SPIE, 6836, 68360D, 2007, doi:10.1117/12.755128",
+   "verified": "Crossref metadata only (full text not accessed; no number taken from it)",
+   "facts": "review of uncooled bolometer arrays (materials VOx, a-Si, SiGe, metals)"
+  },
+  "Wang2025_review": {
+   "cite": "Wang, B., Zhao, X., Dong, T., Li, B., Zhang, F., Su, J., Ren, Y., Duan, X., Lin, H., Miao, Y., and Radamson, H. H.: Convergence of Thermistor Materials and Focal Plane Arrays in Uncooled Microbolometers: Trends and Perspectives, Nanomaterials, 15, 1316, 2025, doi:10.3390/nano15171316",
+   "verified": "full text (PMC12430745), abstract and Sect. 2",
+   "facts": "state-of-the-art VOx FPAs: NETD below 30 mK and D* near 2e10 cm Hz^1/2 W^-1 (abstract; no conditions given); Sect. 2.2.5: ~2e10 is the maximum detectivity achievable for a thermal detector at room temperature (theoretical limit, citing Radamson and Kolahdouz 2012); typical bolometer response time ~10 ms (citing Rogalski 2022)"
+  },
+  "Rogalski2022": {
+   "cite": "Rogalski, A.: Scaling infrared detectors - status and outlook, Rep. Prog. Phys., 85, 126501, 2022, doi:10.1088/1361-6633/ac97a8",
+   "verified": "Crossref metadata only (cited by Wang2025 for the ~10 ms bolometer response time)",
+   "facts": "review"
+  },
+  "Cisewski2014_SAGE3ISS": {
+   "cite": "Cisewski, M., Zawodny, J., Gasbarre, J., Eckman, R., Topiwala, N., Rodriguez-Alvarez, O., Cheek, D., and Hall, S.: The Stratospheric Aerosol and Gas Experiment (SAGE III) on the International Space Station (ISS) Mission, Proc. SPIE, 9241, 924107, 2014, doi:10.1117/12.2073131",
+   "verified": "Crossref metadata + NTRS full text (no instrument mass/power sentence found in it)",
+   "facts": "mission/payload description; instrument is one of three SAGE III copies (Meteor-3M heritage)"
+  },
+  "WMO_OSCAR_SAGE3": {
+   "cite": "WMO OSCAR instrument record 'SAGE-III', https://space.oscar.wmo.int/instruments/view/sage_iii (accessed 2026-10-25)",
+   "verified": "web page",
+   "facts": "mass 76 kg; power 80 W; data rate 115 kbps; flown on Meteor-3M (2002-2006) and ISS (2017-)"
+  },
+  "NASA_SAGE3_basics": {
+   "cite": "NASA SAGE III/ISS education sheet 'SAGE III Basics' (S. Odenwald), https://sage.nasa.gov/wp/wp-content/uploads/2015/05/SAGE-III-Basics.pdf (accessed 2026-10-25)",
+   "verified": "PDF text",
+   "facts": "'The 76-kilogram instrument'; 700 kWh per year (= 80 W average)"
+  },
+  "FLIR_SDR": {
+   "cite": "Teledyne FLIR OEM knowledge base, 'What is the scene dynamic range (SDR) of FLIR's OEM modules?' (vendor page; values as indexed by web search 2026-10-25, page itself returned 404 on fetch)",
+   "verified": "search snippet only -- treated as a PARAMETRIZATION, not a measurement",
+   "facts": "Tau2 640 (17-um VOx): scene range -25 to +135 C in high gain, -40 to +550 C in low gain"
+  },
+  "Bernath2005": {
+   "cite": "already in references.bib (Bernath et al. 2005, GRL 32, L15S01)",
+   "verified": "paper's own bib",
+   "facts": "ACE-FTS: InSb and HgCdTe detectors, passive radiator; no D* used from it here"
+  }
+ },
+ "bibtex": "\n@article{Christensen2018,\n  author  = {Christensen, P. R. and Hamilton, V. E. and Mehall, G. L. and Pelham, D. and O'Donnell, W. and Anwar, S. and Bowles, H. and Chase, S. and Fahlgren, J. and Farkas, Z. and Fisher, T. and James, O. and Kubik, I. and Lazbin, I. and Miner, M. and Rassas, M. and Schulze, L. and Shamordola, K. and Tourville, T. and West, G. and Woodward, R. and Lauretta, D.},\n  title   = {The {OSIRIS-REx} {Thermal} {Emission} {Spectrometer} ({OTES}) Instrument},\n  journal = {Space Sci. Rev.},\n  volume  = {214},\n  pages   = {87},\n  year    = {2018},\n  doi     = {10.1007/s11214-018-0513-6}\n}\n\n@article{Christensen2024ltes,\n  author  = {Christensen, P. R. and Hamilton, V. E. and Mehall, G. L. and Anwar, S. and Bowles, H. and Chase, S. and Farkas, Z. and Fisher, T. and Holmes, A. and Kubik, I. and Lazbin, I. and O'Donnell, W. and Ortiz, C. and Pelham, D. and Rogers, S. and Shamordola, K. and Tourville, T. and Woodward, R.},\n  title   = {The {Lucy} {Thermal} {Emission} {Spectrometer} ({L'TES}) Instrument},\n  journal = {Space Sci. Rev.},\n  volume  = {220},\n  pages   = {1},\n  year    = {2024},\n  doi     = {10.1007/s11214-023-01029-y}\n}\n\n@article{Christensen2004,\n  author  = {Christensen, P. R. and Jakosky, B. M. and Kieffer, H. H. and Malin, M. C. and McSween, H. Y. and Nealson, K. and Mehall, G. L. and Silverman, S. H. and Ferry, S. and Caplinger, M. and Ravine, M.},\n  title   = {The {Thermal} {Emission} {Imaging} {System} ({THEMIS}) for the {Mars} 2001 {Odyssey} Mission},\n  journal = {Space Sci. Rev.},\n  volume  = {110},\n  pages   = {85--130},\n  year    = {2004},\n  doi     = {10.1023/B:SPAC.0000021008.16305.94}\n}\n\n@article{Paige2010,\n  author  = {Paige, D. A. and Foote, M. C. and Greenhagen, B. T. and Schofield, J. T. and Calcutt, S. and Vasavada, A. R. and Preston, D. J. and Taylor, F. W. and Allen, C. C. and Snook, K. J. and Jakosky, B. M. and Murray, B. C. and Soderblom, L. A. and Jau, B. and Loring, S. and Bulharowski, J. and Bowles, N. E. and Thomas, I. R. and Sullivan, M. T. and Avis, C. and De Jong, E. M. and Hartford, W. and McCleese, D. J.},\n  title   = {The {Lunar} {Reconnaissance} {Orbiter} {Diviner} {Lunar} {Radiometer} Experiment},\n  journal = {Space Sci. Rev.},\n  volume  = {150},\n  pages   = {125--160},\n  year    = {2010},\n  doi     = {10.1007/s11214-009-9529-2}\n}\n\n@article{McCleese2007,\n  author  = {McCleese, D. J. and Schofield, J. T. and Taylor, F. W. and Calcutt, S. B. and Foote, M. C. and Kass, D. M. and Leovy, C. B. and Paige, D. A. and Read, P. L. and Zurek, R. W.},\n  title   = {{Mars} {Climate} {Sounder}: An investigation of thermal and water vapor structure, dust and condensate distributions in the atmosphere, and energy balance of the polar regions},\n  journal = {J. Geophys. Res.},\n  volume  = {112},\n  eid     = {E05S06},\n  year    = {2007},\n  doi     = {10.1029/2006JE002790}\n}\n\n@inproceedings{Foote2003,\n  author    = {Foote, M. C. and Krueger, T. R. and Schofield, J. T. and McCleese, D. J. and McCann, T. A. and Jones, E. W. and Dickie, M. R.},\n  title     = {Space science applications of thermopile detector arrays},\n  booktitle = {Quantum Sensing: Evolution and Revolution from Past to Future},\n  series    = {Proc. SPIE},\n  volume    = {4999},\n  pages     = {443--447},\n  year      = {2003},\n  doi       = {10.1117/12.482474}\n}\n\n@inproceedings{Mizrahi2013,\n  author    = {Mizrahi, U. and Argaman, N. and Elkind, S. and Giladi, A. and Hirsh, Y. and Labilov, M. and Pivnik, I. and Shiloah, N. and Singer, M. and Tuito, A. and Ben-Ezra, M. and Shtrichman, I.},\n  title     = {Large-format 17~$\\mu$m high-end {VOx} $\\mu$-bolometer infrared detector},\n  booktitle = {Infrared Technology and Applications XXXIX},\n  series    = {Proc. SPIE},\n  volume    = {8704},\n  pages     = {87041H},\n  year      = {2013},\n  doi       = {10.1117/12.2015653}\n}\n\n@inproceedings{Murphy2007,\n  author    = {Murphy, D. and Ray, M. and Wyles, J. and Hewitt, C. and Wyles, R. and Gordon, E. and Almada, K. and Sessler, T. and Baur, S. and Van Lue, D. and Black, S.},\n  title     = {640 $\\times$ 512 17~$\\mu$m microbolometer {FPA} and sensor development},\n  booktitle = {Infrared Technology and Applications XXXIII},\n  series    = {Proc. SPIE},\n  volume    = {6542},\n  pages     = {65421Z},\n  year      = {2007},\n  doi       = {10.1117/12.724345}\n}\n\n@inproceedings{Celik2022,\n  author    = {Celik, O. and Aydin, O. and Aydemir, K. and Yidizak, C. and Keskin, S. and Nuzumlali, O. L. and Yuce, F. G.},\n  title     = {Electro-optical characterization of {TEC}-less {ASELSAN} {SAFIR640} microbolometer {FPA}},\n  booktitle = {Infrared Technology and Applications XLVIII},\n  series    = {Proc. SPIE},\n  volume    = {12107},\n  pages     = {1210715},\n  year      = {2022},\n  doi       = {10.1117/12.2618225}\n}\n\n@article{Wang2025,\n  author  = {Wang, B. and Zhao, X. and Dong, T. and Li, B. and Zhang, F. and Su, J. and Ren, Y. and Duan, X. and Lin, H. and Miao, Y. and Radamson, H. H.},\n  title   = {Convergence of Thermistor Materials and Focal Plane Arrays in Uncooled Microbolometers: Trends and Perspectives},\n  journal = {Nanomaterials},\n  volume  = {15},\n  pages   = {1316},\n  year    = {2025},\n  doi     = {10.3390/nano15171316}\n}\n\n@inproceedings{Niklaus2007,\n  author    = {Niklaus, F. and Vieider, C. and Jakobsen, H.},\n  title     = {{MEMS}-based uncooled infrared bolometer arrays: a review},\n  booktitle = {MEMS/MOEMS Technologies and Applications III},\n  series    = {Proc. SPIE},\n  volume    = {6836},\n  pages     = {68360D},\n  year      = {2007},\n  doi       = {10.1117/12.755128}\n}\n\n@inproceedings{Cisewski2014,\n  author    = {Cisewski, M. and Zawodny, J. and Gasbarre, J. and Eckman, R. and Topiwala, N. and Rodriguez-Alvarez, O. and Cheek, D. and Hall, S.},\n  title     = {The {Stratospheric} {Aerosol} and {Gas} {Experiment} ({SAGE III}) on the {International} {Space} {Station} ({ISS}) Mission},\n  booktitle = {Sensors, Systems, and Next-Generation Satellites XVIII},\n  series    = {Proc. SPIE},\n  volume    = {9241},\n  pages     = {924107},\n  year      = {2014},\n  doi       = {10.1117/12.2073131}\n}\n",
+ "paper_statements_reconciled": {
+  "collected power 8.80 um '~2.5 uW'": {
+   "new_W": 2.113e-06,
+   "note": "E490-anchored disk model; the unscaled 5772-K model gives the paper's 2.5 uW"
+  },
+  "collected power 20.4 um '~90 nW'": {
+   "new_W": 7.954e-08
+  },
+  "'~2 % of the solar disk per 0.5-km sample'": {
+   "strip_fraction": 0.02281,
+   "geometric_ISS_value": 0.02981,
+   "strip_mrad": 0.1667,
+   "solar_diameter_mrad": 9.301
+  },
+  "'photon shot-noise SNR ceiling of order 1e6'": {
+   "shot_SNR_single_atm_sample_8p80": [
+    1874000.0,
+    3247000.0
+   ],
+   "shot_SNR_single_atm_sample_20p4": [
+    967200.0,
+    1675000.0
+   ],
+   "note": "true as an order of magnitude for a single sample; it is not the transmission precision"
+  },
+  "'microbolometer D* ~2e10, ~20x the thermopile'": {
+   "sourced_D_star": 1000000000.0,
+   "thermopile_D_star": 800000000.0,
+   "ideal_limit": 18130000000.0,
+   "note": "2e10 is the ideal-detector limit; measured arrays ~1e9; ratio to the thermopile ~1, not 20"
+  },
+  "'NEP-limited SNR exceeds 1e5' (8.80 um)": {
+   "NEP_SNR_single_atm_sample": [
+    13650.0,
+    23650.0
+   ],
+   "transmission_SNR_after_ratio": [
+    13650.0,
+    23640.0
+   ],
+   "note": "with the sourced D* and the signal spread over 2 x 112 pixels: 1.4e4-2.4e4, not >1e5; still 7-12x above the systematics cap"
+  },
+  "'thermopile falls to SNR ~100 at 20.4 um'": {
+   "thermopile_SNR_T_20p4": [
+    1276.0,
+    2209.0
+   ],
+   "microbolometer_SNR_T_20p4": [
+    1595.0,
+    2762.0
+   ],
+   "note": "with sourced D* both are ~1.3e3-3e3 at 20.4 um; the microbolometer's margin over the cap at 20.4 um is <1.4x and its D* at 20 um is not separately sourced"
+  },
+  "systematics cap 2000 and crossover S~400": {
+   "net_SNR_8p80": [
+    1979.0,
+    1993.0
+   ],
+   "random_sigma_alpha_8p80": [
+    5.036e-10,
+    2.908e-10
+   ]
+  },
+  "'uncooled microbolometer ... thermoelectric stabilization only'": {
+   "supported": "yes: E-THEMIS and THEMIS fly TEC-stabilized uncooled VOx arrays; the gain-drift requirement translates to 12-25 mK FPA stability over the event against THEMIS's +/-1 mK heritage"
+  }
+ }
+}

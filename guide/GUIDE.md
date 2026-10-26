@@ -64,6 +64,13 @@ silica field and orbit sampling.
 | Sect. 1, 8 observables | `signal_vs_background.py` | 0.1 Tg of silica in particles per cm³, column density, and as fractions of the calibrated background's particles above 0.15 µm and optical depth (round 62) |
 | Appendix F coatings | `sensitivity_sulfate_coating.py`, `sensitivity_composite_particle.py` | Bohren–Huffman coated-sphere optics (BHCOAT, validated against `saimon.mie`): a sulfuric-acid shell on the silica cores; a calcite core in a silica shell (rounds 62–63) |
 | Sect. 4.3 positive control | `ace_ash_positive_control.py` | the discriminator on the Lecours et al. (2026) ash–sulfate spectra of the v5.2 release (round 63) |
+| App. D element observable, Tables 2, D2–D3, Fig. 3 | `element_observable_closure.py`, `element_closure_table.py`, `plot_ace_atlas_element.py` | the gas budget, Jacobians, atlas comparison, SNR scan and a Monte Carlo closure test on the element observable −ln⟨T⟩ of the declared response, line-resolved on 0.0025 cm⁻¹ grids; the joint 38-parameter optimal-estimation state (round 70) |
+| App. C rank check | `marginal_rank.py`, `marginal_rank_tests.py` | every archived configuration re-evaluated with the SVD marginalization after the rank shortcut was removed from `marginal()` (round 70) |
+| Sect. 6 declared level | `latitude_declared_level.py` | the latitude numbers on the 20.47-km model level, the vertical response of the core, the campaign covariance (round 70) |
+| Table D5 | `radiometric_budget.py` | the sourced radiometric budget (detector D*, NEP, transmission SNR per element) (round 70) |
+| Table 8, Table A1 | `materials_uniaxial.py` | the carbonate and alumina thresholds under the Rayleigh-exact Clausius–Mossotti orientation average, the optical-constant provenance and perturbations (round 70) |
+| App. A tail | `psd_tail_coagulation.py` | the measured PSD tail above 4 µm, settling times, Fuchs coagulation bookkeeping (round 70) |
+| Sect. 4.3 diagnostics, Tables 3–4 | `ace_nulltest_diagnostics.py` | weighting and mask of every null-test row, χ² and coverage, conditioning, nonlinear backgrounds, the null-level drift, ash paired residuals (round 70) |
 
 ## 4. Conventions that matter
 

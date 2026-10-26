@@ -117,6 +117,27 @@ thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.
   coverage of the 20-km bin from 69°S–73°N to 77°S–85°N while leaving the
   plume-core threshold at 0.026 Tg. The AFGL cross-check (`o3lat`) stays.
   This state is tagged `rc2-round56`.
+* **Round 70 (referee report 5, October 2026).** The trace-gas budget,
+  the Jacobians, the atlas comparison of Sect. 4.1 and the threshold chain
+  are re-formulated on the element observable −ln⟨T⟩ of the declared
+  response, line-resolved on 0.0025 cm⁻¹ grids (new shipped grids and
+  carved line lists under `data/trace_gases/`, step `closure`): at the
+  8.80 µm element the gas optical depth is 0.41 in that convention against
+  the mean optical depth 1.19; the joint 38-parameter retrieval gives
+  0.068 Tg (window) and 0.057 Tg (band) per shell, and the adopted
+  thresholds 0.101/0.141 Tg are kept as conditional values. A Monte Carlo
+  closure test (Tables D2–D3), the rank-safe `marginal()` (`rank`,
+  `ranktest`), the latitude numbers on the declared 20.47-km level
+  (`lat70`), the sourced radiometric budget (`radio`), the Clausius–Mossotti
+  orientation average for the uniaxial crystals (`uniax`: dolomite
+  0.75 → 1.16 Tg, calcite 0.80, alumina 0.157), the PSD tail and
+  coagulation bookkeeping (`tail`) and the null-test diagnostics (`nulld`)
+  are new steps; Fig. 3 is now drawn from the closure archive. The atlas
+  extract was widened to 950–1300 cm⁻¹. `saimon/materials.py` carries the
+  working repository's Cauchy smoothing of the alumina ray-mean index below
+  5 µm and the end-value hold outside the tables (introduced there in
+  October 2026; the archived Table 8 values are unchanged to the quoted
+  digits, see `MANIFEST.md`).
 
 * **Round 57 (referee report RC2, S3; September 2026).** The design band now
   starts at 7.80 µm — 47 elements 7.80 … 13.20 µm (O₃ core excluded) instead

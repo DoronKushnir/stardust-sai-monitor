@@ -1,0 +1,293 @@
+Round 70 item 8 -- radiometric budget
+K_GEOM = 6.8735e-06 m^-1 (sigma_alpha = K_GEOM/SNR, dz = 0.5 km, g = 1.0973)
+
+== catalogue reconciliation (NEP <-> D*) ==
+  Uncooled microbolometer (VOx)      pitch   17.0 um  NEP 1.0e-11 W/rtHz  -> D* 1.7e+08
+  Uncooled thermopile array          pitch  100.0 um  NEP 1.0e-09 W/rtHz  -> D* 1.0e+07
+  Pyroelectric (DLaTGS/LiTaO3)       pitch  100.0 um  NEP 3.0e-10 W/rtHz  -> D* 3.3e+07
+  InSb                               pitch   30.0 um  NEP 3.0e-14 W/rtHz  -> D* 1.0e+11
+  HgCdTe LWIR                        pitch   30.0 um  NEP 6.0e-14 W/rtHz  -> D* 5.0e+10
+  HgCdTe VLWIR                       pitch   30.0 um  NEP 1.5e-13 W/rtHz  -> D* 2.0e+10
+  Si:As IBC/BIB                      pitch   25.0 um  NEP 2.5e-14 W/rtHz  -> D* 1.0e+11
+  Si:Sb BIB                          pitch   25.0 um  NEP 3.1e-14 W/rtHz  -> D* 8.0e+10
+  Type-II superlattice (T2SL)        pitch   30.0 um  NEP 3.0e-14 W/rtHz  -> D* 1.0e+11
+  FLAG: Uncooled microbolometer (VOx): catalogue NEP 1e-11 W/rtHz at 17 um pitch implies D* = 1.7e8; the Appendix text quotes D* ~ 2e10, which is the radiative-exchange LIMIT of an ideal 300-K thermal detector (computed below: 1.8e10), not a measured array value; measured arrays give ~1e9 (below). The two paper numbers are therefore inconsistent by a factor ~100 and neither is the sourced value.
+  FLAG: Uncooled thermopile array: catalogue NEP 1e-9 W/rtHz at 100 um implies D* = 1e7; the sourced MCS thermopiles are 8e8 (with readout) to 1.7e9 (detector alone) -- the catalogue was ~100x too pessimistic. The Appendix statement that the microbolometer D* is '~20 times the thermopile's' is NOT supported by the sourced values (both ~1e9).
+  FLAG: Pyroelectric (DLaTGS): catalogue NEP 3e-10 W/rtHz at 100 um implies D* = 3.3e7; OTES/L'TES measure 1.2e9 at 10 Hz. AC-only remains true (needs modulation).
+  FLAG: Photon detectors (InSb, HgCdTe, Si:As, Si:Sb, T2SL): NEP is derived from D* and pitch by construction, so they are self-consistent; their D* values are representative (not flight-measured here) and are flagged as such.
+
+== sourced detector set ==
+  vox_microbolometer: {"dstar_cm_rtHz_W": 1000000000.0, "pitch_um": 17.0, "nep_W_rtHz": 1.7e-12, "tau_thermal_s": 0.012, "T_op_K": 300.0, "cooling": "none; TEC stabilization of the FPA (E-THEMIS, THEMIS +/-1 mK)", "frame_Hz": 60.0, "adc_bits": 14, "basis": "conservative round value of the measured range below; tau from E-THEMIS"}
+     derived: {"Mizrahi2013_NETD35mK_f1_30Hz_17um": 1174000000.0, "Celik2022_NETD30mK_f1_17um_30Hz_assumed": 1370000000.0, "Murphy2007_target_NETD50mK_f1_30Hz_17um": 821700000.0, "ETHEMIS_NEP4p95em12W_12um_df30Hz": 1328000000.0, "ETHEMIS_FPM_NEDT0p042K_f1_60Hz_12um_7to14um": 1702000000.0, "dM_dT_7p5_13p5um_300K_W_cm2_K": 0.0002772, "netd_formula": "NETD = (4F^2+1) sqrt(df)/(sqrt(A_d) D* tau_o dM/dT), df = frame/2, tau_o = 1", "Wang2025_abstract_claim": 20000000000.0, "ideal_thermal_detector_limit_300K_2pi": 18130000000.0}
+  thermopile_linear_array: {"dstar_cm_rtHz_W": 800000000.0, "pitch_um": null, "pixel_um": [240.0, 480.0], "nep_W_rtHz": 4.243e-11, "tau_thermal_s": 0.1, "T_op_K": 300.0, "cooling": "none", "dstar_detector_alone": 1700000000.0, "dstar_band_Hz": [0.03, 0.25], "dynamic_range_2s": 13000, "linearity": 0.01, "basis": "MCS engineering-model focal plane with readout (Foote2003); Diviner uses the same class"}
+  dlatgs_pyroelectric: {"dstar_cm_rtHz_W": 1200000000.0, "pitch_um": null, "nep_W_rtHz": null, "T_op_K": 295.0, "cooling": "none", "modulation_required": true, "basis": "OTES/L'TES measured D* 1.2e9 at 10 Hz, 22 C, single element, AC-coupled; in an FTS the moving mirror modulates the signal; a staring spectrograph would need a chopper"}
+  hgcdte_lwir: {"dstar_cm_rtHz_W": 50000000000.0, "pitch_um": 30.0, "nep_W_rtHz": 6e-14, "T_op_K": 77.0, "cooling": "passive radiator 80-100 K (ACE-FTS, Bernath2005)", "basis": "REPRESENTATIVE catalogue value; no flight-measured D* sourced in this round"}
+  si_as_bib: {"dstar_cm_rtHz_W": 100000000000.0, "pitch_um": 25.0, "nep_W_rtHz": 2.5e-14, "T_op_K": 7.0, "basis": "REPRESENTATIVE catalogue value (JWST/MIRI heritage); flagged"}
+
+== geometry / mapping ==
+{
+ "orbit_altitude_km": 420.0,
+ "tangent_height_km": 20.0,
+ "v_orbit_km_s": 7.661,
+ "tangent_range_geometric_km": 2296.0,
+ "tangent_range_adopted_km": 3000.0,
+ "descent_rate_inplane_max_km_s": 2.591,
+ "descent_rate_adopted_km_s": [
+  1.0,
+  3.0
+ ],
+ "dwell_per_sample_s": [
+  0.1667,
+  0.5
+ ],
+ "strip_angular_height_mrad": 0.1667,
+ "strip_angular_height_geom_mrad": 0.2177,
+ "solar_diameter_mrad": 9.301,
+ "solar_disk_sr": 6.794e-05,
+ "strip_fraction_of_disk": 0.02281,
+ "strip_fraction_geom_range": 0.02981,
+ "strip_solid_angle_sr": 1.55e-06,
+ "aperture_area_m2": 0.007854,
+ "etendue_m2_sr": 1.217e-08,
+ "pitch_um": 17.0,
+ "rows_per_sample": 2,
+ "pixels_per_element_spectral": 2,
+ "focal_length_m": 0.204,
+ "f_number": 2.04,
+ "solar_diameter_pixels": 111.6,
+ "pixels_per_element_total": 223.2,
+ "pixel_solid_angle_sr": 0.1887,
+ "etendue_check_pixels_m2_sr": 1.217e-08,
+ "slit": "narrow dimension = altitude = n_rows pixels = 0.1-um element width in the spectral direction; long dimension along the solar diameter (M columns)",
+ "array_format_needed": "94 spectral x 112 spatial pixels for 47 elements (a 320x240 array suffices)",
+ "diffraction_spot_pixels": {
+  "8.80": 2.577,
+  "11.40": 3.338,
+  "20.40": 5.973
+ },
+ "diffraction_note": "2.44 lambda F/pitch; > 2 pixels means the 0.1-um element (2 pixels) is blurred by diffraction at this F-number -- a design constraint, strongest at 20.4 um"
+}
+
+== optical depths at the 20-km tangent (element -ln<T>) ==
+{
+ "source": "outputs/slant_od_landscape_curves.npz (20-km tangent, reproduce/plot_slant_od_landscape_paper.py)",
+ "8.80": {
+  "tau_gas_element": 1.173,
+  "tau_gas_mean": 1.196,
+  "tau_total_element": 1.258,
+  "n_grid": 11
+ },
+ "11.40": {
+  "tau_gas_element": 0.2579,
+  "tau_gas_mean": 0.2585,
+  "tau_total_element": 0.3174,
+  "n_grid": 11
+ },
+ "20.40": {
+  "tau_gas_element": 0.08608,
+  "tau_gas_mean": 0.0899,
+  "tau_total_element": 0.1217,
+  "n_grid": 11
+ },
+ "window_elements_tau_gas": {
+  "7.80": 6.423,
+  "7.90": 5.017,
+  "8.00": 1.67,
+  "8.10": 0.5138,
+  "8.20": 0.1775,
+  "8.30": 0.1065,
+  "8.40": 0.2191,
+  "8.50": 0.3905,
+  "8.60": 0.6177,
+  "8.70": 0.8159,
+  "8.80": 1.173,
+  "8.90": 1.68,
+  "9.00": 1.096,
+  "9.10": 1.086,
+  "9.20": 1.253
+ },
+ "window_edge_max": {
+  "element_um": "7.80",
+  "tau_gas": 6.423
+ }
+}
+
+== solar irradiance == {"model": "5772-K blackbody disk (ETC) scaled to ASTM E490 at 10 um", "E490_at_10um_W_m2_um": 0.24, "disk_model_at_10um_W_m2_um": 0.2859, "scale": 0.8396, "disk_model_values": {"8.80": 0.4683, "11.40": 0.172, "20.40": 0.01762}, "used_values": {"8.80": 0.3932, "11.40": 0.1444, "20.40": 0.0148}, "note": "the paper's 2.5 uW at 8.80 um follows from the unscaled disk model; the E490-anchored value is lower by the scale factor"}
+
+== chain ==
+  8.80 um  vox_microbolometer     t=0.50s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=3.2e+06  nep_atm=2.4e+04  SNR_T=2.36e+04  net=1993  sig_a_rand=2.91e-10  [systematics cap]
+  8.80 um  vox_microbolometer     t=0.17s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=1.9e+06  nep_atm=1.4e+04  SNR_T=1.36e+04  net=1979  sig_a_rand=5.04e-10  [systematics cap]
+  8.80 um  vox_catalogue_1e-11    t=0.50s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=3.2e+06  nep_atm=4.0e+03  SNR_T=4.02e+03  net=1791  sig_a_rand=1.71e-09  [systematics cap]
+  8.80 um  vox_catalogue_1e-11    t=0.17s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=1.9e+06  nep_atm=2.3e+03  SNR_T=2.32e+03  net=1515  sig_a_rand=2.96e-09  [systematics cap]
+  8.80 um  vox_ideal_limit        t=0.50s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=3.2e+06  nep_atm=4.3e+05  SNR_T=4.25e+05  net=2000  sig_a_rand=1.62e-11  [systematics cap]
+  8.80 um  vox_ideal_limit        t=0.17s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=1.9e+06  nep_atm=2.5e+05  SNR_T=2.45e+05  net=2000  sig_a_rand=2.80e-11  [systematics cap]
+  8.80 um  thermopile             t=0.50s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=3.2e+06  nep_atm=1.9e+04  SNR_T=1.89e+04  net=1989  sig_a_rand=3.63e-10  [systematics cap]
+  8.80 um  thermopile             t=0.17s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=1.9e+06  nep_atm=1.1e+04  SNR_T=1.09e+04  net=1967  sig_a_rand=6.30e-10  [systematics cap]
+  8.80 um  dlatgs                 t=0.50s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=3.2e+06  nep_atm=2.8e+04  SNR_T=2.84e+04  net=1995  sig_a_rand=2.42e-10  [systematics cap]
+  8.80 um  dlatgs                 t=0.17s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=1.9e+06  nep_atm=1.6e+04  SNR_T=1.64e+04  net=1985  sig_a_rand=4.20e-10  [systematics cap]
+  8.80 um  hgcdte                 t=0.50s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=3.2e+06  nep_atm=1.2e+06  SNR_T=1.11e+06  net=2000  sig_a_rand=6.19e-12  [systematics cap]
+  8.80 um  hgcdte                 t=0.17s  P_toa=2.11e-06 W  P_atm=6.01e-07 W  shot_atm=1.9e+06  nep_atm=6.8e+05  SNR_T=6.41e+05  net=2000  sig_a_rand=1.07e-11  [systematics cap]
+  11.40 um  vox_microbolometer     t=0.50s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=3.6e+06  nep_atm=2.2e+04  SNR_T=2.22e+04  net=1992  sig_a_rand=3.10e-10  [systematics cap]
+  11.40 um  vox_microbolometer     t=0.17s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=2.1e+06  nep_atm=1.3e+04  SNR_T=1.28e+04  net=1976  sig_a_rand=5.37e-10  [systematics cap]
+  11.40 um  vox_catalogue_1e-11    t=0.50s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=3.6e+06  nep_atm=3.8e+03  SNR_T=3.77e+03  net=1767  sig_a_rand=1.82e-09  [systematics cap]
+  11.40 um  vox_catalogue_1e-11    t=0.17s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=2.1e+06  nep_atm=2.2e+03  SNR_T=2.18e+03  net=1473  sig_a_rand=3.16e-09  [systematics cap]
+  11.40 um  thermopile             t=0.50s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=3.6e+06  nep_atm=1.8e+04  SNR_T=1.78e+04  net=1987  sig_a_rand=3.87e-10  [systematics cap]
+  11.40 um  thermopile             t=0.17s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=2.1e+06  nep_atm=1.0e+04  SNR_T=1.02e+04  net=1963  sig_a_rand=6.71e-10  [systematics cap]
+  11.40 um  dlatgs                 t=0.50s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=3.6e+06  nep_atm=2.7e+04  SNR_T=2.66e+04  net=1994  sig_a_rand=2.58e-10  [systematics cap]
+  11.40 um  dlatgs                 t=0.17s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=2.1e+06  nep_atm=1.5e+04  SNR_T=1.54e+04  net=1983  sig_a_rand=4.47e-10  [systematics cap]
+  11.40 um  hgcdte                 t=0.50s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=3.6e+06  nep_atm=1.1e+06  SNR_T=1.06e+06  net=2000  sig_a_rand=6.49e-12  [systematics cap]
+  11.40 um  hgcdte                 t=0.17s  P_toa=7.76e-07 W  P_atm=5.65e-07 W  shot_atm=2.1e+06  nep_atm=6.4e+05  SNR_T=6.12e+05  net=2000  sig_a_rand=1.12e-11  [systematics cap]
+  20.40 um  vox_microbolometer     t=0.50s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=1.7e+06  nep_atm=2.8e+03  SNR_T=2.76e+03  net=1620  sig_a_rand=2.49e-09  [systematics cap]
+  20.40 um  vox_microbolometer     t=0.17s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=9.7e+05  nep_atm=1.6e+03  SNR_T=1.6e+03  net=1247  sig_a_rand=4.31e-09  [detector NEP]
+  20.40 um  vox_catalogue_1e-11    t=0.50s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=1.7e+06  nep_atm=4.7e+02  SNR_T=470  net=457  sig_a_rand=1.46e-08  [detector NEP]
+  20.40 um  vox_catalogue_1e-11    t=0.17s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=9.7e+05  nep_atm=2.7e+02  SNR_T=271  net=269  sig_a_rand=2.54e-08  [detector NEP]
+  20.40 um  thermopile             t=0.50s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=1.7e+06  nep_atm=2.2e+03  SNR_T=2.21e+03  net=1483  sig_a_rand=3.11e-09  [systematics cap]
+  20.40 um  thermopile             t=0.17s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=9.7e+05  nep_atm=1.3e+03  SNR_T=1.28e+03  net=1075  sig_a_rand=5.39e-09  [detector NEP]
+  20.40 um  dlatgs                 t=0.50s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=1.7e+06  nep_atm=3.3e+03  SNR_T=3.31e+03  net=1712  sig_a_rand=2.07e-09  [systematics cap]
+  20.40 um  dlatgs                 t=0.17s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=9.7e+05  nep_atm=1.9e+03  SNR_T=1.91e+03  net=1383  sig_a_rand=3.59e-09  [detector NEP]
+  20.40 um  si_as                  t=0.50s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=1.7e+06  nep_atm=2.8e+05  SNR_T=2.72e+05  net=2000  sig_a_rand=2.52e-11  [systematics cap]
+  20.40 um  si_as                  t=0.17s  P_toa=7.95e-08 W  P_atm=7.04e-08 W  shot_atm=9.7e+05  nep_atm=1.6e+05  SNR_T=1.57e+05  net=2000  sig_a_rand=4.37e-11  [systematics cap]
+  window edge 7.80 um tau=6.42 t=0.50s  SNR_T=215
+  window edge 7.80 um tau=6.42 t=0.17s  SNR_T=124
+  window edge parametric 8.90 um tau=2.0 t=0.50s  SNR_T=1.08e+04  net=1966
+  window edge parametric 8.90 um tau=2.0 t=0.17s  SNR_T=6.22e+03  net=1904
+
+== crossover == {"K_GEOM_m1": 6.874e-06, "floor_8p80_m1": 1.692e-08, "S_crossover": 406.2, "sigma_alpha_at_cap2000_m1": 3.437e-09, "quadrature_add_at_2000": 0.02042}
+
+== saturation == {
+ "wavelength_um": 8.8,
+ "pixel_passband_um": 0.05,
+ "F_number": 2.04,
+ "throughput": 0.3,
+ "P_sun_pixel_spectrograph_W": 4.734e-09,
+ "P_300K_scene_pixel_f1_7p5_13p5um_W": 1.008e-08,
+ "ratio_sun_pixel_to_300K_scene": 0.4698,
+ "equivalent_scene_T_K": 258.5,
+ "P_sun_pixel_broadband_imaging_f1_W": 4.15e-06,
+ "ratio_broadband_sun_to_300K": 411.8,
+ "saturation_parametrization": {
+  "source": "FLIR_SDR (vendor; parametrization)",
+  "T_sat_high_gain_C": 135.0,
+  "T_sat_low_gain_C": 550.0,
+  "P_sat_high_gain_W": 3.683e-08,
+  "P_sat_low_gain_W": 2.731e-07,
+  "attenuation_to_half_well_high_gain": 1.0,
+  "attenuation_to_half_well_low_gain": 1.0
+ },
+ "per_pixel_per_frame": {
+  "nep_pixel_W_rtHz": 1.7e-12,
+  "sigma_frame_W": 9.311e-12,
+  "SNR_pixel_frame_TOA": 508.4,
+  "bits_needed_TOA_over_noise": 8.99,
+  "adc_bits_ETHEMIS": 14
+ },
+ "statement": "In an R~100 spectrograph each pixel receives a 0.05-um slice of the solar spectrum at the design F-number: 0.47 of a 300-K f/1 scene (the configuration in which microbolometer NETDs are measured; equivalent scene temperature 258 K), so the Sun does not saturate the array; a broadband 7.5-13.5-um imager pointed at the Sun receives 412x a 300-K scene and does saturate, which is why imagers carry a Sun flag (THEMIS). The margin depends on the gain state; no attenuator is required at the adopted parameters, but the saturation figure is a vendor parametrization, not a measured flight value."
+}
+
+== ratio cancellation / requirements == {
+ "budget_fractional": 0.0005,
+ "lambda_um": 8.8,
+ "tau": 1.2,
+ "T": 0.3012,
+ "cancelled_by_ratio": [
+  "absolute radiometric calibration",
+  "optical throughput (mirrors, grating, filters)",
+  "detector responsivity and electronic gain, if constant over the event",
+  "the solar spectrum itself (same disk strip, same spectral slice)",
+  "slow degradation of optics/detector between events (Chu1989)"
+ ],
+ "not_cancelled": [
+  "additive offsets (warm-optics emission, dark level, stray light) -- must be measured (space look before/after the event) and subtracted",
+  "nonlinearity between the TOA level and the attenuated level",
+  "gain/responsivity drift within the event (FPA temperature, 1/f noise)",
+  "pointing-dependent solar-disk structure (limb darkening) if the strip moves on the disk",
+  "spectral registration drift (grating/thermal)"
+ ],
+ "offset_requirement": {
+  "P_element_TOA_W": 2.113e-06,
+  "P_bkg_element_W": 5.929e-09,
+  "dB_allowed_W": 3.183e-10,
+  "fraction_of_background_to_know": 0.05369,
+  "statement": "the 300-K background on the element must be known/subtracted to this fraction of itself"
+ },
+ "nonlinearity_requirement": {
+  "quadratic_coefficient_e2_max": 0.0007155,
+  "statement": "response R(S)=S(1+e2 S/S_TOA): |e2| below this over the TOA-to-30% range; MCS thermopile spec is 1 % (Foote2003), so a 1 %-class linearity would need characterization/correction by a factor ~14"
+ },
+ "drift_requirement": {
+  "dt_ref_to_sample_s": [
+   23.33,
+   70.0
+  ],
+  "event_0_100km_s": [
+   33.33,
+   100.0
+  ],
+  "gain_drift_rate_max_per_s": [
+   2.143e-05,
+   7.143e-06
+  ],
+  "gain_drift_rate_max_per_min": [
+   0.001286,
+   0.0004286
+  ],
+  "statement": "a requirement, not a demonstration"
+ },
+ "fpa_temperature_requirement": {
+  "TCR_per_K": [
+   0.02,
+   0.042
+  ],
+  "dT_fpa_max_K": [
+   0.025,
+   0.0119
+  ],
+  "heritage": "THEMIS stabilizes the IR FPA to +/-0.001 K (Christensen2004)",
+  "source_tcr": "Wang2025 (Al-doped VOx -4.2 %/K; typical VOx ~ -2 %/K)"
+ }
+}
+
+== vertical resolution bookkeeping == {
+ "fov_per_sample_km": 0.5,
+ "fov_mrad": 0.1667,
+ "rows_per_sample": 2,
+ "integration_smear_km": [
+  0.5,
+  0.5
+ ],
+ "dwell_s": [
+  0.5,
+  0.1667
+ ],
+ "combined_response": "boxcar(FOV) * boxcar(smear): triangle",
+ "combined_base_km": [
+  1.0,
+  1.0
+ ],
+ "combined_fwhm_km": [
+  0.5,
+  0.5
+ ],
+ "diffraction_blur_8p80um_pixels": 2.577,
+ "diffraction_blur_8p80um_km": 0.6442,
+ "pointing_knowledge_for_0p1km": {
+  "adopted_3000km": {
+   "urad": 33.33,
+   "arcsec": 6.876
+  },
+  "geometric_2296km": {
+   "urad": 43.55,
+   "arcsec": 8.983
+  }
+ },
+ "onion_peel": "shell k is bounded by successive tangent heights z_k, z_k+1 (0.5 km apart); the retrieved shell extinction is the path-weighted average over the net response above, so the retrieval resolution is >= the 0.5-km grid and ~0.5-1 km FWHM-to-base for these terms; the onion-peel gain g = 1.097 (saimon.onion_peel) is already in K_GEOM",
+ "statement": "0.5 km is the SAMPLING; the resolution budget (FOV, smear, diffraction, pointing, retrieval response) gives ~0.5 km FWHM with a 1-km base for the adopted dwell = 0.5 km / descent rate; none of this is demonstrated -- these are the requirement-level numbers"
+}
+
+== mass/power analogues (no budget exists for this design) ==
+   {"instrument": "SAGE III/ISS (solar-occultation grating spectrometer, UV-NIR)", "mass_kg": 76.0, "power_W": 80.0, "scope": "instrument (OSCAR); the ISS payload with Nadir Viewing Platform and hexapod is 527 kg (eoportal)", "sources": ["WMO_OSCAR_SAGE3", "NASA_SAGE3_basics", "Cisewski2014_SAGE3ISS"]}
+   {"instrument": "THEMIS / Mars Odyssey (uncooled microbolometer imager, 6.8-14.9 um + VIS)", "mass_kg": 11.2, "power_W": 14.0, "scope": "instrument, orbital-average power", "sources": ["Christensen2004_THEMIS"]}
+   {"instrument": "E-THEMIS / Europa Clipper (uncooled microbolometer imager, 7-80 um)", "mass_kg": 16.3, "power_W": 34.8, "scope": "sensor 11.4 + vault electronics 1.8 + harness 3.1 kg; average operating power", "sources": ["Christensen2024_ETHEMIS"]}
+   {"instrument": "OTES / OSIRIS-REx (uncooled DLATGS FTS, 5.7-100 um)", "mass_kg": 6.27, "power_W": 10.8, "scope": "instrument; 15.99 W peak", "sources": ["Christensen2018_OTES"]}
+   {"instrument": "L'TES / Lucy (uncooled DLATGS FTS, 5.7-100 um)", "mass_kg": 6.47, "power_W": 12.6, "scope": "instrument; 18.0 W peak", "sources": ["Christensen2024_LTES"]}
+   {"instrument": "Diviner / LRO (thermopile radiometer)", "mass_kg": null, "power_W": null, "scope": "not given in Paige2010; not quoted", "sources": ["Paige2010_Diviner"]}

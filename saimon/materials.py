@@ -130,6 +130,7 @@ class RayMeanUniaxialRefractiveIndex:
 
     _DEFAULT_ORDINARY: str | None = None
     _DEFAULT_EXTRAORDINARY: str | None = None
+    _CAUCHY_SMOOTH_BELOW_UM: float | None = None
 
     def __init__(self, ordinary_csv=None, extraordinary_csv=None):
         """Load the two rays and build ray-mean n, k interpolators.
@@ -163,11 +164,28 @@ class RayMeanUniaxialRefractiveIndex:
         self.n_mean = n
         self.k_mean = np.abs(k)  # k >= 0 for the Bohren-Huffman backend
 
+        # Optional Cauchy smoothing of n below a cutoff: the Querry tables
+        # quote n to 0.001 at 0.01-um steps, and that quantization imprints
+        # a few-percent ripple on Mie efficiencies at visible size
+        # parameters.  n = a + b/lam^2 + c/lam^4, least squares on the
+        # tabulated points below the cutoff (k untouched).
+        if self._CAUCHY_SMOOTH_BELOW_UM is not None:
+            cut = self._CAUCHY_SMOOTH_BELOW_UM
+            sel = wl < cut
+            x = 1.0 / wl[sel] ** 2
+            coef = np.polyfit(x, self.n_mean[sel], 2)
+            self.n_mean = self.n_mean.copy()
+            self.n_mean[sel] = np.polyval(coef, x)
+            self.cauchy_coefficients = coef
+
         wl_m = wl * 1e-6
+        # Outside the tabulated range hold the end values (linear
+        # extrapolation of the Querry tables produces negative k beyond
+        # the dolomite ordinary-ray limit at 40 um).
         self._interp_n = interp1d(wl_m, self.n_mean, bounds_error=False,
-                                  fill_value="extrapolate")
+                                  fill_value=(self.n_mean[0], self.n_mean[-1]))
         self._interp_k = interp1d(wl_m, self.k_mean, bounds_error=False,
-                                  fill_value="extrapolate")
+                                  fill_value=(self.k_mean[0], self.k_mean[-1]))
 
     @staticmethod
     def _load_ray(path):
@@ -218,8 +236,11 @@ class AluminaRefractiveIndex(RayMeanUniaxialRefractiveIndex):
     Rays from Querry (1985, CRDC-CR-85034; refractiveindex.info), 0.21-55.6 um;
     k set to zero below 6 um where sapphire is transparent (Querry's ~2e-2
     Kramers-Kronig k floor is noise there) and negative k artifacts clamped.
-    Tables built by scripts/convert_querry_optics.py.
+    Tables built by scripts/convert_querry_optics.py.  Below 5 um the
+    ray-mean n is replaced by a Cauchy fit to the same table (the 0.001
+    quantization of the table otherwise ripples the visible Mie spectra).
     """
 
     _DEFAULT_ORDINARY = "alumina_optical_OrdinaryRay.csv"
     _DEFAULT_EXTRAORDINARY = "alumina_optical_ExtraOrdinaryRay.csv"
+    _CAUCHY_SMOOTH_BELOW_UM = 5.0

@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "data" / "ace_atlas"
 FILES = ["Tropics_016-020km.txt", "Tropics_020-024km.txt"]
-NU_MIN, NU_MAX, HEADER = 950.0, 1250.0, 9
+NU_MIN, NU_MAX, HEADER = 950.0, 1300.0, 9   # 1300 since round 70: the element-observable closure uses 1067-1294 cm^-1 (7.8-9.3 um)
 
 
 def main(src):

@@ -1,0 +1,110 @@
+# round 70 item 6: marginal() span test, SVD_RTOL=1e-10, TPERP_RTOL=1e-08
+configuration                                                           K nuis rank |t_perp|/|t| smin/smax  M_min new  M_min old   archived  verdict
+band: A2+rs (5-param), triplet + band01                                50    4    4    3.157e-01   4.8e-02    0.09566    0.09566    0.09566  identifiable
+band: A2+rs (5-param), band01 alone                                    47    4    4    4.396e-01   1.8e-05    0.14501    0.14501    0.14501  identifiable
+band: full 7-param, triplet + band01                                   50    6    6    2.989e-01   3.6e-02    0.10104    0.10104    0.10104  identifiable
+band: full 7-param, band01 alone                                       47    6    6    3.621e-01   5.6e-06    0.17604    0.17604    0.17604  identifiable
+band: 7-param + MIR offs, triplet + band01                             50    7    7    2.967e-01   1.0e-02    0.10177    0.10177    0.10177  identifiable
+band: 7-param + MIR offs, band01 alone                                 47    7    7    3.615e-01   4.3e-06    0.17632    0.17632    0.17632  identifiable
+window: A2+rs (5-param), triplet + window                              18    4    4    2.888e-01   4.3e-02    0.10463    0.10463    0.10462  identifiable
+window: A2+rs (5-param), window alone                                  15    4    4    2.536e-01   5.1e-06    0.25203    0.25203    0.25203  identifiable
+window: full 7-param, triplet + window                                 18    6    6    2.141e-01   2.0e-02    0.14115    0.14115    0.14115  identifiable
+window: full 7-param, window alone                                     15    6    6    1.771e-01   1.1e-06    0.36099    0.36099    0.36098  identifiable
+window: 7-param + MIR offs, triplet + window                           18    7    7    1.162e-01   5.4e-03    0.26004    0.26004    0.26004  identifiable
+window: 7-param + MIR offs, window alone                               15    7    7    1.491e-01   1.0e-06    0.42882    0.42882    0.42881  identifiable
+element: A1+rs (4-param), (a) triplet alone 448/756/1544 [fractional]   3    3    3    1.915e-16   4.8e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A1+rs (4-param), (b) triplet + 8.80 um element [fractional]    4    3    3    1.368e-01   5.8e-02    0.23139    0.23139    0.23139  identifiable
+element: A1+rs (4-param), vis/NIR six alone [fractional]                6    3    3    8.547e-02   8.8e-03    0.28007    0.28007        nan  identifiable
+element: A1+rs (4-param), baseline roster (+1021, 1250) + element [fractional]  6    3    3    1.461e-01   4.7e-02    0.18128    0.18128    0.18128  identifiable
+element: A1+rs (4-param), extended roster (+869) + element [fractional]  7    3    3    1.287e-01   4.0e-02    0.17860    0.17860    0.17860  identifiable
+element: A2 (3-param), (a) triplet alone 448/756/1544 [fractional]      3    2    2    2.732e-01   4.4e-01    0.12551    0.12551        nan  identifiable
+element: A2 (3-param), (b) triplet + 8.80 um element [fractional]       4    2    2    2.941e-01   4.3e-01    0.10767    0.10767    0.10767  identifiable
+element: A2 (3-param), vis/NIR six alone [fractional]                   6    2    2    2.194e-01   4.2e-01    0.10911    0.10911        nan  identifiable
+element: A2 (3-param), baseline roster (+1021, 1250) + element [fractional]  6    2    2    2.597e-01   4.6e-01    0.10198    0.10198    0.10198  identifiable
+element: A2 (3-param), extended roster (+869) + element [fractional]    7    2    2    2.361e-01   4.1e-01    0.09738    0.09738    0.09738  identifiable
+element: A2+rs (5-param), (a) triplet alone 448/756/1544 [fractional]   3    4    3    3.348e-16   2.6e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs (5-param), (b) triplet + 8.80 um element [fractional]    4    4    4    7.687e-16   4.1e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs (5-param), vis/NIR six alone [fractional]                6    4    4    4.605e-03   4.7e-03    5.19824    5.19824        nan  identifiable
+element: A2+rs (5-param), baseline roster (+1021, 1250) + element [fractional]  6    4    4    2.892e-03   3.3e-02    9.15765    9.15765    9.15765  identifiable
+element: A2+rs (5-param), extended roster (+869) + element [fractional]  7    4    4    5.952e-03   2.8e-02    3.86282    3.86282    3.86282  identifiable
+element: A2+rs+rc (6-param), (a) triplet alone 448/756/1544 [fractional]  3    5    3    3.451e-16   5.2e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs+rc (6-param), (b) triplet + 8.80 um element [fractional]  4    5    4    9.851e-16   3.0e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs+rc (6-param), vis/NIR six alone [fractional]             6    5    5    4.108e-03   5.7e-04    5.82648    5.82648        nan  identifiable
+element: A2+rs+rc (6-param), baseline roster (+1021, 1250) + element [fractional]  6    5    5    1.386e-03   1.6e-03   19.10368   19.10368   19.10368  identifiable
+element: A2+rs+rc (6-param), extended roster (+869) + element [fractional]  7    5    5    5.470e-03   1.4e-03    4.20294    4.20294    4.20294  identifiable
+element: full 7-param, (a) triplet alone 448/756/1544 [fractional]      3    6    3    2.956e-16   5.2e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, (b) triplet + 8.80 um element [fractional]       4    6    4    5.031e-16   2.8e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, vis/NIR six alone [fractional]                   6    6    6    4.580e-16   1.7e-05        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, baseline roster (+1021, 1250) + element [fractional]  6    6    6    8.721e-16   5.5e-05        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, extended roster (+869) + element [fractional]    7    6    6    4.975e-03   4.8e-05    4.62104    4.62104        nan  identifiable
+element: A1+rs (4-param), (a) triplet alone 448/756/1544 [with SNR=2000 floor]  3    3    3    1.915e-16   4.8e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A1+rs (4-param), (b) triplet + 8.80 um element [with SNR=2000 floor]  4    3    3    1.368e-01   5.8e-02    0.23139    0.23139    0.23139  identifiable
+element: A1+rs (4-param), vis/NIR six alone [with SNR=2000 floor]       6    3    3    8.547e-02   8.8e-03    0.28007    0.28007        nan  identifiable
+element: A1+rs (4-param), baseline roster (+1021, 1250) + element [with SNR=2000 floor]  6    3    3    1.461e-01   4.7e-02    0.18128    0.18128    0.18128  identifiable
+element: A1+rs (4-param), extended roster (+869) + element [with SNR=2000 floor]  7    3    3    1.287e-01   4.0e-02    0.17860    0.17860    0.17860  identifiable
+element: A2 (3-param), (a) triplet alone 448/756/1544 [with SNR=2000 floor]  3    2    2    2.732e-01   4.4e-01    0.12551    0.12551        nan  identifiable
+element: A2 (3-param), (b) triplet + 8.80 um element [with SNR=2000 floor]  4    2    2    2.941e-01   4.3e-01    0.10767    0.10767    0.10767  identifiable
+element: A2 (3-param), vis/NIR six alone [with SNR=2000 floor]          6    2    2    2.194e-01   4.2e-01    0.10911    0.10911        nan  identifiable
+element: A2 (3-param), baseline roster (+1021, 1250) + element [with SNR=2000 floor]  6    2    2    2.597e-01   4.6e-01    0.10198    0.10198    0.10198  identifiable
+element: A2 (3-param), extended roster (+869) + element [with SNR=2000 floor]  7    2    2    2.361e-01   4.1e-01    0.09738    0.09738    0.09738  identifiable
+element: A2+rs (5-param), (a) triplet alone 448/756/1544 [with SNR=2000 floor]  3    4    3    3.348e-16   2.6e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs (5-param), (b) triplet + 8.80 um element [with SNR=2000 floor]  4    4    4    7.687e-16   4.1e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs (5-param), vis/NIR six alone [with SNR=2000 floor]       6    4    4    4.605e-03   4.7e-03    5.19824    5.19824        nan  identifiable
+element: A2+rs (5-param), baseline roster (+1021, 1250) + element [with SNR=2000 floor]  6    4    4    2.892e-03   3.3e-02    9.15765    9.15765    9.15765  identifiable
+element: A2+rs (5-param), extended roster (+869) + element [with SNR=2000 floor]  7    4    4    5.952e-03   2.8e-02    3.86282    3.86282    3.86282  identifiable
+element: A2+rs+rc (6-param), (a) triplet alone 448/756/1544 [with SNR=2000 floor]  3    5    3    3.451e-16   5.2e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs+rc (6-param), (b) triplet + 8.80 um element [with SNR=2000 floor]  4    5    4    9.851e-16   3.0e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: A2+rs+rc (6-param), vis/NIR six alone [with SNR=2000 floor]    6    5    5    4.108e-03   5.7e-04    5.82648    5.82648        nan  identifiable
+element: A2+rs+rc (6-param), baseline roster (+1021, 1250) + element [with SNR=2000 floor]  6    5    5    1.386e-03   1.6e-03   19.10368   19.10368   19.10368  identifiable
+element: A2+rs+rc (6-param), extended roster (+869) + element [with SNR=2000 floor]  7    5    5    5.470e-03   1.4e-03    4.20294    4.20294    4.20294  identifiable
+element: full 7-param, (a) triplet alone 448/756/1544 [with SNR=2000 floor]  3    6    3    2.956e-16   5.2e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, (b) triplet + 8.80 um element [with SNR=2000 floor]  4    6    4    5.031e-16   2.8e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, vis/NIR six alone [with SNR=2000 floor]          6    6    6    4.580e-16   1.7e-05        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, baseline roster (+1021, 1250) + element [with SNR=2000 floor]  6    6    6    8.721e-16   5.5e-05        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+element: full 7-param, extended roster (+869) + element [with SNR=2000 floor]  7    6    6    4.975e-03   4.8e-05    4.62104    4.62104        nan  identifiable
+(c) triplet + 3.8 um: A1+rs (4-param) [floor 1.692e-08]                 4    3    3    7.727e-03   2.9e-02    3.59253    3.59253        nan  identifiable
+(c) triplet + 3.8 um: A2 (3-param) [floor 1.692e-08]                    4    2    2    2.417e-01   3.2e-01    0.11486    0.11486        nan  identifiable
+(c) triplet + 3.8 um: A2+rs (5-param) [floor 1.692e-08]                 4    4    4    4.940e-16   4.0e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 3.8 um: A2+rs+rc (6-param) [floor 1.692e-08]              4    5    4    8.064e-16   6.8e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 3.8 um: full 7-param [floor 1.692e-08]                    4    6    4    5.685e-16   6.1e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 3.8 um: A1+rs (4-param) [floor 1.500e-08]                 4    3    3    7.749e-03   3.2e-02    3.58229    3.58229    3.58229  identifiable
+(c) triplet + 3.8 um: A2 (3-param) [floor 1.500e-08]                    4    2    2    2.645e-01   3.2e-01    0.10496    0.10496        nan  identifiable
+(c) triplet + 3.8 um: A2+rs (5-param) [floor 1.500e-08]                 4    4    4    7.001e-16   4.0e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 3.8 um: A2+rs+rc (6-param) [floor 1.500e-08]              4    5    4    4.443e-16   6.7e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 3.8 um: full 7-param [floor 1.500e-08]                    4    6    4    6.064e-16   6.1e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 4.0 um: A1+rs (4-param) [floor 1.692e-08]                 4    3    3    8.814e-03   2.7e-02    3.14956    3.14956        nan  identifiable
+(c) triplet + 4.0 um: A2 (3-param) [floor 1.692e-08]                    4    2    2    2.392e-01   3.2e-01    0.11604    0.11604        nan  identifiable
+(c) triplet + 4.0 um: A2+rs (5-param) [floor 1.692e-08]                 4    4    4    1.080e-15   3.5e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 4.0 um: A2+rs+rc (6-param) [floor 1.692e-08]              4    5    4    9.403e-16   6.6e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 4.0 um: full 7-param [floor 1.692e-08]                    4    6    4    6.549e-16   6.2e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 4.0 um: A1+rs (4-param) [floor 1.500e-08]                 4    3    3    8.843e-03   3.0e-02    3.13915    3.13915    3.13915  identifiable
+(c) triplet + 4.0 um: A2 (3-param) [floor 1.500e-08]                    4    2    2    2.617e-01   3.2e-01    0.10608    0.10608        nan  identifiable
+(c) triplet + 4.0 um: A2+rs (5-param) [floor 1.500e-08]                 4    4    4    7.672e-16   3.5e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 4.0 um: A2+rs+rc (6-param) [floor 1.500e-08]              4    5    4    5.120e-16   6.6e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(c) triplet + 4.0 um: full 7-param [floor 1.500e-08]                    4    6    4    6.827e-16   6.1e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+six vis/NIR + 3.8 um: A2+rs (5-param) [floor 1.5e-8]                    7    4    4    3.352e-02   1.8e-02    0.71414    0.71414    0.71414  identifiable
+six vis/NIR + 3.8 um: full 7-param [floor 1.5e-8]                       7    6    6    3.903e-03   7.5e-04    6.13351    6.13351    6.13351  identifiable
+(d) K=3 log-spaced vis/NIR: A2 (3-param)                                3    2    2    4.118e-01   6.5e-01    0.09826    0.09826        nan  identifiable
+(d) K=3 log-spaced vis/NIR: A2+rs (5-param)                             3    4    3    7.844e-16   3.7e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=3 log-spaced vis/NIR: A2+rs+rc (6-param)                          3    5    3    5.442e-16   4.8e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=3 log-spaced vis/NIR: full 7-param                                3    6    3    3.951e-16   4.7e-01        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=4 log-spaced vis/NIR: A2 (3-param)                                4    2    2    3.532e-01   6.1e-01    0.09367    0.09367    0.09367  identifiable
+(d) K=4 log-spaced vis/NIR: A2+rs (5-param)                             4    4    4    7.496e-16   1.4e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=4 log-spaced vis/NIR: A2+rs+rc (6-param)                          4    5    4    2.509e-16   6.1e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=4 log-spaced vis/NIR: full 7-param                                4    6    4    1.149e-15   7.7e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=5 log-spaced vis/NIR: A2 (3-param)                                5    2    2    3.284e-01   5.9e-01    0.08681    0.08681    0.08681  identifiable
+(d) K=5 log-spaced vis/NIR: A2+rs (5-param)                             5    4    4    1.707e-02   1.4e-02    1.67053    1.67053    1.67053  identifiable
+(d) K=5 log-spaced vis/NIR: A2+rs+rc (6-param)                          5    5    5    2.364e-16   4.3e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=5 log-spaced vis/NIR: full 7-param                                5    6    5    2.527e-16   1.2e-02        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=6 log-spaced vis/NIR: A2 (3-param)                                6    2    2    3.101e-01   5.8e-01    0.08258    0.08258    0.08258  identifiable
+(d) K=6 log-spaced vis/NIR: A2+rs (5-param)                             6    4    4    1.520e-02   1.4e-02    1.68434    1.68434    1.68434  identifiable
+(d) K=6 log-spaced vis/NIR: A2+rs+rc (6-param)                          6    5    5    8.029e-03   4.4e-03    3.18942    3.18942        nan  identifiable
+(d) K=6 log-spaced vis/NIR: full 7-param                                6    6    6    7.931e-16   2.7e-03        inf        inf        nan  unidentifiable: nuisance span = whole space (rank = K), t_perp = 0 to round-off
+(d) K=7 log-spaced vis/NIR: A2 (3-param)                                7    2    2    2.965e-01   5.7e-01    0.07936    0.07936    0.07936  identifiable
+(d) K=7 log-spaced vis/NIR: A2+rs (5-param)                             7    4    4    1.434e-02   1.4e-02    1.64029    1.64029    1.64029  identifiable
+(d) K=7 log-spaced vis/NIR: A2+rs+rc (6-param)                          7    5    5    9.542e-03   4.6e-03    2.46598    2.46598        nan  identifiable
+(d) K=7 log-spaced vis/NIR: full 7-param                                7    6    6    4.928e-04   2.6e-03   47.74927   47.74927   47.74927  identifiable
+(d) K=8 log-spaced vis/NIR: A2 (3-param)                                8    2    2    2.938e-01   5.6e-01    0.07356    0.07356    0.07356  identifiable
+(d) K=8 log-spaced vis/NIR: A2+rs (5-param)                             8    4    4    1.097e-02   1.3e-02    1.96903    1.96903    1.96903  identifiable
+(d) K=8 log-spaced vis/NIR: A2+rs+rc (6-param)                          8    5    5    5.611e-03   4.6e-03    3.85115    3.85115        nan  identifiable
+(d) K=8 log-spaced vis/NIR: full 7-param                                8    6    6    4.580e-03   2.8e-03    4.71811    4.71811    4.71811  identifiable
