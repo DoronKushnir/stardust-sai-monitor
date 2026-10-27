@@ -5,3 +5,4 @@ netCDF4>=1.6
 pyyaml>=6.0
 hitran-api>=1.2      # HAPI: only needed for the full (raw-data) chain, see fetch/README.md
 pytest>=7            # tests
+pandas>=2.0   # reproduce/ace_null_baseline.py (round 74)

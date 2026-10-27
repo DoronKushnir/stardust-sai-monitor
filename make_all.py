@@ -85,6 +85,18 @@ STEPS = [
     ("uniax",  ["materials_uniaxial.py"],                 "outputs/materials_uniaxial.json, tables/optical_constants_provenance.tex (Table 8 under the Clausius-Mossotti orientation average, Table A1, optical-constant perturbations; item 9)", "30 min", True),
     ("tail",   ["psd_tail_coagulation.py"],               "outputs/psd_tail_coagulation.json (App. A: measured PSD tail, settling, coagulation bookkeeping; item 9)", "5 min", False),
     ("nulld",  ["ace_nulltest_diagnostics.py"],           "outputs/ace_v52/nulltest_diagnostics.{json,_perocc.csv} (Sect. 4.3, Tables 3-4: weighting and mask, chi2 and coverage, conditioning, nonlinear backgrounds, null drift, ash paired residuals; items 4-5)", "15 min", True),
+    # paper 1 rounds 71 and 74 (referee rounds 5 follow-up and 6, October 2026)
+    ("farir71", ["materials_farir_uniaxial.py"],           "outputs/materials_farir_uniaxial*.json (Table 8 far-infrared and red-extension columns under the orientation-averaged optics; round 71)", "~1 h per material", True),
+    ("comp71",  ["sensitivity_composite_particle_uniaxial.py"], "outputs/composite_particle_uniaxial.json (Table F2 calcite-core rows under the orientation-averaged optics; round 71)", "8 min", True),
+    ("nlrefit", ["ace_nulltest_nonlinear_refit.py"],       "outputs/ace_nulltest_nonlinear_refit*.{json,csv} (Sect. 4.3: converged nonlinear Mie-in-the-loop refit of the 101 null occultations; round 71)", "hours", True),
+    ("fpc",     ["closure_flat_prior_check.py"],           "outputs/closure_flat_prior_check.json (App. D: the round-70 joint model under a flat aerosol prior; round 74)", "10 s", False),
+    ("umodel",  ["uncertainty_model.py"],                  "outputs/uncertainty_model.{json,_audit.npz} (Table 2, App. D4, D9: the adopted measurement model and its scenarios, the audit of the joint retrieval, prior scan, response derivatives, multi-tangent geometry; round 74 items 2-5, 7)", "10 s", False),
+    ("cvar",    ["closure_variants.py"],                   "outputs/closure_variants.json (Table D3: fixed databases, out-of-prior truths, alternative sulfate member, line widths, intervals; round 74 item 3)", "15 min", True),
+    ("gconv",   ["grid_convergence.py"],                   "outputs/grid_convergence.{json,npz} (App. D4: 0.005/0.0025/0.00125-cm^-1 grids; needs the 0.00125 grids from fetch/build_finegrid_window.py 0.00125; round 74 item 3)  [HITRAN]", "5 min + 25 min of grids", True),
+    ("mscat",   ["materials_scattering.py"],               "outputs/materials_scattering.json (Sect. 7, App. F4: Rayleigh factors, absorption/scattering on the reference PSD, perturbation envelopes under the adopted optics; round 74 item 6)", "30 min", True),
+    ("mprim",   ["materials_primary.py"],                  "outputs/materials_primary.json (Table 8 'adopted model' column; round 74 item 2)", "1 min", False),
+    ("radobs",  ["radiometric_budget_observable.py"],      "outputs/radiometric_budget_observable.json, tables/radiometric_budget.tex (Table D5 at the element observable with separated noise terms; round 74 item 7)", "s", False),
+    ("nullb",   ["ace_null_baseline.py"],                  "outputs/ace_null_baseline.json (Sects. 4.3, 5.3: coverage about zero, year-level drift error, prospective split, secular injection through the baseline procedure; round 74 item 8)", "10 s", False),
 ]
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
 

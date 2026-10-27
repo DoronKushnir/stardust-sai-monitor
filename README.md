@@ -154,6 +154,25 @@ thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.
 * **Round 59 (referee report RC3, September 2026).** Fig. F1 legend corrected
   to the 7.8–13 µm band and the figure regenerated (archive unchanged); tag
   `rc3-round59`.
+* **Round 71 (follow-up to referee report RC5, October 2026).** The far-infrared,
+  red-extension and composite-particle thresholds recomputed under the
+  orientation-averaged (Clausius-Mossotti) optics (`reproduce/materials_farir_uniaxial.py`,
+  `sensitivity_composite_particle_uniaxial.py`) and a converged per-occultation
+  nonlinear (Mie-in-the-loop) ACE refit (`ace_nulltest_nonlinear_refit.py`);
+  archives shipped, steps `farir71`, `comp71`, `nlrefit` (FULL).
+* **Round 74 (referee report RC6, October 2026).** One measurement model for the
+  headline sensitivity, propagated as a full covariance through the joint
+  element-observable retrieval (`reproduce/uncertainty_model.py`; Table 2,
+  App. D4): band 0.119 / window 0.168 Tg per shell with the triplet replace the
+  diagonal-floor 0.101 / 0.141 Tg, which is now a defined scenario. Closure-test
+  variants (`closure_variants.py`), grid convergence (`grid_convergence.py`,
+  `fetch/build_finegrid_window.py 0.00125`), the flat-aerosol-prior check
+  (`closure_flat_prior_check.py`), the anisotropic-scattering and perturbation
+  envelopes under the adopted optics (`materials_scattering.py`), the materials
+  under the adopted model (`materials_primary.py`), the radiometric chain at the
+  element observable (`radiometric_budget_observable.py`) and the null-baseline
+  procedure test (`ace_null_baseline.py`); Tables D2-D3 by the rewritten
+  `element_closure_table.py`. Tag `rc6-round74`.
 
 ## Licence
 

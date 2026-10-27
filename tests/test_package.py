@@ -335,3 +335,53 @@ def test_nulltest_diagnostics_archive():
     assert abs(f["median_formal"] - 0.023208) < 2e-6 and abs(f["median_M"] - 0.011245) < 2e-6
     assert d["sample"]["selection"]["passed"] == 101 and d["sample"]["selection"]["lt2_above_30"] == 42
     assert abs(d["sample"]["full"]["trend"]["slope_tg_per_decade"] - 0.0228) < 5e-4
+
+
+def test_round74_archives():
+    """Referee round 6 (round 74): the adopted measurement model (Table 2), its scenarios, the closure-test
+    variants, the grid convergence, the materials under the adopted model, the radiometric chain at the
+    element observable and the null-baseline procedure."""
+    u = json.load(open(OUT / "uncertainty_model.json"))
+    m = u["models"]
+    assert abs(m["B_primary"]["band_triplet"] - 0.1187) < 5e-4 and abs(m["B_primary"]["window_triplet"] - 0.1678) < 5e-4
+    assert abs(m["B_primary"]["band_alone"] - 0.1727) < 5e-4 and abs(m["B_primary"]["window_alone"] - 0.3363) < 1e-3
+    assert abs(m["two_stage_diagonal"]["adopted_2p47_band_triplet"]["mmin_3sig_shell"] - 0.1008) < 5e-4
+    assert abs(m["two_stage_diagonal"]["adopted_2p47_window_triplet"]["mmin_3sig_shell"] - 0.1405) < 5e-4
+    assert abs(u["correlation"]["gaussian_l_um"] - 0.142) < 2e-3
+    assert u["response_derivatives"]["shift_max_rel_diff_analytic_vs_fd1e_4"] < 1e-3
+    g = u["geometry"]
+    assert abs(g["rho_from_rows_880"] - 2.607) < 5e-3 and 0.15 < g["coherent_o3_2pct"]["dalpha_880_at_20km_m1"] / g["coherent_o3_2pct"]["f_alpha_880_at_20km_m1"] < 0.3
+    f = json.load(open(OUT / "closure_flat_prior_check.json"))
+    assert abs(f["round70_window_3sig_flat"] - 0.0941) < 5e-4 and abs(f["round70_hybrid_band_3sig_flat"] - 0.0612) < 5e-4
+    v = json.load(open(OUT / "closure_variants.json"))
+    assert abs(v["fixed_database"]["spread_of_db_means_null"] - 0.0082) < 2e-3
+    assert 0.025 < v["alt_sulfate_member_B70T215"]["0.1"]["bias_median"] < 0.045
+    assert v["round70_with_binomial_intervals"]["null_zero_of_100_upper95"] < 0.04
+    gc = json.load(open(OUT / "grid_convergence.json"))
+    assert abs(gc["comparison_to_finest"]["0.0025"]["mass_error_tg_per_shell"]) < 1e-3 and gc["comparison_to_finest"]["0.0025"]["max_abs_dy_od"] < 1e-4
+    mp = json.load(open(OUT / "materials_primary.json"))["materials"]
+    for mat, val in (("silica", 0.119), ("calcite", 0.41), ("dolomite", 0.78), ("alumina", 0.18)):
+        assert abs(mp[mat]["primary"]["band_triplet"] - val) < 0.01
+    r = json.load(open(OUT / "radiometric_budget_observable.json"))
+    assert abs(r["optical_depths"]["8.80"]["tau_gas_element"] - 0.406) < 2e-3
+    assert 2.5e4 < r["chain"]["8.80"]["dwell_0.17"]["result"]["SNR_T_ratio"] < 3.5e4
+    assert abs(r["ratio_cancellation_observable"]["drift_requirement"]["gain_drift_rate_max_per_s"][1] - 7.14e-6) < 1e-7
+    n = json.load(open(OUT / "ace_null_baseline.json"))
+    assert abs(n["drift"]["slope_tg_per_decade"] - 0.0228) < 1e-3 and n["drift"]["se_year_block_bootstrap"] < 0.004
+    assert n["prospective_split"]["2004-2015 -> 2016-2024"]["exceed_3.0sigma"]["count"] == 9
+    assert n["secular_injection"]["cases"]["ramp_0.10_per_decade_rolling"]["first_season_seasonal_mean_above_4p54"] is None
+    assert n["secular_injection"]["cases"]["step_0.10_rolling"]["first_season_seasonal_mean_above_4p54"] == 2010
+    s = json.load(open(OUT / "materials_scattering.json"))
+    env = s["perturbations_convention_b"]["threshold_envelope_quiet_tg"]
+    assert env["alumina"]["max"] < env["calcite"]["min"] and s["perturbations_convention_b"]["carbonate_pair_envelopes_overlap"]
+
+
+def test_round71_archives():
+    """Round 71 (follow-up to referee round 5): far-infrared thresholds under the orientation-averaged
+    optics and the converged nonlinear ACE refit."""
+    for mat, far_only, band_far in (("calcite", 0.037, 0.026), ("dolomite", 0.063, 0.031), ("alumina", 0.10, 0.071)):
+        d = json.load(open(OUT / f"materials_farir_uniaxial_{mat}.json"))
+        txt = json.dumps(d)
+        assert f"{far_only:.3f}"[:4] in txt and f"{band_far:.3f}"[:4] in txt
+    d = json.load(open(OUT / "ace_nulltest_nonlinear_refit.json"))
+    assert (OUT / "ace_nulltest_nonlinear_refit_perocc.csv").exists() and len(json.dumps(d)) > 1000

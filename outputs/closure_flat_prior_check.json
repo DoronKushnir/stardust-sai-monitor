@@ -1,0 +1,9 @@
+{
+ "round70_hybrid_band_3sig_prior1e3": 0.057208108726675616,
+ "round70_window_3sig_prior1e3": 0.06801135665362491,
+ "round70_hybrid_band_3sig_flat": 0.061245851686611646,
+ "round70_window_3sig_flat": 0.09413841475601602,
+ "round70_window_alone_3sig_flat": 0.21055471560884362,
+ "paper_floors_joint_window_flat": 0.20193112506641445,
+ "note": "3 sigma per 0.5-km shell at 20 km; 'hybrid band' = window with the gas state + 32 outer elements on the adopted floors (round-70 construction); flat = aerosol prior 1e6"
+}

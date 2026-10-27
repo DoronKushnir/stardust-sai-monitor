@@ -19,7 +19,7 @@ alt = np.arange(14_000.0, 80_001.0, 500.0); atm = us_standard_atmosphere(alt)
 chord = tangent_to_slant_paths(np.array([20000.0]), alt)[0]
 dens = tg.number_density_profiles(alt, atm.number_density_m3)
 nodes_m = np.asarray(DEFAULT_NODES_KM)*1e3; na = us_standard_atmosphere(nodes_m)
-STEP=0.0025; NU_LO, NU_HI = 1067.0, 1294.0
+STEP=float(sys.argv[1]) if len(sys.argv) > 1 else 0.0025; NU_LO, NU_HI = 1067.0, 1294.0   # round 74: python fetch/build_finegrid_window.py 0.00125 for the convergence grids
 for gas in ("o3","n2o","ch4","h2o"):
     g = tg.HITRAN_GASES[gas]
     w = chord*dens[gas]; Te=float((w*atm.temperature_k).sum()/w.sum()); Pe=float((w*atm.pressure_pa).sum()/w.sum())/101325

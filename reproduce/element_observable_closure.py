@@ -109,7 +109,7 @@ H_TAN_M = 20_000.0
 # or (--coarse) the 0.01-cm^-1 budget grids over 575-1782 cm^-1 (the lines are undersampled there by ~3x;
 # -ln<T> at 8.80 um is 0.402 against 0.384 on a 0.001-cm^-1 check)
 _COARSE = "--coarse" in sys.argv
-STEP = 0.01 if _COARSE else 0.0025
+STEP = float(os.environ.get("CLOSURE_STEP", 0.01 if _COARSE else 0.0025))   # round 74: grid-convergence override (default unchanged)
 CACHE_LO, CACHE_HI = (575.3, 1782.1) if _COARSE else (1067.0, 1294.0)
 NU_LO, NU_HI = 1069.0, 1292.0            # working range (7.74-9.35 um)
 EL_CENTRES_UM = np.round(np.arange(7.80, 9.2001, 0.1), 2)   # the 15 window elements
