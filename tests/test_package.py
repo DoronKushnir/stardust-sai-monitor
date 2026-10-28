@@ -408,3 +408,19 @@ def test_round75_archives():
     assert max(d["summary"]["dolomite"]["validation_error_psd_weighted"]) < 0.05       # validated on the isotropic rays
     assert max(d["summary"]["alumina"]["validation_error_psd_weighted"]) > 0.05       # the surface mode does not converge on this lattice
     assert 0.0 < d["thresholds"]["dolomite"]["change_percent"] < 5.0 and -10.0 < d["thresholds"]["calcite"]["change_percent"] < 0.0
+
+
+def test_round76_archives():
+    """Round 76 (referee round 7): the closure of the final estimator, the gas budget by conditioning and the trend rule."""
+    c = json.load(open(OUT / "closure_final.json"))
+    b = c["tests"]["final_band"]
+    assert abs(c["estimator"]["posterior_3sig_band_tg"] - 0.1186) < 5e-4
+    assert 0.9 < b["0.1"]["sd"] / b["0.1"]["posterior_sigma_median"] < 1.1 and b["0.0"]["p_detect_3sig"] == 0.0
+    g = json.load(open(OUT / "gas_budget_conditioning.json"))
+    assert abs(g["gas_budget_880"]["known_aerosol_diagnostic"]["sigma_total_od"] - 5.115e-4) < 5e-7
+    d = g["silica_posterior_decomposition_1sig_per_shell_tg"]["band"]
+    assert abs(d["posterior"] - 0.0395) < 2e-4 and abs(d["measurement"] - 0.0356) < 2e-4 and abs(d["prior"] - 0.0172) < 2e-4
+    t = json.load(open(OUT / "ace_null_trend.json"))["cases"]["train_2004_2015"]
+    assert t["signals"]["step_0.10"]["first_season_seasonal_mean_above_4p54"] == 2016 and t["rule"]["n_seasons"] == 12
+    m = json.load(open(OUT / "multitangent_retrieval.json"))["scenarios"]
+    assert abs(m["sulfate_per_shell_fov_0.5km_5subrays"]["mmin_3sig_20km_tg"] - 0.0751) < 1e-3

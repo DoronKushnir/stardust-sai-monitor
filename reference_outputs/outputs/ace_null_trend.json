@@ -1,0 +1,1289 @@
+{
+ "script": "scripts/ace_null_trend_round76.py",
+ "round": 76,
+ "slant_to_shell": 2.33,
+ "bootstrap_draws": 4000,
+ "rule": "linear trend fitted by OLS to the pre-deployment training record, frozen at T_0, forecast covariance of (a, b) from a year-block bootstrap; z = (M - M_0(t)) / sqrt(sigma^2 + var M_0(t))",
+ "cases": {
+  "train_2004_2015": {
+   "rule": {
+    "a": 0.0009157442626681749,
+    "b_per_decade": 0.005421859008254902,
+    "cov_ab": [
+     [
+      1.711427758394536e-05,
+      1.8611935829413567e-05
+     ],
+     [
+      1.8611935829413567e-05,
+      2.608146341135513e-05
+     ]
+    ],
+    "se_a": 0.004136940606770342,
+    "se_b_per_decade": 0.0051070014109411725,
+    "sigma_train": 0.014952642103167265,
+    "n_train": 47,
+    "n_seasons": 12,
+    "median_train": -0.0034131672310417,
+    "se_median_bootstrap": 0.0030035931621974583,
+    "se_median_gaussian_formula": 0.00265586495019315,
+    "t_ref": 2016.0
+   },
+   "T0": 2016.0,
+   "forecast_sd_tg": {
+    "1_yr": 0.004593199253672937,
+    "5_yr": 0.006499736861304288,
+    "10_yr": 0.008967698291876663
+   },
+   "forecast_sd_per_shell_tg": {
+    "1_yr": 0.010702154261057943,
+    "5_yr": 0.015144386886838992,
+    "10_yr": 0.020894737020072624
+   },
+   "signals": {
+    "null": {
+     "rate_tg_per_decade": 0.0,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2021,
+     "first_season_above_3": 2018,
+     "single_sounding_exceedances": [
+      0,
+      54
+     ],
+     "exceedance_fraction_upper95": 0.05396576709737626,
+     "seasons": {
+      "2016": {
+       "z_mean": 1.34,
+       "exceed": 0,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 0.92,
+       "exceed": 0,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 3.42,
+       "exceed": 0,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 2.66,
+       "exceed": 0,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 1.96,
+       "exceed": 0,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 5.21,
+       "exceed": 0,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 5.5,
+       "exceed": 0,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 4.09,
+       "exceed": 0,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 3.56,
+       "exceed": 0,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.0
+    },
+    "ramp_0.02_per_decade": {
+     "rate_tg_per_decade": 0.02,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2021,
+     "first_season_above_3": 2018,
+     "single_sounding_exceedances": [
+      1,
+      54
+     ],
+     "exceedance_fraction_upper95": 0.08486195988423352,
+     "seasons": {
+      "2016": {
+       "z_mean": 1.46,
+       "exceed": 0,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 1.3,
+       "exceed": 0,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 4.19,
+       "exceed": 0,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 3.81,
+       "exceed": 0,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 3.34,
+       "exceed": 0,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 7.25,
+       "exceed": 0,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 7.74,
+       "exceed": 0,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 5.66,
+       "exceed": 1,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 6.22,
+       "exceed": 0,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.017141683778234048
+    },
+    "ramp_0.05_per_decade": {
+     "rate_tg_per_decade": 0.05,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2018,
+     "first_season_above_3": 2018,
+     "single_sounding_exceedances": [
+      4,
+      54
+     ],
+     "exceedance_fraction_upper95": 0.16154457663523988,
+     "seasons": {
+      "2016": {
+       "z_mean": 1.65,
+       "exceed": 0,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 1.88,
+       "exceed": 0,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 5.36,
+       "exceed": 0,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 5.55,
+       "exceed": 0,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 5.4,
+       "exceed": 0,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 10.3,
+       "exceed": 0,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 11.1,
+       "exceed": 2,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 8.02,
+       "exceed": 1,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 10.2,
+       "exceed": 1,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.042854209445585115
+    },
+    "ramp_0.10_per_decade": {
+     "rate_tg_per_decade": 0.1,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2018,
+     "first_season_above_3": 2018,
+     "single_sounding_exceedances": [
+      29,
+      54
+     ],
+     "exceedance_fraction_upper95": 0.6540731632340429,
+     "seasons": {
+      "2016": {
+       "z_mean": 1.96,
+       "exceed": 0,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 2.84,
+       "exceed": 0,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 7.3,
+       "exceed": 1,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 8.45,
+       "exceed": 0,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 8.84,
+       "exceed": 2,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 15.38,
+       "exceed": 8,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 16.69,
+       "exceed": 8,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 11.94,
+       "exceed": 3,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 16.84,
+       "exceed": 7,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.08570841889117023
+    },
+    "ramp_0.20_per_decade": {
+     "rate_tg_per_decade": 0.2,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2017,
+     "first_season_above_3": 2017,
+     "single_sounding_exceedances": [
+      40,
+      54
+     ],
+     "exceedance_fraction_upper95": 0.8359363497741817,
+     "seasons": {
+      "2016": {
+       "z_mean": 2.59,
+       "exceed": 0,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 4.76,
+       "exceed": 0,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 11.18,
+       "exceed": 3,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 14.25,
+       "exceed": 6,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 15.71,
+       "exceed": 4,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 25.56,
+       "exceed": 9,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 27.87,
+       "exceed": 8,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 19.79,
+       "exceed": 3,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 30.11,
+       "exceed": 7,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.17141683778234046
+    },
+    "step_0.10": {
+     "rate_tg_per_decade": 0.0,
+     "step_tg": 0.1,
+     "first_season_seasonal_mean_above_4p54": 2016,
+     "first_season_above_3": 2016,
+     "single_sounding_exceedances": [
+      54,
+      54
+     ],
+     "exceedance_fraction_upper95": 1.0,
+     "seasons": {
+      "2016": {
+       "z_mean": 14.18,
+       "exceed": 4,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 13.65,
+       "exceed": 4,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 18.86,
+       "exceed": 6,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 19.16,
+       "exceed": 7,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 17.07,
+       "exceed": 6,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 23.49,
+       "exceed": 9,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 22.51,
+       "exceed": 8,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 14.37,
+       "exceed": 3,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 19.05,
+       "exceed": 7,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.09999999999999999
+    },
+    "step_0.15": {
+     "rate_tg_per_decade": 0.0,
+     "step_tg": 0.15,
+     "first_season_seasonal_mean_above_4p54": 2016,
+     "first_season_above_3": 2016,
+     "single_sounding_exceedances": [
+      54,
+      54
+     ],
+     "exceedance_fraction_upper95": 1.0,
+     "seasons": {
+      "2016": {
+       "z_mean": 20.6,
+       "exceed": 4,
+       "null": 0.0012,
+       "null_sd": 0.0044
+      },
+      "2017": {
+       "z_mean": 20.01,
+       "exceed": 4,
+       "null": 0.0017,
+       "null_sd": 0.0048
+      },
+      "2018": {
+       "z_mean": 26.58,
+       "exceed": 6,
+       "null": 0.0023,
+       "null_sd": 0.0053
+      },
+      "2019": {
+       "z_mean": 27.41,
+       "exceed": 7,
+       "null": 0.0028,
+       "null_sd": 0.0058
+      },
+      "2020": {
+       "z_mean": 24.62,
+       "exceed": 6,
+       "null": 0.0034,
+       "null_sd": 0.0063
+      },
+      "2021": {
+       "z_mean": 32.63,
+       "exceed": 9,
+       "null": 0.0039,
+       "null_sd": 0.0068
+      },
+      "2022": {
+       "z_mean": 31.02,
+       "exceed": 8,
+       "null": 0.0045,
+       "null_sd": 0.0073
+      },
+      "2023": {
+       "z_mean": 19.5,
+       "exceed": 3,
+       "null": 0.0051,
+       "null_sd": 0.0078
+      },
+      "2024": {
+       "z_mean": 26.8,
+       "exceed": 7,
+       "null": 0.0056,
+       "null_sd": 0.0083
+      }
+     },
+     "signal_last_season_tg": 0.15
+    }
+   }
+  },
+  "train_2004_2009": {
+   "rule": {
+    "a": -0.003452975305032073,
+    "b_per_decade": 0.0026551503581475223,
+    "cov_ab": [
+     [
+      0.00022009962554099581,
+      0.0005246031521021201
+     ],
+     [
+      0.0005246031521021201,
+      0.001333239268172477
+     ]
+    ],
+    "se_a": 0.01483575497037464,
+    "se_b_per_decade": 0.036513549104030915,
+    "sigma_train": 0.013113086983669545,
+    "n_train": 28,
+    "n_seasons": 6,
+    "median_train": -0.00535079903510585,
+    "se_median_bootstrap": 0.0035641545710369264,
+    "se_median_gaussian_formula": 0.003202861477446965,
+    "t_ref": 2010.0
+   },
+   "T0": 2010.0,
+   "forecast_sd_tg": {
+    "1_yr": 0.0183943645892742,
+    "5_yr": 0.03283310211792719,
+    "10_yr": 0.05101514674993803
+   },
+   "forecast_sd_per_shell_tg": {
+    "1_yr": 0.042858869493008885,
+    "5_yr": 0.07650112793477036,
+    "10_yr": 0.11886529192735562
+   },
+   "signals": {
+    "null": {
+     "rate_tg_per_decade": 0.0,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": null,
+     "first_season_above_3": null,
+     "single_sounding_exceedances": [
+      0,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.04020679425316584,
+     "seasons": {
+      "2010": {
+       "z_mean": 0.97,
+       "exceed": 0,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": -0.86,
+       "exceed": 0,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 0.31,
+       "exceed": 0,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": -0.4,
+       "exceed": 0,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": -0.08,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 0.33,
+       "exceed": 0,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 0.66,
+       "exceed": 0,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 0.47,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 1.32,
+       "exceed": 0,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 1.03,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 0.77,
+       "exceed": 0,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 1.69,
+       "exceed": 0,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 1.69,
+       "exceed": 0,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 1.18,
+       "exceed": 0,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 1.08,
+       "exceed": 0,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.0
+    },
+    "ramp_0.02_per_decade": {
+     "rate_tg_per_decade": 0.02,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": null,
+     "first_season_above_3": null,
+     "single_sounding_exceedances": [
+      0,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.04020679425316584,
+     "seasons": {
+      "2010": {
+       "z_mean": 1.09,
+       "exceed": 0,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": -0.67,
+       "exceed": 0,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 0.64,
+       "exceed": 0,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": -0.17,
+       "exceed": 0,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": 0.31,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 1.06,
+       "exceed": 0,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 1.3,
+       "exceed": 0,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 1.16,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 2.2,
+       "exceed": 0,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 2.02,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 1.71,
+       "exceed": 0,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 2.88,
+       "exceed": 0,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 2.84,
+       "exceed": 0,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 1.9,
+       "exceed": 0,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 2.2,
+       "exceed": 0,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.029141683778234045
+    },
+    "ramp_0.05_per_decade": {
+     "rate_tg_per_decade": 0.05,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2021,
+     "first_season_above_3": 2018,
+     "single_sounding_exceedances": [
+      0,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.04020679425316584,
+     "seasons": {
+      "2010": {
+       "z_mean": 1.27,
+       "exceed": 0,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": -0.39,
+       "exceed": 0,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 1.14,
+       "exceed": 0,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": 0.17,
+       "exceed": 0,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": 0.88,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 2.16,
+       "exceed": 0,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 2.26,
+       "exceed": 0,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 2.18,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 3.52,
+       "exceed": 0,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 3.5,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 3.13,
+       "exceed": 0,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 4.67,
+       "exceed": 0,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 4.57,
+       "exceed": 0,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 2.98,
+       "exceed": 0,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 3.88,
+       "exceed": 0,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.07285420944558514
+    },
+    "ramp_0.10_per_decade": {
+     "rate_tg_per_decade": 0.1,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2018,
+     "first_season_above_3": 2015,
+     "single_sounding_exceedances": [
+      0,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.04020679425316584,
+     "seasons": {
+      "2010": {
+       "z_mean": 1.57,
+       "exceed": 0,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": 0.08,
+       "exceed": 0,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 1.97,
+       "exceed": 0,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": 0.74,
+       "exceed": 0,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": 1.84,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 3.98,
+       "exceed": 0,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 3.87,
+       "exceed": 0,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 3.89,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 5.72,
+       "exceed": 0,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 5.97,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 5.5,
+       "exceed": 0,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 7.65,
+       "exceed": 0,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 7.44,
+       "exceed": 0,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 4.78,
+       "exceed": 0,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 6.67,
+       "exceed": 0,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.14570841889117028
+    },
+    "ramp_0.20_per_decade": {
+     "rate_tg_per_decade": 0.2,
+     "step_tg": 0.0,
+     "first_season_seasonal_mean_above_4p54": 2015,
+     "first_season_above_3": 2012,
+     "single_sounding_exceedances": [
+      21,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.38721312839398986,
+     "seasons": {
+      "2010": {
+       "z_mean": 2.16,
+       "exceed": 0,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": 1.02,
+       "exceed": 0,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 3.63,
+       "exceed": 0,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": 1.88,
+       "exceed": 0,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": 3.75,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 7.63,
+       "exceed": 0,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 7.08,
+       "exceed": 0,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 7.31,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 10.11,
+       "exceed": 1,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 10.91,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 10.23,
+       "exceed": 2,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 13.61,
+       "exceed": 5,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 13.2,
+       "exceed": 5,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 8.38,
+       "exceed": 3,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 12.26,
+       "exceed": 5,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.29141683778234057
+    },
+    "step_0.10": {
+     "rate_tg_per_decade": 0.0,
+     "step_tg": 0.1,
+     "first_season_seasonal_mean_above_4p54": 2010,
+     "first_season_above_3": 2010,
+     "single_sounding_exceedances": [
+      4,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.12101499810942579,
+     "seasons": {
+      "2010": {
+       "z_mean": 11.44,
+       "exceed": 4,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": 4.92,
+       "exceed": 0,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 6.58,
+       "exceed": 0,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": 2.91,
+       "exceed": 0,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": 4.08,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 6.92,
+       "exceed": 0,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 5.61,
+       "exceed": 0,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 5.02,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 6.48,
+       "exceed": 0,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 6.22,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 5.25,
+       "exceed": 0,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 6.85,
+       "exceed": 0,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 6.27,
+       "exceed": 0,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 3.82,
+       "exceed": 0,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 4.92,
+       "exceed": 0,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.09999999999999999
+    },
+    "step_0.15": {
+     "rate_tg_per_decade": 0.0,
+     "step_tg": 0.15,
+     "first_season_seasonal_mean_above_4p54": 2010,
+     "first_season_above_3": 2010,
+     "single_sounding_exceedances": [
+      13,
+      73
+     ],
+     "exceedance_fraction_upper95": 0.26814546215522334,
+     "seasons": {
+      "2010": {
+       "z_mean": 16.67,
+       "exceed": 5,
+       "null": -0.0033,
+       "null_sd": 0.0169
+      },
+      "2011": {
+       "z_mean": 7.81,
+       "exceed": 2,
+       "null": -0.003,
+       "null_sd": 0.0207
+      },
+      "2012": {
+       "z_mean": 9.72,
+       "exceed": 3,
+       "null": -0.0028,
+       "null_sd": 0.0243
+      },
+      "2013": {
+       "z_mean": 4.57,
+       "exceed": 1,
+       "null": -0.0025,
+       "null_sd": 0.0272
+      },
+      "2014": {
+       "z_mean": 6.16,
+       "exceed": 0,
+       "null": -0.0022,
+       "null_sd": 0.0314
+      },
+      "2015": {
+       "z_mean": 10.22,
+       "exceed": 1,
+       "null": -0.002,
+       "null_sd": 0.0348
+      },
+      "2016": {
+       "z_mean": 8.08,
+       "exceed": 1,
+       "null": -0.0017,
+       "null_sd": 0.0382
+      },
+      "2017": {
+       "z_mean": 7.3,
+       "exceed": 0,
+       "null": -0.0015,
+       "null_sd": 0.042
+      },
+      "2018": {
+       "z_mean": 9.07,
+       "exceed": 0,
+       "null": -0.0012,
+       "null_sd": 0.0456
+      },
+      "2019": {
+       "z_mean": 8.82,
+       "exceed": 0,
+       "null": -0.0009,
+       "null_sd": 0.0492
+      },
+      "2020": {
+       "z_mean": 7.49,
+       "exceed": 0,
+       "null": -0.0007,
+       "null_sd": 0.053
+      },
+      "2021": {
+       "z_mean": 9.42,
+       "exceed": 0,
+       "null": -0.0004,
+       "null_sd": 0.0567
+      },
+      "2022": {
+       "z_mean": 8.55,
+       "exceed": 0,
+       "null": -0.0001,
+       "null_sd": 0.0604
+      },
+      "2023": {
+       "z_mean": 5.14,
+       "exceed": 0,
+       "null": 0.0002,
+       "null_sd": 0.0643
+      },
+      "2024": {
+       "z_mean": 6.84,
+       "exceed": 0,
+       "null": 0.0004,
+       "null_sd": 0.0677
+      }
+     },
+     "signal_last_season_tg": 0.15
+    }
+   }
+  }
+ }
+}

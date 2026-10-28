@@ -1,4 +1,4 @@
-"""multitangent_retrieval.py -- round 75 (paper 1; public port, referee round 6 item 5, left open in
+"""multitangent_retrieval.py -- round 75 (paper 1, referee round 6 item 5, left open in
 round 74): a multi-tangent forward and inverse model under the adopted measurement model, with the
 field of view, the tangent sampling, the common-reference errors and the cross-height covariance,
 so that the per-shell silica uncertainty is RETRIEVED from independently varying shells instead of
@@ -17,9 +17,12 @@ parameters are common to all tangents (the profiles are the state).  The heritag
 as per-shell rows at every shell.  Rows: 52 tangents x (47 elements + 3 channels) = 2600;
 state: 45 + 52 = 97 parameters.
 
-Field of view and sampling.  The element observable of a tangent is formed over a boxcar field of
-view of full width W (0 = point tangent; 0.5 km; 1 km) from models on a 0.25-km tangent grid
-(trapezoid weights); the sampling is every 0.5 km (every shell) or every 1 km.
+Field of view and sampling.  The element observable of a tangent integrates the transmitted radiance
+over a boxcar field of view of full width W (0 = point tangent; 0.5 km; 1 km): y_F = -ln sum_h w_h exp(-y_h)
+over sub-rays on a 0.25-km grid (trapezoid weights; a 0.125-km grid checks the quadrature), and every
+Jacobian column is the radiance-weighted mean of the sub-ray columns (round 76, referee round 7 item 4;
+round 75 averaged the optical depths and Jacobians with the geometric weights).  The sampling is every
+0.5 km (every shell) or every 1 km.
 
 Covariance.  (a) radiometric: the round-70 law e^{y/2}/2000 per sample, independent, or the
 separated law of item 7 (detector e^y/S_det, systematic floor 1/2000, shared reference), with the
@@ -58,9 +61,11 @@ OUT = ROOT / "outputs/multitangent_retrieval.json"
 log = E.log
 Z_SHELL = np.arange(14_000.0, 40_000.0, E.DZ_M)                           # shell bottoms = tangent heights (edge convention)
 N_SH = len(Z_SHELL)
-FINE = np.arange(13_500.0, 40_500.1, 250.0)                               # fine tangents for the field of view
+FINE = np.arange(13_500.0, 40_500.1, 125.0)                               # fine tangents for the field of view (125-m sub-rays)
 FOV = {"point": {0.0: 1.0}, "0.5 km": {-250.0: 0.25, 0.0: 0.5, 250.0: 0.25},
-       "1 km": {-500.0: 0.125, -250.0: 0.25, 0.0: 0.25, 250.0: 0.25, 500.0: 0.125}}
+       "1 km": {-500.0: 0.125, -250.0: 0.25, 0.0: 0.25, 250.0: 0.25, 500.0: 0.125},
+       "0.5 km (5 sub-rays)": {-250.0: 0.125, -125.0: 0.25, 0.0: 0.25, 125.0: 0.25, 250.0: 0.125},
+       "1 km (9 sub-rays)": {-500.0: 1 / 16, -375.0: 1 / 8, -250.0: 1 / 8, -125.0: 1 / 8, 0.0: 1 / 8, 125.0: 1 / 8, 250.0: 1 / 8, 375.0: 1 / 8, 500.0: 1 / 16}}
 S_DET, N_REF, S_CAP = 1.4e4, 100, 2000.0
 n_mir, win, outer = E.n_mir, E.win, E.outer
 N_FIX = C.N_STATE - 1                                                     # the round-70 state without the silica amplitude
@@ -105,8 +110,8 @@ def main():
         sf = np.zeros(n_mir); sf[win] = C.element_mean(tm.tau0, shape_f_fine); sf[outer] = shape_f_out
         sc = np.zeros(n_mir); sc[win] = C.element_mean(tm.tau0, shape_c_fine); sc[outer] = shape_c_out
         fine[h] = dict(y=tm.y_mir, K=tm.K_mir, Kt=tm.K_tri, St=np.diag(tm.S_tri), A={g: tm.A_line[g] for g in C.GASES},
-                       s_el=s_el, sulf_el=(sf, sc), iz=tm.iz)
-        if k % 20 == 0:
+                       s_el=s_el, sulf_el=(sf, sc), iz=tm.iz, h=h)
+        if k % 40 == 0:
             log(f"  fine tangent {h/1e3:.2f} km ({k+1}/{len(FINE)}), {time.time()-t0:.0f} s")
     # ---- assemble per (FOV, sampling)
     def assemble(fov, step_m, sulfate_per_shell=False):
@@ -128,22 +133,27 @@ def main():
 
         for i, h in enumerate(tangents):
             r0 = i * 50
-            for d, w in FOV[fov].items():
-                f = fine[h + d]
-                Kf = f["K"]
-                K[r0:r0 + 47, :C.I_SIL] += w * Kf[:, :C.I_SIL]
-                K[r0:r0 + 47, i_sh] += w * np.outer(f["s_el"], path(h + d))               # silica shells: P_ij <alpha_20>_T,i
-                K[r0:r0 + 47, i_psd:i_psd + 4] += w * Kf[:, C.I_SIL + 3:C.I_SIL + 7]         # r_f, s_f, r_c, s_c (global)
-                K[r0:r0 + 47, i_resp:] += w * Kf[:, C.I_SHIFT:]
+            subs = [(fine[h + d], w) for d, w in FOV[fov].items()]
+            # radiance averaging: the field integrates exp(-y_h) over the sub-rays; the observable is -ln of the mean and the
+            # derivative of any column is the transmission-weighted mean of the sub-ray derivatives (per element)
+            T_sub = np.array([w * np.exp(-f["y"]) for f, w in subs])                         # (n_sub, 47)
+            T_tot = T_sub.sum(axis=0)
+            W_sub = T_sub / T_tot[None, :]                                                   # radiance weights per element
+            y[i * 47:(i + 1) * 47] = -np.log(T_tot)
+            for (f, w), Wr in zip(subs, W_sub):
+                Kf = f["K"]; d = f["h"] - h
+                K[r0:r0 + 47, :C.I_SIL] += Wr[:, None] * Kf[:, :C.I_SIL]
+                K[r0:r0 + 47, i_sh] += Wr[:, None] * np.outer(f["s_el"], path(h + d))        # silica shells: P_ij <alpha_20>_T,i
+                K[r0:r0 + 47, i_psd:i_psd + 4] += Wr[:, None] * Kf[:, C.I_SIL + 3:C.I_SIL + 7]
+                K[r0:r0 + 47, i_resp:] += Wr[:, None] * Kf[:, C.I_SHIFT:]
                 if sulfate_per_shell:
                     P = path(h + d)
-                    K[r0:r0 + 47, i_af:i_af + n_s] += w * np.outer(np.ones(47), P) * f["sulf_el"][0][:, None] * np.array([c_f[j] for j in iz_sh])[None, :]
-                    K[r0:r0 + 47, i_ac:i_ac + n_s] += w * np.outer(np.ones(47), P) * f["sulf_el"][1][:, None] * np.array([c_c[j] for j in iz_sh])[None, :]
+                    K[r0:r0 + 47, i_af:i_af + n_s] += Wr[:, None] * np.outer(np.ones(47), P) * f["sulf_el"][0][:, None] * np.array([c_f[j] for j in iz_sh])[None, :]
+                    K[r0:r0 + 47, i_ac:i_ac + n_s] += Wr[:, None] * np.outer(np.ones(47), P) * f["sulf_el"][1][:, None] * np.array([c_c[j] for j in iz_sh])[None, :]
                 else:
-                    K[r0:r0 + 47, i_af] += w * Kf[:, C.I_SIL + 1]; K[r0:r0 + 47, i_ac] += w * Kf[:, C.I_SIL + 2]
-                y[i * 47:(i + 1) * 47] += w * f["y"]
+                    K[r0:r0 + 47, i_af] += Wr * Kf[:, C.I_SIL + 1]; K[r0:r0 + 47, i_ac] += Wr * Kf[:, C.I_SIL + 2]
                 for g in C.GASES:
-                    A[g][:, i * 15:(i + 1) * 15] += w * f["A"][g]
+                    A[g][:, i * 15:(i + 1) * 15] += Wr[win][None, :] * f["A"][g]
             f0 = fine[h]; Kt = f0["Kt"]
             j = int(np.argmin(np.abs(shells - h)))
             K[r0 + 47:r0 + 50, C.I_SIL + j] = a20_trip
@@ -241,9 +251,10 @@ def main():
         for i in range(len(t_)):
             idx = wrows[i * 15:(i + 1) * 15]; S_li[np.ix_(idx, idx)] += Cl[np.ix_(np.arange(i * 15, (i + 1) * 15), np.arange(i * 15, (i + 1) * 15))]
         res["scenarios"][f"{tag}_line_scatter_independent"] = solve(K_, S_li, L_, f"{lab}; database scatter independent between tangents (limit)")
-        for fov in ("0.5 km", "1 km"):
+        for fov in ("0.5 km", "1 km", "0.5 km (5 sub-rays)", "1 km (9 sub-rays)"):
             t2, K2, y2, St2, A2, L2 = assemble(fov, 500.0, per_shell)
-            res["scenarios"][f"{tag}_fov_{fov.replace(' ', '')}"] = solve(K2, covariance(t2, y2, St2, A2), L2, f"{lab}; field of view {fov}, 0.5-km sampling")
+            key = fov.replace(" ", "").replace("(", "_").replace(")", "").replace("-", "")
+            res["scenarios"][f"{tag}_fov_{key}"] = solve(K2, covariance(t2, y2, St2, A2), L2, f"{lab}; field of view {fov}, 0.5-km sampling")
         t2, K2, y2, St2, A2, L2 = assemble("1 km", 1000.0, per_shell)
         res["scenarios"][f"{tag}_fov_1km_1km_shells"] = solve(K2, covariance(t2, y2, St2, A2), L2, f"{lab}; field of view 1 km, 1-km sampling and shells")
     res["runtime_s"] = time.time() - t0

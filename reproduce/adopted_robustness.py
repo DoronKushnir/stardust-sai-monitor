@@ -1,4 +1,4 @@
-"""adopted_robustness.py -- round 75 (paper 1; public port, referee round 6 items 2 and 5, left open in
+"""adopted_robustness.py -- round 75 (paper 1, referee round 6 items 2 and 5, left open in
 round 74): the robustness scans of Table 6 (Sect. 5.2, Appendix F) recomputed under the ADOPTED
 measurement model (Table 2), i.e. the joint element-observable retrieval with the full covariance
 (radiometric term, per-line database scatter, measured ACE discrepancy term with its Gaussian
@@ -275,13 +275,13 @@ def write_altitude_table(res):
     L = ["% Moved from sections/appendix_sensitivity.tex in round 44 (was an inline tabular).",
          "% Round 75: adopted-model columns added by reproduce/adopted_robustness.py (outputs/adopted_robustness.json); the scenario columns are the round-35c values.",
          "\\begin{table}[t]",
-         "\\caption{Single-sounding threshold $M_{\\min}^{(3\\sigma)}$ against the tangent altitude for the $7.8$--$13~\\mu$m band and its $7.8$--$9.3~\\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background). \\ClaudeText{Adopted model: the joint retrieval of Table~\\ref{tab:error_budget} re-evaluated at each tangent, with the discrepancy term constant with altitude (in parentheses, scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\\ref{app:acefloor}). Scenario: the diagonal-floor scenario with the per-element floors re-derived per tangent altitude.}}",
+         "\\caption{Single-sounding threshold $M_{\\min}^{(3\\sigma)}$ against the tangent altitude for the $7.8$--$13~\\mu$m band and its $7.8$--$9.3~\\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background). Adopted model: the joint retrieval of Table~\\ref{tab:error_budget} re-evaluated at each tangent, with the discrepancy term constant with altitude (in parentheses, scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\\ref{app:acefloor}). Scenario: the diagonal-floor scenario with the per-element floors re-derived per tangent altitude.}",
          "\\label{tab:altitude_scan}", "\\centering", "\\small", "\\begin{tabular}{ccccc}", "\\toprule",
-         "$z$ [km] & \\ClaudeText{Band, adopted [Tg]} & \\ClaudeText{Window, adopted [Tg]} & Band, scenario [Tg] & Window, scenario [Tg] \\\\", "\\midrule"]
+         "$z$ [km] & Band, adopted [Tg] & Window, adopted [Tg] & Band, scenario [Tg] & Window, scenario [Tg] \\\\", "\\midrule"]
     scen = {"16": ("0.056", "0.078"), "18": ("0.077", "0.108"), "20": ("0.101", "0.141"), "22": ("0.125", "0.175"), "24": ("0.146", "0.204")}
     for z in ("16", "18", "20", "22", "24"):
         r = a[z]
-        L.append(f"${z}$ & \\ClaudeText{{{f(r['band'])} ({f(r['band_atlas'])})}} & \\ClaudeText{{{f(r['window'])} ({f(r['window_atlas'])})}} & ${scen[z][0]}$ & ${scen[z][1]}$ \\\\")
+        L.append(f"${z}$ & {f(r['band'])} ({f(r['band_atlas'])}) & {f(r['window'])} ({f(r['window_atlas'])}) & ${scen[z][0]}$ & ${scen[z][1]}$ \\\\")
     L += ["\\bottomrule", "\\end{tabular}", "\\end{table}", "", "% ---- round-74 version ----"] + ["% " + l for l in old if l.strip()]
     T.write_text("\n".join(L) + "\n")
     log("table ->", T)
@@ -296,13 +296,13 @@ def write_table(res):
              "% columns are new; the scenario columns are the round-53 to round-67 values. The round-74 version of this file is kept below as comments.",
              "\\begin{table*}[t]",
              "\\caption{Sensitivity of the single-sounding threshold $M_{\\min}^{(3\\sigma)}$ at $z=20$~km (heritage triplet, the six background parameters free, silica amplitude fitted, calibrated undisturbed background) for the $7.8$--$13~\\mu$m band at $0.1~\\mu$m sampling and for its $7.8$--$9.3~\\mu$m window subset. "
-             "\\ClaudeText{``Adopted'' is the joint retrieval under the measurement model of Table~\\ref{tab:error_budget} (baselines $0.119$ and $0.168$~Tg); ``scenario'' is the diagonal-floor scenario of that table (baselines $0.101$ and $0.141$~Tg), in which the scans of Appendix~\\ref{app:sensitivity} were made. In the adopted column the rows that scale the floors scale the discrepancy term (all three mid-infrared terms in parentheses), the constant offset and the exponential correlation are the scenarios of Table~\\ref{tab:error_budget}, the element-width row is not repeated (no measured scatter exists at $0.05~\\mu$m), and the vertically coherent database row is superseded by the multi-tangent retrieval of Appendix~\\ref{app:tracegas_geometry}. The altitude rows carry the discrepancy term constant with altitude (scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\\ref{app:acefloor} in parentheses).}}",
+             "``Adopted'' is the joint retrieval under the measurement model of Table~\\ref{tab:error_budget} (baselines $0.119$ and $0.168$~Tg); ``scenario'' is the diagonal-floor scenario of that table (baselines $0.101$ and $0.141$~Tg), in which the scans of Appendix~\\ref{app:sensitivity} were made. In the adopted column the rows that scale the floors scale the discrepancy term (all three mid-infrared terms in parentheses), the constant offset and the exponential correlation are the scenarios of Table~\\ref{tab:error_budget}, the element-width row is not repeated (no measured scatter exists at $0.05~\\mu$m), and the vertically coherent database row is superseded by the multi-tangent retrieval of Appendix~\\ref{app:tracegas_geometry}. The altitude rows carry the discrepancy term constant with altitude (scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\\ref{app:acefloor} in parentheses).}",
              "\\label{tab:robust_summary}", "\\centering", "\\footnotesize", "\\setlength{\\tabcolsep}{4pt}",
              "\\begin{adjustbox}{max width=\\textwidth}", "\\begin{tabular}{p{7.0cm}cccc}", "\\toprule",
-             "Perturbation & \\multicolumn{2}{c}{\\ClaudeText{Adopted model} [Tg]} & \\multicolumn{2}{c}{Scenario [Tg]} \\\\",
-             " & \\ClaudeText{Band} & \\ClaudeText{Window} & Band & Window \\\\", "\\midrule"]
+             "Perturbation & \\multicolumn{2}{c}{Adopted model [Tg]} & \\multicolumn{2}{c}{Scenario [Tg]} \\\\",
+             " & Band & Window & Band & Window \\\\", "\\midrule"]
     def row(label, a_b, a_w, s_b, s_w):
-        lines.append(f"{label} & \\ClaudeText{{{a_b}}} & \\ClaudeText{{{a_w}}} & {s_b} & {s_w} \\\\")
+        lines.append(f"{label} & {a_b} & {a_w} & {s_b} & {s_w} \\\\")
     b = r["baseline"]
     row("Baseline", f(b["band"]), f(b["window"]), "$0.101$", "$0.141$")
     lines.append("\\midrule")
@@ -322,8 +322,8 @@ def write_table(res):
     lo, hi = r["loading"]["0.003"], r["loading"]["0.01"]
     row("Background loading $\\mathrm{SAOD}_{525}=0.003$--$0.010$", f"{f(lo['band'])}--{f(hi['band'])}", f"{f(lo['window'])}--{f(hi['window'])}", "$0.101$--$0.101$", "$0.141$--$0.141$")
     row("Element width $0.05$ / $0.25~\\mu$m", "--", "--", "$0.079$ / $0.176$", "$0.108$ / $0.279$")
-    row("Enlarged background family: third sulfate mode free ($r_\\text{med}$, $\\sigma$, amplitude; ten parameters)", f(r["third_mode"]["band"]), f(r["third_mode"]["window"]), "$0.183$", "$0.337$")
-    row("Enlarged background family: second optics member (Biermann) as a free amplitude (eight parameters)", f(r["second_member_column"]["band"]), f(r["second_member_column"]["window"]), "$0.128$", "$0.220$")
+    row("Enlarged background family: third sulfate mode free ($r_\\text{med}$, $\\sigma$, amplitude; ten aerosol parameters\\ClaudeText{, $49$ in the joint state})", f(r["third_mode"]["band"]), f(r["third_mode"]["window"]), "$0.183$", "$0.337$")
+    row("Enlarged background family: second optics member (Biermann) as a free amplitude (eight aerosol parameters\\ClaudeText{, $47$ in the joint state})", f(r["second_member_column"]["band"]), f(r["second_member_column"]["window"]), "$0.128$", "$0.220$")
     lines.append("\\midrule")
     row("Silica PSD width $\\sigma_\\text{psd}=1.5$ / $1.8$", f"{f(r['sig1.5']['band'])} / {f(r['sig1.8']['band'])}", f"{f(r['sig1.5']['window'])} / {f(r['sig1.8']['window'])}", "$0.107$ / $0.143$", "$0.156$ / $0.244$")
     row("Silica $r_\\text{med}=150$ / $600$~nm", f"{f(r['rmed150']['band'])} / {f(r['rmed600']['band'])}", f"{f(r['rmed150']['window'])} / {f(r['rmed600']['window'])}", "$0.102$ / $0.128$", "$0.140$ / $0.219$")

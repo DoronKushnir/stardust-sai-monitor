@@ -1,0 +1,89 @@
+{
+ "script": "scripts/gas_budget_conditioning_round76.py",
+ "round": 76,
+ "gas_budget_880": {
+  "known_aerosol_diagnostic": {
+   "sigma_total_od": 0.0005115465225651972,
+   "photon": 0.0004083099062064218,
+   "line": 0.00022909717088695725,
+   "prior": 0.00020610034336177396,
+   "conditioning": "window rows, spectroscopic covariance, round-70 priors; the seven aerosol and two response parameters known"
+  },
+  "joint_round70_prior": {
+   "sigma_total_od": 0.00463949990052307,
+   "photon": 0.0033393814625693923,
+   "line": 0.0018896828963040962,
+   "prior": 0.0026081773953888264,
+   "conditioning": "window rows, spectroscopic covariance; aerosol (prior 1e3) and response parameters in the state"
+  },
+  "final_retrieval_gain": {
+   "sigma_posterior_od": 0.0030978789339129965,
+   "from_measurement_covariance": 0.002674040753997571,
+   "from_prior": 0.001564084376122384,
+   "photon_term": 0.0007464059791181758,
+   "discrepancy_term": 0.0025241578557369504,
+   "triplet": 0.0002535535258809915,
+   "line_term_including_the_elements_own_error": 0.0005633313153280239,
+   "conditioning": "47 design elements + triplet, adopted covariance (Table 2), flat aerosol prior; aerosol and response parameters co-retrieved",
+   "note": "sigma of the gas part of the 8.80-um element observable predicted by the posterior state; the measurement part is G S G^T, the prior part (I-A) S_a (I-A)^T"
+  },
+  "per_window_element_posterior_od": [
+   0.004028699214377164,
+   0.004804573505961164,
+   0.003554021077339542,
+   0.0029067130480847033,
+   0.002086083167452469,
+   0.0022890700555621025,
+   0.0032836416348896095,
+   0.0025911954677371976,
+   0.002253863048870978,
+   0.0028789055332215856,
+   0.0030978789339129965,
+   0.002962719087476679,
+   0.0027143774454538683,
+   0.003143574910959422,
+   0.0034205372305731972
+  ],
+  "discrepancy_term_per_window_element_od": [
+   0.004076636936064934,
+   0.0034426959536303127,
+   0.003465975961992714,
+   0.0036658326375567205,
+   0.003477835588894314,
+   0.001925322578386663,
+   0.0025760646989318845,
+   0.003419745379348512,
+   0.0023812593459370777,
+   0.0026725888845476873,
+   0.0018581180259442608,
+   0.003016298441973699,
+   0.002933500676382896,
+   0.003092617337312701,
+   0.003077133935524501
+  ],
+  "ratio_discrepancy_over_known_aerosol_880": 3.632353938458142,
+  "ratio_discrepancy_over_final_gain_880": 0.5998033059339839
+ },
+ "silica_posterior_decomposition_1sig_per_shell_tg": {
+  "band": {
+   "posterior": 0.03953036933629458,
+   "measurement": 0.03558418551125439,
+   "prior": 0.01721673143674768,
+   "photon": 0.014022675015306504,
+   "line": 0.007489214868381414,
+   "discrepancy": 0.031805732650816876,
+   "triplet": 0.0013805343582981445,
+   "check_sum": 0.03953036933630222
+  },
+  "window": {
+   "posterior": 0.05586986571835599,
+   "measurement": 0.044986700768960074,
+   "prior": 0.033130630078055064,
+   "photon": 0.014838627870775058,
+   "line": 0.008225808104143738,
+   "discrepancy": 0.041644204775100065,
+   "triplet": 0.0013094497592298145,
+   "check_sum": 0.055869865718872806
+  }
+ }
+}

@@ -187,6 +187,13 @@ thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.
   The heavy round-71/74 archives (closure variants, materials scattering,
   composite particle, far-infrared, nonlinear refit, 0.00125-cm^-1 grids) were
   rerun in this checkout. Tag `rc6-round75`.
+* **Round 76 (referee report RC7, October 2026).** The closure test rerun on the
+  final estimator (`reproduce/closure_final.py`; Tables D4-D5), the gas budget by
+  its conditioning and the posterior decomposition (`gas_budget_conditioning.py`;
+  Table D2), the frozen pre-deployment trend rule (`ace_null_trend.py`; Sects. 4.3,
+  5.3), the radiance-averaged field of view (`multitangent_retrieval.py`; App. D9),
+  contiguous latitude intervals (`adopted_latitude.py --table`; Table 8) and the
+  extended `compare_reference.py`. Tag `rc7-round76`.
 
 ## Licence
 

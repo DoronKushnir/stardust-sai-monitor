@@ -1,4 +1,4 @@
-"""adopted_latitude.py -- round 75 (paper 1; public port, referee round 6 items 2, 5 and 9, left open in
+"""adopted_latitude.py -- round 75 (paper 1, referee round 6 items 2, 5 and 9, left open in
 round 74): the altitude scan, the latitude-resolved maps (Sect. 6, Fig. 5, Table 7) and the campaign
 gains recomputed under the ADOPTED measurement model (Table 2) through
 reproduce/adopted_model_engine.py, so that the maps inherit the covariance of the primary
@@ -63,7 +63,53 @@ def o3_bands():
     return h, np.array([n[0] for n in nodes]), np.array([n[1] for n in nodes])     # (n_band,), (n_band, n_h)
 
 
+def table_only():
+    """regenerate Table 8 (and the interval statistics) from the archived adopted map and the scenario maps."""
+    d0 = np.load(MAP); lat, zlev = d0["lat_deg"], d0["z_lev_km"]
+    in_rng = (zlev >= Z_KM[0]) & (zlev <= Z_KM[-1])
+    k = int(np.argmin(np.abs(zlev - Z_TABLE)))
+
+    def cov(v):
+        ok = np.isfinite(v) & (v <= 0.1)
+        if not ok.any():
+            return None
+        iv, start = [], None
+        for i, o in enumerate(ok):
+            if o and start is None:
+                start = i
+            if (not o or i == len(ok) - 1) and start is not None:
+                end = i if o else i - 1
+                iv.append([float(lat[start]), float(lat[end])]); start = None
+        w = np.cos(np.radians(lat))
+        gaps = [[iv[j][1] + 2.0, iv[j + 1][0] - 2.0] for j in range(len(iv) - 1)]
+        return dict(envelope=[float(lat[ok].min()), float(lat[ok].max())], bin_fraction=float(ok.mean()), area_fraction=float(w[ok].sum() / w.sum()),
+                    intervals=iv, gaps=gaps, n_failing_inside_envelope=int(np.sum(~ok[np.flatnonzero(ok).min():np.flatnonzero(ok).max() + 1])))
+
+    def row(m):
+        m20 = m[:, k]; mm = np.where(np.isfinite(m) & in_rng[None, :], m, np.inf); best = mm.min(axis=1)
+        return dict(z20_level=float(zlev[k]), fixed20_min=float(np.nanmin(m20)), fixed20_max=float(np.nanmax(m20)), fixed20_cov=cov(m20),
+                    best_min=float(best.min()), best_worst=float(best[np.isfinite(best)].max()), best_cov=cov(best), core_lat=float(lat[np.nanargmin(m20)]))
+    ra = {key: row(d0[f"mmin_{key}"]) for key in ("band_adopted_const", "band_adopted_atlas", "band_adopted_const_o3lat", "band_adopted_atlas_o3lat", "window_adopted_const", "window_adopted_const_o3lat")}
+    scen_old = {"reference-atmosphere floor": ("map_pm41.npz", "mmin_band_quiet_oe"), "measured altitude-dependent floor": ("map_pm41.npz", "mmin_band_quiet_atlas"),
+                "measured-ozone rescaled floor": ("map_pm41_o3lat.npz", "mmin_band_quiet_oe"), "measured-ozone + measured floor": ("map_pm41_o3lat.npz", "mmin_band_quiet_atlas")}
+    rs = {}
+    for scen, (fn, key) in scen_old.items():
+        z_ = np.load(D2D / fn); m = z_[key]
+        if m.shape[0] != len(z_["lat_deg"]):
+            m = m.T
+        rs[scen] = row(m)
+    d = json.load(open(OUT)); d["table7_adopted"] = ra; d["table7_scenario"] = rs; d["table_intervals_note"] = "round 76: contiguous passing intervals of 2-degree grid centres, bin and area-weighted fractions"
+    with open(OUT, "w") as f:
+        json.dump(d, f, indent=1)
+    for key, r in ra.items():
+        log(f"{key}: fixed level {r['fixed20_cov']['intervals'] if r['fixed20_cov'] else None} ({100*r['fixed20_cov']['bin_fraction']:.0f} % bins, {100*r['fixed20_cov']['area_fraction']:.0f} % area); "
+            f"best height {r['best_cov']['intervals'] if r['best_cov'] else None} ({100*r['best_cov']['bin_fraction']:.0f} % bins); worst {r['best_worst']:.4f}")
+    write_table(ra, rs)
+
+
 def main():
+    if "--table" in sys.argv:
+        return table_only()
     t0 = time.time()
     h_o3, lat_o3, rat_o3 = o3_bands()
     # ---- 1. sigma(z) and its g- and O3-ratios ---------------------------------------------------
@@ -148,8 +194,22 @@ def main():
         mm = np.where(np.isfinite(m) & in_rng[None, :], m, np.inf); best = mm.min(axis=1)
 
         def cov(v):
+            """envelope (min, max latitude passing, bin fraction), the contiguous passing intervals on the 2-degree grid
+            centres, the gaps inside the envelope, and the area-weighted (cos latitude) fraction (round 76)."""
             ok = np.isfinite(v) & (v <= 0.1)
-            return None if not ok.any() else (float(lat[ok].min()), float(lat[ok].max()), float(ok.mean()))
+            if not ok.any():
+                return None
+            iv, start = [], None
+            for i, o in enumerate(ok):
+                if o and start is None:
+                    start = i
+                if (not o or i == len(ok) - 1) and start is not None:
+                    end = i if o else i - 1
+                    iv.append([float(lat[start]), float(lat[end])]); start = None
+            w = np.cos(np.radians(lat))
+            gaps = [[iv[j][1] + 2.0, iv[j + 1][0] - 2.0] for j in range(len(iv) - 1)]
+            return dict(envelope=[float(lat[ok].min()), float(lat[ok].max())], bin_fraction=float(ok.mean()), area_fraction=float(w[ok].sum() / w.sum()),
+                        intervals=iv, gaps=gaps, n_failing_inside_envelope=int(np.sum(~ok[np.flatnonzero(ok).min():np.flatnonzero(ok).max() + 1])))
         return dict(z20_level=float(zlev[k]), fixed20_min=float(np.nanmin(m20)), fixed20_max=float(np.nanmax(m20)), fixed20_cov=cov(m20),
                     best_min=float(best.min()), best_worst=float(best[np.isfinite(best)].max()), best_cov=cov(best),
                     core_lat=float(lat[np.nanargmin(m20)]))
@@ -192,8 +252,18 @@ def main():
     plot(maps, save, rows_adopted)
 
 
+def fmt_lat(x):
+    return f"{abs(x):.0f}$^\\circ$" + ("S" if x < 0 else "N")
+
+
 def rng(c):
-    return "all latitudes" if c and c[2] >= 0.999 else (f"{-c[0]:.0f}$^\\circ$S--{c[1]:.0f}$^\\circ$N" if c else "none")
+    """every contiguous passing interval of grid centres (2-degree grid), with the bin fraction; 'all latitudes' when none fails."""
+    if not c:
+        return "none"
+    if c["bin_fraction"] >= 0.999:
+        return "all latitudes"
+    parts = [(fmt_lat(a) if a != b else fmt_lat(a)) if a == b else f"{fmt_lat(a)}--{fmt_lat(b)}" for a, b in c["intervals"]]
+    return ", ".join(parts) + f" ({100 * c['bin_fraction']:.0f}\\,\\% of the bins)"
 
 
 def write_table(ra, rs):
@@ -209,9 +279,9 @@ def write_table(ra, rs):
     L = ["% Round 75: regenerated by reproduce/adopted_latitude.py (outputs/adopted_latitude.json): adopted-model rows added above the",
          "% diagonal-floor rows (the latter re-read from the archived maps as in paper1_latitude_scenarios_round67.py). The round-74 file is kept below as comments.",
          "\\begin{table*}[t]", "\\centering",
-         "\\caption{Single-sounding $3\\sigma$ sensitivity to $0.1$~Tg of silica in the $\\pm41^\\circ$ sustained-injection field (band configuration). ``Fixed $20$~km'' is the model level at $51$~hPa ($20.47$~km, the injection level, ``the $20.5$-km level'' of the text) alone; ``best height'' takes the most sensitive bin at each latitude. Coverage is the latitude range over which the threshold is below $0.1$~Tg; ``worst'' is the largest best-height threshold on the map. The latitude and season of the measurements behind each scenario are given in the second column; outside them the scenario is an assumption, not a measurement. Whether the orbit observes a latitude is a separate question (Sect.~\\ref{sec:2d}).\\ClaudeText{ Top block: the adopted measurement model of Table~\\ref{tab:error_budget} evaluated at every tangent height, with the background amplitude and the ozone load in the forward model ($0.119$~Tg at $20$~km). Bottom block: the diagonal-floor scenario ($0.101$~Tg at $20$~km), in which the floors are scaled per altitude and latitude.}}",
+         "\\caption{Single-sounding $3\\sigma$ sensitivity to $0.1$~Tg of silica in the $\\pm41^\\circ$ sustained-injection field (band configuration). ``Fixed $20$~km'' is the model level at $51$~hPa ($20.47$~km, the injection level, ``the $20.5$-km level'' of the text) alone; ``best height'' takes the most sensitive bin at each latitude. Coverage lists every contiguous interval of $2^\\circ$ grid centres over which the threshold is below $0.1$~Tg, with the fraction of the 90 latitude bins passing; ``worst'' is the largest best-height threshold on the map. The latitude and season of the measurements behind each scenario are given in the second column; outside them the scenario is an assumption, not a measurement. Whether the orbit observes a latitude is a separate question (Sect.~\\ref{sec:2d}).\\ClaudeText{ Top block: the adopted measurement model of Table~\\ref{tab:error_budget} evaluated at every tangent height, with the background amplitude and the ozone load in the forward model ($0.119$~Tg at $20$~km). Bottom block: the diagonal-floor scenario ($0.101$~Tg at $20$~km), in which the floors are scaled per altitude and latitude.}}",
          "\\label{tab:latitude_scenarios}", "\\footnotesize", "\\setlength{\\tabcolsep}{4pt}",
-         "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{2.8cm}>{\\raggedright\\arraybackslash}p{4.2cm}>{\\raggedright\\arraybackslash}p{1.9cm}>{\\raggedright\\arraybackslash}p{2.0cm}>{\\raggedright\\arraybackslash}p{1.9cm}>{\\raggedright\\arraybackslash}p{2.0cm}}",
+         "\\begin{tabular}{>{\\raggedright\\arraybackslash}p{2.6cm}>{\\raggedright\\arraybackslash}p{3.4cm}>{\\raggedright\\arraybackslash}p{1.7cm}>{\\raggedright\\arraybackslash}p{3.0cm}>{\\raggedright\\arraybackslash}p{1.7cm}>{\\raggedright\\arraybackslash}p{3.3cm}}",
          "\\toprule", "Scenario & Measurement support & Fixed $20$~km: range (Tg) & Fixed $20$~km: $<0.1$~Tg & Best height: worst (Tg) & Best height: $<0.1$~Tg \\\\", "\\midrule",
          "\\multicolumn{6}{l}{\\ClaudeText{Adopted measurement model (Table~\\ref{tab:error_budget})}} \\\\"]
     for key, (lab, s) in sup_a.items():

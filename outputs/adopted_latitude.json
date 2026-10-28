@@ -1399,108 +1399,356 @@
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.031069710325520382,
    "fixed20_max": 0.5099284754225135,
-   "fixed20_cov": [
-    -61.0,
-    61.00000000000001,
-    0.6444444444444445
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -61.0,
+     61.00000000000001
+    ],
+    "bin_fraction": 0.6444444444444445,
+    "area_fraction": 0.8131911191148017,
+    "intervals": [
+     [
+      -61.0,
+      -4.999999999999995
+     ],
+     [
+      5.000000000000007,
+      61.00000000000001
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      3.000000000000007
+     ]
+    ],
+    "n_failing_inside_envelope": 4
+   },
    "best_min": 0.031069710325520382,
    "best_worst": 0.10306244362995104,
-   "best_cov": [
-    -89.0,
-    81.00000000000001,
-    0.8888888888888888
-   ],
+   "best_cov": {
+    "envelope": [
+     -89.0,
+     81.00000000000001
+    ],
+    "bin_fraction": 0.8888888888888888,
+    "area_fraction": 0.918121547258554,
+    "intervals": [
+     [
+      -89.0,
+      -81.0
+     ],
+     [
+      -75.0,
+      -4.999999999999995
+     ],
+     [
+      5.000000000000007,
+      81.00000000000001
+     ]
+    ],
+    "gaps": [
+     [
+      -79.0,
+      -77.0
+     ],
+     [
+      -2.9999999999999947,
+      3.000000000000007
+     ]
+    ],
+    "n_failing_inside_envelope": 6
+   },
    "core_lat": 41.000000000000014
   },
   "band_adopted_atlas": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.031069710325520382,
    "fixed20_max": 0.5099284754225135,
-   "fixed20_cov": [
-    -61.0,
-    61.00000000000001,
-    0.6444444444444445
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -61.0,
+     61.00000000000001
+    ],
+    "bin_fraction": 0.6444444444444445,
+    "area_fraction": 0.8131911191148017,
+    "intervals": [
+     [
+      -61.0,
+      -4.999999999999995
+     ],
+     [
+      5.000000000000007,
+      61.00000000000001
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      3.000000000000007
+     ]
+    ],
+    "n_failing_inside_envelope": 4
+   },
    "best_min": 0.031069710325520382,
    "best_worst": 0.21063609258104724,
-   "best_cov": [
-    -65.0,
-    69.0,
-    0.7111111111111111
-   ],
+   "best_cov": {
+    "envelope": [
+     -65.0,
+     69.0
+    ],
+    "bin_fraction": 0.7111111111111111,
+    "area_fraction": 0.8568625654701293,
+    "intervals": [
+     [
+      -65.0,
+      -4.999999999999995
+     ],
+     [
+      5.000000000000007,
+      69.0
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      3.000000000000007
+     ]
+    ],
+    "n_failing_inside_envelope": 4
+   },
    "core_lat": 41.000000000000014
   },
   "band_adopted_const_o3lat": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.030998757252013637,
    "fixed20_max": 0.4900851438302421,
-   "fixed20_cov": [
-    -61.0,
-    61.00000000000001,
-    0.6555555555555556
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -61.0,
+     61.00000000000001
+    ],
+    "bin_fraction": 0.6555555555555556,
+    "area_fraction": 0.8306196076356137,
+    "intervals": [
+     [
+      -61.0,
+      -4.999999999999995
+     ],
+     [
+      3.000000000000004,
+      61.00000000000001
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      1.000000000000004
+     ]
+    ],
+    "n_failing_inside_envelope": 3
+   },
    "best_min": 0.030998757252013637,
    "best_worst": 0.10168894721848161,
-   "best_cov": [
-    -89.0,
-    89.0,
-    0.9666666666666667
-   ],
+   "best_cov": {
+    "envelope": [
+     -89.0,
+     89.0
+    ],
+    "bin_fraction": 0.9666666666666667,
+    "area_fraction": 0.9476720147766866,
+    "intervals": [
+     [
+      -89.0,
+      -4.999999999999995
+     ],
+     [
+      3.000000000000004,
+      89.0
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      1.000000000000004
+     ]
+    ],
+    "n_failing_inside_envelope": 3
+   },
    "core_lat": 41.000000000000014
   },
   "band_adopted_atlas_o3lat": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.030998757252013637,
    "fixed20_max": 0.4900851438302421,
-   "fixed20_cov": [
-    -61.0,
-    61.00000000000001,
-    0.6555555555555556
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -61.0,
+     61.00000000000001
+    ],
+    "bin_fraction": 0.6555555555555556,
+    "area_fraction": 0.8306196076356137,
+    "intervals": [
+     [
+      -61.0,
+      -4.999999999999995
+     ],
+     [
+      3.000000000000004,
+      61.00000000000001
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      1.000000000000004
+     ]
+    ],
+    "n_failing_inside_envelope": 3
+   },
    "best_min": 0.030998757252013637,
    "best_worst": 0.20246615399955636,
-   "best_cov": [
-    -65.0,
-    71.0,
-    0.7333333333333333
-   ],
+   "best_cov": {
+    "envelope": [
+     -65.0,
+     71.0
+    ],
+    "bin_fraction": 0.7333333333333333,
+    "area_fraction": 0.8799730017455639,
+    "intervals": [
+     [
+      -65.0,
+      -4.999999999999995
+     ],
+     [
+      3.000000000000004,
+      71.0
+     ]
+    ],
+    "gaps": [
+     [
+      -2.9999999999999947,
+      1.000000000000004
+     ]
+    ],
+    "n_failing_inside_envelope": 3
+   },
    "core_lat": 41.000000000000014
   },
   "window_adopted_const": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.0431221567126367,
    "fixed20_max": 0.7079242129723026,
-   "fixed20_cov": [
-    -55.0,
-    55.0,
-    0.4222222222222222
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -55.0,
+     55.0
+    ],
+    "bin_fraction": 0.4222222222222222,
+    "area_fraction": 0.5202088229837077,
+    "intervals": [
+     [
+      -55.0,
+      -21.0
+     ],
+     [
+      17.0,
+      55.0
+     ]
+    ],
+    "gaps": [
+     [
+      -19.0,
+      15.0
+     ]
+    ],
+    "n_failing_inside_envelope": 18
+   },
    "best_min": 0.0431221567126367,
    "best_worst": 0.15439288339976856,
-   "best_cov": [
-    -55.0,
-    55.0,
-    0.4222222222222222
-   ],
+   "best_cov": {
+    "envelope": [
+     -55.0,
+     55.0
+    ],
+    "bin_fraction": 0.4222222222222222,
+    "area_fraction": 0.5202088229837077,
+    "intervals": [
+     [
+      -55.0,
+      -21.0
+     ],
+     [
+      17.0,
+      55.0
+     ]
+    ],
+    "gaps": [
+     [
+      -19.0,
+      15.0
+     ]
+    ],
+    "n_failing_inside_envelope": 18
+   },
    "core_lat": 41.000000000000014
   },
   "window_adopted_const_o3lat": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.043014661798671375,
    "fixed20_max": 0.6776273729466991,
-   "fixed20_cov": [
-    -55.0,
-    55.0,
-    0.43333333333333335
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -55.0,
+     55.0
+    ],
+    "bin_fraction": 0.43333333333333335,
+    "area_fraction": 0.5367103974590685,
+    "intervals": [
+     [
+      -55.0,
+      -19.0
+     ],
+     [
+      17.0,
+      55.0
+     ]
+    ],
+    "gaps": [
+     [
+      -17.0,
+      15.0
+     ]
+    ],
+    "n_failing_inside_envelope": 17
+   },
    "best_min": 0.043014661798671375,
    "best_worst": 0.1463418842169812,
-   "best_cov": [
-    -57.0,
-    57.0,
-    0.45555555555555555
-   ],
+   "best_cov": {
+    "envelope": [
+     -57.0,
+     57.0
+    ],
+    "bin_fraction": 0.45555555555555555,
+    "area_fraction": 0.5557209210604527,
+    "intervals": [
+     [
+      -57.0,
+      -19.0
+     ],
+     [
+      17.0,
+      57.0
+     ]
+    ],
+    "gaps": [
+     [
+      -17.0,
+      15.0
+     ]
+    ],
+    "n_failing_inside_envelope": 17
+   },
    "core_lat": 41.000000000000014
   }
  },
@@ -1509,72 +1757,160 @@
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.026138794357983587,
    "fixed20_max": 0.4291959604363215,
-   "fixed20_cov": [
-    -63.0,
-    63.000000000000014,
-    0.7111111111111111
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -63.0,
+     63.000000000000014
+    ],
+    "bin_fraction": 0.7111111111111111,
+    "area_fraction": 0.8987940462991669,
+    "intervals": [
+     [
+      -63.0,
+      63.000000000000014
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "best_min": 0.026138794357983587,
    "best_worst": 0.0858559129444991,
-   "best_cov": [
-    -89.0,
-    89.0,
-    1.0
-   ],
+   "best_cov": {
+    "envelope": [
+     -89.0,
+     89.0
+    ],
+    "bin_fraction": 1.0,
+    "area_fraction": 1.0,
+    "intervals": [
+     [
+      -89.0,
+      89.0
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "core_lat": 41.000000000000014
   },
   "measured altitude-dependent floor": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.026735021569804326,
    "fixed20_max": 0.4389904886893228,
-   "fixed20_cov": [
-    -61.0,
-    63.000000000000014,
-    0.7
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -61.0,
+     63.000000000000014
+    ],
+    "bin_fraction": 0.7,
+    "area_fraction": 0.8908708195790468,
+    "intervals": [
+     [
+      -61.0,
+      63.000000000000014
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "best_min": 0.026735021569804326,
    "best_worst": 0.20902435504732605,
-   "best_cov": [
-    -69.0,
-    73.0,
-    0.8
-   ],
+   "best_cov": {
+    "envelope": [
+     -69.0,
+     73.0
+    ],
+    "bin_fraction": 0.8,
+    "area_fraction": 0.9504771583621137,
+    "intervals": [
+     [
+      -69.0,
+      73.0
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "core_lat": 41.000000000000014
   },
   "measured-ozone rescaled floor": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.025471419698844113,
    "fixed20_max": 0.25486827645800203,
-   "fixed20_cov": [
-    -69.0,
-    69.0,
-    0.7777777777777778
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -69.0,
+     69.0
+    ],
+    "bin_fraction": 0.7777777777777778,
+    "area_fraction": 0.9396926207859083,
+    "intervals": [
+     [
+      -69.0,
+      69.0
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "best_min": 0.025471419698844113,
    "best_worst": 0.08208282941434314,
-   "best_cov": [
-    -89.0,
-    89.0,
-    1.0
-   ],
+   "best_cov": {
+    "envelope": [
+     -89.0,
+     89.0
+    ],
+    "bin_fraction": 1.0,
+    "area_fraction": 1.0,
+    "intervals": [
+     [
+      -89.0,
+      89.0
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "core_lat": 41.000000000000014
   },
   "measured-ozone + measured floor": {
    "z20_level": 20.465590299712925,
    "fixed20_min": 0.026053744656525046,
    "fixed20_max": 0.2606692887602747,
-   "fixed20_cov": [
-    -67.0,
-    69.0,
-    0.7666666666666667
-   ],
+   "fixed20_cov": {
+    "envelope": [
+     -67.0,
+     69.0
+    ],
+    "bin_fraction": 0.7666666666666667,
+    "area_fraction": 0.9334382376763478,
+    "intervals": [
+     [
+      -67.0,
+      69.0
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "best_min": 0.026053744656525046,
    "best_worst": 0.1347051366318486,
-   "best_cov": [
-    -77.0,
-    87.0,
-    0.9222222222222223
-   ],
+   "best_cov": {
+    "envelope": [
+     -77.0,
+     87.0
+    ],
+    "bin_fraction": 0.9222222222222223,
+    "area_fraction": 0.9887692138764507,
+    "intervals": [
+     [
+      -77.0,
+      87.0
+     ]
+    ],
+    "gaps": [],
+    "n_failing_inside_envelope": 0
+   },
    "core_lat": 41.000000000000014
   }
  },
@@ -1635,5 +1971,6 @@
  },
  "map": "outputs/detectability_2d_calibrated/map_pm41_adopted.npz",
  "runtime_s": 653.1721730232239,
- "note": "M(phi,z) = 3 sigma_A(z,phi) / f(phi,z), sigma_A the per-shell silica uncertainty of the joint retrieval under the adopted model at each tangent (20-km reference spectrum in the tangent shell, edge-bounded path over the onion gain), sulfate background on the full GloSSAC profile; g(phi,z) and the measured O3 ratios enter the forward model, tabulated as ratios and interpolated"
+ "note": "M(phi,z) = 3 sigma_A(z,phi) / f(phi,z), sigma_A the per-shell silica uncertainty of the joint retrieval under the adopted model at each tangent (20-km reference spectrum in the tangent shell, edge-bounded path over the onion gain), sulfate background on the full GloSSAC profile; g(phi,z) and the measured O3 ratios enter the forward model, tabulated as ratios and interpolated",
+ "table_intervals_note": "round 76: contiguous passing intervals of 2-degree grid centres, bin and area-weighted fractions"
 }

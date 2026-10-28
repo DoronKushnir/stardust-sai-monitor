@@ -103,8 +103,13 @@ STEPS = [
     ("lat75",   ["adopted_latitude.py"],                  "outputs/adopted_latitude.json, outputs/detectability_2d_calibrated/map_pm41_adopted.npz, tables/latitude_scenarios.tex, figures/detectability_2d_mass_contours_adopted.png (Sect. 6, Table 7, Fig. 5 under the adopted model; round 75)", "10 min", True),
     ("mtan",    ["multitangent_retrieval.py"],            "outputs/multitangent_retrieval.json (App. D9: the multi-tangent forward and inverse model with field of view, sampling, common-reference and cross-height covariance; round 75)", "5 min", True),
     ("farad",   ["farir_adopted.py"],                     "outputs/farir_adopted.json (Table 8 'band + far-IR, adopted model' column; round 75)", "10 min (far-IR backgrounds cached)", True),
-    ("dda",     ["dda_uniaxial.py"],                      "outputs/dda_uniaxial.json (App. F4: discrete-dipole solution for the uniaxial spheres against the two scalar prescriptions; round 75)", "30 min, 4 processes", True),
+    ("dda",     ["dda_uniaxial.py"],                      "outputs/dda_uniaxial.json (App. F4: discrete-dipole solution for the uniaxial spheres against the two scalar prescriptions; round 75)", "30 min, 4 processes", True),    # paper 1 round 76 (referee round 7, October 2026)
+    ("close76", ["closure_final.py"],                     "outputs/closure_final.json (Tables D4-D5: closure test of the final estimator, 47 rows + triplet, adopted covariance, flat aerosol prior; misspecification rows; round 76 item 1)", "40 min", True),
+    ("gasb76",  ["gas_budget_conditioning.py"],           "outputs/gas_budget_conditioning.json (Table D2: the 8.80-um gas budget by its conditioning; the silica posterior decomposition; round 76 items 2-3)", "10 s", False),
+    ("trend76", ["ace_null_trend.py"],                    "outputs/ace_null_trend.json (Sects. 4.3, 5.3: the frozen pre-deployment trend rule and its tests; round 76 item 7)", "10 s", False),
+    ("lattab",  ["adopted_latitude.py", "--table"],       "tables/latitude_scenarios.tex (Table 8 with contiguous latitude intervals, from the archived maps; round 76 item 5)", "s", False),
 ]
+
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
 
 

@@ -1,19 +1,19 @@
 % Moved from sections/appendix_sensitivity.tex in round 44 (was an inline tabular).
 % Round 75: adopted-model columns added by scripts/adopted_robustness_round75.py (outputs/paper1/adopted_robustness_round75.json); the scenario columns are the round-35c values.
 \begin{table}[t]
-\caption{Single-sounding threshold $M_{\min}^{(3\sigma)}$ against the tangent altitude for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background). \ClaudeText{Adopted model: the joint retrieval of Table~\ref{tab:error_budget} re-evaluated at each tangent, with the discrepancy term constant with altitude (in parentheses, scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\ref{app:acefloor}). Scenario: the diagonal-floor scenario with the per-element floors re-derived per tangent altitude.}}
+\caption{Single-sounding threshold $M_{\min}^{(3\sigma)}$ against the tangent altitude for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background). Adopted model: the joint retrieval of Table~\ref{tab:error_budget} re-evaluated at each tangent, with the discrepancy term constant with altitude (in parentheses, scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\ref{app:acefloor}). Scenario: the diagonal-floor scenario with the per-element floors re-derived per tangent altitude.}
 \label{tab:altitude_scan}
 \centering
 \small
 \begin{tabular}{ccccc}
 \toprule
-$z$ [km] & \ClaudeText{Band, adopted [Tg]} & \ClaudeText{Window, adopted [Tg]} & Band, scenario [Tg] & Window, scenario [Tg] \\
+$z$ [km] & Band, adopted [Tg] & Window, adopted [Tg] & Band, scenario [Tg] & Window, scenario [Tg] \\
 \midrule
-$16$ & \ClaudeText{0.076 (0.170)} & \ClaudeText{0.116 (0.231)} & $0.056$ & $0.078$ \\
-$18$ & \ClaudeText{0.094 (0.229)} & \ClaudeText{0.142 (0.301)} & $0.077$ & $0.108$ \\
-$20$ & \ClaudeText{0.119 (0.119)} & \ClaudeText{0.168 (0.168)} & $0.101$ & $0.141$ \\
-$22$ & \ClaudeText{0.154 (0.118)} & \ClaudeText{0.205 (0.162)} & $0.125$ & $0.175$ \\
-$24$ & \ClaudeText{0.205 (0.155)} & \ClaudeText{0.258 (0.200)} & $0.146$ & $0.204$ \\
+$16$ & 0.076 (0.170) & 0.116 (0.231) & $0.056$ & $0.078$ \\
+$18$ & 0.094 (0.229) & 0.142 (0.301) & $0.077$ & $0.108$ \\
+$20$ & 0.119 (0.119) & 0.168 (0.168) & $0.101$ & $0.141$ \\
+$22$ & 0.154 (0.118) & 0.205 (0.162) & $0.125$ & $0.175$ \\
+$24$ & 0.205 (0.155) & 0.258 (0.200) & $0.146$ & $0.204$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -40,20 +40,60 @@ $24$ & \ClaudeText{0.205 (0.155)} & \ClaudeText{0.258 (0.200)} & $0.146$ & $0.20
 % \end{table}
 % % ---- round-74 version ----
 % % % Moved from sections/appendix_sensitivity.tex in round 44 (was an inline tabular).
+% % % Round 75: adopted-model columns added by scripts/adopted_robustness_round75.py (outputs/paper1/adopted_robustness_round75.json); the scenario columns are the round-35c values.
 % % \begin{table}[t]
-% % \caption{Single-sounding threshold $M_{\min}^{(3\sigma)}$ against the tangent altitude, with the per-element mid-infrared floors re-derived per tangent altitude, for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background).}
+% % \caption{Single-sounding threshold $M_{\min}^{(3\sigma)}$ against the tangent altitude for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background). Adopted model: the joint retrieval of Table~\ref{tab:error_budget} re-evaluated at each tangent, with the discrepancy term constant with altitude (in parentheses, scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\ref{app:acefloor}). Scenario: the diagonal-floor scenario with the per-element floors re-derived per tangent altitude.}
 % % \label{tab:altitude_scan}
 % % \centering
 % % \small
-% % \begin{tabular}{ccc}
+% % \begin{tabular}{ccccc}
 % % \toprule
-% % $z$ [km] & Band [Tg] & Window [Tg] \\
+% % $z$ [km] & Band, adopted [Tg] & Window, adopted [Tg] & Band, scenario [Tg] & Window, scenario [Tg] \\
 % % \midrule
-% % $16$ & $0.056$ & $0.078$ \\
-% % $18$ & $0.077$ & $0.108$ \\
-% % $20$ & $0.101$ & $0.141$ \\
-% % $22$ & $0.125$ & $0.175$ \\
-% % $24$ & $0.146$ & $0.204$ \\
+% % $16$ & 0.076 (0.170) & 0.116 (0.231) & $0.056$ & $0.078$ \\
+% % $18$ & 0.094 (0.229) & 0.142 (0.301) & $0.077$ & $0.108$ \\
+% % $20$ & 0.119 (0.119) & 0.168 (0.168) & $0.101$ & $0.141$ \\
+% % $22$ & 0.154 (0.118) & 0.205 (0.162) & $0.125$ & $0.175$ \\
+% % $24$ & 0.205 (0.155) & 0.258 (0.200) & $0.146$ & $0.204$ \\
 % % \bottomrule
 % % \end{tabular}
 % % \end{table}
+% % % ---- round-74 version ----
+% % % % Moved from sections/appendix_sensitivity.tex in round 44 (was an inline tabular).
+% % % % Round 75: adopted-model columns added by scripts/adopted_robustness_round75.py (outputs/paper1/adopted_robustness_round75.json); the scenario columns are the round-35c values.
+% % % \begin{table}[t]
+% % % \caption{Single-sounding threshold $M_{\min}^{(3\sigma)}$ against the tangent altitude for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background). \ClaudeText{Adopted model: the joint retrieval of Table~\ref{tab:error_budget} re-evaluated at each tangent, with the discrepancy term constant with altitude (in parentheses, scaled by the measured $16$--$19$ and $22$--$25$-km bins of Appendix~\ref{app:acefloor}). Scenario: the diagonal-floor scenario with the per-element floors re-derived per tangent altitude.}}
+% % % \label{tab:altitude_scan}
+% % % \centering
+% % % \small
+% % % \begin{tabular}{ccccc}
+% % % \toprule
+% % % $z$ [km] & \ClaudeText{Band, adopted [Tg]} & \ClaudeText{Window, adopted [Tg]} & Band, scenario [Tg] & Window, scenario [Tg] \\
+% % % \midrule
+% % % $16$ & \ClaudeText{0.076 (0.170)} & \ClaudeText{0.116 (0.231)} & $0.056$ & $0.078$ \\
+% % % $18$ & \ClaudeText{0.094 (0.229)} & \ClaudeText{0.142 (0.301)} & $0.077$ & $0.108$ \\
+% % % $20$ & \ClaudeText{0.119 (0.119)} & \ClaudeText{0.168 (0.168)} & $0.101$ & $0.141$ \\
+% % % $22$ & \ClaudeText{0.154 (0.118)} & \ClaudeText{0.205 (0.162)} & $0.125$ & $0.175$ \\
+% % % $24$ & \ClaudeText{0.205 (0.155)} & \ClaudeText{0.258 (0.200)} & $0.146$ & $0.204$ \\
+% % % \bottomrule
+% % % \end{tabular}
+% % % \end{table}
+% % % % ---- round-74 version ----
+% % % % % Moved from sections/appendix_sensitivity.tex in round 44 (was an inline tabular).
+% % % % \begin{table}[t]
+% % % % \caption{Single-sounding threshold $M_{\min}^{(3\sigma)}$ against the tangent altitude, with the per-element mid-infrared floors re-derived per tangent altitude, for the $7.8$--$13~\mu$m band and its $7.8$--$9.3~\mu$m window (heritage triplet, six background parameters free beside the silica amplitude, calibrated undisturbed background).}
+% % % % \label{tab:altitude_scan}
+% % % % \centering
+% % % % \small
+% % % % \begin{tabular}{ccc}
+% % % % \toprule
+% % % % $z$ [km] & Band [Tg] & Window [Tg] \\
+% % % % \midrule
+% % % % $16$ & $0.056$ & $0.078$ \\
+% % % % $18$ & $0.077$ & $0.108$ \\
+% % % % $20$ & $0.101$ & $0.141$ \\
+% % % % $22$ & $0.125$ & $0.175$ \\
+% % % % $24$ & $0.146$ & $0.204$ \\
+% % % % \bottomrule
+% % % % \end{tabular}
+% % % % \end{table}

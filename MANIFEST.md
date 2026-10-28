@@ -14,7 +14,7 @@ shipped with the repository.
 "round 70" describe the port of the round-70 analyses (the reply to referee
 round 5), tagged `rc5-round70`. Annotated tags in the
 history: `round51`, `round53-54`, `rc2-round56`, `rc2-round57`, `rc3-round59`.
-The round-75 state is tagged `rc6-round75` (Sect. 11), the round-74 state `rc6-round74` (Sect. 10); the release tag and the Zenodo deposit are
+The round-76 state is tagged `rc7-round76` (Sect. 12); earlier states are `rc6-round75` (Sect. 11), `rc6-round74` (Sect. 10) and `rc5-round70`; the release tag and the Zenodo deposit are
 listed in Sect. 8 (to be completed at submission). Python >= 3.10 with
 `requirements.txt` (numpy, scipy, matplotlib, netCDF4, pyyaml; `hitran-api`
 only for the full HITRAN chain).
@@ -303,9 +303,9 @@ line-list download itself.
 
 * **Zenodo deposit**: DOI to be inserted at submission (placeholder:
   `10.5281/zenodo.XXXXXXX`), capturing the tagged release of this
-  repository (tag to be created at HEAD `c523d6c` or at the final revision
-  commit; the paper's Code and data availability statement will cite the
-  DOI). The deposit will contain the repository tree (code, `data/`,
+  repository at the tag the paper's Code and data availability statement
+  names (`rc7-round76` for the current revision; Sect. 12); the statement
+  will cite the DOI once the deposit is made. The deposit will contain the repository tree (code, `data/`,
   `outputs/`, `figures/`, `tables/`, `reference_outputs/`) with this
   manifest and `CHECKSUMS.sha256`.
 * **Licences**: code MIT (`LICENSE`, Doron Kushnir, Stardust Solutions
@@ -391,3 +391,17 @@ The items the round-74 reply listed as not done. One engine (`reproduce/adopted_
 | Tables D2-D3 `tables/element_closure.tex` (four floats since round 75; state count 46 parameters, 15 source groups) | `reproduce/element_closure_table.py`, step `tabD2` | A-CLOSURE, A-UMODEL, A-FPC, A-CVAR, A-GCONV | table | FAST | rerun here |
 
 Headline numbers are unchanged (0.12 / 0.17 Tg at 20 km); the multi-tangent inverse shows the single-tangent shell-equivalent convention to be conservative by a factor of about two for a point field of view.
+
+## 12. Round 76 (referee round 7; tag `rc7-round76`)
+
+| Archive / object | Script and step | Inputs | Outputs | Tier | Verified |
+|---|---|---|---|---|---|
+| A-CLOSE76 `outputs/closure_final.json` (Tables D4-D5: synthetic-truth closure of the FINAL estimator, 47 rows + triplet, adopted covariance, flat aerosol prior; window estimator; spectroscopic-only diagnostic; misspecification rows and fixed databases on the final estimator; seed 76) | `reproduce/closure_final.py`, step `close76` | engine (A-ROBUST75 machinery), A-CLOSURE forward model, `reproduce/closure_variants.py` helpers (alternative member, line widths) | archive | FULL (40 min) | rerun here |
+| A-GASB76 `outputs/gas_budget_conditioning.json` (Table D2: the 8.80-um gas budget by its conditioning, known-aerosol diagnostic 5.12e-4 OD, joint with the coarse-radius prior 4.64e-3, through the final gain 3.10e-3 OD; the silica posterior decomposition band 0.0395 = 0.0356 (+) 0.0172, window 0.0559 = 0.0450 (+) 0.0331 Tg per shell) | `reproduce/gas_budget_conditioning.py`, step `gasb76` | engine, A-CLOSURE `removal_budget` | archive | FAST (10 s) | rerun here |
+| A-TREND76 `outputs/ace_null_trend.json` (Sects. 4.3, 5.3: the frozen pre-deployment trend rule, its forecast covariance from a year-block bootstrap, ramps and steps through the rule, training 2004-2015 and 2004-2009) | `reproduce/ace_null_trend.py`, step `trend76` | A-NULLD (`nulltest_diagnostics_perocc.csv`) | archive | FAST (10 s) | rerun here |
+| A-MTAN75 (revised) `outputs/multitangent_retrieval.json` (App. D9: radiance-averaged field of view, y_F = -ln sum w_h exp(-y_h) with radiance-weighted Jacobians; sub-ray spacing 0.25 km checked against 0.125 km: 0.5-km field 0.072 -> 0.075 Tg, 1 km 0.092 Tg) | `reproduce/multitangent_retrieval.py`, step `mtan` | engine | archive | FULL (6 min) | rerun here |
+| Table 8 `tables/latitude_scenarios.tex` (contiguous passing intervals of 2-degree grid centres, bin and area-weighted fractions) | `reproduce/adopted_latitude.py --table` (reads the archived maps) | A-LAT75 maps | table | FAST | rerun here |
+| Tables D2, D4, D5 `tables/element_closure.tex` | `reproduce/element_closure_table.py` (rewritten) | A-CLOSURE, A-UMODEL, A-FPC, A-GCONV, A-GASB76, A-CLOSE76 | table | FAST | rerun here |
+| `reproduce/compare_reference.py` | extended to the round-71/74/75 archives; absolute tolerance 1e-8 for numerical zeros; wall-clock fields skipped | — | — | — | passes except the alumina far-infrared self-check field (public Cauchy-smoothed table, Sect. 9) |
+
+The headline numbers are unchanged. The round-70 closure ensembles with the coarse-radius prior of 1000 nm remain in `outputs/element_observable_closure.json` and `closure_variants.json` as a diagnostic; the tables now show the closure of the final estimator.

@@ -4,7 +4,10 @@
 
 Archived JSON results in outputs/ are compared number by number with
 reference_outputs/outputs/ (relative tolerance 1e-3, i.e. below the rounding
-of the text); figures are compared by existence and pixel size.
+of the text, and an absolute tolerance of 1e-8 for numerical zeros; wall-clock
+fields are skipped); figures are compared by existence and file size.  The
+comparison checks that a run reproduces the archived summaries; it is not an
+independent reprocessing of the raw SAGE, GloSSAC, ACE or HITRAN sources.
 """
 import json, sys
 from pathlib import Path
@@ -12,6 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REF = ROOT / "reference_outputs"
 TOL = 1e-3
+ATOL = 1e-8          # round 76: absolute tolerance for numerical zeros (near-zero diagnostics are compared absolutely)
+SKIP = ("runtime_s", "seconds", "elapsed")     # wall-clock fields
 PAIRS = [
     ("outputs/calibrated_background_thresholds.json", "outputs/calibrated_background_thresholds.json"),
     ("outputs/calibrated_background_problem.json", "outputs/calibrated_background_problem.json"),
@@ -43,18 +48,36 @@ PAIRS = [
     ("outputs/materials_uniaxial.json", "outputs/materials_uniaxial.json"),
     ("outputs/psd_tail_coagulation.json", "outputs/psd_tail_coagulation.json"),
     ("outputs/ace_v52/nulltest_diagnostics.json", "outputs/nulltest_diagnostics.json"),
+    # rounds 71, 74 and 75 (referee round 6 and its completion)
+    ("outputs/composite_particle_uniaxial.json", "outputs/composite_particle_uniaxial.json"),
+    ("outputs/materials_farir_uniaxial.json", "outputs/materials_farir_uniaxial.json"),
+    ("outputs/ace_nulltest_nonlinear_refit.json", "outputs/ace_nulltest_nonlinear_refit.json"),
+    ("outputs/uncertainty_model.json", "outputs/uncertainty_model.json"),
+    ("outputs/closure_variants.json", "outputs/closure_variants.json"),
+    ("outputs/closure_flat_prior_check.json", "outputs/closure_flat_prior_check.json"),
+    ("outputs/grid_convergence.json", "outputs/grid_convergence.json"),
+    ("outputs/materials_scattering.json", "outputs/materials_scattering.json"),
+    ("outputs/materials_primary.json", "outputs/materials_primary.json"),
+    ("outputs/radiometric_budget_observable.json", "outputs/radiometric_budget_observable.json"),
+    ("outputs/ace_null_baseline.json", "outputs/ace_null_baseline.json"),
+    ("outputs/adopted_robustness.json", "outputs/adopted_robustness.json"),
+    ("outputs/adopted_latitude.json", "outputs/adopted_latitude.json"),
+    ("outputs/multitangent_retrieval.json", "outputs/multitangent_retrieval.json"),
+    ("outputs/farir_adopted.json", "outputs/farir_adopted.json"),
+    ("outputs/dda_uniaxial.json", "outputs/dda_uniaxial.json"),
 ]
 
 
 def walk(a, b, path, diffs):
     if isinstance(a, dict) and isinstance(b, dict):
         for k in a:
+            if any(t in str(k) for t in SKIP): continue
             if k in b: walk(a[k], b[k], path + "/" + str(k), diffs)
             else: diffs.append((path + "/" + str(k), "missing in reference"))
     elif isinstance(a, list) and isinstance(b, list):
         for i, (x, y) in enumerate(zip(a, b)): walk(x, y, f"{path}[{i}]", diffs)
     elif isinstance(a, (int, float)) and isinstance(b, (int, float)) and not isinstance(a, bool):
-        if a != b and abs(a - b) > TOL * max(abs(a), abs(b), 1e-30):
+        if a != b and abs(a - b) > max(TOL * max(abs(a), abs(b)), ATOL):
             diffs.append((path, f"{a!r} vs {b!r}"))
 
 
@@ -70,7 +93,10 @@ def main():
         bad += bool(diffs)
     for f in sorted((REF / "figures").glob("*.png")):
         g = ROOT / "figures" / f.name
-        print(f"[{'ok' if g.exists() else 'missing'}] figures/{f.name}" + (f"  ({g.stat().st_size/1e3:.0f} kB vs reference {f.stat().st_size/1e3:.0f} kB)" if g.exists() else ""))
+        try:
+            print(f"[{'ok' if g.exists() else 'missing'}] figures/{f.name}" + (f"  ({g.stat().st_size/1e3:.0f} kB vs reference {f.stat().st_size/1e3:.0f} kB)" if g.exists() else ""))
+        except OSError as exc:
+            print(f"[missing] figures/{f.name}: {exc}")
     sys.exit(1 if bad else 0)
 
 
