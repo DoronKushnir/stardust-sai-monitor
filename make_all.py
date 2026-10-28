@@ -97,6 +97,13 @@ STEPS = [
     ("mprim",   ["materials_primary.py"],                  "outputs/materials_primary.json (Table 8 'adopted model' column; round 74 item 2)", "1 min", False),
     ("radobs",  ["radiometric_budget_observable.py"],      "outputs/radiometric_budget_observable.json, tables/radiometric_budget.tex (Table D5 at the element observable with separated noise terms; round 74 item 7)", "s", False),
     ("nullb",   ["ace_null_baseline.py"],                  "outputs/ace_null_baseline.json (Sects. 4.3, 5.3: coverage about zero, year-level drift error, prospective split, secular injection through the baseline procedure; round 74 item 8)", "10 s", False),
+    # paper 1 round 75 (completion of referee round 6, October 2026): the adopted model carried through the scans, maps, far-infrared, shells and optics
+    ("engine",  ["adopted_model_engine.py"],              "self-test of the adopted-model engine at any tangent height (round 75)", "15 s", False),
+    ("robust",  ["adopted_robustness.py"],                "outputs/adopted_robustness.json, tables/robust_summary.tex, tables/altitude_scan.tex (Table 6 and Table F3 under the adopted model; round 75)", "4 min (Mie builds cached)", True),
+    ("lat75",   ["adopted_latitude.py"],                  "outputs/adopted_latitude.json, outputs/detectability_2d_calibrated/map_pm41_adopted.npz, tables/latitude_scenarios.tex, figures/detectability_2d_mass_contours_adopted.png (Sect. 6, Table 7, Fig. 5 under the adopted model; round 75)", "10 min", True),
+    ("mtan",    ["multitangent_retrieval.py"],            "outputs/multitangent_retrieval.json (App. D9: the multi-tangent forward and inverse model with field of view, sampling, common-reference and cross-height covariance; round 75)", "5 min", True),
+    ("farad",   ["farir_adopted.py"],                     "outputs/farir_adopted.json (Table 8 'band + far-IR, adopted model' column; round 75)", "10 min (far-IR backgrounds cached)", True),
+    ("dda",     ["dda_uniaxial.py"],                      "outputs/dda_uniaxial.json (App. F4: discrete-dipole solution for the uniaxial spheres against the two scalar prescriptions; round 75)", "30 min, 4 processes", True),
 ]
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
 

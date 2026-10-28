@@ -385,3 +385,26 @@ def test_round71_archives():
         assert f"{far_only:.3f}"[:4] in txt and f"{band_far:.3f}"[:4] in txt
     d = json.load(open(OUT / "ace_nulltest_nonlinear_refit.json"))
     assert (OUT / "ace_nulltest_nonlinear_refit_perocc.csv").exists() and len(json.dumps(d)) > 1000
+
+
+def test_round75_archives():
+    """Round 75 (completion of referee round 6): the adopted model carried through the robustness scans, the altitude and
+    latitude maps, the far-infrared columns, a multi-tangent inverse and an anisotropic solver."""
+    r = json.load(open(OUT / "adopted_robustness.json"))["rows"]
+    assert abs(r["baseline"]["band"] - 0.1186) < 5e-4 and abs(r["baseline"]["window"] - 0.1676) < 5e-4
+    assert abs(r["baseline"]["band_scenario"] - 0.1008) < 5e-4 and abs(r["sig1.8"]["band"] - 0.2017) < 1e-3
+    assert abs(r["altitude"]["16"]["band"] - 0.0758) < 5e-4 and abs(r["altitude"]["24"]["band"] - 0.2048) < 5e-4
+    m = json.load(open(OUT / "multitangent_retrieval.json"))["scenarios"]
+    assert abs(m["sulfate_per_shell_base"]["mmin_3sig_20km_tg"] - 0.0574) < 1e-3
+    assert abs(m["sulfate_per_shell_fov_1km"]["mmin_3sig_20km_tg"] - 0.0921) < 1e-3
+    assert abs(m["sulfate_prescribed_base"]["mmin_3sig_20km_tg"] - 0.0300) < 1e-3
+    f = json.load(open(OUT / "farir_adopted.json"))["materials"]
+    assert abs(f["silica"]["band_plus_farir_adopted"]["1.0"] - 0.0377) < 5e-4 and abs(f["calcite"]["band_plus_farir_adopted"]["1.0"] - 0.0260) < 5e-4
+    assert abs(f["silica"]["farir_only"]["1.0"] - f["silica"]["farir_only_round71"]["1.0"]) < 1e-6
+    lat = json.load(open(OUT / "adopted_latitude.json"))
+    t = lat["table7_adopted"]["band_adopted_const"]
+    assert abs(t["z20_level"] - 20.4656) < 1e-3 and 0.02 < t["fixed20_min"] < 0.05
+    d = json.load(open(OUT / "dda_uniaxial.json"))
+    assert max(d["summary"]["dolomite"]["validation_error_psd_weighted"]) < 0.05       # validated on the isotropic rays
+    assert max(d["summary"]["alumina"]["validation_error_psd_weighted"]) > 0.05       # the surface mode does not converge on this lattice
+    assert 0.0 < d["thresholds"]["dolomite"]["change_percent"] < 5.0 and -10.0 < d["thresholds"]["calcite"]["change_percent"] < 0.0

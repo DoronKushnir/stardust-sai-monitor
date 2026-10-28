@@ -173,6 +173,20 @@ thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.
   element observable (`radiometric_budget_observable.py`) and the null-baseline
   procedure test (`ace_null_baseline.py`); Tables D2-D3 by the rewritten
   `element_closure_table.py`. Tag `rc6-round74`.
+* **Round 75 (completion of referee report RC6, October 2026).** The adopted
+  measurement model evaluated at any tangent height, background and template
+  (`reproduce/adopted_model_engine.py`) and carried through the robustness scans
+  (`adopted_robustness.py`; Tables 6 and F3), the altitude and latitude maps
+  (`adopted_latitude.py`; Sect. 6, Table 7, Fig. 5), the far-infrared columns
+  (`farir_adopted.py`; Table 8) and a multi-tangent forward and inverse model
+  with the field of view, the sampling, common-reference errors and cross-height
+  covariance (`multitangent_retrieval.py`; App. D9: 0.057 Tg per 0.5-km shell at
+  20 km with per-shell sulfate amplitudes, 0.072 and 0.092 Tg with 0.5- and 1-km
+  fields of view, against the single-tangent shell-equivalent 0.119 Tg); a
+  discrete-dipole solution for the uniaxial materials (`dda_uniaxial.py`; App. F4).
+  The heavy round-71/74 archives (closure variants, materials scattering,
+  composite particle, far-infrared, nonlinear refit, 0.00125-cm^-1 grids) were
+  rerun in this checkout. Tag `rc6-round75`.
 
 ## Licence
 

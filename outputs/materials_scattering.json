@@ -1,5 +1,5 @@
 {
- "script": "scripts/materials_scattering_round74.py",
+ "script": "reproduce/materials_scattering.py",
  "round": 74,
  "referee_item": 6,
  "psd": {
@@ -4869,5 +4869,5 @@
    }
   }
  },
- "runtime_s": 469.25453305244446
+ "runtime_s": 478.4645462036133
 }
