@@ -23268,12 +23268,12 @@
    424.1249999999064
   ],
   "n_consecutive_pairs": 100,
-  "time_ordering": "by the decimal year column; the sample mixes the three latitude bands of Sect. 7",
+  "time_ordering": "stable sort by the decimal year column, retaining input CSV row order for tied times; the sample mixes the three latitude bands of Sect. 7",
   "M_full_stats_Tg": {
-   "mean": 0.012482540544604417,
-   "std_ddof1": 0.021847150596897964,
-   "median": 0.01124540895434314,
-   "mean_over_sigma_emp": 0.48195137237854896
+   "mean": 0.012482540486517623,
+   "std_ddof1": 0.021847150475582985,
+   "median": 0.011245408973018331,
+   "mean_over_sigma_emp": 0.48195137013581557
   },
   "exceed_plus1sigma": {
    "n_single": 31,
@@ -23300,7 +23300,7 @@
    "frac_consecutive_both": 0.0,
    "expected_both_if_independent": 0.0015684736790510735,
    "expected_count_if_independent": 0.15684736790510737,
-   "gaussian_single_tail": 0.022750131948179195
+   "gaussian_single_tail": 0.022750131948179198
   },
   "exceed_plus2sigma_mean_subtracted": {
    "n_single": 1,
@@ -23309,7 +23309,7 @@
    "frac_consecutive_both": 0.0,
    "expected_both_if_independent": 9.80296049406921e-05,
    "expected_count_if_independent": 0.00980296049406921,
-   "gaussian_single_tail": 0.022750131948179195
+   "gaussian_single_tail": 0.022750131948179198
   },
   "note": "quick persistence check only; the lag-1 autocorrelation is in facts_item45.md"
  }

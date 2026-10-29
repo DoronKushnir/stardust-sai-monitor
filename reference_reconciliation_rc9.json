@@ -1,0 +1,188 @@
+{
+  "reason": "Reconcile stale archive-comparison diagnostics using current scalar-optics archive and existing far-IR predictions; no forward model rerun.",
+  "inputs": {
+    "outputs/materials_calibrated/results.json": "7237db2a387c31a834d3c27e6cbf5daf171179e56af4a5edd9a85d6e4f5a8b8c",
+    "outputs/materials_farir_uniaxial.json": "7ecf2c8b892fea2260fb29ccbbe211d1bf27a0fd69bb10a1e7c5549a72f5d459"
+  },
+  "changes": [
+    {
+      "product": "outputs/materials_farir_uniaxial.json",
+      "path": "materials/alumina/reproduces_round35_archive_a/band_quiet_archive",
+      "old_reference": 0.14988501282681252,
+      "new_reference": 0.14959210650571775
+    },
+    {
+      "product": "outputs/materials_farir_uniaxial.json",
+      "path": "materials/alumina/reproduces_round35_archive_a/max_rel_diff",
+      "old_reference": 0.001954165771496541,
+      "new_reference": 4.117441987361303e-08
+    },
+    {
+      "product": "outputs/materials_farir_uniaxial.json",
+      "path": "red_extension/materials/alumina/archive_a_band_to_14",
+      "old_reference": 0.14614074307834213,
+      "new_reference": 0.14591903744939733
+    }
+  ],
+  "latitude_persistence": {
+    "reason": "Stable chronological sort, preserving CSV row order at tied decimal-year timestamps. Refreshed from a fresh lat70 run; forward maps/orbit cache are retained derived inputs.",
+    "input": "outputs/ace_v52/fullspectrum.csv",
+    "input_sha256": "5b80a4b57c3dad242c973d90751e1df5dba5f0a140a675877155754087959f7e",
+    "before": {
+      "n_occultations": 101,
+      "per_calendar_year": {
+        "2004": 5,
+        "2005": 4,
+        "2006": 5,
+        "2007": 4,
+        "2008": 2,
+        "2009": 8,
+        "2010": 5,
+        "2011": 2,
+        "2012": 3,
+        "2013": 1,
+        "2014": 2,
+        "2015": 6,
+        "2016": 4,
+        "2017": 4,
+        "2018": 6,
+        "2019": 7,
+        "2020": 6,
+        "2021": 9,
+        "2022": 8,
+        "2023": 3,
+        "2024": 7
+      },
+      "n_distinct_years": 21,
+      "sigma_emp_Tg": 0.0259,
+      "median_gap_days": 19.499999999978513,
+      "gap_days_minmax": [
+        0.0,
+        424.1249999999064
+      ],
+      "n_consecutive_pairs": 100,
+      "time_ordering": "by the decimal year column; the sample mixes the three latitude bands of Sect. 7",
+      "M_full_stats_Tg": {
+        "mean": 0.012482540544604417,
+        "std_ddof1": 0.021847150596897964,
+        "median": 0.01124540895434314,
+        "mean_over_sigma_emp": 0.48195137237854896
+      },
+      "exceed_plus1sigma": {
+        "n_single": 31,
+        "frac_single": 0.3069306930693069,
+        "n_consecutive_both": 16,
+        "frac_consecutive_both": 0.16,
+        "expected_both_if_independent": 0.0942064503480051,
+        "expected_count_if_independent": 9.42064503480051,
+        "gaussian_single_tail": 0.15865525393145707
+      },
+      "exceed_plus1sigma_mean_subtracted": {
+        "n_single": 10,
+        "frac_single": 0.09900990099009901,
+        "n_consecutive_both": 1,
+        "frac_consecutive_both": 0.01,
+        "expected_both_if_independent": 0.00980296049406921,
+        "expected_count_if_independent": 0.980296049406921,
+        "gaussian_single_tail": 0.15865525393145707
+      },
+      "exceed_plus2sigma": {
+        "n_single": 4,
+        "frac_single": 0.039603960396039604,
+        "n_consecutive_both": 0,
+        "frac_consecutive_both": 0.0,
+        "expected_both_if_independent": 0.0015684736790510735,
+        "expected_count_if_independent": 0.15684736790510737,
+        "gaussian_single_tail": 0.022750131948179195
+      },
+      "exceed_plus2sigma_mean_subtracted": {
+        "n_single": 1,
+        "frac_single": 0.009900990099009901,
+        "n_consecutive_both": 0,
+        "frac_consecutive_both": 0.0,
+        "expected_both_if_independent": 9.80296049406921e-05,
+        "expected_count_if_independent": 0.00980296049406921,
+        "gaussian_single_tail": 0.022750131948179195
+      },
+      "note": "quick persistence check only; the lag-1 autocorrelation is in facts_item45.md"
+    },
+    "after": {
+      "n_occultations": 101,
+      "per_calendar_year": {
+        "2004": 5,
+        "2005": 4,
+        "2006": 5,
+        "2007": 4,
+        "2008": 2,
+        "2009": 8,
+        "2010": 5,
+        "2011": 2,
+        "2012": 3,
+        "2013": 1,
+        "2014": 2,
+        "2015": 6,
+        "2016": 4,
+        "2017": 4,
+        "2018": 6,
+        "2019": 7,
+        "2020": 6,
+        "2021": 9,
+        "2022": 8,
+        "2023": 3,
+        "2024": 7
+      },
+      "n_distinct_years": 21,
+      "sigma_emp_Tg": 0.0259,
+      "median_gap_days": 19.499999999978513,
+      "gap_days_minmax": [
+        0.0,
+        424.1249999999064
+      ],
+      "n_consecutive_pairs": 100,
+      "time_ordering": "stable sort by the decimal year column, retaining input CSV row order for tied times; the sample mixes the three latitude bands of Sect. 7",
+      "M_full_stats_Tg": {
+        "mean": 0.012482540486517623,
+        "std_ddof1": 0.021847150475582985,
+        "median": 0.011245408973018331,
+        "mean_over_sigma_emp": 0.48195137013581557
+      },
+      "exceed_plus1sigma": {
+        "n_single": 31,
+        "frac_single": 0.3069306930693069,
+        "n_consecutive_both": 16,
+        "frac_consecutive_both": 0.16,
+        "expected_both_if_independent": 0.0942064503480051,
+        "expected_count_if_independent": 9.42064503480051,
+        "gaussian_single_tail": 0.15865525393145707
+      },
+      "exceed_plus1sigma_mean_subtracted": {
+        "n_single": 10,
+        "frac_single": 0.09900990099009901,
+        "n_consecutive_both": 1,
+        "frac_consecutive_both": 0.01,
+        "expected_both_if_independent": 0.00980296049406921,
+        "expected_count_if_independent": 0.980296049406921,
+        "gaussian_single_tail": 0.15865525393145707
+      },
+      "exceed_plus2sigma": {
+        "n_single": 4,
+        "frac_single": 0.039603960396039604,
+        "n_consecutive_both": 0,
+        "frac_consecutive_both": 0.0,
+        "expected_both_if_independent": 0.0015684736790510735,
+        "expected_count_if_independent": 0.15684736790510737,
+        "gaussian_single_tail": 0.022750131948179198
+      },
+      "exceed_plus2sigma_mean_subtracted": {
+        "n_single": 1,
+        "frac_single": 0.009900990099009901,
+        "n_consecutive_both": 0,
+        "frac_consecutive_both": 0.0,
+        "expected_both_if_independent": 9.80296049406921e-05,
+        "expected_count_if_independent": 0.00980296049406921,
+        "gaussian_single_tail": 0.022750131948179198
+      },
+      "note": "quick persistence check only; the lag-1 autocorrelation is in facts_item45.md"
+    }
+  }
+}

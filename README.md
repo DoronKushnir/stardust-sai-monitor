@@ -46,7 +46,12 @@ the ACE-FTS residual-floor pipeline (Appendix E), the sensitivity and
 two-dimensional studies (Sect. 6, Appendix F), and the trace-gas budget
 (Appendix D). The results land in `outputs/`, `figures/` and `tables/`;
 `reference_outputs/` holds the versions used in the paper for comparison
-(`python reproduce/compare_reference.py`).
+(`python reproduce/compare_reference.py --json outputs/reference_comparison.json`).
+The comparison covers 51 JSON/CSV products, including the seasonal/gas budgets
+and all closure-stability products. It checks retained draws, convergence and
+coverage independently of reference equality. `COMPARISON.md` states the numeric
+tolerances and explicit diagnostic exclusions. Local hash-backed execution receipts
+separate regenerated results from comparisons of shipped archives.
 `MANIFEST.md` maps every figure, table and quoted number of the paper to its
 `make_all` step, inputs, outputs and tier (fast replay versus full
 recomputation), and `CHECKSUMS.sha256` lists the SHA-256 of every shipped file
@@ -207,3 +212,10 @@ seasonal false-alarm rates or detection probabilities.
 
 Code: MIT (`LICENSE`). Derived data and figures: CC BY 4.0 (`data/LICENSE`),
 with the source citations of `data/PROVENANCE.md`.
+
+
+The RC9 candidate `rc9-round80` adds the comparison/provenance corrections and
+stable chronological ordering of the quick persistence diagnostic. The scientific
+retrieval and its headline sensitivities are unchanged. Publication of the candidate
+and a persistent archive DOI remain pending; historical release notes above do not
+assert a new run of every heavy analysis.

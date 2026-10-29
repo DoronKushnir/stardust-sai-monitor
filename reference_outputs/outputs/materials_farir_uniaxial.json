@@ -1443,10 +1443,10 @@
     }
    },
    "reproduces_round35_archive_a": {
-    "band_quiet_archive": 0.14988501282681252,
+    "band_quiet_archive": 0.14959210650571775,
     "band_plus_farir_archive": 0.07650200933197165,
     "triplet_plus_farir_archive": 0.13062641089981344,
-    "max_rel_diff": 0.001954165771496541
+    "max_rel_diff": 4.117441987361303e-08
    }
   }
  },
@@ -1532,7 +1532,7 @@
      "band_to_14": 0.1480421082979243,
      "gain_percent": 3.107835924104385
     },
-    "archive_a_band_to_14": 0.14614074307834213
+    "archive_a_band_to_14": 0.14591903744939733
    }
   }
  }

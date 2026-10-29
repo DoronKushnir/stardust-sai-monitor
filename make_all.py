@@ -114,12 +114,33 @@ STEPS = [
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]
 
 
-def run(step):
+def product_stamps():
+    from reproduce.compare_reference import PAIRS
+    return {name: (ROOT/name).stat().st_mtime_ns if (ROOT/name).exists() else None
+            for name, _ in PAIRS}
+
+
+def run(step, receipt):
     key, args, produces, note, heavy = step
     print(f"\n=== {key}: {args[0]} -> {produces}  ({note})", flush=True)
+    before = product_stamps()
     t = time.time()
     r = subprocess.run([PY, str(R / args[0]), *args[1:]], cwd=ROOT)
     print(f"=== {key}: exit {r.returncode} in {time.time()-t:.0f} s", flush=True)
+    from datetime import datetime, timezone
+    import hashlib
+    import json
+    finished = datetime.now(timezone.utc).isoformat()
+    touched = [name for name, stamp in product_stamps().items() if stamp != before[name]]
+    for name in touched:
+        receipt["products"].pop(name, None)
+        if r.returncode == 0 and (ROOT/name).exists():
+            receipt["products"][name] = dict(step=key, finished_utc=finished,
+                sha256=hashlib.sha256((ROOT/name).read_bytes()).hexdigest())
+    receipt["steps"].append(dict(step=key, command=[PY, str(R/args[0]), *args[1:]],
+        exit_code=r.returncode, seconds=time.time()-t, finished_utc=finished,
+        script_sha256=hashlib.sha256((R/args[0]).read_bytes()).hexdigest(), touched_products=touched))
+    (ROOT/"outputs/reproduction_run.json").write_text(json.dumps(receipt, indent=2)+"\n")
     return r.returncode
 
 
@@ -136,7 +157,12 @@ def main():
             print(f"{k:8s} {'FULL ' if heavy else 'fast '} {note:10s} {args[0]:42s} {prod}")
         return
     keys = a.only or ([s[0] for s in STEPS] if a.full else FAST)
-    failed = [s[0] for s in STEPS if s[0] in keys and run(s) != 0]
+    unknown = set(keys)-{s[0] for s in STEPS}
+    if unknown:
+        ap.error(f"unknown step(s): {sorted(unknown)}")
+    receipt = dict(requested_steps=keys, steps=[], products={},
+                   note="Products rewritten by successful steps in this invocation; hashes tie this receipt to current files. Archives not touched are not regenerated.")
+    failed = [s[0] for s in STEPS if s[0] in keys and run(s, receipt) != 0]
     print("\nDONE" + (f" (failed: {failed})" if failed else ""))
     sys.exit(1 if failed else 0)
 

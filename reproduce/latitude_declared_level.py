@@ -433,13 +433,13 @@ def main():
 
     # ---- 7. persistence check of the null sample --------------------------------
     c = np.genfromtxt(NULL_CSV, delimiter=",", names=True, dtype=None, encoding="utf-8")
-    yr = np.asarray(c["year"], float); M = np.asarray(c["M_full"], float); order = np.argsort(yr)
+    yr = np.asarray(c["year"], float); M = np.asarray(c["M_full"], float); order = np.argsort(yr, kind="stable")
     yr, M = yr[order], M[order]
     cal = np.floor(yr).astype(int); years, counts = np.unique(cal, return_counts=True)
     gaps_d = np.diff(yr) * 365.25
     pers = dict(n_occultations=int(len(M)), per_calendar_year={str(y): int(n) for y, n in zip(years, counts)}, n_distinct_years=int(len(years)),
                 sigma_emp_Tg=SIGMA_EMP_TG, median_gap_days=float(np.median(gaps_d)), gap_days_minmax=[float(gaps_d.min()), float(gaps_d.max())],
-                n_consecutive_pairs=int(len(M) - 1), time_ordering="by the decimal year column; the sample mixes the three latitude bands of Sect. 7")
+                n_consecutive_pairs=int(len(M) - 1), time_ordering="stable sort by the decimal year column, retaining input CSV row order for tied times; the sample mixes the three latitude bands of Sect. 7")
     pers["M_full_stats_Tg"] = dict(mean=float(M.mean()), std_ddof1=float(M.std(ddof=1)), median=float(np.median(M)),
                                    mean_over_sigma_emp=float(M.mean() / SIGMA_EMP_TG))
     for k in (1.0, 2.0):

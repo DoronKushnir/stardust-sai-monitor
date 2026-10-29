@@ -1,8 +1,6 @@
-% Round 67 (referee item 5): the mid-infrared error budget in one table. Round 75: split into two tables at \footnotesize (Doron, 28 Oct). Values from Appendices B, D and E and the archives
-% (saimon/onion_peel constants; gas_removal_floor_widths.csv; data/ace_floor/w0p1_c880/atlas.json; design_sensitivity_calibrated.json).
 \begin{table*}[t]
 \centering
-\caption{The measurement model of the mid-infrared sensitivity. Top: the terms of the adopted (primary) model, each with its size at the $8.80$-$\mu$m element, its spectral and vertical covariance and its physical content; the model is propagated as one covariance matrix through the joint retrieval of Appendix~\ref{app:tracegas_element} (46-parameter state, no prior on the seven aerosol parameters, heritage triplet as per-shell rows) and gives the sensitivities quoted in Sect.~\ref{sec:solution_threshold}. The sensitivities under the model, its scenarios and the diagonal-floor procedure are in Table~\ref{tab:error_budget_scenarios}. Optical depths (OD) are slant, per $0.1$-$\mu$m element at a $20$-km tangent; masses are $3\sigma$ per $0.5$-km shell at $20$~km, band (47 elements) and window (15 elements), each with the heritage triplet.}
+\caption{Terms of the adopted mid-infrared measurement model at the $8.80$-$\mu$m element. The joint retrieval propagates their covariance and the priors through the 46-parameter state of Appendix~\ref{app:tracegas_element}, with seven unconstrained aerosol parameters and heritage triplet rows. Table~\ref{tab:error_budget_scenarios} gives the resulting sensitivities and comparison scenarios. Optical depths (OD) are slant, per $0.1$-$\mu$m element at a $20$-km tangent.}
 \label{tab:error_budget}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -12,8 +10,8 @@
 Term & Size at $8.80~\mu$m & Spectral and vertical covariance & Physical content and origin \\
 \midrule
 1. Radiometric noise of the element observable & $e^{y/2}/2000$ per sample, $6.1\times10^{-4}$~OD at $y=0.41$ & independent per element and tangent height & the per-sample transmission floor of flown occultation instruments; its separation into detector noise ($e^{y}/S_\text{det}$), shot noise and a systematic floor changes the result by $2\,\%$ (Appendix~\ref{app:tracegas}, Table~\ref{tab:radiometric_budget}) \\
-2. Independent per-line scatter of the HITRAN intensities & $2.3\times10^{-4}$~OD at $\sigma_\eta=2\,\%$ & full covariance through the element responses of every line, window elements only; \ClaudeTextOut{the same in every sounding (coherent between tangent heights)}\ClaudeText{one database realization shared by every tangent height and every sounding of the mission} & modeled from the HITRAN2020 line lists and codes; the coherent part of each source group is a retrieved parameter \\
-3. Model discrepancy & $1.86\times10^{-3}$~OD; $1.9$--$4.1\times10^{-3}$ across the window, to $10.5\times10^{-3}$ at $13.2~\mu$m & Gaussian inter-element correlation of length $0.14~\mu$m, fitted to the measured neighbour correlations ($0.61$ at $0.1~\mu$m, $0.14$ at $0.2~\mu$m); \ClaudeTextOut{independent between tangent heights (a scatter across soundings)}\ClaudeText{assumed independent between tangent heights, which is a scenario, since a scatter across soundings does not measure the covariance between heights within one sounding (Appendix~\ref{app:tracegas_geometry} carries correlated alternatives)} & the sounding-to-sounding scatter of the ACE-FTS residual product on the design's elements (Appendix~\ref{app:acefloor}): instrument line shape, calibration and atmospheric variability after a gas removal\ClaudeTextOut{, which terms 1 and 2 do not contain}\ClaudeText{; the residual product can retain gas-retrieval and spectroscopic error, so its partition from terms 1 and 2 is not measured and part of it may be counted twice, a deliberate conservative choice}; an empirical stand-in for the proposed instrument, not its measured error\Claude{Round 76 (item 3): the height independence named a scenario, the shared database stated, the partition from terms 1--2 declared not measured.} \\
+2. Independent per-line scatter of the HITRAN intensities & input marginal SD $\sqrt{C_{ii}}=3.46\times10^{-4}$~OD at $\sigma_\eta=2\,\%$ & full covariance through the element responses of every line, window elements only; one database realization shared by every tangent height and every sounding of the mission & modeled from the HITRAN2020 line lists and codes; the coherent part of each source group is a retrieved parameter \\
+3. Model discrepancy & $1.86\times10^{-3}$~OD; $1.9$--$4.1\times10^{-3}$ across the window, to $10.5\times10^{-3}$ at $13.2~\mu$m & Gaussian inter-element correlation of length $0.14~\mu$m, fitted to neighbour correlations of $0.61$ at $0.1~\mu$m and $0.14$ at $0.2~\mu$m. Height independence is assumed; across-sounding scatter does not determine within-sounding height covariance. Appendix~\ref{app:tracegas_geometry} tests correlated alternatives. & ACE-FTS residual scatter on the design elements (Appendix~\ref{app:acefloor}), including instrument line shape, calibration and atmospheric variability after gas removal. Residual gas-retrieval and spectroscopic errors can overlap terms 1 and 2; their unmeasured partition permits conservative double counting. An empirical stand-in for the proposed instrument, not its measured error. \\
 4. Visible/NIR extinction errors & $3$--$9\,\%$ of the aerosol extinction per channel, floored at $S=2000$ & independent between channels (an idealization, Appendix~\ref{app:validation}) & SAGE~III/ISS Level-2 product (Table~\ref{tab:combined}) \\
 5. Priors of the joint state & O$_3$ $30\,\%$, N$_2$O $5\,\%$, CH$_4$ $10\,\%$, H$_2$O $30\,\%$ per node ($6$-km correlation), $2$~K, CFC-12 $3\,\%$, source groups at the code midpoints, registration $0.005~\mu$m, edge softness $0.002~\mu$m; aerosol parameters unconstrained & Gaussian; their widths move the band sensitivity by $-2$ to $+8\,\%$ and the window by $-4$ to $+9\,\%$ (Appendix~\ref{app:tracegas_element}) & Table~\ref{tab:element_closure} \\
 \bottomrule
@@ -22,67 +20,26 @@ Term & Size at $8.80~\mu$m & Spectral and vertical covariance & Physical content
 
 \begin{table*}[t]
 \centering
-\caption{\ClaudeTextOut{Sensitivity of the joint retrieval under the measurement model of Table~\ref{tab:error_budget} and under the scenarios that bracket it, and the diagonal-floor procedure that earlier versions of this analysis quoted as the threshold.}\ClaudeText{Sensitivity of the joint retrieval under the primary measurement model and the defined comparison scenarios. The diagonal-floor procedure is included for comparison.}\Claude{Round 76 (T2, editorial suggestion 1).} Masses are $3\sigma$ per $0.5$-km shell at $20$~km, band (47 elements) and window (15 elements), each with the heritage triplet (band alone / window alone in parentheses).}
+\caption{Sensitivity of the joint retrieval under the primary measurement model and the defined comparison scenarios. The diagonal-floor procedure is included for comparison. Masses are $3\sigma$ per $0.5$-km shell at $20$~km, band (47 elements) and window (15 elements), each with the heritage triplet (band alone / window alone in parentheses).}
 \label{tab:error_budget_scenarios}
 \footnotesize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{>{\raggedright\arraybackslash}p{8.0cm}>{\raggedright\arraybackslash}p{7.4cm}}
 \toprule
-\multicolumn{2}{>{\raggedright\arraybackslash}p{15.6cm}}{Sensitivity of the joint retrieval, $3\sigma$ per shell [Tg]: band with the triplet / window with the triplet (band alone / window alone)} \\
+\multicolumn{2}{>{\raggedright\arraybackslash}p{15.6cm}}{Sensitivity of the joint retrieval, $3\sigma$ per shell [Tg], band with the triplet / window with the triplet (band alone / window alone)} \\
 \midrule
 Primary model (terms 1--5) & $0.119$ / $0.168$ ($0.173$ / $0.336$); the quoted sensitivities \\
 Term 1 separated into detector noise, shot noise and the systematic floor, with the shared reference & $0.116$ / $0.166$ \\
 Term 3 independent between elements; exponentially correlated over $0.10$ / $0.20$ / $0.25~\mu$m & $0.123$ / $0.174$; $0.126$ / $0.172$, $0.117$ / $0.159$, $0.113$ / $0.154$ \\
-Term 3 at the level of the superseded mean-optical-depth budget ($\times1.33$) & $0.144$ / $0.199$ \\
+Term 3 at the level of the mean-optical-depth comparison budget ($\times1.33$) & $0.144$ / $0.199$ \\
 Without term 3 (spectroscopic model only; outer elements on the adopted floors) & $0.061$ / $0.094$ \\
-Primary model with a gray offset common to all mid-infrared elements as a \ClaudeTextOut{48th}\ClaudeText{47th} parameter & $0.119$ / $0.217$ \\
+Primary model with a gray offset common to all mid-infrared elements as a 47th parameter & $0.119$ / $0.217$ \\
 Primary model at $S\to\infty$ (window) & $0.162$; the radiometric term adds $4\,\%$ at $S=2000$ \\
 \midrule
-\multicolumn{2}{>{\raggedright\arraybackslash}p{15.6cm}}{The diagonal-floor procedure (two-stage: per-element floors converted with the white onion-peel gain, Fisher marginalization over the six sulfate parameters, no gas state)} \\
+\multicolumn{2}{>{\raggedright\arraybackslash}p{15.6cm}}{The diagonal-floor procedure (two-stage, with per-element floors converted with the white onion-peel gain, Fisher marginalization over the six sulfate parameters, no gas state)} \\
 \midrule
-Floors anchored to the mean-optical-depth budget ($2.47\times10^{-3}$~OD at $8.80~\mu$m) & $0.101$ / $0.141$ ($0.175$ / $0.357$); \ClaudeTextOut{the scenario in which Tables~\ref{tab:robust_summary}, \ref{tab:materials} (far-infrared columns), \ref{tab:altitude_scan} and \ref{tab:latitude_scenarios} are evaluated}\ClaudeText{a comparison scenario; Tables~\ref{tab:robust_summary}, \ref{tab:materials}, \ref{tab:altitude_scan} and \ref{tab:latitude_scenarios} give it beside the adopted model}\Claude{Round 76 (item 8): the obsolete scoping removed.} \\
+Floors anchored to the mean-optical-depth budget ($2.47\times10^{-3}$~OD at $8.80~\mu$m) & $0.101$ / $0.141$ ($0.175$ / $0.357$); a comparison scenario; Tables~\ref{tab:robust_summary}, \ref{tab:materials}, \ref{tab:altitude_scan} and \ref{tab:latitude_scenarios} give it beside the adopted model \\
 Floors at the measured ACE scatter ($1.86\times10^{-3}$~OD) & $0.076$ / $0.106$ \\
 
 \end{tabular}
 \end{table*}
-% ---- round 70 table (replaced in round 74) ----
-% \begin{table*}[t]
-% \centering
-% \caption{The error terms behind the mid-infrared detection threshold, whether each is modeled or measured, its size, the convention and covariance assumed for it, and which result it enters. Optical depths (OD) are slant, per $0.1$-$\mu$m element at a $20$-km tangent; the conversion to a per-shell extinction uses the onion-peel gain $g=1.10$ and the self-layer path $P_{kk}=160$~km (Appendix~\ref{app:validation}). Which covariance enters which result: the adopted thresholds ($0.101$ and $0.141$~Tg) use the per-element floors of row 4 alone, as independent diagonal errors on the per-shell extinctions, with no photon term added (the floors are anchored to a budget evaluated at $S=2000$); the joint element-observable thresholds ($0.057$ and $0.068$~Tg, Appendix~\ref{app:tracegas_element}) use rows 1, 3 and 7 with the gas, temperature, source-group and response priors; the ACE null tests use a constant $8\times10^{-3}$~OD per $2$-cm$^{-1}$ bin (Table~\ref{tab:nulltest_conventions}).}
-% \label{tab:error_budget}
-% \scriptsize
-% \setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{0.95}
-% \begin{tabular}{>{\raggedright\arraybackslash}p{2.7cm}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{3.9cm}>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{3.0cm}}
-% \toprule
-% Term & Origin & Size & Convention and covariance & Enters \\
-% \midrule
-% 1. Photon noise per element & modeled & $6.9\times10^{-6}/S$~m$^{-1}$; $3.4\times10^{-9}$~m$^{-1}$ at $S=2000$; growing as $e^{y/2}$ with the attenuation & independent per element and tangent height; white onion-peel conversion & the element-observable budget (row 3); not added to the adopted floors; equals the gas floor at $S\simeq400$ \\
-% 2. Trace-gas co-retrieval residual at $8.80~\mu$m, mean-optical-depth convention & modeled (archived budget, Appendix~\ref{app:tracegas}) & $2.47\times10^{-3}$~OD $=1.69\times10^{-8}$~m$^{-1}$ per $0.5$-km shell & on $\langle\tau\rangle$, with an assumed $0.2\,\%$ per-element line scatter; converted white (adopted) or with its database part coherent (bracket $1.3\times10^{-8}$~m$^{-1}$) & the anchor of the adopted floors (row 4) \\
-% 3. Trace-gas co-retrieval residual at $8.80~\mu$m, element observable & modeled (joint state, Appendix~\ref{app:tracegas_element}) & $5.1\times10^{-4}$~OD at $S=2000$ ($4.1$ photon-, $2.3$ line-, $2.1\times10^{-4}$ prior-driven); $2.1\times10^{-4}$~OD at $S\to\infty$; $0.45$--$1.09\times10^{-3}$~OD for a per-line scatter of $0$--$7.5\,\%$ & on $-\ln\langle T\rangle$; full covariance of the window elements (photon plus per-line scatter through the element responses), gas, temperature, source-group and response priors; photon part white, database and smoothing parts coherent & the joint thresholds, $0.068$ (window) and $0.057$~Tg (band), not adopted \\
-% 4. Measured residual scatter of the ACE-FTS product at $8.80~\mu$m & measured (Appendix~\ref{app:acefloor}, $19$--$22$~km) & $1.86\times10^{-3}$~OD $=1.28\times10^{-8}$~m$^{-1}$; $0.75$ of row 2, $3.6$ times row 3 & per-element held-year prediction error of a residual ratio after a line-by-line gas removal; white conversion & the empirical level that the adopted floors exceed; not a bound on the proposed instrument's error or bias \\
-% 5. Wavelength dependence across the band & measured (ACE atlas, same record) & $1.5$--$11.9\times10^{-3}$~OD per element, scaled by $1.33$ to row 2 at $8.80~\mu$m & per-element; inter-element correlation tested by the constant-offset mode and the exponential-correlation scan ($+7$ to $+23\,\%$) & the adopted floors $\sigma_k$ of all 47 elements \\
-% 6. Visible/NIR extinction errors & measured product (SAGE~III/ISS Level~2, Table~\ref{tab:combined}) & $3$--$9\,\%$ of the aerosol extinction per channel, floored at $S=2000$ & independent between channels (an idealization, Appendix~\ref{app:validation}) & $\sigma_k=\phi_k s_k$ of the three heritage channels \\
-% 7. Instrument response (wavelength registration, edge softness) & modeled (Appendix~\ref{app:tracegas_element}) & registration retrieved to $0.35$~nm; unretrieved errors of $0.001$ and $0.003~\mu$m bias the silica by $+0.009$ and $+0.021$~Tg & two retrieved parameters with priors of $0.005$ and $0.002~\mu$m & the joint thresholds and the closure test \\
-% 8. Constant offset common to all MIR elements & tested nuisance mode & $+0.001$~Tg on the band ($0.101\to0.102$), $+0.12$~Tg on the window & one gray pedestal; not a bound on errors parallel to the silica template & an eighth fitted parameter in the test \\
-% \bottomrule
-% \end{tabular}
-% \end{table*}
-% ---- round 69 table (replaced in round 70, items 1-3) ----
-% \begin{table*}[t]
-% \centering
-% \caption{The error terms behind the mid-infrared detection threshold, whether each is modeled or measured, its size, the covariance assumed for it, and where it enters the retrieval. Optical depths (OD) are slant, per $0.1$-$\mu$m element at a $20$-km tangent; the conversion to a per-shell extinction uses the onion-peel gain $g=1.10$ and the self-layer path $P_{kk}=160$~km (Appendix~\ref{app:validation}).}
-% \label{tab:error_budget}
-% \footnotesize
-% \begin{tabular}{p{2.8cm}p{2.3cm}p{3.0cm}p{3.3cm}p{2.9cm}}
-% \toprule
-% Term & Origin & Size & Covariance assumed & Enters as \\
-% \midrule
-% Photon noise per element & modeled & $6.9\times10^{-6}/S$~m$^{-1}$; $3.4\times10^{-9}$~m$^{-1}$ at $S=2000$ & independent per element and tangent height & added in quadrature to every element; equals the gas floor at $S\simeq400$ \\
-% Trace-gas co-retrieval residual at $8.80~\mu$m & modeled (optimal estimation, Appendix~\ref{app:tracegas}) & $2.47\times10^{-3}$~OD $=1.69\times10^{-8}$~m$^{-1}$ per $0.5$-km shell & coherent between tangent heights (database term); element-scale spectral structure & the per-element floor $\sigma_k$ of the $8.80$-$\mu$m element \\
-% Residual scatter of the ACE-FTS record at $8.80~\mu$m & measured (Appendix~\ref{app:acefloor}, $19$--$22$~km) & $1.86\times10^{-3}$~OD $=1.28\times10^{-8}$~m$^{-1}$; the budget is $33\,\%$ above it & per-element held-year prediction error after a line-by-line gas removal & lower bound on the floor; not used as the design's floor \\
-% Wavelength dependence across the band & measured (ACE atlas, same record) & $1.5$--$11.9\times10^{-3}$~OD per element, scaled by $1.33$ to the budget at $8.80~\mu$m & per-element; inter-element correlation tested by the constant-offset mode & the floors $\sigma_k$ of the other 46 elements \\
-% Visible/NIR extinction errors & measured product (SAGE~III/ISS Level~2, Table~\ref{tab:combined}) & $3$--$9\,\%$ of the aerosol extinction per channel, floored at $S=2000$ & independent between channels (an idealization, Appendix~\ref{app:validation}) & $\sigma_k=\phi_k s_k$ of the three heritage channels \\
-% Constant offset common to all MIR elements & tested nuisance mode & $+0.001$~Tg on the band ($0.101\to0.102$), $+0.12$~Tg on the window & one gray pedestal; not a bound on errors parallel to the silica template & an eighth fitted parameter in the test \\
-% \bottomrule
-% \end{tabular}
-% \end{table*}

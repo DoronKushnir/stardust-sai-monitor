@@ -8,12 +8,13 @@ provenance), the files it writes, whether `make_all.py --fast` regenerates it
 or only `--full` does, and which of its inputs are themselves derived products
 shipped with the repository.
 
-**Software state described here.** Commit
-`c523d6c77ca7eb8ea260be7756673e9a22782a1e` (the HEAD of this repository on
-2026-10-25 and the commit checked in referee round 5); the rows marked
-"round 70" describe the port of the round-70 analyses (the reply to referee
-round 5), tagged `rc5-round70`. Annotated tags in the
-history: `round51`, `round53-54`, `rc2-round56`, `rc2-round57`, `rc3-round59`.
+**Current candidate.** `rc9-round80` builds on the immutable RC8 candidate
+`rc8-round78` (`a801652a62137aeae48fd49677b6917ccb6df528`). The code/data
+release and persistent archive citation are pending publication. The sections
+below retain the provenance of earlier computations; the following map identifies
+the manuscript's active scientific outputs. No historical “rerun here” entry
+asserts that the corresponding heavy computation ran in the current checkout.
+
 ## Current model and reproduction entry point
 
 The primary 46-parameter joint retrieval gives 0.118591 Tg (band plus triplet)
@@ -39,7 +40,7 @@ The line-prediction contribution is 0.397e-3 OD; the separate removal-residual
 contribution is 0.563e-3 OD, and the input marginal SD is 0.346e-3 OD.
 Use file names and TeX labels to identify objects; manuscript numbering can
 change when tables are added. The immutable preceding public release is
-`rc7-round76`. The RC8 corrections are prepared locally for `rc8-round78`;
+`rc7-round76`. The RC8 corrections and RC9 comparison repairs are prepared locally for `rc9-round80`;
 a persistent Zenodo deposit and final submission metadata remain pending.
 
 ## 1. Vocabulary
@@ -257,8 +258,10 @@ each run re-verifies its own score tables and hashes), `design`, `resol`,
 `floorw`, `snr`, `limb`, `highres` (from D-XSEC) plus `cont`, `cfc`, `stT`,
 `lines` (which need the unshipped line lists and will fail without
 `fetch/build_hitran_cache.py`). After a full run,
-`python reproduce/compare_reference.py` compares 22 archived JSON files with
-`reference_outputs/outputs/` number by number and lists the figures.
+`python reproduce/compare_reference.py --json outputs/reference_comparison.json`
+compares 51 JSON/CSV products with `reference_outputs/outputs/`. Its complete
+policy is in `COMPARISON.md`; local execution receipts distinguish regenerated
+products from checks of shipped archives, and figures are checked for existence.
 
 **What `--full` does not recompute** (shipped as derived products, each
 with its regeneration script):
@@ -431,7 +434,7 @@ Headline numbers are unchanged (0.12 / 0.17 Tg at 20 km); the multi-tangent inve
 | A-MTAN75 (revised) `outputs/multitangent_retrieval.json` (App. D9: radiance-averaged field of view, y_F = -ln sum w_h exp(-y_h) with radiance-weighted Jacobians; sub-ray spacing 0.25 km checked against 0.125 km: 0.5-km field 0.072 -> 0.075 Tg, 1 km 0.092 Tg) | `reproduce/multitangent_retrieval.py`, step `mtan` | engine | archive | FULL (6 min) | rerun here |
 | Table 8 `tables/latitude_scenarios.tex` (contiguous passing intervals of 2-degree grid centres, bin and area-weighted fractions) | `reproduce/adopted_latitude.py --table` (reads the archived maps) | A-LAT75 maps | table | FAST | rerun here |
 | Tables D2, D4, D5 `tables/element_closure.tex` | `reproduce/element_closure_table.py` (rewritten) | A-CLOSURE, A-UMODEL, A-FPC, A-GCONV, A-GASB76, A-CLOSE76 | table | FAST | rerun here |
-| `reproduce/compare_reference.py` | extended to the round-71/74/75 archives; absolute tolerance 1e-8 for numerical zeros; wall-clock fields skipped | — | — | — | passes except the alumina far-infrared self-check field (public Cauchy-smoothed table, Sect. 9) |
+| `reproduce/compare_reference.py` | extended to the round-71/74/75 archives; absolute tolerance 1e-8 for numerical zeros; wall-clock fields skipped | — | — | — | historical comparison status; superseded by the RC9 reconciliation and explicit policy in COMPARISON.md |
 
 The headline numbers are unchanged. The round-70 closure ensembles with the coarse-radius prior of 1000 nm remain in `outputs/element_observable_closure.json` and `closure_variants.json` as a diagnostic; the tables now show the closure of the final estimator.
 
@@ -452,3 +455,32 @@ regression checks include explicit shared-forecast covariance, producer/consumer
 order, schema consistency, prediction-variance closure and per-draw coverage.
 The version-7 tag remains immutable. This candidate is prepared locally and has
 not been published or deposited on Zenodo.
+
+## 14. RC9 comparison and reference reconciliation
+
+The standard comparison now covers the seasonal, gas, final-closure, per-draw
+stability and JSON/CSV stability-summary products. `COMPARISON.md` specifies the
+numerical policy, exact flags/counts, explicit optimizer/bit-identity diagnostics,
+and independent all-draw convergence, objective and coverage checks. Missing
+outputs, structural changes and scientific failures cause a nonzero exit.
+
+The quick latitude-persistence diagnostic uses stable chronological sorting with
+input CSV row order retained at tied times. Its reference is refreshed from this
+rule, without excluding persistence fields. Three stale alumina archive-comparison
+fields are reconciled with the current scalar-optics archive; no new far-infrared
+forward calculation is claimed. `reference_reconciliation_rc9.json` records the
+changed fields and input hashes.
+
+A `make_all.py` run writes an untracked local receipt. The comparator labels an
+output regenerated only when its current hash matches a successful step's record;
+otherwise the result is explicitly an archive-consistency check. Full closure,
+latitude forward grids and far-infrared calculations are not rerun merely by
+running the comparator or the fast workflow.
+
+RC9 validation used a separate snapshot from the tracked RC8 candidate plus the
+RC9 changes, without untracked working-checkout caches. All 44 fast steps passed
+(702 seconds summed step time), all 65 tests passed, and all 3987 checksums
+passed. The extended comparison passed all 51 products, of which 22 had
+matching regeneration receipts and 29 were archive-consistency checks.
+The full optimization ensemble and far-infrared forward models were not rerun
+in this validation. One existing all-NaN-slice test warning remains.

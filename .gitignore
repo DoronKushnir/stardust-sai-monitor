@@ -23,3 +23,7 @@ outputs/ace_v52/basis_diag_*.npz
 # run cache of reproduce/element_observable_closure.py
 outputs/element_observable_closure_aerosol.npz
 outputs/element_observable_closure_coarse.*
+
+# Local run evidence, never shipped as evidence of regeneration on another machine.
+outputs/reproduction_run.json
+outputs/reference_comparison.json
