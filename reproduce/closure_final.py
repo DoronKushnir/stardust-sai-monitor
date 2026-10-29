@@ -176,7 +176,8 @@ def run(est, rng, ndraw, masses, L_mir, label, prior_scale=1.0, T_sig=C.T_PRIOR_
                                   sd_over_posterior=float(np.std(A, ddof=1) / np.median(s)),
                                   coverage_1sig=k1 / n, coverage_1sig_ci95=cp(k1, n), coverage_2sig=k2 / n, coverage_2sig_ci95=cp(k2, n),
                                   p_detect_3sig=k3 / n, p_detect_3sig_ci95=cp(k3, n), p_detect_4p54sig=k4 / n, p_detect_4p54sig_ci95=cp(k4, n),
-                                  n_converged=int(np.sum(r["conv"])), median_iterations=float(np.median(r["it"])), masses_tg=A.tolist())
+                                  n_converged=int(np.sum(r["conv"])), median_iterations=float(np.median(r["it"])), masses_tg=A.tolist(),
+                                  posterior_sigmas_tg=s.tolist(), convergence_flags=r["conv"], iterations=r["it"])
         if M_shell == 0.0:
             summ["0.0"]["null_exceed_3sig_one_sided_95_upper"] = float(beta.ppf(0.95, k3 + 1, n - k3)) if k3 < n else 1.0
         log(f"  {label:44s} M={M_shell:<5}: bias {summ[str(M_shell)]['bias_median']:+.4f} sd {summ[str(M_shell)]['sd']:.4f} post {summ[str(M_shell)]['posterior_sigma_median']:.4f} "

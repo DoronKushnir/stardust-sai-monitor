@@ -77,7 +77,6 @@ STEPS = [
     ("ash",    ["ace_ash_positive_control.py"],           "outputs/ace_v52/ash_positive_control.{csv,json}, figures/ace_ash_positive_control.png (Sect. 4.3: positive control on the Lecours et al. 2026 ash spectra)", "5 min", False),
     # paper 1 round 70 (referee round 5, October 2026)
     ("closure",["element_observable_closure.py"],         "outputs/element_observable_closure.{json,npz}, figures/scisat_ace_atlas_874.png (App. D element-observable budget, joint 38-parameter retrieval, SNR scan, response sensitivity, Monte Carlo closure; Tables 2, D2-D3, Fig. 3; items 1-3)  [HITRAN: shipped 0.0025-cm^-1 grids + carved line lists; hitran-api for the partition sums]", "45 min", True),
-    ("tabD2",  ["element_closure_table.py"],              "tables/element_closure.tex (Tables D2-D3) from the closure archive", "s", False),
     ("rank",   ["marginal_rank.py"],                      "outputs/marginal_rank.{json,txt} (App. C: every archived configuration re-evaluated with the SVD marginalization; item 6)", "3 min", False),
     ("ranktest",["marginal_rank_tests.py"],               "stdout: the sparse/rank checks of marginal() (the four tests of tests/test_package.py)", "s", False),
     ("lat70",  ["latitude_declared_level.py"],            "outputs/latitude_declared_level.json (Sect. 6 on the declared 20.47-km model level: plume factors, coverage, vertical response, campaign covariance; item 7)", "1 min", False),
@@ -108,6 +107,8 @@ STEPS = [
     ("gasb76",  ["gas_budget_conditioning.py"],           "outputs/gas_budget_conditioning.json (Table D2: the 8.80-um gas budget by its conditioning; the silica posterior decomposition; round 76 items 2-3)", "10 s", False),
     ("trend76", ["ace_null_trend.py"],                    "outputs/ace_null_trend.json (Sects. 4.3, 5.3: the frozen pre-deployment trend rule and its tests; round 76 item 7)", "10 s", False),
     ("lattab",  ["adopted_latitude.py", "--table"],       "tables/latitude_scenarios.tex (Table 8 with contiguous latitude intervals, from the archived maps; round 76 item 5)", "s", False),
+    ("stable78", ["closure_stability.py"], "outputs/closure_stability.json (all-draw convergence audit and refinement)", "40 min", True),
+    ("tabD2",  ["element_closure_table.py"],              "tables/element_closure.tex (Tables D2-D3) from the closure archive", "s", False),
 ]
 
 FAST = [k for k, *_ in STEPS if not [s for s in STEPS if s[0] == k][0][4]]

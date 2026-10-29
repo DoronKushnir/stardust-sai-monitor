@@ -1,9 +1,10 @@
 {
- "script": "scripts/ace_null_trend_round76.py",
- "round": 76,
+ "script": "reproduce/ace_null_trend.py",
+ "round": 78,
  "slant_to_shell": 2.33,
  "bootstrap_draws": 4000,
  "rule": "linear trend fitted by OLS to the pre-deployment training record, frozen at T_0, forecast covariance of (a, b) from a year-block bootstrap; z = (M - M_0(t)) / sqrt(sigma^2 + var M_0(t))",
+ "seasonal_rule": "mean(M-M0)/sqrt(sigma_train**2/n + xbar.T cov_ab xbar); independent test residuals, shared forecast covariance; 4.54 is a retrospective comparator, not a calibrated seasonal false-alarm threshold",
  "cases": {
   "train_2004_2015": {
    "rule": {
@@ -44,8 +45,8 @@
     "null": {
      "rate_tg_per_decade": 0.0,
      "step_tg": 0.0,
-     "first_season_seasonal_mean_above_4p54": 2021,
-     "first_season_above_3": 2018,
+     "first_season_seasonal_mean_above_4p54": null,
+     "first_season_above_3": 2021,
      "single_sounding_exceedances": [
       0,
       54
@@ -53,58 +54,103 @@
      "exceedance_fraction_upper95": 0.05396576709737626,
      "seasons": {
       "2016": {
-       "z_mean": 1.34,
+       "z_mean": 1.21,
        "exceed": 0,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.010436300561958295,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 1.2060656148116282
       },
       "2017": {
-       "z_mean": 0.92,
+       "z_mean": 0.81,
        "exceed": 0,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.007206334078585733,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 0.8096405845715144
       },
       "2018": {
-       "z_mean": 3.42,
+       "z_mean": 2.74,
        "exceed": 0,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.0221255291395992,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 2.736277076233883
       },
       "2019": {
-       "z_mean": 2.66,
+       "z_mean": 1.99,
        "exceed": 0,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.016082049267452107,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 1.9895199366894978
       },
       "2020": {
-       "z_mean": 1.96,
+       "z_mean": 1.48,
        "exceed": 0,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.012990015727674215,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 1.4829516971065477
       },
       "2021": {
-       "z_mean": 5.21,
+       "z_mean": 3.39,
        "exceed": 0,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.028528605387386774,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 3.391617144306076
       },
       "2022": {
-       "z_mean": 5.5,
+       "z_mean": 3.6,
        "exceed": 0,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.0323529147694536,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 3.5988499994070953
       },
       "2023": {
-       "z_mean": 4.09,
+       "z_mean": 3.43,
        "exceed": 0,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.039864554087583756,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 3.4270276734365845
       },
       "2024": {
-       "z_mean": 3.56,
+       "z_mean": 2.3,
        "exceed": 0,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.02299416168288108,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 2.2980635468357242
       }
      },
      "signal_last_season_tg": 0.0
@@ -121,58 +167,103 @@
      "exceedance_fraction_upper95": 0.08486195988423352,
      "seasons": {
       "2016": {
-       "z_mean": 1.46,
+       "z_mean": 1.32,
        "exceed": 0,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.011406868665996717,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 1.3182288100132435
       },
       "2017": {
-       "z_mean": 1.3,
+       "z_mean": 1.15,
        "exceed": 0,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.010224814571398917,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 1.1487706171328966
       },
       "2018": {
-       "z_mean": 4.19,
+       "z_mean": 3.36,
        "exceed": 0,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.02715313580170281,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 3.3580441205850793
       },
       "2019": {
-       "z_mean": 3.81,
+       "z_mean": 2.86,
        "exceed": 0,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.023104832097216484,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 2.858312602256957
       },
       "2020": {
-       "z_mean": 3.34,
+       "z_mean": 2.52,
        "exceed": 0,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.02209519482874665,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 2.5224070052035445
       },
       "2021": {
-       "z_mean": 7.25,
+       "z_mean": 4.71,
        "exceed": 0,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.03965994617375834,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 4.714964210786338
       },
       "2022": {
-       "z_mean": 7.74,
+       "z_mean": 5.06,
        "exceed": 0,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.04550418102544257,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 5.061760988875504
       },
       "2023": {
-       "z_mean": 5.66,
+       "z_mean": 4.74,
        "exceed": 1,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.05514678087289055,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 4.740791624989029
       },
       "2024": {
-       "z_mean": 6.22,
+       "z_mean": 4.01,
        "exceed": 0,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.04013584546111513,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 4.0112235726466405
       }
      },
      "signal_last_season_tg": 0.017141683778234048
@@ -180,7 +271,7 @@
     "ramp_0.05_per_decade": {
      "rate_tg_per_decade": 0.05,
      "step_tg": 0.0,
-     "first_season_seasonal_mean_above_4p54": 2018,
+     "first_season_seasonal_mean_above_4p54": 2021,
      "first_season_above_3": 2018,
      "single_sounding_exceedances": [
       4,
@@ -189,58 +280,103 @@
      "exceedance_fraction_upper95": 0.16154457663523988,
      "seasons": {
       "2016": {
-       "z_mean": 1.65,
+       "z_mean": 1.49,
        "exceed": 0,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.012862720822054346,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 1.486473602815666
       },
       "2017": {
-       "z_mean": 1.88,
+       "z_mean": 1.66,
        "exceed": 0,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.01475253531061869,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 1.65746566597497
       },
       "2018": {
-       "z_mean": 5.36,
+       "z_mean": 4.29,
        "exceed": 0,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.03469454579485822,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 4.2906946871118725
       },
       "2019": {
-       "z_mean": 5.55,
+       "z_mean": 4.16,
        "exceed": 0,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.033639006341863044,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 4.161501600608145
       },
       "2020": {
-       "z_mean": 5.4,
+       "z_mean": 4.08,
        "exceed": 0,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.035752963480355296,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 4.081589967349039
       },
       "2021": {
-       "z_mean": 10.3,
+       "z_mean": 6.7,
        "exceed": 0,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.05635695735331568,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 6.69998481050673
       },
       "2022": {
-       "z_mean": 11.1,
+       "z_mean": 7.26,
        "exceed": 2,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.065231080409426,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 7.256127473078114
       },
       "2023": {
-       "z_mean": 8.02,
+       "z_mean": 6.71,
        "exceed": 1,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.07807012105085075,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 6.711437552317697
       },
       "2024": {
-       "z_mean": 10.2,
+       "z_mean": 6.58,
        "exceed": 1,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.0658483711284662,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 6.580963611363015
       }
      },
      "signal_last_season_tg": 0.042854209445585115
@@ -257,58 +393,103 @@
      "exceedance_fraction_upper95": 0.6540731632340429,
      "seasons": {
       "2016": {
-       "z_mean": 1.96,
+       "z_mean": 1.77,
        "exceed": 0,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.0152891410821504,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 1.7668815908197042
       },
       "2017": {
-       "z_mean": 2.84,
+       "z_mean": 2.51,
        "exceed": 0,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.022298736542651645,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 2.5052907473784254
       },
       "2018": {
-       "z_mean": 7.3,
+       "z_mean": 5.85,
        "exceed": 1,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.04726356245011724,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 5.845112297989862
       },
       "2019": {
-       "z_mean": 8.45,
+       "z_mean": 6.33,
        "exceed": 0,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.051195963416273985,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 6.333483264526792
       },
       "2020": {
-       "z_mean": 8.84,
+       "z_mean": 6.68,
        "exceed": 2,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.05851591123303637,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 6.68022823759153
       },
       "2021": {
-       "z_mean": 15.38,
+       "z_mean": 10.01,
        "exceed": 8,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.08418530931924459,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 10.008352476707383
       },
       "2022": {
-       "z_mean": 16.69,
+       "z_mean": 10.91,
        "exceed": 8,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.09810924604939839,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 10.91340494674913
       },
       "2023": {
-       "z_mean": 11.94,
+       "z_mean": 10.0,
        "exceed": 3,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.11627568801411775,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 9.99584743119881
       },
       "2024": {
-       "z_mean": 16.84,
+       "z_mean": 10.86,
        "exceed": 7,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.10870258057405131,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 10.863863675890306
       }
      },
      "signal_last_season_tg": 0.08570841889117023
@@ -316,7 +497,7 @@
     "ramp_0.20_per_decade": {
      "rate_tg_per_decade": 0.2,
      "step_tg": 0.0,
-     "first_season_seasonal_mean_above_4p54": 2017,
+     "first_season_seasonal_mean_above_4p54": 2018,
      "first_season_above_3": 2017,
      "single_sounding_exceedances": [
       40,
@@ -325,58 +506,103 @@
      "exceedance_fraction_upper95": 0.8359363497741817,
      "seasons": {
       "2016": {
-       "z_mean": 2.59,
+       "z_mean": 2.33,
        "exceed": 0,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.020141981602342506,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 2.3276975668277804
       },
       "2017": {
-       "z_mean": 4.76,
+       "z_mean": 4.2,
        "exceed": 0,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.03739113900671756,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 4.200940910185337
       },
       "2018": {
-       "z_mean": 11.18,
+       "z_mean": 8.95,
        "exceed": 3,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.07240159576063528,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 8.95394751974584
       },
       "2019": {
-       "z_mean": 14.25,
+       "z_mean": 10.68,
        "exceed": 6,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.08630987756509587,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 10.677446592364086
       },
       "2020": {
-       "z_mean": 15.71,
+       "z_mean": 11.88,
        "exceed": 4,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.10404180673839854,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 11.877504778076514
       },
       "2021": {
-       "z_mean": 25.56,
+       "z_mean": 16.63,
        "exceed": 9,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.13984201325110243,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 16.625087809108695
       },
       "2022": {
-       "z_mean": 27.87,
+       "z_mean": 18.23,
        "exceed": 8,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.1638655773293432,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 18.22795989409117
       },
       "2023": {
-       "z_mean": 19.79,
+       "z_mean": 16.56,
        "exceed": 3,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.19268682194065176,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 16.564667188961035
       },
       "2024": {
-       "z_mean": 30.11,
+       "z_mean": 19.43,
        "exceed": 7,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.19441099946522158,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 19.42966380494489
       }
      },
      "signal_last_season_tg": 0.17141683778234046
@@ -393,58 +619,103 @@
      "exceedance_fraction_upper95": 1.0,
      "seasons": {
       "2016": {
-       "z_mean": 14.18,
+       "z_mean": 12.76,
        "exceed": 4,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.1104363005619583,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 12.762513300957215
       },
       "2017": {
-       "z_mean": 13.65,
+       "z_mean": 12.04,
        "exceed": 4,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.10720633407858574,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 12.04476479255729
       },
       "2018": {
-       "z_mean": 18.86,
+       "z_mean": 15.1,
        "exceed": 6,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.12212552913959922,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 15.103335323607626
       },
       "2019": {
-       "z_mean": 19.16,
+       "z_mean": 14.36,
        "exceed": 7,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.11608204926745211,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 14.360579766210213
       },
       "2020": {
-       "z_mean": 17.07,
+       "z_mean": 12.9,
        "exceed": 6,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.1129900157276742,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 12.899040239226128
       },
       "2021": {
-       "z_mean": 23.49,
+       "z_mean": 15.28,
        "exceed": 9,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.12852860538738678,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 15.280095737113829
       },
       "2022": {
-       "z_mean": 22.51,
+       "z_mean": 14.72,
        "exceed": 8,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.1323529147694536,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 14.722577258766716
       },
       "2023": {
-       "z_mean": 14.37,
+       "z_mean": 12.02,
        "exceed": 3,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.13986455408758378,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 12.023706482152946
       },
       "2024": {
-       "z_mean": 19.05,
+       "z_mean": 12.29,
        "exceed": 7,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.12299416168288106,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 12.292181090797367
       }
      },
      "signal_last_season_tg": 0.09999999999999999
@@ -461,58 +732,103 @@
      "exceedance_fraction_upper95": 1.0,
      "seasons": {
       "2016": {
-       "z_mean": 20.6,
+       "z_mean": 18.54,
        "exceed": 4,
        "null": 0.0012,
-       "null_sd": 0.0044
+       "null_sd": 0.0044,
+       "n": 4,
+       "mean_residual": 0.1604363005619583,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 1.8982114716718318e-05,
+       "statistic": 18.540737144030007
       },
       "2017": {
-       "z_mean": 20.01,
+       "z_mean": 17.66,
        "exceed": 4,
        "null": 0.0017,
-       "null_sd": 0.0048
+       "null_sd": 0.0048,
+       "n": 4,
+       "mean_residual": 0.15720633407858575,
+       "residual_variance": 5.589537646635259e-05,
+       "forecast_variance": 2.332633927753054e-05,
+       "statistic": 17.66232689655018
       },
       "2018": {
-       "z_mean": 26.58,
+       "z_mean": 21.29,
        "exceed": 6,
        "null": 0.0023,
-       "null_sd": 0.0053
+       "null_sd": 0.0053,
+       "n": 6,
+       "mean_residual": 0.17212552913959922,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 2.8119768551424968e-05,
+       "statistic": 21.286864447294494
       },
       "2019": {
-       "z_mean": 27.41,
+       "z_mean": 20.55,
        "exceed": 7,
        "null": 0.0028,
-       "null_sd": 0.0058
+       "null_sd": 0.0058,
+       "n": 7,
+       "mean_residual": 0.1660820492674521,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 3.340084636735333e-05,
+       "statistic": 20.546109680970567
       },
       "2020": {
-       "z_mean": 24.62,
+       "z_mean": 18.61,
        "exceed": 6,
        "null": 0.0034,
-       "null_sd": 0.0063
+       "null_sd": 0.0063,
+       "n": 6,
+       "mean_residual": 0.16299001572767421,
+       "residual_variance": 3.7263584310901725e-05,
+       "forecast_variance": 3.946644128344055e-05,
+       "statistic": 18.60708451028592
       },
       "2021": {
-       "z_mean": 32.63,
+       "z_mean": 21.22,
        "exceed": 9,
        "null": 0.0039,
-       "null_sd": 0.0068
+       "null_sd": 0.0068,
+       "n": 9,
+       "mean_residual": 0.1785286053873868,
+       "residual_variance": 2.484238954060115e-05,
+       "forecast_variance": 4.591103089161994e-05,
+       "statistic": 21.224335033517708
       },
       "2022": {
-       "z_mean": 31.02,
+       "z_mean": 20.28,
        "exceed": 8,
        "null": 0.0045,
-       "null_sd": 0.0073
+       "null_sd": 0.0073,
+       "n": 8,
+       "mean_residual": 0.1823529147694536,
+       "residual_variance": 2.7947688233176296e-05,
+       "forecast_variance": 5.2868681140526065e-05,
+       "statistic": 20.284440888446525
       },
       "2023": {
-       "z_mean": 19.5,
+       "z_mean": 16.32,
        "exceed": 3,
        "null": 0.0051,
-       "null_sd": 0.0078
+       "null_sd": 0.0078,
+       "n": 3,
+       "mean_residual": 0.18986455408758374,
+       "residual_variance": 7.452716862180345e-05,
+       "forecast_variance": 6.0785543345894456e-05,
+       "statistic": 16.322045886511123
       },
       "2024": {
-       "z_mean": 26.8,
+       "z_mean": 17.29,
        "exceed": 7,
        "null": 0.0056,
-       "null_sd": 0.0083
+       "null_sd": 0.0083,
+       "n": 7,
+       "mean_residual": 0.1729941616828811,
+       "residual_variance": 3.194021512363005e-05,
+       "forecast_variance": 6.817753788848502e-05,
+       "statistic": 17.289239862778192
       }
      },
      "signal_last_season_tg": 0.15
@@ -567,94 +883,169 @@
      "exceedance_fraction_upper95": 0.04020679425316584,
      "seasons": {
       "2010": {
-       "z_mean": 0.97,
+       "z_mean": 0.53,
        "exceed": 0,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.009424712808351297,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 0.5278533924482591
       },
       "2011": {
-       "z_mean": -0.86,
+       "z_mean": -0.65,
        "exceed": 0,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": -0.014832302492702452,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": -0.6549373065740076
       },
       "2012": {
-       "z_mean": 0.31,
+       "z_mean": 0.19,
        "exceed": 0,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.0049448818087322695,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 0.19420463500493293
       },
       "2013": {
        "z_mean": -0.4,
        "exceed": 0,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": -0.012013288378510444,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": -0.39797972532851233
       },
       "2014": {
-       "z_mean": -0.08,
+       "z_mean": -0.06,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": -0.0018223498337493402,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": -0.055667544222898366
       },
       "2015": {
-       "z_mean": 0.33,
+       "z_mean": 0.15,
        "exceed": 0,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.005106710520307739,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 0.1451575233663576
       },
       "2016": {
-       "z_mean": 0.66,
+       "z_mean": 0.34,
        "exceed": 0,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.0133461938732181,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 0.3441073690077388
       },
       "2017": {
-       "z_mean": 0.47,
+       "z_mean": 0.24,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.010399526235879798,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 0.24493159380122756
       },
       "2018": {
-       "z_mean": 1.32,
+       "z_mean": 0.56,
        "exceed": 0,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.02559665463447992,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 0.5574472367969769
       },
       "2019": {
-       "z_mean": 1.03,
+       "z_mean": 0.4,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.019829178320410572,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 0.4007128443315158
       },
       "2020": {
-       "z_mean": 0.77,
+       "z_mean": 0.32,
        "exceed": 0,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.017025213969471653,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 0.31943870466035645
       },
       "2021": {
-       "z_mean": 1.69,
+       "z_mean": 0.58,
        "exceed": 0,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.032844093582245874,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 0.5773606678636709
       },
       "2022": {
-       "z_mean": 1.69,
+       "z_mean": 0.61,
        "exceed": 0,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.03694783022778084,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 0.6099369740377033
       },
       "2023": {
-       "z_mean": 1.18,
+       "z_mean": 0.69,
        "exceed": 0,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.044754256892386046,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 0.691434481472987
       },
       "2024": {
-       "z_mean": 1.08,
+       "z_mean": 0.41,
        "exceed": 0,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.028141093275025095,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 0.414735746053174
       }
      },
      "signal_last_season_tg": 0.0
@@ -671,94 +1062,169 @@
      "exceedance_fraction_upper95": 0.04020679425316584,
      "seasons": {
       "2010": {
-       "z_mean": 1.09,
+       "z_mean": 0.59,
        "exceed": 0,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.01056749172690011,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 0.5918574359921459
       },
       "2011": {
-       "z_mean": -0.67,
+       "z_mean": -0.51,
        "exceed": 0,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": -0.011567415429047555,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": -0.5107724784368719
       },
       "2012": {
-       "z_mean": 0.64,
+       "z_mean": 0.4,
        "exceed": 0,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.010236234763329608,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 0.40201653202847354
       },
       "2013": {
        "z_mean": -0.17,
        "exceed": 0,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": -0.005128962574266572,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": -0.16991376983659207
       },
       "2014": {
-       "z_mean": 0.31,
+       "z_mean": 0.23,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": 0.007385042363375705,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": 0.22559179622793638
       },
       "2015": {
-       "z_mean": 1.06,
+       "z_mean": 0.46,
        "exceed": 0,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.01617447232728922,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 0.4597570853978039
       },
       "2016": {
-       "z_mean": 1.3,
+       "z_mean": 0.68,
        "exceed": 0,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.02631676197725652,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 0.6785299097871611
       },
       "2017": {
-       "z_mean": 1.16,
+       "z_mean": 0.6,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.02541800672869298,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 0.5986496651962538
       },
       "2018": {
-       "z_mean": 2.2,
+       "z_mean": 0.93,
        "exceed": 0,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.042624261296583525,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 0.9282766447255146
       },
       "2019": {
-       "z_mean": 2.02,
+       "z_mean": 0.79,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.03885196115017495,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 0.7851298530266989
       },
       "2020": {
-       "z_mean": 1.71,
+       "z_mean": 0.72,
        "exceed": 0,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.03813039307054409,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 0.715428504598279
       },
       "2021": {
-       "z_mean": 2.88,
+       "z_mean": 0.98,
        "exceed": 0,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.05597543436861743,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 0.9839825261152523
       },
       "2022": {
-       "z_mean": 2.84,
+       "z_mean": 1.03,
        "exceed": 0,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.062099096483769795,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 1.0251355699720306
       },
       "2023": {
-       "z_mean": 1.9,
+       "z_mean": 1.11,
        "exceed": 0,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.07203648367769284,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 1.11293343242387
       },
       "2024": {
-       "z_mean": 2.2,
+       "z_mean": 0.84,
        "exceed": 0,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.05728277705325913,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 0.844217921635096
       }
      },
      "signal_last_season_tg": 0.029141683778234045
@@ -766,8 +1232,8 @@
     "ramp_0.05_per_decade": {
      "rate_tg_per_decade": 0.05,
      "step_tg": 0.0,
-     "first_season_seasonal_mean_above_4p54": 2021,
-     "first_season_above_3": 2018,
+     "first_season_seasonal_mean_above_4p54": null,
+     "first_season_above_3": null,
      "single_sounding_exceedances": [
       0,
       73
@@ -775,94 +1241,169 @@
      "exceedance_fraction_upper95": 0.04020679425316584,
      "seasons": {
       "2010": {
-       "z_mean": 1.27,
+       "z_mean": 0.69,
        "exceed": 0,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.012281660104723325,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 0.6878635013079758
       },
       "2011": {
-       "z_mean": -0.39,
+       "z_mean": -0.29,
        "exceed": 0,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": -0.006670084833565211,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": -0.2945252362311684
       },
       "2012": {
-       "z_mean": 1.14,
+       "z_mean": 0.71,
        "exceed": 0,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.01817326419522562,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 0.7137343775637845
       },
       "2013": {
        "z_mean": 0.17,
        "exceed": 0,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": 0.005197526132099237,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": 0.1721851634012884
       },
       "2014": {
-       "z_mean": 0.88,
+       "z_mean": 0.65,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": 0.021196130659063273,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": 0.6474808069041885
       },
       "2015": {
-       "z_mean": 2.16,
+       "z_mean": 0.93,
        "exceed": 0,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.03277611503776144,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 0.9316564284449735
       },
       "2016": {
-       "z_mean": 2.26,
+       "z_mean": 1.18,
        "exceed": 0,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.045772614133314155,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 1.1801637209562945
       },
       "2017": {
-       "z_mean": 2.18,
+       "z_mean": 1.13,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.04794572746791276,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 1.1292267722887932
       },
       "2018": {
-       "z_mean": 3.52,
+       "z_mean": 1.48,
        "exceed": 0,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.06816567128973894,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 1.4845207566183214
       },
       "2019": {
-       "z_mean": 3.5,
+       "z_mean": 1.36,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.06738613539482151,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 1.3617553660694732
       },
       "2020": {
-       "z_mean": 3.13,
+       "z_mean": 1.31,
        "exceed": 0,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.06978816172215274,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 1.309413204505163
       },
       "2021": {
-       "z_mean": 4.67,
+       "z_mean": 1.59,
        "exceed": 0,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.09067244554817479,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 1.5939153134926247
       },
       "2022": {
-       "z_mean": 4.57,
+       "z_mean": 1.65,
        "exceed": 0,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.09982599586775323,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 1.6479334638735217
       },
       "2023": {
-       "z_mean": 2.98,
+       "z_mean": 1.75,
        "exceed": 0,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.11295982385565305,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 1.7451818588501948
       },
       "2024": {
-       "z_mean": 3.88,
+       "z_mean": 1.49,
        "exceed": 0,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.10099530272061022,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 1.4884411850079793
       }
      },
      "signal_last_season_tg": 0.07285420944558514
@@ -870,8 +1411,8 @@
     "ramp_0.10_per_decade": {
      "rate_tg_per_decade": 0.1,
      "step_tg": 0.0,
-     "first_season_seasonal_mean_above_4p54": 2018,
-     "first_season_above_3": 2015,
+     "first_season_seasonal_mean_above_4p54": null,
+     "first_season_above_3": null,
      "single_sounding_exceedances": [
       0,
       73
@@ -879,94 +1420,169 @@
      "exceedance_fraction_upper95": 0.04020679425316584,
      "seasons": {
       "2010": {
-       "z_mean": 1.57,
+       "z_mean": 0.85,
        "exceed": 0,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.01513860740109535,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 0.8478736101676922
       },
       "2011": {
-       "z_mean": 0.08,
+       "z_mean": 0.07,
        "exceed": 0,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": 0.0014921328255720293,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": 0.06588683411167084
       },
       "2012": {
-       "z_mean": 1.97,
+       "z_mean": 1.23,
        "exceed": 0,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.03140164658171896,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 1.233264120122636
       },
       "2013": {
        "z_mean": 0.74,
        "exceed": 0,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": 0.022408340642708916,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": 0.7423500521310891
       },
       "2014": {
-       "z_mean": 1.84,
+       "z_mean": 1.35,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": 0.04421461115187589,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": 1.3506291580312755
       },
       "2015": {
-       "z_mean": 3.98,
+       "z_mean": 1.72,
        "exceed": 0,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.060445519555215134,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 1.7181553335235893
       },
       "2016": {
-       "z_mean": 3.87,
+       "z_mean": 2.02,
        "exceed": 0,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.07819903439341022,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 2.0162200729048507
       },
       "2017": {
-       "z_mean": 3.89,
+       "z_mean": 2.01,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.08549192869994572,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 2.013521950776359
       },
       "2018": {
-       "z_mean": 5.72,
+       "z_mean": 2.41,
        "exceed": 0,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.11073468794499797,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 2.4115942764396663
       },
       "2019": {
-       "z_mean": 5.97,
+       "z_mean": 2.32,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.11494309246923244,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 2.3227978878074302
       },
       "2020": {
-       "z_mean": 5.5,
+       "z_mean": 2.3,
        "exceed": 0,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.12255110947483383,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 2.2993877043499693
       },
       "2021": {
-       "z_mean": 7.65,
+       "z_mean": 2.61,
        "exceed": 0,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.1485007975141037,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 2.6104699591215783
       },
       "2022": {
-       "z_mean": 7.44,
+       "z_mean": 2.69,
        "exceed": 0,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.16270416150772565,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 2.6859299537093406
       },
       "2023": {
-       "z_mean": 4.78,
+       "z_mean": 2.8,
        "exceed": 0,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.18116539081892002,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 2.798929236227402
       },
       "2024": {
-       "z_mean": 6.67,
+       "z_mean": 2.56,
        "exceed": 0,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.17384951216619535,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 2.562146623962785
       }
      },
      "signal_last_season_tg": 0.14570841889117028
@@ -974,8 +1590,8 @@
     "ramp_0.20_per_decade": {
      "rate_tg_per_decade": 0.2,
      "step_tg": 0.0,
-     "first_season_seasonal_mean_above_4p54": 2015,
-     "first_season_above_3": 2012,
+     "first_season_seasonal_mean_above_4p54": 2021,
+     "first_season_above_3": 2015,
      "single_sounding_exceedances": [
       21,
       73
@@ -983,94 +1599,169 @@
      "exceedance_fraction_upper95": 0.38721312839398986,
      "seasons": {
       "2010": {
-       "z_mean": 2.16,
+       "z_mean": 1.17,
        "exceed": 0,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.020852501993839406,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 1.1678938278871256
       },
       "2011": {
-       "z_mean": 1.02,
+       "z_mean": 0.79,
        "exceed": 0,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": 0.017816568143846516,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": 0.7867109747973495
       },
       "2012": {
-       "z_mean": 3.63,
+       "z_mean": 2.27,
        "exceed": 0,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.05785841135470566,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 2.2723236052403393
       },
       "2013": {
        "z_mean": 1.88,
        "exceed": 0,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": 0.05682996966392828,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": 1.8826798295906906
       },
       "2014": {
-       "z_mean": 3.75,
+       "z_mean": 2.76,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": 0.09025157213750112,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": 2.7569258602854494
       },
       "2015": {
-       "z_mean": 7.63,
+       "z_mean": 3.29,
        "exceed": 0,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.11578432859012254,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 3.291153143680821
       },
       "2016": {
-       "z_mean": 7.08,
+       "z_mean": 3.69,
        "exceed": 0,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.14305187491360233,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 3.6883327768019623
       },
       "2017": {
-       "z_mean": 7.31,
+       "z_mean": 3.78,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.16058433116401163,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 3.78211230775149
       },
       "2018": {
-       "z_mean": 10.11,
+       "z_mean": 4.27,
        "exceed": 1,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.19587272125551602,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 4.265741316082355
       },
       "2019": {
-       "z_mean": 10.91,
+       "z_mean": 4.24,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.21005700661805432,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 4.244882931283345
       },
       "2020": {
-       "z_mean": 10.23,
+       "z_mean": 4.28,
        "exceed": 2,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.22807700498019598,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 4.279336704039582
       },
       "2021": {
-       "z_mean": 13.61,
+       "z_mean": 4.64,
        "exceed": 5,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.26415750144596156,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 4.643579250379486
       },
       "2022": {
-       "z_mean": 13.2,
+       "z_mean": 4.76,
        "exceed": 5,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.2884604927876704,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 4.761922933380976
       },
       "2023": {
-       "z_mean": 8.38,
+       "z_mean": 4.91,
        "exceed": 3,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.31757652474545406,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 4.906423990981818
       },
       "2024": {
-       "z_mean": 12.26,
+       "z_mean": 4.71,
        "exceed": 5,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.3195579310573656,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 4.709557501872395
       }
      },
      "signal_last_season_tg": 0.29141683778234057
@@ -1087,94 +1778,169 @@
      "exceedance_fraction_upper95": 0.12101499810942579,
      "seasons": {
       "2010": {
-       "z_mean": 11.44,
+       "z_mean": 6.13,
        "exceed": 4,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.10942471280835131,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 6.128590552104997
       },
       "2011": {
-       "z_mean": 4.92,
+       "z_mean": 3.76,
        "exceed": 0,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": 0.08516769750729755,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": 3.760677240771148
       },
       "2012": {
-       "z_mean": 6.58,
+       "z_mean": 4.12,
        "exceed": 0,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.10494488180873228,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 4.121591426373393
       },
       "2013": {
        "z_mean": 2.91,
        "exceed": 0,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": 0.08798671162148956,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": 2.9148494750461715
       },
       "2014": {
-       "z_mean": 4.08,
+       "z_mean": 3.0,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": 0.09817765016625066,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": 2.999044739442571
       },
       "2015": {
-       "z_mean": 6.92,
+       "z_mean": 2.99,
        "exceed": 0,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.10510671052030773,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 2.9876433621291576
       },
       "2016": {
-       "z_mean": 5.61,
+       "z_mean": 2.92,
        "exceed": 0,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.1133461938732181,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 2.922425744093399
       },
       "2017": {
-       "z_mean": 5.02,
+       "z_mean": 2.6,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.11039952623587981,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 2.6001503628657248
       },
       "2018": {
-       "z_mean": 6.48,
+       "z_mean": 2.74,
        "exceed": 0,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.12559665463447992,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 2.7352600985061346
       },
       "2019": {
-       "z_mean": 6.22,
+       "z_mean": 2.42,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.11982917832041055,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 2.421537095627163
       },
       "2020": {
-       "z_mean": 5.25,
+       "z_mean": 2.2,
        "exceed": 0,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.11702521396947164,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 2.1957070748150582
       },
       "2021": {
-       "z_mean": 6.85,
+       "z_mean": 2.34,
        "exceed": 0,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.1328440935822459,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 2.3352434555797785
       },
       "2022": {
-       "z_mean": 6.27,
+       "z_mean": 2.26,
        "exceed": 0,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.13694783022778084,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 2.2607429084524817
       },
       "2023": {
-       "z_mean": 3.82,
+       "z_mean": 2.24,
        "exceed": 0,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.14475425689238605,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 2.23639250219396
       },
       "2024": {
-       "z_mean": 4.92,
+       "z_mean": 1.89,
        "exceed": 0,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.12814109327502507,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 1.888508431428007
       }
      },
      "signal_last_season_tg": 0.09999999999999999
@@ -1191,94 +1957,169 @@
      "exceedance_fraction_upper95": 0.26814546215522334,
      "seasons": {
       "2010": {
-       "z_mean": 16.67,
+       "z_mean": 8.93,
        "exceed": 5,
        "null": -0.0033,
-       "null_sd": 0.0169
+       "null_sd": 0.0169,
+       "n": 5,
+       "mean_residual": 0.1594247128083513,
+       "residual_variance": 3.4390610048256724e-05,
+       "forecast_variance": 0.0002844030062364166,
+       "statistic": 8.928959131933365
       },
       "2011": {
-       "z_mean": 7.81,
+       "z_mean": 5.97,
        "exceed": 2,
        "null": -0.003,
-       "null_sd": 0.0207
+       "null_sd": 0.0207,
+       "n": 2,
+       "mean_residual": 0.13516769750729754,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0004269057484381206,
+       "statistic": 5.968484514443725
       },
       "2012": {
-       "z_mean": 9.72,
+       "z_mean": 6.09,
        "exceed": 3,
        "null": -0.0028,
-       "null_sd": 0.0243
+       "null_sd": 0.0243,
+       "n": 3,
+       "mean_residual": 0.15494488180873225,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.0005910071388726291,
+       "statistic": 6.085284822057622
       },
       "2013": {
        "z_mean": 4.57,
        "exceed": 1,
        "null": -0.0025,
-       "null_sd": 0.0272
+       "null_sd": 0.0272,
+       "n": 1,
+       "mean_residual": 0.13798671162148957,
+       "residual_variance": 0.00017195305024128363,
+       "forecast_variance": 0.0007392221878744597,
+       "statistic": 4.571264075233514
       },
       "2014": {
-       "z_mean": 6.16,
+       "z_mean": 4.53,
        "exceed": 0,
        "null": -0.0022,
-       "null_sd": 0.0314
+       "null_sd": 0.0314,
+       "n": 2,
+       "mean_residual": 0.14817765016625065,
+       "residual_variance": 8.597652512064181e-05,
+       "forecast_variance": 0.0009856892898515808,
+       "statistic": 4.526400881275306
       },
       "2015": {
-       "z_mean": 10.22,
+       "z_mean": 4.41,
        "exceed": 1,
        "null": -0.002,
-       "null_sd": 0.0348
+       "null_sd": 0.0348,
+       "n": 6,
+       "mean_residual": 0.15510671052030775,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0012090069302980455,
+       "statistic": 4.408886281510558
       },
       "2016": {
-       "z_mean": 8.08,
+       "z_mean": 4.21,
        "exceed": 1,
        "null": -0.0017,
-       "null_sd": 0.0382
+       "null_sd": 0.0382,
+       "n": 4,
+       "mean_residual": 0.1633461938732181,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0014612856104254093,
+       "statistic": 4.211584931636229
       },
       "2017": {
-       "z_mean": 7.3,
+       "z_mean": 3.78,
        "exceed": 0,
        "null": -0.0015,
-       "null_sd": 0.042
+       "null_sd": 0.0419,
+       "n": 4,
+       "mean_residual": 0.1603995262358798,
+       "residual_variance": 4.2988262560320906e-05,
+       "forecast_variance": 0.0017597699917713434,
+       "statistic": 3.777759747397973
       },
       "2018": {
-       "z_mean": 9.07,
+       "z_mean": 3.82,
        "exceed": 0,
        "null": -0.0012,
-       "null_sd": 0.0456
+       "null_sd": 0.0456,
+       "n": 6,
+       "mean_residual": 0.17559665463447993,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.0020797696841200974,
+       "statistic": 3.824166529360714
       },
       "2019": {
-       "z_mean": 8.82,
+       "z_mean": 3.43,
        "exceed": 0,
        "null": -0.0009,
-       "null_sd": 0.0492
+       "null_sd": 0.0492,
+       "n": 7,
+       "mean_residual": 0.16982917832041058,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.002424176600072334,
+       "statistic": 3.4319492212749876
       },
       "2020": {
-       "z_mean": 7.49,
+       "z_mean": 3.13,
        "exceed": 0,
        "null": -0.0007,
-       "null_sd": 0.053
+       "null_sd": 0.053,
+       "n": 6,
+       "mean_residual": 0.16702521396947165,
+       "residual_variance": 2.8658841706880605e-05,
+       "forecast_variance": 0.002811941175100332,
+       "statistic": 3.1338412598924092
       },
       "2021": {
-       "z_mean": 9.42,
+       "z_mean": 3.21,
        "exceed": 0,
        "null": -0.0004,
-       "null_sd": 0.0567
+       "null_sd": 0.0567,
+       "n": 9,
+       "mean_residual": 0.18284409358224588,
+       "residual_variance": 1.9105894471253736e-05,
+       "forecast_variance": 0.0032169809836697476,
+       "statistic": 3.2141848494378324
       },
       "2022": {
-       "z_mean": 8.55,
+       "z_mean": 3.09,
        "exceed": 0,
        "null": -0.0001,
-       "null_sd": 0.0604
+       "null_sd": 0.0604,
+       "n": 8,
+       "mean_residual": 0.18694783022778083,
+       "residual_variance": 2.1494131280160453e-05,
+       "forecast_variance": 0.0036480148680596734,
+       "statistic": 3.0861458756598705
       },
       "2023": {
-       "z_mean": 5.14,
+       "z_mean": 3.01,
        "exceed": 0,
        "null": 0.0002,
-       "null_sd": 0.0643
+       "null_sd": 0.0643,
+       "n": 3,
+       "mean_residual": 0.19475425689238604,
+       "residual_variance": 5.731768341376121e-05,
+       "forecast_variance": 0.004132225133790298,
+       "statistic": 3.0088715125544465
       },
       "2024": {
-       "z_mean": 6.84,
+       "z_mean": 2.63,
        "exceed": 0,
        "null": 0.0004,
-       "null_sd": 0.0677
+       "null_sd": 0.0677,
+       "n": 7,
+       "mean_residual": 0.1781410932750251,
+       "residual_variance": 2.4564721463040518e-05,
+       "forecast_variance": 0.004579474277862107,
+       "statistic": 2.6253947741154238
       }
      },
      "signal_last_season_tg": 0.15

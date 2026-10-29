@@ -92,10 +92,10 @@ def conventions_table(mark):
          f3(n['win01']['mmin_emp_slant']) + " / " + f3(n['win01']['mmin_formal_slant']),
          f3(n['win01']['mmin_emp_shell']) + " / " + f3(n['win01']['mmin_formal_shell'])),
     ]
-    for key, label in [("band 8-13 @0.1 | band01 alone", r"Linearized: $7.8$--$13~\mu$m band alone at $0.1~\mu$m, seven parameters"),
-                       ("window alone | full 7-param", r"Linearized: window alone, seven parameters"),
-                       ("band 8-13 @0.1 | triplet + band01", r"Linearized: heritage triplet plus $7.8$--$13~\mu$m band (the design)"),
-                       ("heritage triplet (448,756,1544) | full 7-param", r"Linearized: heritage triplet plus window")]:
+    for key, label in [("band 8-13 @0.1 | band01 alone", r"\ClaudeText{Diagonal-floor comparison, linearized} $7.8$--$13~\mu$m band alone at $0.1~\mu$m, seven parameters"),
+                       ("window alone | full 7-param", r"\ClaudeText{Diagonal-floor comparison, linearized} window alone, seven parameters"),
+                       ("band 8-13 @0.1 | triplet + band01", r"\ClaudeText{Diagonal-floor comparison, linearized} heritage triplet plus $7.8$--$13~\mu$m band (the design)"),
+                       ("heritage triplet (448,756,1544) | full 7-param", r"\ClaudeText{Diagonal-floor comparison, linearized} heritage triplet plus window")]:
         rows.append((label, f3(g[key]['mmin_slant']), f3(g[key]['mmin_shell'])))
     wrap = (lambda s: r"\ClaudeText{" + s + "}") if mark else (lambda s: s)
     cap = wrap(r"The ACE-FTS null tests and the linearized thresholds side by side, in both conventions: $M_{\min}^{(3\sigma)}$ [Tg] "

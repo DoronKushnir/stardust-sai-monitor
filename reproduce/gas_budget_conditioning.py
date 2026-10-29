@@ -1,4 +1,4 @@
-"""gas_budget_conditioning.py -- referee round 7 (paper 1; public port), items 2 and 3: the conditioning of the
+"""gas_budget_conditioning.py -- referee round 7 (paper 1), items 2 and 3: the conditioning of the
 gas-removal budget and the decomposition of the posterior silica uncertainty.
 
  1. The gas optical depth predicted at the 8.80-um element: (a) the known-aerosol diagnostic of round 70
@@ -14,7 +14,7 @@ gas-removal budget and the decomposition of the posterior silica uncertainty.
  3. The gas-removal error at every window element through the final gain, against the discrepancy term, for
     the statement that the ACE scatter is a multiple of the co-retrieval error.
 
-Run from the repo root (seconds):  python reproduce/gas_budget_conditioning.py
+Run from the repo root (seconds):  .venv/bin/python reproduce/gas_budget_conditioning.py
 Writes outputs/gas_budget_conditioning.json
 """
 from __future__ import annotations
@@ -33,7 +33,7 @@ C = E.C
 OUT = ROOT / "outputs/gas_budget_conditioning.json"
 REF = E.REF; RHO = REF.rho
 log = E.log
-res = dict(script="reproduce/gas_budget_conditioning.py", round=76)
+res = dict(script="reproduce/gas_budget_conditioning.py", round=78)
 
 # ---- 1. the gas budget under three conditionings
 b_known = C.removal_budget(C.SNR_REF, C.SIGMA_ETA_BASE, with_aerosol_state=False)
@@ -41,7 +41,7 @@ b_joint70 = C.removal_budget(C.SNR_REF, C.SIGMA_ETA_BASE, with_aerosol_state=Tru
 res["gas_budget_880"] = dict(
     known_aerosol_diagnostic=dict(sigma_total_od=b_known["sigma_total"], photon=b_known["photon"], line=b_known["line"], prior=b_known["prior_smoothing"],
                                   conditioning="window rows, spectroscopic covariance, round-70 priors; the seven aerosol and two response parameters known"),
-    joint_prior=dict(sigma_total_od=b_joint70["sigma_total"], photon=b_joint70["photon"], line=b_joint70["line"], prior=b_joint70["prior_smoothing"],
+    joint_round70_prior=dict(sigma_total_od=b_joint70["sigma_total"], photon=b_joint70["photon"], line=b_joint70["line"], prior=b_joint70["prior_smoothing"],
                              conditioning="window rows, spectroscopic covariance; aerosol (prior 1e3) and response parameters in the state"))
 # (c) through the gain of the final retrieval: predictand = the gas part of y_880 (gas, T, CFC, group columns)
 s_b, S_hat, G, K, S = E.joint_sigma(REF, rows="band", return_all=True)
@@ -62,6 +62,8 @@ S_trip = C._blockdiag(np.zeros((E.n_mir, E.n_mir)), REF.S_tri)
 res["gas_budget_880"]["final_retrieval_gain"] = dict(
     sigma_posterior_od=float(np.sqrt(v_post)), from_measurement_covariance=float(np.sqrt(v_meas)), from_prior=float(np.sqrt(v_prior)),
     photon_term=float(np.sqrt(Gk @ S_noise @ Gk)), discrepancy_term=float(np.sqrt(Gk @ S_disc @ Gk)), triplet=float(np.sqrt(Gk @ S_trip @ Gk)),
+    line_prediction_term=float(np.sqrt(Gk[:E.n_mir] @ Cl @ Gk[:E.n_mir])),
+    input_line_sigma=float(np.sqrt(Cl[C.i880, C.i880])),
     line_term_including_the_elements_own_error=float(np.sqrt(max(v_line_full, 0.0))),
     conditioning="47 design elements + triplet, adopted covariance (Table 2), flat aerosol prior; aerosol and response parameters co-retrieved",
     note="sigma of the gas part of the 8.80-um element observable predicted by the posterior state; the measurement part is G S G^T, the prior part (I-A) S_a (I-A)^T")
@@ -71,6 +73,10 @@ log("gas budget at 8.80 um [OD]: known-aerosol diagnostic %.3e (photon %.3e, lin
         np.sqrt(v_post), np.sqrt(v_meas), np.sqrt(v_prior), res["gas_budget_880"]["final_retrieval_gain"]["photon_term"],
         res["gas_budget_880"]["final_retrieval_gain"]["discrepancy_term"], res["gas_budget_880"]["final_retrieval_gain"]["triplet"],
         res["gas_budget_880"]["final_retrieval_gain"]["line_term_including_the_elements_own_error"]))
+f = res["gas_budget_880"]["final_retrieval_gain"]
+assert np.isclose(v_meas, sum(f[key] ** 2 for key in ("photon_term", "discrepancy_term", "triplet", "line_prediction_term")), rtol=1e-6)
+assert np.isclose(v_post, v_meas + v_prior, rtol=1e-6)
+log("line input / prediction / removal residual [OD]:", f["input_line_sigma"], f["line_prediction_term"], f["line_term_including_the_elements_own_error"])
 # per-window-element gas prediction error through the final gain, against the discrepancy term
 per_el = []
 for j in E.win:

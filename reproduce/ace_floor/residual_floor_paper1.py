@@ -40,9 +40,9 @@ CAPTION = (r'Measured residual floors for full $0.1$-$\mu$m elements at '
            r'year-bootstrap intervals are in $10^{-3}$ residual-ratio OD. The '
            r'five evaluable bands retain all 143 occultations and all 500 '
            r'bootstrap draws. A dash denotes insufficient complete '
-           r'predictions, not a zero floor. The last column is the SD of the '
-           r'same statistic at the $0.25$-$\mu$m element in which the record '
-           r'was first examined (Sect.~\ref{app:acefloor_880}).')
+           r'predictions, not a zero floor. The last column gives the SD of the '
+           r'same statistic for a $0.25$-$\mu$m element '
+           r'(Sect.~\ref{app:acefloor_880}).')
 
 
 def check(label, actual, expected):

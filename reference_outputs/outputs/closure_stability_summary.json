@@ -1,0 +1,77 @@
+{
+ "n_fits": 1596,
+ "n_legacy_unconverged": 72,
+ "n_refitted": 1547,
+ "n_refined_unconverged": 0,
+ "max_scaled_projected_gradient": 0.0009778721625370768,
+ "max_objective_increase": 0.0,
+ "max_abs_mass_change_tg": 0.0329381832965001,
+ "changes": {
+  "all_rows": {
+   "refit_legacy_failures_only": {
+    "bias_mean": 0.0006013364234487076,
+    "bias_median": 0.003133214968065956,
+    "sd": 0.0003675994835746939,
+    "posterior_sigma_median": 0.0001688597425287819,
+    "coverage_1sig": 0.030303030303030387,
+    "coverage_2sig": 0.0,
+    "p_detect_3sig": 0.030303030303030304,
+    "p_detect_4p54sig": 0.0
+   },
+   "refined": {
+    "bias_mean": 0.0005346922036872093,
+    "bias_median": 0.003227049400380849,
+    "sd": 0.0003707288793276635,
+    "posterior_sigma_median": 0.00017895969976493287,
+    "coverage_1sig": 0.030303030303030387,
+    "coverage_2sig": 0.0,
+    "p_detect_3sig": 0.030303030303030304,
+    "p_detect_4p54sig": 0.0
+   }
+  },
+  "final_band": {
+   "refit_legacy_failures_only": {
+    "bias_mean": 7.999658814304787e-05,
+    "bias_median": 0.00022940044727665088,
+    "sd": 0.00010154707670015362,
+    "posterior_sigma_median": 0.0,
+    "coverage_1sig": 0.0,
+    "coverage_2sig": 0.0,
+    "p_detect_3sig": 0.0,
+    "p_detect_4p54sig": 0.0
+   },
+   "refined": {
+    "bias_mean": 7.576736739802522e-05,
+    "bias_median": 0.00029025269745876214,
+    "sd": 9.9656502065823e-05,
+    "posterior_sigma_median": 4.099315757284672e-05,
+    "coverage_1sig": 0.010000000000000009,
+    "coverage_2sig": 0.0,
+    "p_detect_3sig": 0.0,
+    "p_detect_4p54sig": 0.0
+   }
+  },
+  "final_window": {
+   "refit_legacy_failures_only": {
+    "bias_mean": 0.00011484579017626353,
+    "bias_median": 0.0004003375610066237,
+    "sd": 7.270211905557877e-05,
+    "posterior_sigma_median": 0.0001688597425287819,
+    "coverage_1sig": 0.0,
+    "coverage_2sig": 0.0,
+    "p_detect_3sig": 0.0,
+    "p_detect_4p54sig": 0.0
+   },
+   "refined": {
+    "bias_mean": 0.00023025915535488457,
+    "bias_median": 0.0009912504495587157,
+    "sd": 8.700229262335879e-05,
+    "posterior_sigma_median": 0.00017895969976493287,
+    "coverage_1sig": 0.010000000000000009,
+    "coverage_2sig": 0.0,
+    "p_detect_3sig": 0.0,
+    "p_detect_4p54sig": 0.0
+   }
+  }
+ }
+}

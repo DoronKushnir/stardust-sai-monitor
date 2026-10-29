@@ -78,18 +78,26 @@ guide/             the guide: model, assumptions, data, and how the results map 
 
 ## What the numbers depend on
 
-The detection thresholds use the calibrated two-component sulfate background
-(GloSSAC 525-nm amplitude and profile at 20–25°N, microphysics fitted to the
-ACE-FTS mid-infrared record), the Fisher-matrix marginalization of Appendix
-C, per-element mid-infrared floors that carry the design's own optimal-
-estimation gas-removal budget at the 8.80 µm element (Appendix D) with the
-wavelength dependence measured on the ACE-FTS residual record (Appendix E),
-and the SAGE III/ISS Level-2 visible/NIR uncertainties. The element grid is
-centred on the 8.80 µm silica resonance (elements 8.00, 8.10, … 13.20 µm; the
-7.8–9.3 µm window 7.80 … 9.20 µm), and every optical-depth floor is converted
-to a per-shell extinction with the exact onion-peel gain of the edge-bounded
-retrieval grid (`saimon/onion_peel.py`, g = 1.10). Headline single-sounding
-thresholds at 20 km: 0.101 Tg (7.8–13 µm band, 47 elements), 0.141 Tg (its 7.8–9.3 µm window).
+The primary result is the 46-parameter joint gas/aerosol retrieval with 47
+mid-infrared elements and the visible/NIR triplet. Its covariance includes
+radiometric noise, input line covariance and an empirical discrepancy term
+with spectral correlation; the seven aerosol parameters have effectively flat
+priors. The conditional three-sigma sensitivities at 20 km are **0.119 Tg
+per 0.5-km shell for the band** and **0.168 Tg for the window** (0.173 and
+0.336 Tg without the triplet). The declared PSD, atmosphere and covariance
+are part of these predictions; they are not demonstrated flight performance.
+
+`outputs/uncertainty_model.json`, `outputs/gas_budget_conditioning.json`
+and `outputs/closure_final.json` contain the primary sensitivity, posterior
+decomposition and closure ensemble. `outputs/closure_stability.json` adds
+the full-state convergence audit and per-draw uncertainties. The diagonal-floor
+comparison gives 0.101/0.141 Tg and uses independent errors per element; it
+must not be confused with the adopted joint model. See the current-model map
+at the beginning of `MANIFEST.md` for commands and outputs.
+
+The seasonal trend test retains the shared intercept/slope forecast covariance.
+Its retrospective 4.54 crossings are comparison statistics, not calibrated
+seasonal false-alarm rates or detection probabilities.
 
 ## Revision history
 

@@ -1,6 +1,6 @@
 {
- "script": "scripts/gas_budget_conditioning_round76.py",
- "round": 76,
+ "script": "reproduce/gas_budget_conditioning.py",
+ "round": 78,
  "gas_budget_880": {
   "known_aerosol_diagnostic": {
    "sigma_total_od": 0.0005115465225651972,
@@ -23,6 +23,8 @@
    "photon_term": 0.0007464059791181758,
    "discrepancy_term": 0.0025241578557369504,
    "triplet": 0.0002535535258809915,
+   "line_prediction_term": 0.00039712692833814657,
+   "input_line_sigma": 0.00034581729612928705,
    "line_term_including_the_elements_own_error": 0.0005633313153280239,
    "conditioning": "47 design elements + triplet, adopted covariance (Table 2), flat aerosol prior; aerosol and response parameters co-retrieved",
    "note": "sigma of the gas part of the 8.80-um element observable predicted by the posterior state; the measurement part is G S G^T, the prior part (I-A) S_a (I-A)^T"

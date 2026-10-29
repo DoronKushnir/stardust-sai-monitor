@@ -1,4 +1,4 @@
-"""ace_null_trend.py -- referee round 7 (paper 1; public port), item 7: the trend correction of the operational null
+"""ace_null_trend.py -- referee round 7 (paper 1), item 7: the trend correction of the operational null
 level defined as a rule and tested.
 
 Rule (frozen pre-deployment trend).  The null level is a linear trend M_0(t) = a + b (t - t_ref) fitted by
@@ -8,8 +8,8 @@ would absorb a secular injection as the rolling baseline did).  Its forecast at 
 covariance of (a, b) estimated by a block bootstrap over seasons (year-level dependence), so that the
 variance of the predicted null at t is var(a) + 2 (t - t_ref) cov(a, b) + (t - t_ref)^2 var(b).  The
 decision statistic of a sounding is z = (M - M_0(t)) / sqrt(sigma^2 + var(M_0(t))), with sigma the robust
-per-sounding scatter of the training record; the seasonal statistic is the seasonal mean of z times
-sqrt(n).  The centre uncertainty of a median is taken from the same bootstrap, not from sigma/sqrt(N).
+per-sounding scatter of the training record; the seasonal statistic uses the unweighted mean residual and variance
+sigma_train**2/n + xbar @ cov_ab @ xbar, retaining the shared forecast error.  The centre uncertainty of a median is taken from the same bootstrap, not from sigma/sqrt(N).
 
 Mass convention: the ACE masses are slant-fit masses at the 20.5-km tangent (Sect. 4.3); the design
 sensitivities are per 0.5-km shell; the conversion is the factor 2.33 of Sect. 4.3 and is stated with
@@ -20,7 +20,7 @@ to the measured record (training 2004-2015, 12 seasons) and passed through the r
 itself (false alarms); the same with the training record 2004-2009 (6 seasons, T_0 = 2010) to show the
 dependence on the training length; the forecast uncertainty at 1, 5 and 10 years after T_0.
 
-Run from the repo root (seconds):  python reproduce/ace_null_trend.py
+Run from the repo root (seconds):  .venv/bin/python reproduce/ace_null_trend.py
 Writes outputs/ace_null_trend.json
 """
 from __future__ import annotations
@@ -85,13 +85,21 @@ def apply_rule(rule, M_obs, test, thr=4.54):
     seas = {}
     for y in np.unique(yr[test]):
         m = yr[test] == y
-        seas[int(y)] = dict(n=int(m.sum()), seasonal_mean_z=float(np.mean(z[m]) * np.sqrt(m.sum())), single_exceed=int(np.sum(z[m] > thr)),
-                            forecast_null=float(np.mean(m0[m])), forecast_sd=float(np.sqrt(np.mean(forecast_var(rule, tt[m])))))
+        n = int(m.sum())
+        xbar = np.array([1.0, np.mean((tt[m] - rule["t_ref"]) / 10.0)])
+        v_forecast = float(xbar @ np.array(rule["cov_ab"]) @ xbar)
+        v_residual = rule["sigma_train"] ** 2 / n
+        mean_residual = float(np.mean(M_obs[test][m] - m0[m]))
+        seas[int(y)] = dict(n=n, seasonal_mean_z=mean_residual / np.sqrt(v_residual + v_forecast),
+                            mean_residual=mean_residual, residual_variance=v_residual, forecast_variance=v_forecast,
+                            single_exceed=int(np.sum(z[m] > thr)), forecast_null=float(np.mean(m0[m])),
+                            forecast_sd=float(np.sqrt(v_forecast)))
     return z, seas
 
 
-out = dict(script="reproduce/ace_null_trend.py", round=76, slant_to_shell=SLANT_TO_SHELL, bootstrap_draws=B,
+out = dict(script="reproduce/ace_null_trend.py", round=78, slant_to_shell=SLANT_TO_SHELL, bootstrap_draws=B,
            rule="linear trend fitted by OLS to the pre-deployment training record, frozen at T_0, forecast covariance of (a, b) from a year-block bootstrap; z = (M - M_0(t)) / sqrt(sigma^2 + var M_0(t))",
+           seasonal_rule="mean(M-M0)/sqrt(sigma_train**2/n + xbar.T cov_ab xbar); independent test residuals, shared forecast covariance; 4.54 is a retrospective comparator, not a calibrated seasonal false-alarm threshold",
            cases={})
 for name, t0, train in (("train_2004_2015", 2016.0, yr <= 2015), ("train_2004_2009", 2010.0, yr <= 2009)):
     rule = fit_rule(train, t_ref=t0)
@@ -107,7 +115,7 @@ for name, t0, train in (("train_2004_2015", 2016.0, yr <= 2015), ("train_2004_20
         n_exc = int(np.sum(z > 4.54)); n_tot = int(len(z))
         case["signals"][sname] = dict(rate_tg_per_decade=rate, step_tg=step, first_season_seasonal_mean_above_4p54=first, first_season_above_3=first3,
                                       single_sounding_exceedances=[n_exc, n_tot], exceedance_fraction_upper95=cp_upper(n_exc, n_tot),
-                                      seasons={y: dict(z_mean=round(d["seasonal_mean_z"], 2), exceed=d["single_exceed"], null=round(d["forecast_null"], 4), null_sd=round(d["forecast_sd"], 4)) for y, d in seas.items()},
+                                      seasons={y: dict(z_mean=round(d["seasonal_mean_z"], 2), exceed=d["single_exceed"], null=round(d["forecast_null"], 4), null_sd=round(d["forecast_sd"], 4), n=d["n"], mean_residual=d["mean_residual"], residual_variance=d["residual_variance"], forecast_variance=d["forecast_variance"], statistic=d["seasonal_mean_z"]) for y, d in seas.items()},
                                       signal_last_season_tg=float(signal[yr == years[-1]].mean()))
     out["cases"][name] = case
     r = rule
